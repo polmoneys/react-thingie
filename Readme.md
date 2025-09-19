@@ -1,6 +1,6 @@
-##Thingies for Reactjs
+## Thingies for Reactjs
 
-My work involves complex UI in React, this is how I roll.
+My work involves complex UI in React, this is how I roll for now.
 
 ### Inspiration 💐
 
