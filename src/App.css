@@ -1,0 +1,157 @@
+@font-face {
+    font-family: 'Brandon Grotesque';
+    src:
+        url('./assets/BrandonGrotesque-Black.woff2') format('woff2'),
+        url('./assets/BrandonGrotesque-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+.group {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    & > *:not(:last-of-type) {
+        border-bottom: var(--border);
+        margin-bottom: var(--gap-1);
+        min-height: calc(var(--hit-area-height) * 1.5);
+    }
+}
+main {
+    background-color: var(--nemesis);
+    overflow: hidden;
+}
+
+aside {
+    background-color: var(--accent);
+    position: fixed;
+    bottom: 200px;
+    z-index: 999;
+}
+
+[data-portal-fallback] {
+    position: fixed;
+    top: 3vw;
+    left: 3vw;
+    background-color: aliceblue;
+    padding: 2em;
+    color: plum;
+}
+
+[data-popover-backdrop='backdrop'] {
+    content: '';
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: var(--backdrop);
+}
+
+.fit {
+    width: fit-content;
+}
+
+@media (orientation: landscape) {
+    .underline {
+        text-decoration: underline;
+        -webkit-text-decoration: currentColor solid underline;
+        text-decoration: currentColor solid underline;
+    }
+    .underline-double {
+        text-decoration: underline;
+        -webkit-text-decoration: currentColor wavy underline;
+        text-decoration: currentColor wavy underline;
+    }
+}
+
+label {
+    --selected: 0;
+    grid-template-columns: auto calc(var(--selected) * 20px);
+}
+label svg {
+    opacity: var(--selected);
+}
+label:has(:checked) {
+    --selected: 1;
+}
+
+.jjjj {
+    background-color: navy;
+    z-index: 9999;
+}
+
+/*
+  <label class="summary">
+    <input type="checkbox" class="toggle">
+    <strong>Show details</strong>
+    <div class="details">
+      <p>Here are the juicy details that slide down.</p>
+    </div>
+  </label>
+*/
+.summary {
+    --open: 0;
+    display: grid;
+    grid-template-rows: auto 0px;
+    transition: grid-template-rows 0.3s ease;
+}
+.summary:has(.toggle:checked) {
+    --open: 1;
+    /* expands from 0px to 200px */
+    grid-template-rows: auto calc(var(--open) * 200px);
+}
+
+/*
+--red-if-togglersalltrue:
+    var(--tog1)
+    var(--tog2)
+    var(--tog3)
+    red;
+
+--red-if-anytogglertrue:
+    var(--tog1,
+        var(--tog2,
+            var(--tog3)
+        )
+    )
+    red;
+*/
+
+@media (any-hover: hover) and (pointer: fine) {
+    /* Reveal the button only on hover */
+}
+
+@media (any-hover: none) and (pointer: coarse) {
+    /* Show the button all the time */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    * {
+        animation-delay: -1ms;
+        animation-duration: 1ms;
+        animation-iteration-count: 1;
+        background-attachment: initial;
+        scroll-behavior: auto;
+        transition-delay: 0s;
+        transition-duration: 0s;
+    }
+
+    @view-transition {
+        navigation: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        interpolate-size: allow-keywords;
+    }
+}
+
+@media (forced-colors: active) {
+    svg {
+        forced-color-adjust: auto;
+    }
+}

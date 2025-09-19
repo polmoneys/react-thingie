@@ -1,0 +1,25 @@
+:where(html) {
+    /* iOS */
+    --input-font-size: max(16px, 1em);
+}
+
+.input:has(.slot-start),
+.input:has(.slot-end),
+.input:has(.slot-start):has(.slot-end) {
+    box-shadow: var(--border-idle);
+    transition: 180ms box-shadow ease-in-out;
+
+    &:focus-within {
+        box-shadow: var(--border-focus);
+        outline: 1px solid transparent;
+    }
+
+    & input {
+        box-shadow: none;
+    }
+}
+
+input[type='password'] {
+    font-family: Verdana;
+    letter-spacing: 0.125em;
+}

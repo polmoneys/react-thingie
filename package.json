@@ -1,0 +1,36 @@
+{
+    "name": "react-thingie",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc -b && vite build",
+        "order": "npx eslint --fix 'src/**/*.{js,ts,jsx,tsx}'",
+        "lint": "eslint .",
+        "preview": "vite preview",
+        "clear": "vite --force"
+    },
+    "dependencies": {
+        "@react-aria/focus": "^3.21.1",
+        "react": "^19.1.1",
+        "react-aria": "^3.43.1",
+        "react-dom": "^19.1.1",
+        "react-stick": "^5.0.7",
+        "resize-observer-polyfill": "^1.5.1"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.33.0",
+        "@types/react": "^19.1.10",
+        "@types/react-dom": "^19.1.7",
+        "@vitejs/plugin-react": "^5.0.0",
+        "eslint": "^9.35.0",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-refresh": "^0.4.20",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "globals": "^16.3.0",
+        "typescript": "~5.8.3",
+        "typescript-eslint": "^8.39.1",
+        "vite": "^7.1.2"
+    }
+}

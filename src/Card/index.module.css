@@ -1,0 +1,83 @@
+.card {
+    /* --card-min-height: 12vh; */
+    --card-padding: var(--gap-3);
+    --card-selection-bg: var(--black);
+    --card-selection-color: var(--white);
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow-1);
+    hyphens: auto;
+    word-break: break-word;
+    width: 100%;
+    height: 100%;
+    max-height: min(100%, 100vh);
+
+    &.mini {
+        /* todo: */
+    }
+
+    & header,
+    & footer {
+        align-items: center;
+    }
+
+    & > * {
+        padding: var(--card-padding);
+    }
+
+    & > div:not(header),
+    & > div:not(footer) {
+        flex-grow: 1;
+    }
+
+    & header,
+    & footer {
+        width: 100%;
+    }
+
+    & footer {
+        margin-top: auto;
+    }
+
+    &::selection {
+        background-color: var(--card-selection-bg);
+        color: var(--card-selection-color);
+    }
+}
+
+@supports selector(:has(*)) {
+    .card {
+        &:has(picture) > *:not(header),
+        &:has(video) > *:not(header) {
+            padding: var(--zero);
+        }
+
+        &:has(img) picture {
+            display: flex;
+            flex-grow: 1;
+            position: relative;
+            width: 100%;
+        }
+
+        &:has(input:focus-visible) {
+        }
+        &:has(input:placeholder-shown) {
+        }
+        &:has(:valid) {
+        }
+        &:has(:invalid) {
+        }
+        &:has(input:placeholder-shown) {
+        }
+        &:has(:required) {
+        }
+        &:has(:optional) {
+        }
+        &:has(:checked) {
+        }
+    }
+}

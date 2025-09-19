@@ -1,0 +1,43 @@
+:where(html) {
+    --ratio-square: 1;
+    --ratio-portrait: 9/16;
+    --ratio-landscape: 16/9;
+    --ratio-ultrawide: 18/5;
+}
+
+@supports (aspect-ratio: 1) {
+    .ratio {
+        &.auto {
+            aspect-ratio: auto;
+        }
+        &.square {
+            aspect-ratio: var(--ratio-square);
+        }
+        &.landscape {
+            aspect-ratio: var(--ratio-landscape);
+        }
+        &.portrait {
+            aspect-ratio: var(--ratio-portrait);
+        }
+        &.ultrawide {
+            aspect-ratio: var(--ratio-ultrawide);
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    .hide-portrait {
+        display: none !important;
+    }
+}
+@media (orientation: portrait) {
+    .hide-landscape {
+        display: none !important;
+    }
+    .ratio {
+        &:is(.auto, .square, .landscape, .portrait, .ultrawide) {
+            height: auto;
+            width: auto;
+        }
+    }
+}

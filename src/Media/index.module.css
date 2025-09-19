@@ -1,0 +1,37 @@
+.media {
+    overflow: hidden;
+    width: 100%;
+    z-index: var(--zero);
+    &.portrait {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        aspect-ratio: 9/16;
+        object-fit: cover;
+        object-position: center center;
+    }
+    &.landscape {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+.media img {
+    border: 0;
+    border-style: none;
+    width: 100%;
+    max-width: 100%;
+    background-repeat: no-repeat;
+    --background-img-intensity: 0.95;
+    --background-img-saturate: 1.25;
+    height: 100%;
+    filter: brightness(var(--background-img-intensity))
+        saturate(var(--background-img-saturate));
+}
+
+.media img {
+    object-fit: cover;
+}
