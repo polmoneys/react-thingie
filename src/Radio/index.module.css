@@ -1,0 +1,42 @@
+label {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: grid;
+
+    & input[type='radio'] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        color: currentColor;
+        width: 100%;
+        border-radius: 0 !important;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        padding: 0;
+        height: 100%;
+        background-color: var(--transparent);
+    }
+    &.checked {
+        /*& input[type='radio']:not([disabled]):checked {
+            &::after {
+                --radio-indeterminate-height: 5em;
+                position: absolute;
+                content: '';
+                background-color: currentColor;
+                height: var(--radio-indeterminate-height);
+                aspect-ratio: 1;
+                border-radius: 50%;
+                left: 50%;
+                top: 20%;
+                transform: translate(-50%, -50%);
+            }
+        }*/
+    }
+}
