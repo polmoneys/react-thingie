@@ -1,5 +1,11 @@
 import type { InputHTMLAttributes } from 'react';
 
+export interface ChipsProps {
+    selected: Array<string>;
+    onRemove: (item: number) => void;
+    limit: number;
+}
+
 export type BasicItem = {
     id: string | number;
     label: string;

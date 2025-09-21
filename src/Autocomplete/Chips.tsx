@@ -3,14 +3,10 @@ import { useState } from 'react';
 import Button from '../Button';
 
 import Chip from './Chip';
+import type { ChipsProps } from './interfaces';
 
 import styles from './index.module.css';
 
-interface ChipsProps {
-    selected: Array<string>;
-    onRemove: (item: number) => void;
-    limit: number;
-}
 export default function Chips(props: ChipsProps) {
     const { selected, onRemove, limit } = props;
 

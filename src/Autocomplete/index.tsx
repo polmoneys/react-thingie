@@ -95,12 +95,13 @@ export default function AutocompLite(props: AutocompLiteProps) {
         } else {
             // when suggestion list hidden:
             if (e.key === 'Enter' && inputValue.trim()) {
-                // // optionally allow creating new tags from free text; comment out if not wanted
+                // allow creating new tags from free text
                 e.preventDefault();
                 addSelected(inputValue.trim());
                 return;
             }
-        } // Backspace deletes last chip when input is empty
+        }
+        // Backspace deletes last chip when input is empty
         if (e.key === 'Backspace' && inputValue === '' && selected.length > 0) {
             e.preventDefault();
             removeSelectedAt(selected.length - 1);
@@ -120,13 +121,14 @@ export default function AutocompLite(props: AutocompLiteProps) {
         document.addEventListener('click', onClickOutside);
         return () => document.removeEventListener('click', onClickOutside);
     }, []);
+
     return (
         <div className={styles.root}>
             <div
                 ref={containerRef}
                 className={clsx(
                     styles.container,
-                    selected.length === 0 && styles.noChipsYet,
+                    selected.length === 0 && styles.empty,
                 )}
                 onClick={() => inputRef.current?.focus()}
             >
@@ -135,23 +137,25 @@ export default function AutocompLite(props: AutocompLiteProps) {
                     selected={selected}
                     onRemove={removeSelectedAt}
                 />
-                <TextInputLabel
-                    label=""
-                    id={id}
-                    ref={inputRef}
-                    value={inputValue}
-                    onChange={onInputChange}
-                    onKeyDown={onInputKeyDown}
-                    placeholder={
-                        selected.length === 0
-                            ? 'Search'
-                            : `${selected.length} selected`
-                    }
-                    aria-autocomplete="list"
-                    aria-expanded={showSuggestion}
-                    aria-haspopup="listbox"
-                    {...rest}
-                />
+                <div>
+                    <TextInputLabel
+                        label=""
+                        id={id}
+                        ref={inputRef}
+                        value={inputValue}
+                        onChange={onInputChange}
+                        onKeyDown={onInputKeyDown}
+                        placeholder={
+                            selected.length === 0
+                                ? 'Search'
+                                : `${selected.length} selected`
+                        }
+                        aria-autocomplete="list"
+                        aria-expanded={showSuggestion}
+                        aria-haspopup="listbox"
+                        {...rest}
+                    />
+                </div>
             </div>
             <Options
                 show={showSuggestion && suggestions.length > 0}

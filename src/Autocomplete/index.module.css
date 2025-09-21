@@ -22,7 +22,7 @@
             }
         }
         &.empty {
-            grid-template-columns: 1fr;
+            grid-template-columns: 100%;
         }
         & input {
             width: 100%;
