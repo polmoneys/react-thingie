@@ -115,7 +115,7 @@ function VideoPlayer(props: VideoPlayerProps) {
             if (videoEl == null) return;
 
             const track = videoEl.textTracks[0];
-            track.mode = track.mode === 'hidden' ? 'showing' : 'hidden';
+            track.mode = track?.mode === 'hidden' ? 'showing' : 'hidden';
         }
     };
 

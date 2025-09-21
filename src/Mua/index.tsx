@@ -5,6 +5,8 @@ export interface MuaProps {
     dangerous?: CSSProperties;
     children: ReactNode;
     component?: 'div' | 'aside' | 'label';
+    htmlFor?: string;
+    className?: string;
 }
 
 export default function Mua({
@@ -12,6 +14,7 @@ export default function Mua({
     dangerous,
     children,
     component: Component = 'div',
+    ...rest
 }: MuaProps) {
     return (
         <Component
@@ -29,6 +32,7 @@ export default function Mua({
                           alignContent: 'center',
                       }),
             }}
+            {...rest}
         >
             {children}
         </Component>

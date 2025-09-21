@@ -33,7 +33,6 @@ function DemoPortalContent() {
         setIo(true);
     };
 
-    console.log({ portalTarget });
     return (
         <section
             style={{

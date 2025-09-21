@@ -1,4 +1,4 @@
-import { type HTMLAttributes, type ReactNode,useEffect, useRef } from 'react';
+import { type HTMLAttributes, type ReactNode, useEffect, useRef } from 'react';
 
 import { FocusScope } from '@react-aria/focus';
 import ReactDOM from 'react-dom';
@@ -41,6 +41,9 @@ export default function Dialog({ onClose, children, ...props }: DialogProps) {
             {...props}
             ref={ref}
             className={clsx(props.className, styles.dialog)}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
         >
             <FocusScope contain restoreFocus autoFocus>
                 {children}

@@ -1,0 +1,8 @@
+.alert {
+    &.positive {
+    }
+    &.negative {
+    }
+    &.neutral {
+    }
+}

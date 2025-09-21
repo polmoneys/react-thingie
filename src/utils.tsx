@@ -176,6 +176,25 @@ export function useReturnFocus(): (id: Id) => void {
     return moveFocus;
 }
 
+export const getNextElementId = (ids: string[]): string | null => {
+    if (ids.length === 0) {
+        return null;
+    }
+
+    const focusedElement = document.activeElement as HTMLElement | null;
+    const focusedId = focusedElement?.id;
+
+    const currentIndex = ids.indexOf(focusedId || '');
+
+    // If the current ID exists in the array, return the next one; otherwise, return the first item
+    if (currentIndex !== -1) {
+        const nextIndex = (currentIndex + 1) % ids.length;
+        return ids[nextIndex];
+    }
+
+    return ids?.[0];
+};
+
 /*
   Usage:
   const value = 1234.567;
