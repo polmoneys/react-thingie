@@ -1,0 +1,65 @@
+.root {
+    position: relative;
+
+    & .container {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        gap: var(--gap-3);
+        border: var(--border);
+        padding: var(--gap-2);
+        background-color: var(--white);
+
+        & .chips {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: var(--gap-1);
+            padding: 0 var(--gap-1);
+
+            & button {
+                min-width: fit-content;
+            }
+        }
+        &.empty {
+            grid-template-columns: 1fr;
+        }
+        & input {
+            width: 100%;
+            padding: var(--gap-1);
+            border: var(--border);
+        }
+    }
+}
+
+.results {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border: border;
+
+    overflow: auto;
+    max-height: min(300px, 40vh);
+
+    .suggestion {
+        padding: var(--gap-2);
+        cursor: pointer;
+
+        &.highlighted {
+            background-color: var(--accent);
+        }
+    }
+}
+
+.chip {
+    background-color: var(--nemesis);
+}
+.chip > *:first-of-type {
+    padding: 0 var(--gap-2);
+}
+.chip button {
+    border-radius: 4px !important;
+}
+
+.chip.isActive {
+    filter: hue-rotate(120deg);
+}
