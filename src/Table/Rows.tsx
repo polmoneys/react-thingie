@@ -13,6 +13,7 @@ export default function Rows<T>({
     // "Order 12345"
     label,
     api,
+    selectedBackgroundColor,
     ...rest
 }: RowsProps<T> & { api: SelectionAPI<T> }) {
     return (
@@ -38,6 +39,7 @@ export default function Rows<T>({
                             gap={gap}
                             selected={selected}
                             onSelect={() => api.toggle(r)}
+                            selectedBackgroundColor={selectedBackgroundColor}
                         />
                     );
                 })}

@@ -23,6 +23,7 @@ export type RowProps<T> = {
     label: string;
     id?: string;
     onSelect?: () => void;
+    selectedBackgroundColor?: string;
 };
 
 export type RowsProps<T> = {
@@ -32,6 +33,7 @@ export type RowsProps<T> = {
     rowIndex?: number;
     gap?: string;
     selected?: boolean;
+    selectedBackgroundColor?: string;
     label: string;
     id?: string;
 } & ComponentProps<'div'>;

@@ -1,5 +1,5 @@
 import Font from '../Font';
-import { COLUMNS, USERS } from '../utils';
+import { COLUMNS, formatSelectedKeys, USERS } from '../utils';
 
 import { Thingie } from './Demo';
 import Rows from './Rows';
@@ -15,17 +15,11 @@ export default function UsersTable() {
                 margin: 'var(--gap-3) 0',
             }}
         >
-            <div className="row" style={{ gap: 'var(--gap-1)' }}>
-                <Font.Bold>{api.selectedCount} </Font.Bold>
-                {selection.map((it) => (
-                    <Font
-                        component="span"
-                        dangerousColor="var(--red)"
-                        key={it.id}
-                    >
-                        {it.name}
-                    </Font>
-                ))}
+            <div className="row gap sm underline">
+                <Font.Bold>
+                    {formatSelectedKeys(new Set(selection.map((x) => x.name)))}.
+                    Total ({api.selectedCount})
+                </Font.Bold>
             </div>
 
             <Rows
@@ -34,6 +28,7 @@ export default function UsersTable() {
                 rows={USERS}
                 label="users of imaginary app"
                 api={api}
+                selectedBackgroundColor="var(--accent)"
             />
         </section>
     );

@@ -13,6 +13,7 @@ export default function Row<T>({
     // "Order 12345"
     label,
     onSelect,
+    selectedBackgroundColor,
 }: RowProps<T>) {
     const containerStyle = useMemo(
         () => ({
@@ -20,10 +21,10 @@ export default function Row<T>({
             gridTemplateColumns,
             columnGap: gap,
             ...(selected && {
-                backgroundColor: 'var(--red)',
+                backgroundColor: selectedBackgroundColor,
             }),
         }),
-        [gridTemplateColumns, gap, selected],
+        [gridTemplateColumns, gap, selected, selectedBackgroundColor],
     );
 
     const rowHeaderId = `${id}-row-${rowIndex}-header`;
