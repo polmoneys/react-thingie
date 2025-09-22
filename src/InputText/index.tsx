@@ -25,9 +25,9 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
             ...(has(gridTemplateRows) && { gridTemplateRows }),
         } as CSSProperties;
         return (
-            <Ring>
-                <div style={options} {...(has(className) && { className })}>
-                    <label htmlFor={id}>{label}</label>
+            <div style={options} {...(has(className) && { className })}>
+                {label && <label htmlFor={id}>{label}</label>}
+                <Ring isTextInput>
                     <input
                         {...rest}
                         id={id}
@@ -39,8 +39,8 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
                         })}
                         onChange={(event) => onChange(event.target.value)}
                     />
-                </div>
-            </Ring>
+                </Ring>
+            </div>
         );
     },
 );
