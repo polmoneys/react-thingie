@@ -2,7 +2,7 @@
 
 My work involves complex UI in React, this is how I roll for now.
 
-Reated work, `<Hug/>` [repository](https://github.com/polmoneys/Hug)
+Related work, `<Hug/>` [repository](https://github.com/polmoneys/Hug)
 
 ### Inspiration 💐
 
