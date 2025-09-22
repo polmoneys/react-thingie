@@ -4,6 +4,7 @@ import Button from '../Button';
 import { callAll } from '../utils';
 
 import createPortal from '.';
+import Font from '../Font';
 
 const PortalDemo = createPortal('DemoPortal');
 
@@ -39,9 +40,24 @@ function DemoPortalContent() {
                 margin: 'var(--gap-3) 0',
             }}
         >
-            <Portal>12944</Portal>
-            {io && <Portal>Hiiiiiiiii</Portal>}
-            <Portal> {io && 'Hoooooooo'}</Portal>
+            <Portal>
+                <br />
+                <Font px="var(--gap-1)">I'm portaled into the portal </Font>
+            </Portal>
+            {io && (
+                <Portal>
+                    <Font px="var(--gap-1)">
+                        I'm a portal rendered conditionally{' '}
+                    </Font>
+                </Portal>
+            )}
+            <Portal>
+                {io && (
+                    <Font px="var(--gap-1)">
+                        I'm conditionally rendered inside portal{' '}
+                    </Font>
+                )}
+            </Portal>
 
             <Button.Group direction="vertical">
                 {({ active, setActive }) => {

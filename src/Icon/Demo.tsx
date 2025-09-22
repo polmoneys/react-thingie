@@ -2,7 +2,7 @@ import Icon from '.';
 
 export default function DemoIcons() {
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="row wrap">
             <Icon.X />
             <Icon.Chevron />
             <Icon.ChevronDown />

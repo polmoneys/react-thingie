@@ -24,8 +24,13 @@ main {
 aside {
     background-color: var(--accent);
     position: fixed;
-    bottom: 200px;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 60vh;
     z-index: 999;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
 }
 
 [data-portal-fallback] {

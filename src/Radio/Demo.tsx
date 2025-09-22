@@ -1,10 +1,33 @@
-import { useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import Font from '../Font';
 import Grid from '../Grid';
 import Radio from '../Radio';
 import Shape from '../Shape';
+import { clsx } from '../utils';
 
+const RadioCard = ({
+    children,
+    ratio = 'portrait',
+}: {
+    children: ReactNode;
+    ratio?: 'portrait' | 'landscape';
+}) => (
+    <div
+        className={clsx('ratio', ratio)}
+        style={{
+            display: 'grid',
+            placeItems: 'center',
+            placeContent: 'center',
+            width: '100%',
+            backgroundColor: 'var(--accent)',
+            border: 'var(--border)',
+            borderRadius: 'var(--border-radius)',
+        }}
+    >
+        {children}
+    </div>
+);
 export default function DemoRadio() {
     const [selectedRadio, setRadio] = useState<Record<string, string> | null>(
         null,
@@ -34,22 +57,13 @@ export default function DemoRadio() {
                     >
                         {({ checked }) => {
                             return (
-                                <div
-                                    className="ratio portrait"
-                                    style={{
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        placeContent: 'center',
-                                        width: '100%',
-                                        backgroundColor: 'rgba(0,0,0,.1)',
-                                    }}
-                                >
+                                <RadioCard>
                                     {checked ? (
                                         <Shape.Circle />
                                     ) : (
-                                        <Font>Alpha</Font>
+                                        <Font.Bold>Alpha</Font.Bold>
                                     )}
-                                </div>
+                                </RadioCard>
                             );
                         }}
                     </Radio>
@@ -65,22 +79,13 @@ export default function DemoRadio() {
                     >
                         {({ checked }) => {
                             return (
-                                <div
-                                    className="ratio portrait"
-                                    style={{
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        placeContent: 'center',
-                                        width: '100%',
-                                        backgroundColor: 'rgba(0,0,0,.1)',
-                                    }}
-                                >
+                                <RadioCard>
                                     {checked ? (
                                         <Shape.Circle />
                                     ) : (
-                                        <Font>Beta</Font>
+                                        <Font.Bold>Beta</Font.Bold>
                                     )}
-                                </div>
+                                </RadioCard>
                             );
                         }}
                     </Radio>
@@ -96,22 +101,13 @@ export default function DemoRadio() {
                     >
                         {({ checked }) => {
                             return (
-                                <div
-                                    className="ratio portrait"
-                                    style={{
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        placeContent: 'center',
-                                        width: '100%',
-                                        backgroundColor: 'rgba(0,0,0,.1)',
-                                    }}
-                                >
+                                <RadioCard>
                                     {checked ? (
                                         <Shape.Circle />
                                     ) : (
-                                        <Font>Delta</Font>
+                                        <Font.Bold>Delta</Font.Bold>
                                     )}
-                                </div>
+                                </RadioCard>
                             );
                         }}
                     </Radio>
@@ -127,22 +123,13 @@ export default function DemoRadio() {
                     >
                         {({ checked }) => {
                             return (
-                                <div
-                                    className="ratio portrait"
-                                    style={{
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        placeContent: 'center',
-                                        width: '100%',
-                                        backgroundColor: 'rgba(0,0,0,.1)',
-                                    }}
-                                >
+                                <RadioCard>
                                     {checked ? (
                                         <Shape.Circle />
                                     ) : (
-                                        <Font>Epsilon</Font>
+                                        <Font.Bold>Epsilon</Font.Bold>
                                     )}
-                                </div>
+                                </RadioCard>
                             );
                         }}
                     </Radio>
@@ -169,22 +156,13 @@ export default function DemoRadio() {
                     >
                         {({ checked }) => {
                             return (
-                                <div
-                                    className="ratio landscape"
-                                    style={{
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        placeContent: 'center',
-                                        width: '100%',
-                                        backgroundColor: 'rgba(0,0,0,.1)',
-                                    }}
-                                >
+                                <RadioCard ratio={'landscape'}>
                                     {checked ? (
                                         <Shape.Circle />
                                     ) : (
-                                        <Font>Alpha</Font>
+                                        <Font.Bold>Alpha</Font.Bold>
                                     )}
-                                </div>
+                                </RadioCard>
                             );
                         }}
                     </Radio>
@@ -200,22 +178,13 @@ export default function DemoRadio() {
                     >
                         {({ checked }) => {
                             return (
-                                <div
-                                    className="ratio landscape"
-                                    style={{
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        placeContent: 'center',
-                                        width: '100%',
-                                        backgroundColor: 'rgba(0,0,0,.1)',
-                                    }}
-                                >
+                                <RadioCard ratio={'landscape'}>
                                     {checked ? (
                                         <Shape.Circle />
                                     ) : (
-                                        <Font>Beta</Font>
+                                        <Font.Bold>Beta</Font.Bold>
                                     )}
-                                </div>
+                                </RadioCard>
                             );
                         }}
                     </Radio>
@@ -231,22 +200,13 @@ export default function DemoRadio() {
                     >
                         {({ checked }) => {
                             return (
-                                <div
-                                    className="ratio landscape"
-                                    style={{
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        placeContent: 'center',
-                                        width: '100%',
-                                        backgroundColor: 'rgba(0,0,0,.1)',
-                                    }}
-                                >
+                                <RadioCard ratio={'landscape'}>
                                     {checked ? (
                                         <Shape.Circle />
                                     ) : (
-                                        <Font>Delta</Font>
+                                        <Font.Bold>Delta</Font.Bold>
                                     )}
-                                </div>
+                                </RadioCard>
                             );
                         }}
                     </Radio>
@@ -262,22 +222,13 @@ export default function DemoRadio() {
                     >
                         {({ checked }) => {
                             return (
-                                <div
-                                    className="ratio landscape"
-                                    style={{
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        placeContent: 'center',
-                                        width: '100%',
-                                        backgroundColor: 'rgba(0,0,0,.1)',
-                                    }}
-                                >
+                                <RadioCard ratio={'landscape'}>
                                     {checked ? (
                                         <Shape.Circle />
                                     ) : (
-                                        <Font>Epsilon</Font>
+                                        <Font.Bold>Epsilon</Font.Bold>
                                     )}
-                                </div>
+                                </RadioCard>
                             );
                         }}
                     </Radio>
