@@ -29,6 +29,14 @@
             padding: var(--gap-1);
             border: var(--border);
         }
+
+        @media (orientation: portrait) {
+            & {
+                gap: var(--gap-1);
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+        }
     }
 }
 
