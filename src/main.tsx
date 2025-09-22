@@ -8,6 +8,7 @@ import './system.css';
 import './CSS/button.css';
 import './CSS/checkbox.css';
 import './CSS/ratio.css';
+import './CSS/utils.css';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>

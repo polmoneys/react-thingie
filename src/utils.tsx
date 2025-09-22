@@ -1,4 +1,10 @@
-import { useCallback } from 'react';
+import {
+    type CSSProperties,
+    type ReactNode,
+    useCallback,
+    useEffect,
+    useState,
+} from 'react';
 
 import type { Column } from './Table/interfaces';
 
@@ -53,32 +59,46 @@ export const TECH_STOCKS = [
     { code: 'META', id: '6666' },
 ];
 
+const ColumnCell = ({
+    children,
+    dangerous,
+}: {
+    children: ReactNode;
+    dangerous?: CSSProperties;
+}) => (
+    <div
+        style={{
+            width: '100%',
+            backgroundColor: 'rgba(0,0,0,.1)',
+            ...(has(dangerous) && dangerous),
+        }}
+    >
+        <strong>{children}</strong>
+    </div>
+);
+
 export const COLUMNS: Column<Person>[] = [
     {
         label: 'Name',
         field: 'name',
         render: (v) => (
-            <div style={{ width: '100%', backgroundColor: 'rgba(0,0,0,.1)' }}>
-                <strong>{v as string}</strong>
-            </div>
+            <ColumnCell dangerous={{ paddingLeft: 'var(--gap-1)' }}>
+                {v as string}
+            </ColumnCell>
         ),
     },
     {
         label: 'Email',
         field: 'email',
-        render: (v) => (
-            <div style={{ width: '100%', backgroundColor: 'rgba(0,0,0,.3)' }}>
-                <strong>{v as string}</strong>
-            </div>
-        ),
+        render: (v) => <ColumnCell>{v as string}</ColumnCell>,
     },
     {
         label: 'Age',
         field: 'age',
         render: (v) => (
-            <div style={{ width: '100%', backgroundColor: 'rgba(0,0,0,.5)' }}>
+            <ColumnCell>
                 <strong>{v as string}</strong>
-            </div>
+            </ColumnCell>
         ),
     },
 ];
@@ -292,5 +312,40 @@ export class Timer {
         if (this.start !== undefined) {
             this.remaining -= Date.now() - this.start;
         }
+    };
+}
+
+/*
+ Background: https://webdevetc.com/blog/matchmedia-events-for-window-resizes/
+*/
+
+export function useViewportSize() {
+    const [size, setSize] = useState(() => getViewportSize());
+    useEffect(() => {
+        // Use visualViewport api to track available height even on iOS virtual keyboard opening
+        const onResize = () => setSize(getViewportSize());
+
+        if (!visualViewport) {
+            window.addEventListener('resize', onResize);
+        } else {
+            visualViewport.addEventListener('resize', onResize);
+        }
+
+        return () => {
+            if (!visualViewport) {
+                window.removeEventListener('resize', onResize);
+            } else {
+                visualViewport.removeEventListener('resize', onResize);
+            }
+        };
+    }, []);
+
+    return size;
+}
+
+function getViewportSize() {
+    return {
+        width: window?.visualViewport?.width ?? window?.innerWidth,
+        height: window?.visualViewport?.height ?? window?.innerHeight,
     };
 }
