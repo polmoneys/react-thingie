@@ -22,15 +22,31 @@
     --accent: #be9fef;
     --nemesis: #bababa;
     --red: red;
+    --space: oklch;
+    --grey-20: color-mix(in var(--space), black 20%, white);
+    --grey-40: color-mix(in var(--space), black 40%, white);
+    --grey: color-mix(in var(--space), black, white);
+    --grey-60: color-mix(in var(--space), black 60%, white);
+    --grey-80: color-mix(in var(--space), black 80%, white);
+    --red-mixer: red 5%;
+    --red-grey-20: color-mix(in var(--space), var(--grey-20), var(--red-mixer));
+    --red-grey-40: color-mix(in var(--space), var(--grey-40), var(--red-mixer));
+    --red-grey: color-mix(in var(--space), var(--grey), var(--red-mixer));
+    --red-grey-60: color-mix(in var(--space), var(--grey-60), var(--red-mixer));
+    --red-grey-80: color-mix(in var(--space), var(--grey-80), var(--red-mixer));
     --transparent: transparent;
+
     --shadow: 0 1px 3px hsla(0, 0%, 0%, 0.12), 0 1px 2px hsla(0, 0%, 0%, 0.24);
     --border-radius: 0.2rem;
+
     --border-width: 2px;
     --border: var(--border-width) solid currentColor;
-    --border-focus: var(--border-width) solid var(--accent);
+    --ring-border: var(--accent);
+    --ringKeyboard-border: var(--red);
 
     --z-max: 999;
     --scrollbar-size: min(8px, 0.8em);
+    --animation-duration: 0.3s;
 }
 
 *,
@@ -212,14 +228,19 @@ a:is(:not([class])) {
     margin: 0;
 }
 
+:where(input[type='text']) {
+    /* iOS */
+    --input-font-size: max(16px, 1em);
+}
+
 /* <Ring> component */
 .ringless {
 }
 .ring {
-    border-color: var(--accent);
+    border-color: var(--ring-border) !important;
 }
 .ringKeyboard {
-    border-color: var(--red);
+    border-color: var(--ringKeyboard-border) !important;
 }
 
 ul {

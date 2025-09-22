@@ -9,7 +9,7 @@ input[type='checkbox'] {
     aspect-ratio: 1;
     background-color: var(--checkbox-bg);
     position: relative;
-
+    border: var(--border);
     &:focus {
         outline: 1px solid transparent;
     }
