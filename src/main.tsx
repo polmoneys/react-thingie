@@ -7,6 +7,7 @@ import App from './App.tsx';
 import './system.css';
 import './CSS/button.css';
 import './CSS/checkbox.css';
+import './CSS/colors.css';
 import './CSS/ratio.css';
 import './CSS/utils.css';
 

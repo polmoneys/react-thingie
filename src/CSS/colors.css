@@ -1,0 +1,39 @@
+:where(html) {
+    --transparent: transparent;
+    --black: #0b0b0b;
+    --white: #f9f9f9;
+
+    --accent: #be9fef;
+    --nemesis: #bababa;
+    --red: red;
+
+    --space: oklch;
+    --grey-20: color-mix(in var(--space), black 20%, white);
+    --grey-40: color-mix(in var(--space), black 40%, white);
+    --grey: color-mix(in var(--space), black, white);
+    --grey-60: color-mix(in var(--space), black 60%, white);
+    --grey-80: color-mix(in var(--space), black 80%, white);
+
+    --accent-mixer: var(--accent) 30%;
+    --accent-grey-20: color-mix(
+        in var(--space),
+        var(--grey-20),
+        var(--accent-mixer)
+    );
+    --accent-grey-40: color-mix(
+        in var(--space),
+        var(--grey-40),
+        var(--accent-mixer)
+    );
+    --accent-grey: color-mix(in var(--space), var(--grey), var(--accent-mixer));
+    --accent-grey-60: color-mix(
+        in var(--space),
+        var(--grey-60),
+        var(--accent-mixer)
+    );
+    --accent-grey-80: color-mix(
+        in var(--space),
+        var(--grey-80),
+        var(--accent-mixer)
+    );
+}

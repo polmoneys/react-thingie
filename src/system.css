@@ -5,7 +5,7 @@
     --font-weight: 600;
     --font-bold: 700;
     --font-line-height: 1.4;
-    --font-line-height-sm: 1.22;
+    --font-line-height-sm: 1;
 
     --hit-area-height: max(44px, 2em);
     --hit-area-width: 10ch;
@@ -16,25 +16,6 @@
     --gap-1: 0.4rem;
     --gap-2: 0.6rem;
     --gap-3: 1.8rem;
-
-    --black: #0b0b0b;
-    --white: #f9f9f9;
-    --accent: #be9fef;
-    --nemesis: #bababa;
-    --red: red;
-    --space: oklch;
-    --grey-20: color-mix(in var(--space), black 20%, white);
-    --grey-40: color-mix(in var(--space), black 40%, white);
-    --grey: color-mix(in var(--space), black, white);
-    --grey-60: color-mix(in var(--space), black 60%, white);
-    --grey-80: color-mix(in var(--space), black 80%, white);
-    --red-mixer: red 5%;
-    --red-grey-20: color-mix(in var(--space), var(--grey-20), var(--red-mixer));
-    --red-grey-40: color-mix(in var(--space), var(--grey-40), var(--red-mixer));
-    --red-grey: color-mix(in var(--space), var(--grey), var(--red-mixer));
-    --red-grey-60: color-mix(in var(--space), var(--grey-60), var(--red-mixer));
-    --red-grey-80: color-mix(in var(--space), var(--grey-80), var(--red-mixer));
-    --transparent: transparent;
 
     --shadow: 0 1px 3px hsla(0, 0%, 0%, 0.12), 0 1px 2px hsla(0, 0%, 0%, 0.24);
     --border-radius: 0.2rem;
@@ -132,10 +113,10 @@ body {
     font-size: var(--font-size);
     font-weight: var(--font-weight);
     line-height: var(--font-line-height);
-    --bg: var(--white);
+    --bg: var(--nemesis);
     --color: var(--black);
-    /* background-color: var(--bg);
-    color: var(--color); */
+    background-color: var(--bg);
+    color: var(--color);
 
     width: 100%;
     height: 100%;
