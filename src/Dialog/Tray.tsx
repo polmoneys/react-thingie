@@ -1,16 +1,11 @@
-import {
-    cloneElement,
-    type CSSProperties,
-    type ReactNode,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { FocusScope } from '@react-aria/focus';
 import ReactDOM from 'react-dom';
 
 import { clsx, useViewportSize } from '../utils';
+
+import type { DialogProps } from './interfaces';
 
 import styles from './index.module.css';
 
@@ -18,12 +13,7 @@ import styles from './index.module.css';
 //     ssr: false,
 // });
 
-interface Props {
-    children: ReactNode;
-    onClose: () => void;
-}
-
-export default function Tray({ children, onClose, ...rest }: Props) {
+export default function Tray({ children, onClose, ...rest }: DialogProps) {
     const ref = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -46,14 +36,14 @@ export default function Tray({ children, onClose, ...rest }: Props) {
     const timeoutRef = useRef(0);
 
     useEffect(() => {
-        clearTimeout((timeoutRef as any).current);
+        clearTimeout(timeoutRef.current);
 
         // When the height is decreasing, and the keyboard is visible
         // (visual viewport smaller than layout viewport), delay setting
         // the new max height until after the animation is complete
         // so that there isn't an empty space under the tray briefly.
         if (viewport.height < height && viewport.height < window.innerHeight) {
-            (timeoutRef as any).current = setTimeout(() => {
+            timeoutRef.current = setTimeout(() => {
                 setHeight(viewport.height);
             }, 500);
         } else {

@@ -1,22 +1,17 @@
-import { type HTMLAttributes, type ReactNode, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { FocusScope } from '@react-aria/focus';
 import ReactDOM from 'react-dom';
 
 import { clsx } from '../utils';
 
+import type { DialogProps } from './interfaces';
+
 import styles from './index.module.css';
 
 /*
-
 credits https://jjenzz.com/avoid-global-state-colocate/
-
  */
-
-interface DialogProps extends HTMLAttributes<HTMLDivElement> {
-    onClose: () => void;
-    children?: ReactNode;
-}
 
 export default function Dialog({ onClose, children, ...props }: DialogProps) {
     const ref = useRef<HTMLDivElement | null>(null);

@@ -48,3 +48,47 @@
 .tray.isOpen {
     transform: translateY(0);
 }
+
+.sheet {
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+
+    display: grid;
+    grid-template-rows: 100vh auto auto;
+    gap: var(--gap-3);
+    padding: min(200px, 20vw);
+    position: fixed;
+    inset: 0;
+    max-block-size: 100vh;
+    scrollbar-width: none;
+    z-index: var(--z-max);
+}
+
+.sheet:not([data-open='true']) {
+    pointer-events: none;
+}
+
+.sheet::-webkit-scrollbar {
+    display: none;
+}
+
+.sheet > menu {
+    grid-row: 2;
+    display: grid;
+    gap: calc(var(--gap-1) / 4);
+    padding: 0;
+
+    & button {
+        width: 100%;
+    }
+}
+
+.sentinel {
+    scroll-snap-align: start;
+}
+
+.sheet > menu:last-of-type {
+    grid-row: 3;
+    scroll-snap-align: end;
+    scroll-margin-block-end: var(--gap-3);
+}

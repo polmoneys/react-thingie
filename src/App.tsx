@@ -1,9 +1,9 @@
 import DemoAutocompLite from './Autocomplete/Demo';
-import CardsGrid from './Card/Demo';
+import DemoCards from './Card/Demo';
 import DemoDialog from './Dialog/Demo';
 import DemoIcons from './Icon/Demo';
 import DemoList from './List/Demo';
-import PopoversGrid from './Popover/Demo';
+import DemoPopovers from './Popover/Demo';
 import DemoPortal from './Portal/Demo';
 import DemoRadio from './Radio/Demo';
 import DemoTable from './Table/Demo';
@@ -23,8 +23,8 @@ function App() {
                 <DemoRadio />
                 <DemoList />
                 <DemoTable />
-                <CardsGrid />
-                <PopoversGrid />
+                <DemoCards />
+                <DemoPopovers />
                 <br />
                 <br />
                 <DemoPortal />
