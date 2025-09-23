@@ -6,12 +6,24 @@ import Font from '../Font';
 import Grid from '../Grid';
 import Shape from '../Shape';
 
+import PopoverLite from './Lite';
 import Popover from '.';
-// import Shape from '../Shape';
 
 export default function PopoversGrid() {
     return (
         <>
+            <br />
+
+            <PopoverLite id="menu-test" label="Some cta">
+                <Button onClick={() => console.log('a')}>Action A</Button>
+                <Button onClick={() => console.log('b')}>Action B</Button>
+                <Button onClick={() => console.log('c')}>Action C</Button>
+            </PopoverLite>
+            <br />
+            <br />
+            <br />
+            <br />
+
             <Grid width="28em">
                 <Popover
                     id="ttttt"
