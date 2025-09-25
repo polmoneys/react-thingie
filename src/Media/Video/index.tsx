@@ -31,9 +31,9 @@ function VideoPlayer(props: VideoPlayerProps) {
     useEffect(() => {
         const htmlVideo = videoRef.current;
         if (htmlVideo == null) return;
-        const onTimeUpdate = (): void => {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const onTimeUpdate = () => {
             const currentTime = htmlVideo.currentTime;
+            return currentTime;
         };
 
         htmlVideo.addEventListener('timeupdate', onTimeUpdate);

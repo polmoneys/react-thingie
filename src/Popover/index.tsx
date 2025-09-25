@@ -15,7 +15,6 @@ export default function Popover(props: TldrProps) {
         position = 'top center',
         caption,
         sameWidthCaption = false,
-        fullWidthChildren = false,
         autoFlipHorizontally = false,
         inline = true,
         autoFlipVertically = true,

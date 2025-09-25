@@ -2,6 +2,7 @@ import {
     cloneElement,
     type ComponentProps,
     type ReactElement,
+    type SVGProps,
     useEffect,
     useRef,
 } from 'react';
@@ -9,7 +10,7 @@ import {
 import { has } from '../utils';
 
 type StrokeDashoffsetProps = ComponentProps<'svg'> & {
-    children: ReactElement;
+    children: ReactElement<SVGProps<SVGPathElement>>;
     progress: number;
     pathLength?: number;
     strokeColor?: string;

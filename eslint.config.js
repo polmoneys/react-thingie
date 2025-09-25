@@ -24,14 +24,8 @@ export default tseslint.config([
             'simple-import-sort': simpleImportSort,
         },
         rules: {
-            /*
-          "no-unused-vars": [
-                          "error",
-                          { "varsIgnorePattern": "^_" }
-                          ]
-          */
-            'no-unused-vars': 'warn',
-            '@typescript-eslint/no-unused-vars': 'warn',
+            // "no-unused-vars": ["error",{ "varsIgnorePattern": "^_" }]
+            'no-unused-vars': 'off',
             'react-refresh/only-export-components': 'warn',
             'simple-import-sort/imports': [
                 'error',

@@ -47,7 +47,6 @@ export interface TldrProps {
         | 'top center'
         | 'top right';
     sameWidthCaption?: boolean;
-    fullWidthChildren?: boolean;
     autoFlipVertically?: boolean;
     autoFlipHorizontally?: boolean;
     inline?: boolean;

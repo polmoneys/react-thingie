@@ -1,4 +1,4 @@
-import type { ComponentProps, ReactElement, ReactNode } from 'react';
+import type { ComponentProps, ReactElement } from 'react';
 
 export interface RenderProp<TChildrenProps, TElement = unknown> {
     (props: TChildrenProps): ReactElement<TElement>;

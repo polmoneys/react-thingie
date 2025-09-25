@@ -1,7 +1,9 @@
 import {
     cloneElement,
+    type ComponentProps,
     type Dispatch,
     Fragment,
+    isValidElement,
     type ReactElement,
     type RefObject,
     type SetStateAction,
@@ -18,8 +20,11 @@ interface ControlsProps {
     videoRef: RefObject<HTMLVideoElement | null>;
     isPlaying: boolean;
     setIsPlaying: Dispatch<SetStateAction<boolean>>;
-    randomPlay?: ReactElement;
-    mute?: ReactElement;
+    randomPlay?: ReactElement<ComponentProps<'button'>>;
+    mute?: ReactElement<{
+        isMuted: boolean;
+        onClick: () => void;
+    }>;
 }
 
 export default function Controls(props: ControlsProps) {
@@ -84,9 +89,14 @@ export default function Controls(props: ControlsProps) {
             </div>
             <div className={styles.extraControls}>
                 {randomPlay != null &&
+                    isValidElement(randomPlay) &&
                     cloneElement(randomPlay, { onClick: onPlayRandom })}
                 {mute != null &&
-                    cloneElement(mute, { onClick: onToggleMute, isMuted })}
+                    isValidElement(mute) &&
+                    cloneElement(mute, {
+                        onClick: onToggleMute,
+                        isMuted,
+                    })}
             </div>
         </Fragment>
     );

@@ -1,7 +1,5 @@
 import { type ChangeEvent } from 'react';
 
-import Mua from '../Mua';
-// import Ring from '../Ring';
 import { clsx } from '../utils';
 
 import type { RadioProps } from './interfaces';
@@ -29,6 +27,7 @@ export default function Radio(props: RadioProps) {
                 onChange={onRadioChange}
                 {...rest}
             />
+
             {children({
                 checked: props?.checked ?? false,
             })}
