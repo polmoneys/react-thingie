@@ -3,6 +3,7 @@ import DemoCards from './Card/Demo';
 import DemoDialog from './Dialog/Demo';
 import DemoIcons from './Icon/Demo';
 import DemoList from './List/Demo';
+import DemoMenu from './Menu/Demo';
 import DemoPopovers from './Popover/Demo';
 import DemoPortal from './Portal/Demo';
 import DemoRadio from './Radio/Demo';
@@ -29,6 +30,7 @@ function App() {
                 <br />
                 <DemoPortal />
                 <br />
+                <DemoMenu />
                 <br />
                 <DemoDialog />
             </main>

@@ -15,9 +15,19 @@ export default function PopoversGrid() {
             <br />
 
             <PopoverLite id="menu-test" label="Some cta">
-                <Button onClick={() => console.log('a')}>Action A</Button>
-                <Button onClick={() => console.log('b')}>Action B</Button>
-                <Button onClick={() => console.log('c')}>Action C</Button>
+                {() => (
+                    <>
+                        <Button onClick={() => console.log('a')}>
+                            Action A
+                        </Button>
+                        <Button onClick={() => console.log('b')}>
+                            Action B
+                        </Button>
+                        <Button onClick={() => console.log('c')}>
+                            Action C
+                        </Button>
+                    </>
+                )}
             </PopoverLite>
             <br />
             <br />

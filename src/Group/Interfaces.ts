@@ -35,7 +35,7 @@ type Variants = (typeof VariantOptions)[number];
 export default interface GroupProps extends AriaAttributes {
     children: ReactNode;
     className?: string;
-    component: HTMLTags | ElementType;
+    component?: HTMLTags | ElementType;
     variant?: Variants;
     gap?: Unit;
     size?: Unit;
