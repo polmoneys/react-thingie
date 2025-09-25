@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { FocusScope } from '@react-aria/focus';
+
 import Button from '../Button';
 
 import Chip from './Chip';
@@ -16,25 +18,27 @@ export default function Chips(props: ChipsProps) {
     if (selected.length === 0) return null;
 
     return (
-        <div className={styles.chips}>
-            {selected
-                .slice(0, showAll ? selected.length : limit)
-                .map((item, i) => (
-                    <Chip
-                        key={item + i}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onRemove(i);
-                        }}
-                    >
-                        {item}
-                    </Chip>
-                ))}
-            {selected.length > limit && (
-                <Button onClick={onToggle}>
-                    {!showAll ? `+ ${selected.length - limit}` : 'Hide'}
-                </Button>
-            )}
-        </div>
+        <FocusScope contain>
+            <div className={styles.chips}>
+                {selected
+                    .slice(0, showAll ? selected.length : limit)
+                    .map((item, i) => (
+                        <Chip
+                            key={item + i}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onRemove(i);
+                            }}
+                        >
+                            {item}
+                        </Chip>
+                    ))}
+                {selected.length > limit && (
+                    <Button onClick={onToggle}>
+                        {!showAll ? `+ ${selected.length - limit}` : 'Hide'}
+                    </Button>
+                )}
+            </div>
+        </FocusScope>
     );
 }

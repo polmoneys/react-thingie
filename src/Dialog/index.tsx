@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 import { FocusScope } from '@react-aria/focus';
+import { useKeyboard } from 'react-aria';
 import ReactDOM from 'react-dom';
 
 import { clsx } from '../utils';
@@ -9,11 +10,12 @@ import type { DialogProps } from './interfaces';
 
 import styles from './index.module.css';
 
-/*
-credits https://jjenzz.com/avoid-global-state-colocate/
- */
-
-export default function Dialog({ onClose, children, ...props }: DialogProps) {
+export default function Dialog({
+    onClose,
+    children,
+    isOpen,
+    ...props
+}: DialogProps) {
     const ref = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -31,6 +33,17 @@ export default function Dialog({ onClose, children, ...props }: DialogProps) {
         };
     });
 
+    const { keyboardProps } = useKeyboard({
+        onKeyDown: (event) => {
+            if (event.key === 'Escape' && isOpen) {
+                event.preventDefault();
+                onClose();
+            }
+        },
+    });
+
+    if (!isOpen) return null;
+
     return ReactDOM.createPortal(
         <div
             {...props}
@@ -39,6 +52,7 @@ export default function Dialog({ onClose, children, ...props }: DialogProps) {
             tabIndex={-1}
             role="dialog"
             aria-modal="true"
+            {...keyboardProps}
         >
             <FocusScope contain restoreFocus autoFocus>
                 {children}

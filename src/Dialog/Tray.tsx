@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { FocusScope } from '@react-aria/focus';
+import { useKeyboard } from 'react-aria';
 import ReactDOM from 'react-dom';
 
 import { clsx, useViewportSize } from '../utils';
@@ -13,7 +14,12 @@ import styles from './index.module.css';
 //     ssr: false,
 // });
 
-export default function Tray({ children, onClose, ...rest }: DialogProps) {
+export default function Tray({
+    children,
+    onClose,
+    isOpen,
+    ...rest
+}: DialogProps) {
     const ref = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -29,6 +35,15 @@ export default function Tray({ children, onClose, ...rest }: DialogProps) {
                 capture: true,
             });
         };
+    });
+
+    const { keyboardProps } = useKeyboard({
+        onKeyDown: (event) => {
+            if (event.key === 'Escape' && isOpen) {
+                event.preventDefault();
+                onClose();
+            }
+        },
     });
 
     const viewport = useViewportSize();
@@ -55,9 +70,11 @@ export default function Tray({ children, onClose, ...rest }: DialogProps) {
         '--tray-min-height': `${height}px`,
     };
 
+    if (!isOpen) return null;
     return ReactDOM.createPortal(
         <div className={styles.overlay}>
             <div
+                {...keyboardProps}
                 {...rest}
                 ref={ref}
                 className={clsx(styles.tray, styles.isOpen)}

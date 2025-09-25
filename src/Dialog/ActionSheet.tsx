@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+import { useKeyboard } from 'react-aria';
+
 import { clsx } from '../utils';
 
 import type { ActionSheetProps } from './interfaces';
@@ -35,16 +37,15 @@ export default function ActionSheet({
         }
     }, [isOpen]);
 
-    useEffect(() => {
-        function onKey(e: KeyboardEvent) {
-            if (e.key === 'Escape' && isOpen) {
-                onOpenChange();
-                sentinelRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const { keyboardProps } = useKeyboard({
+        onKeyDown: (event) => {
+            console.log({ k: event.key, isOpen });
+            if ((event.key === 'Escape' || event.key === 'C') && isOpen) {
+                event.preventDefault();
+                onClose();
             }
-        }
-        document.addEventListener('keydown', onKey);
-        return () => document.removeEventListener('keydown', onKey);
-    }, [isOpen, onOpenChange]);
+        },
+    });
 
     return (
         <>
@@ -55,6 +56,7 @@ export default function ActionSheet({
                 className={clsx(styles.sheet, className)}
                 data-open={isOpen ? 'true' : 'false'}
                 aria-hidden={!isOpen}
+                {...keyboardProps}
             >
                 <div ref={sentinelRef} className={styles.sentinel} />
 

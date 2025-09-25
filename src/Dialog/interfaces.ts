@@ -6,6 +6,7 @@ interface RenderProp<TChildrenProps, TElement = unknown> {
 
 export interface DialogProps extends HTMLAttributes<HTMLDivElement> {
     onClose: () => void;
+    isOpen: boolean;
     children?: ReactNode;
 }
 

@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import AutocompLite from '.';
 
+// https://www.npmjs.com/package/minisearch
+
 const STATES = [
     'Alabama',
     'Alaska',

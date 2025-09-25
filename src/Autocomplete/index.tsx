@@ -18,6 +18,7 @@ export default function AutocompLite(props: AutocompLiteProps) {
         onChange,
         ...rest
     } = props;
+
     const [inputValue, setInputValue] = useState<string>('');
     const [suggestions, setSuggestions] = useState<Array<string>>([]);
     const [highlightIndex, setHighlightIndex] = useState<number>(-1);
@@ -25,11 +26,13 @@ export default function AutocompLite(props: AutocompLiteProps) {
 
     const inputRef = useRef<HTMLInputElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
+
     const openSuggestions = (filtered: Array<string>) => {
         setSuggestions(filtered);
         setHighlightIndex(filtered.length > 0 ? 0 : -1);
         setShowSuggestion(filtered.length > 0);
     };
+
     const onInputChange = (v: string) => {
         setInputValue(v);
         if (v.trim() === '') {
@@ -61,6 +64,7 @@ export default function AutocompLite(props: AutocompLiteProps) {
         setHighlightIndex(-1);
         inputRef.current?.focus();
     };
+
     const removeSelectedAt = (index: number) => {
         const next = selected.filter((_, i) => i !== index);
         onChange(next);
@@ -123,7 +127,7 @@ export default function AutocompLite(props: AutocompLiteProps) {
     }, []);
 
     return (
-        <div className={styles.root}>
+        <div className={styles.autocompLite}>
             <div
                 ref={containerRef}
                 className={clsx(

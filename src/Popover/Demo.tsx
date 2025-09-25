@@ -77,7 +77,7 @@ export default function PopoversGrid() {
                         </Card>
                     )}
                 >
-                    {({ isCaptionShown, toggleCaption, triggerProps }) => (
+                    {({ toggleCaption, triggerProps }) => (
                         <Card
                             component="article"
                             ratio="square"
@@ -162,7 +162,7 @@ export default function PopoversGrid() {
                         </Card>
                     )}
                 >
-                    {({ isCaptionShown, toggleCaption, triggerProps }) => (
+                    {({ toggleCaption, triggerProps }) => (
                         <Card
                             ratio="landscape"
                             component="article"
@@ -241,7 +241,7 @@ export default function PopoversGrid() {
                         </Card>
                     )}
                 >
-                    {({ isCaptionShown, toggleCaption, triggerProps }) => (
+                    {({ toggleCaption, triggerProps }) => (
                         <Card
                             component="article"
                             dangerous={{

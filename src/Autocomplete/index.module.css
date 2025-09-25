@@ -1,4 +1,4 @@
-.root {
+.autocompLite {
     position: relative;
 
     & .container {
@@ -60,14 +60,8 @@
 
 .chip {
     background-color: var(--nemesis);
-}
-.chip > *:first-of-type {
-    padding: 0 var(--gap-2);
-}
-.chip button {
-    border-radius: 4px !important;
-}
 
-.chip.isActive {
-    filter: hue-rotate(120deg);
+    &.isActive {
+        filter: hue-rotate(120deg);
+    }
 }
