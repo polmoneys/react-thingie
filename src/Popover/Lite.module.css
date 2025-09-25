@@ -21,6 +21,7 @@
 .menu {
     position: absolute;
     box-shadow: var(--shadow);
+    z-index: var(--z-max);
 }
 
 .menu,

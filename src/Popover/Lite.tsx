@@ -1,23 +1,43 @@
-import { Children, type ReactNode } from 'react';
+import { Children, type ReactElement, type ReactNode } from 'react';
+
+import { useKeyboard } from 'react-aria';
 
 import Button from '../Button';
 import { clsx } from '../utils';
 
 import styles from './Lite.module.css';
 
+interface RenderProp<TChildrenProps, TElement = unknown> {
+    (props: TChildrenProps): ReactElement<TElement>;
+}
+
 interface Props {
     id: string;
     label: ReactNode;
-    children?: Array<ReactNode>;
+    children: RenderProp<{
+        onClose: () => void;
+    }>;
     className?: string;
 }
 
 export default function PopoverLite(props: Props) {
     const { id, className, label, children } = props;
 
-    if (!Array.isArray(Children)) console.warn('Provide 2 children');
+    const onClose = () =>
+        (document.activeElement as HTMLElement | null)?.blur();
+    const { keyboardProps } = useKeyboard({
+        onKeyDown: (event) => {
+            if (event.key === 'Escape' || event.key === 'C') {
+                onClose();
+            }
+        },
+    });
+
+    const rendered = children({ onClose });
+    const items = Children.toArray(rendered);
+
     return (
-        <div className={clsx(styles.popover, className)}>
+        <div className={clsx(styles.popover, className)} {...keyboardProps}>
             <Button
                 id={id}
                 className={styles.button}
@@ -33,7 +53,7 @@ export default function PopoverLite(props: Props) {
                     aria-orientation="vertical"
                     aria-labelledby={id}
                 >
-                    {Children.map(children, (child, index) => {
+                    {items.map((child, index) => {
                         return (
                             <div
                                 className={styles.item}
