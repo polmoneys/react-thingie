@@ -69,22 +69,6 @@ aside {
     }
 }
 
-/*label {
-    --selected: 0;
-    grid-template-columns: auto calc(var(--selected) * 20px);
-}*/
-label svg {
-    opacity: var(--selected);
-}
-/*label:has(:checked) {
-    --selected: 1;
-}*/
-
-.jjjj {
-    background-color: navy;
-    z-index: 9999;
-}
-
 /*
   <label class="summary">
     <input type="checkbox" class="toggle">
@@ -128,25 +112,6 @@ label svg {
 
 @media (any-hover: none) and (pointer: coarse) {
     /* Show the button all the time */
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html:focus-within {
-        scroll-behavior: auto;
-    }
-    * {
-        animation-delay: -1ms;
-        animation-duration: 1ms;
-        animation-iteration-count: 1;
-        background-attachment: initial;
-        scroll-behavior: auto;
-        transition-delay: 0s;
-        transition-duration: 0s;
-    }
-
-    @view-transition {
-        navigation: none;
-    }
 }
 
 @media (prefers-reduced-motion: no-preference) {

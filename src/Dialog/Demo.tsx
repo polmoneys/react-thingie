@@ -1,29 +1,31 @@
-import { useState } from 'react';
-
 import Button from '../Button';
 import Card from '../Card';
 import Dialog from '../Dialog';
 import Shape from '../Shape';
+import useURLDialogs from '../useURL';
 
 import Actionsheet from './ActionSheet';
 import Tray from './Tray';
 
 export default function DemoDialog() {
-    const [open, setOpen] = useState(false);
-    const [tray, setTray] = useState(false);
-    const [openAS, setOpenAS] = useState(false);
+    const { onOpenTray, onOpenDialog, onOpenSheet, dialogs, onClose } =
+        useURLDialogs();
+    const isTrayOpen = dialogs === 'tray';
+    const isDialogOpen = dialogs === 'dialog';
+    const isSheetOpen = dialogs === 'sheet';
 
     return (
         <>
             <div className="row gap sm">
-                <Button onClick={() => setOpen(true)}>Dialog open</Button>
-                <Button onClick={() => setTray(true)}>Tray open</Button>
+                <Button onClick={() => onOpenDialog()}>Dialog open</Button>
+                <Button onClick={() => onOpenTray()}>Tray open</Button>
+
                 <Actionsheet
                     trigger={({ isOpen }) => {
                         return (
                             <Button
                                 type="button"
-                                onClick={() => setOpenAS(true)}
+                                onClick={() => onOpenSheet()}
                                 aria-expanded={isOpen}
                             >
                                 Show action sheet
@@ -37,8 +39,8 @@ export default function DemoDialog() {
                             </Button>
                         );
                     }}
-                    isOpen={openAS}
-                    onOpenChange={() => setOpenAS((prev) => !prev)}
+                    isOpen={isSheetOpen}
+                    onOpenChange={() => onClose()}
                 >
                     <Button className={'action-sheet-button'}>Action 1</Button>
                     <Button className={'action-sheet-button'}>Action 2</Button>
@@ -46,38 +48,36 @@ export default function DemoDialog() {
                 </Actionsheet>
             </div>
 
-            {open && (
-                <Dialog onClose={() => setOpen(false)}>
-                    <Card component="div" ratio="landscape">
-                        <Card.Title>Lorem ipsun dolor</Card.Title>
-                        <Card.Content>
-                            <Shape.Triangle />
-                            <Shape.Triangle />
-                            <Shape.Square />
-                            <Shape.Circle />
-                        </Card.Content>
-                        <Card.Actions>
-                            <Button onClick={() => setOpen(false)}>
-                                Close
-                            </Button>{' '}
-                        </Card.Actions>
-                    </Card>
-                </Dialog>
-            )}
+            <Dialog isOpen={isDialogOpen} onClose={() => onClose()}>
+                <Card
+                    component="div"
+                    ratio="landscape"
+                    dangerous={{ width: 'min(750px,80vw)' }}
+                >
+                    <Card.Title>Lorem ipsun dolor</Card.Title>
+                    <Card.Content>
+                        <Shape.Triangle />
+                        <Shape.Triangle />
+                        <Shape.Square />
+                        <Shape.Circle />
+                    </Card.Content>
+                    <Card.Actions>
+                        <Button onClick={() => onClose()}>Close</Button>{' '}
+                    </Card.Actions>
+                </Card>
+            </Dialog>
 
-            {tray && (
-                <Tray onClose={() => setTray(false)}>
-                    <Card component="div">
-                        <Card.Title>Lorem ipsun dolor</Card.Title>
-                        <Card.Content>
-                            <Shape.Triangle />
-                            <Shape.Triangle />
-                            <Shape.Square />
-                            <Shape.Circle />
-                        </Card.Content>
-                    </Card>
-                </Tray>
-            )}
+            <Tray isOpen={isTrayOpen} onClose={onClose}>
+                <Card component="div">
+                    <Card.Title>Lorem ipsun dolor</Card.Title>
+                    <Card.Content>
+                        <Shape.Triangle />
+                        <Shape.Triangle />
+                        <Shape.Square />
+                        <Shape.Circle />
+                    </Card.Content>
+                </Card>
+            </Tray>
         </>
     );
 }

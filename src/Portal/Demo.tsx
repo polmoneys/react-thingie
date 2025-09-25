@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 import Button from '../Button';
+import Font from '../Font';
 import { callAll } from '../utils';
 
 import createPortal from '.';
-import Font from '../Font';
 
 const PortalDemo = createPortal('DemoPortal');
 
@@ -23,7 +23,7 @@ function DemoPortalContent() {
 
     const [io, setIo] = useState(false);
 
-    const { portalTarget, setPortalTarget } = usePortal();
+    const { setPortalTarget } = usePortal();
 
     const setNone = () => setPortalTarget(null);
     const setFallback = () => setPortalTarget('whatever');
