@@ -10,7 +10,7 @@ import styles from './index.module.css';
 
 export default function ActionSheet({
     isOpen,
-    onOpenChange,
+    onClose,
     trigger,
     unTrigger,
     children,
@@ -20,12 +20,12 @@ export default function ActionSheet({
     const sentinelRef = useRef<HTMLDivElement | null>(null);
     const firstMenuRef = useRef<HTMLElement | null>(null);
 
-    const onClose = useCallback(() => {
-        onOpenChange();
+    const onCloseCleanup = useCallback(() => {
+        onClose();
         sentinelRef.current?.scrollIntoView({
             behavior: 'smooth',
         });
-    }, [onOpenChange]);
+    }, [onClose]);
 
     useEffect(() => {
         if (!isOpen) {
@@ -39,7 +39,6 @@ export default function ActionSheet({
 
     const { keyboardProps } = useKeyboard({
         onKeyDown: (event) => {
-            console.log({ k: event.key, isOpen });
             if ((event.key === 'Escape' || event.key === 'C') && isOpen) {
                 event.preventDefault();
                 onClose();
@@ -69,7 +68,7 @@ export default function ActionSheet({
                 </menu>
 
                 <menu className={styles.menu}>
-                    {unTrigger({ isOpen, onClose })}
+                    {unTrigger({ isOpen, onClose: onCloseCleanup })}
                 </menu>
             </div>
         </>

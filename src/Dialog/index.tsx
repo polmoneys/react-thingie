@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 import { FocusScope } from '@react-aria/focus';
 import { useKeyboard } from 'react-aria';
@@ -17,21 +17,6 @@ export default function Dialog({
     ...props
 }: DialogProps) {
     const ref = useRef<HTMLDivElement | null>(null);
-
-    useEffect(() => {
-        const onClick = (event: MouseEvent) => {
-            const dialog = ref.current;
-            if (!dialog?.contains(event.target as Node)) {
-                onClose();
-            }
-        };
-        document.addEventListener('click', onClick, { capture: true });
-        return () => {
-            document.removeEventListener('click', onClick, {
-                capture: true,
-            });
-        };
-    });
 
     const { keyboardProps } = useKeyboard({
         onKeyDown: (event) => {

@@ -32,19 +32,34 @@ export default function DemoDialog() {
                             </Button>
                         );
                     }}
-                    unTrigger={({ onClose }) => {
+                    unTrigger={({ onClose: onCloseLocal }) => {
                         return (
-                            <Button type="reset" onClick={onClose}>
+                            <Button type="reset" onClick={onCloseLocal}>
                                 Cancel
                             </Button>
                         );
                     }}
                     isOpen={isSheetOpen}
-                    onOpenChange={() => onClose()}
+                    onClose={() => onClose()}
                 >
-                    <Button className={'action-sheet-button'}>Action 1</Button>
-                    <Button className={'action-sheet-button'}>Action 2</Button>
-                    <Button className={'action-sheet-button'}>Action 3</Button>
+                    <Button
+                        className={'action-sheet-button'}
+                        onClick={(e) => e.preventDefault()}
+                    >
+                        Action 1
+                    </Button>
+                    <Button
+                        className={'action-sheet-button'}
+                        onClick={(e) => e.preventDefault()}
+                    >
+                        Action 2
+                    </Button>
+                    <Button
+                        className={'action-sheet-button'}
+                        onClick={(e) => e.preventDefault()}
+                    >
+                        Action 3
+                    </Button>
                 </Actionsheet>
             </div>
 

@@ -12,7 +12,7 @@ export interface DialogProps extends HTMLAttributes<HTMLDivElement> {
 
 export type ActionSheetProps = {
     isOpen: boolean;
-    onOpenChange: () => void;
+    onClose: () => void;
     trigger?: RenderProp<{
         isOpen: boolean;
     }>;
