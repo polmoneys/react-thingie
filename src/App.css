@@ -52,6 +52,16 @@ aside {
     background-color: var(--backdrop);
 }
 
+.circle,
+.square {
+    aspect-ratio: 1;
+    width: 400px;
+    border: var(--border);
+}
+.circle {
+    border-radius: 50%;
+}
+
 .fit {
     width: fit-content;
 }

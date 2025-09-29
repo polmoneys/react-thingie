@@ -6,7 +6,7 @@ import Card from '.';
 export default function CardsGrid() {
     return (
         <>
-            <Grid width="17em" m="var(--gap-3) 0">
+            <Grid width="25em" m="var(--gap-3) 0">
                 <Card
                     component="div"
                     ratio="portrait"

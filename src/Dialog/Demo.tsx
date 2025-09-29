@@ -90,6 +90,9 @@ export default function DemoDialog() {
                         <Shape.Triangle />
                         <Shape.Square />
                         <Shape.Circle />
+                        <Button onClick={(e) => e.preventDefault()}>
+                            Action 1
+                        </Button>
                     </Card.Content>
                 </Card>
             </Tray>

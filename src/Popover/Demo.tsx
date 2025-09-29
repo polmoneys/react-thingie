@@ -90,7 +90,6 @@ export default function PopoversGrid() {
                     {({ toggleCaption, triggerProps }) => (
                         <Card
                             component="article"
-                            ratio="square"
                             dangerous={{
                                 // maxHeight: '530px',
                                 backgroundColor: 'var(--accent)',
@@ -98,7 +97,7 @@ export default function PopoversGrid() {
                         >
                             <Card.Title>
                                 <Font.Bold component="h2" size="xl">
-                                    Title
+                                    Titlex
                                 </Font.Bold>
                             </Card.Title>
                             <Card.Content>
@@ -136,7 +135,7 @@ export default function PopoversGrid() {
                 </Popover>
 
                 <Popover
-                    id="ttttt"
+                    id="ttttt333"
                     backdrop="rgba(0,0,0,.1)"
                     caption={({
                         onClose,

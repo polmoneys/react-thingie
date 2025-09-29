@@ -27,12 +27,12 @@ function App() {
                 <DemoCards />
                 <DemoPopovers />
                 <br />
-                <br />
                 <DemoPortal />
                 <br />
                 <DemoMenu />
                 <br />
                 <DemoDialog />
+                <br />
             </main>
         </>
     );

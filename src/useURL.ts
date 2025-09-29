@@ -7,17 +7,22 @@ import {
     useQueryState,
 } from 'nuqs';
 
-const UI_DIALOGS = ['dialog', 'tray', 'sheet'] as const;
+const UI_GENERIC = ['dialog', 'tray', 'sheet'] as const;
+const UI_CRITICAL = ['cart'] as const;
 
-export default function useURLDialogs() {
+const UI = [...UI_GENERIC, ...UI_CRITICAL] as const;
+
+export default function useURL() {
     const [dialogs, setDialogs] = useQueryState(
         'dialogs',
-        parseAsStringLiteral(UI_DIALOGS),
+        parseAsStringLiteral(UI),
     );
 
-    const onOpenDialog = () => setDialogs(UI_DIALOGS[0]);
-    const onOpenTray = () => setDialogs(UI_DIALOGS[1]);
-    const onOpenSheet = () => setDialogs(UI_DIALOGS[2]);
+    const onOpenDialog = () => setDialogs(UI[0]);
+    const onOpenTray = () => setDialogs(UI[1]);
+    const onOpenSheet = () => setDialogs(UI[2]);
+    const onOpenCart = () => setDialogs(UI_CRITICAL[0]);
+
     const onClose = () => setDialogs(null);
 
     const [selection, setSelection] = useQueryState(
@@ -62,6 +67,7 @@ export default function useURLDialogs() {
         onOpenSheet,
         onOpenTray,
         onOpenDialog,
+        onOpenCart,
         selection,
         toggleSelection,
         addToSelection,

@@ -17,7 +17,7 @@
     max-height: min(100%, 100vh);
 
     &.mini {
-        /* todo: */
+        border-radius: clamp(0px, ((100vw - 4px) - 100%) * 9999, 8px);
     }
 
     & header,
