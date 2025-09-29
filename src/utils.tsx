@@ -1,13 +1,3 @@
-import {
-    type CSSProperties,
-    type ReactNode,
-    useCallback,
-    useEffect,
-    useState,
-} from 'react';
-
-import type { Column } from './Table/interfaces';
-
 export function has<T>(value: T | undefined): value is T {
     return value !== undefined;
 }
@@ -20,6 +10,89 @@ export const callAll =
 
 export const clsx = (...params: unknown[]): string =>
     params.filter(Boolean).join(' ');
+
+/*
+interface Share {
+  isin: string;
+  name: string;
+  // other properties...
+}
+
+const shares: Share[] = []
+const uniqueShares = removeDuplicatesBy(shares, share => share.isin);
+
+*/
+
+export function removeDuplicatesBy<T, K>(
+    input: T[],
+    keySelector: (item: T) => K,
+): T[] {
+    const seen = new Set<K>();
+    return input.filter((item) => {
+        const key = keySelector(item);
+        if (seen.has(key)) {
+            return false;
+        }
+        seen.add(key);
+        return true;
+    });
+}
+
+export function splitArray<T>(items: T[], fn: (el: T) => boolean): [T[], T[]] {
+    const match = [] as T[];
+    const dispose = [] as T[];
+    for (const el of items) {
+        if (fn(el)) {
+            match.push(el);
+        } else {
+            dispose.push(el);
+        }
+    }
+    return [match, dispose];
+}
+
+export function extractPowerWords(
+    query: string,
+    powerWords: string[],
+    bannedWords: string[],
+): [string[], string[]] {
+    const processedQuery = query
+        .toLowerCase()
+        .replace(/[^\w\s'’-]/gi, '')
+        .replace(/\s{2,}/g, ' '); // remove any extra whitespace
+
+    if (processedQuery === '') return [[], []];
+
+    const words = [...new Set(processedQuery.split(' '))];
+    const powerWordsSet = new Set(powerWords.map((word) => word.toLowerCase()));
+    const bannedWordsSet = new Set(
+        bannedWords.map((word) => word.toLowerCase()),
+    );
+
+    const matches: string[] = [];
+    const processedWords: string[] = [];
+
+    for (let i = 0; i < words.length; i++) {
+        const word = words[i].replace(/[,]/gi, ''); // remove punctuation marks
+
+        const processedWord = word.toLowerCase();
+
+        if (
+            powerWordsSet.has(processedWord) &&
+            !bannedWordsSet.has(processedWord)
+        ) {
+            matches.push(word);
+        }
+        if (
+            !powerWordsSet.has(processedWord) &&
+            !bannedWordsSet.has(processedWord)
+        ) {
+            processedWords.push(word);
+        }
+    }
+
+    return [matches, processedWords];
+}
 
 type ListFormatOptions = {
     type?: 'conjunction' | 'disjunction';
@@ -41,73 +114,6 @@ export function formatSelectedKeys(
         [...selection].map((item) => item.toString()),
     );
 }
-
-export interface Stock {
-    code: string;
-    id: string;
-}
-
-export type Person = { id: number; name: string; email?: string; age?: number };
-
-export const TECH_STOCKS = [
-    { code: 'AAPL', id: '0000' },
-    { code: 'MSFT', id: '1111' },
-    { code: 'GOOG', id: '2222' },
-    { code: 'AMZN', id: '3333' },
-    { code: 'TSLA', id: '4444' },
-    { code: 'NVDA', id: '5555' },
-    { code: 'META', id: '6666' },
-];
-
-const ColumnCell = ({
-    children,
-    dangerous,
-}: {
-    children: ReactNode;
-    dangerous?: CSSProperties;
-}) => (
-    <div
-        style={{
-            width: '100%',
-            backgroundColor: 'rgba(0,0,0,.1)',
-            ...(has(dangerous) && dangerous),
-        }}
-    >
-        <strong>{children}</strong>
-    </div>
-);
-
-export const COLUMNS: Column<Person>[] = [
-    {
-        label: 'Name',
-        field: 'name',
-        render: (v) => (
-            <ColumnCell dangerous={{ paddingLeft: 'var(--gap-1)' }}>
-                {v as string}
-            </ColumnCell>
-        ),
-    },
-    {
-        label: 'Email',
-        field: 'email',
-        render: (v) => <ColumnCell>{v as string}</ColumnCell>,
-    },
-    {
-        label: 'Age',
-        field: 'age',
-        render: (v) => (
-            <ColumnCell>
-                <strong>{v as string}</strong>
-            </ColumnCell>
-        ),
-    },
-];
-
-export const USERS: Array<Person> = [
-    { id: 1, name: 'A', email: 'a@x', age: 20 },
-    { id: 2, name: 'B', email: 'b@x', age: 30 },
-    { id: 3, name: 'Pol', email: 'b@x', age: 43 },
-];
 
 const customLog = console.log.bind(document);
 export const OMG = (input: string) => customLog('======>', input, '<======');
@@ -182,38 +188,6 @@ export const isHoverableDevice = () =>
 
 export const moveFocusTo = (selector: string) =>
     (document?.querySelector(selector) as HTMLElement)?.focus();
-
-type Id = string;
-
-export function useReturnFocus(): (id: Id) => void {
-    const moveFocus = useCallback((id: Id) => {
-        return window.setTimeout(() => {
-            const el = document.getElementById(id) as HTMLElement;
-            el?.focus();
-        }, 0);
-    }, []);
-
-    return moveFocus;
-}
-
-export const getNextElementId = (ids: string[]): string | null => {
-    if (ids.length === 0) {
-        return null;
-    }
-
-    const focusedElement = document.activeElement as HTMLElement | null;
-    const focusedId = focusedElement?.id;
-
-    const currentIndex = ids.indexOf(focusedId || '');
-
-    // If the current ID exists in the array, return the next one; otherwise, return the first item
-    if (currentIndex !== -1) {
-        const nextIndex = (currentIndex + 1) % ids.length;
-        return ids[nextIndex];
-    }
-
-    return ids?.[0];
-};
 
 /*
   Usage:
@@ -315,37 +289,53 @@ export class Timer {
     };
 }
 
+interface DownloadOptions {
+    filename?: string;
+    content?: string | Blob;
+    mimeType?: string;
+    autoRevoke?: boolean;
+}
+
+export const onFileDownload = (options: DownloadOptions = {}): void => {
+    const {
+        filename = 'hello.txt',
+        content = 'Hello, world!',
+        mimeType = 'text/plain',
+        autoRevoke = true,
+    } = options;
+
+    const blob: Blob =
+        content instanceof Blob
+            ? content
+            : new Blob([content], { type: mimeType });
+
+    const link = document.createElement('a');
+    link.download = filename;
+    link.href = URL.createObjectURL(blob);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    if (autoRevoke) {
+        URL.revokeObjectURL(link.href);
+    }
+};
+
+export const getFormDataFromEvent = (
+    event: React.FormEvent<HTMLFormElement>,
+): { [k: string]: FormDataEntryValue } => {
+    const formData = new FormData(event.target as HTMLFormElement);
+    return Object.fromEntries(formData);
+};
+
 /*
- Background: https://webdevetc.com/blog/matchmedia-events-for-window-resizes/
+const pluralizePost = pluralize('post')
+console.log(pluralizePost(1)) // 'post'
+console.log(pluralizePost(2)) // 'posts'
+const pluralizeMouse = pluralize('mouse', 'mice')
 */
 
-export function useViewportSize() {
-    const [size, setSize] = useState(() => getViewportSize());
-    useEffect(() => {
-        // Use visualViewport api to track available height even on iOS virtual keyboard opening
-        const onResize = () => setSize(getViewportSize());
-
-        if (!visualViewport) {
-            window.addEventListener('resize', onResize);
-        } else {
-            visualViewport.addEventListener('resize', onResize);
-        }
-
-        return () => {
-            if (!visualViewport) {
-                window.removeEventListener('resize', onResize);
-            } else {
-                visualViewport.removeEventListener('resize', onResize);
-            }
-        };
-    }, []);
-
-    return size;
-}
-
-function getViewportSize() {
-    return {
-        width: window?.visualViewport?.width ?? window?.innerWidth,
-        height: window?.visualViewport?.height ?? window?.innerHeight,
-    };
-}
+export const pluralize =
+    (singular: string, plural = `${singular}s`) =>
+    (quantity: number) =>
+        Math.abs(quantity) === 1 ? singular : plural;

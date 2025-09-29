@@ -1,7 +1,7 @@
 import Font from '../Font';
-import { COLUMNS, formatSelectedKeys, USERS } from '../utils';
+import { formatSelectedKeys } from '../utils';
 
-import { Thingie } from './Demo';
+import { COLUMNS, Thingie, USERS } from './Demo';
 import Rows from './Rows';
 
 export default function UsersTable() {

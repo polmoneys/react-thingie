@@ -1,5 +1,19 @@
 import createThingie from '../Thingie';
-import { type Stock,TECH_STOCKS } from '../utils';
+
+const TECH_STOCKS = [
+    { code: 'AAPL', id: '0000' },
+    { code: 'MSFT', id: '1111' },
+    { code: 'GOOG', id: '2222' },
+    { code: 'AMZN', id: '3333' },
+    { code: 'TSLA', id: '4444' },
+    { code: 'NVDA', id: '5555' },
+    { code: 'META', id: '6666' },
+];
+
+interface Stock {
+    code: string;
+    id: string;
+}
 
 import StocksList from '.';
 
