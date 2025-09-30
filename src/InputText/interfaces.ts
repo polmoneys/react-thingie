@@ -1,9 +1,8 @@
-import { type ComponentProps } from 'react';
+import { type ChangeEvent, type ComponentProps } from 'react';
 
-interface CommonProps
-    extends Omit<ComponentProps<'input'>, 'value' | 'onChange'> {
-    value: string;
+interface CommonProps extends Omit<ComponentProps<'input'>, 'onChange'> {
     onChange: (val: string) => void;
+    onChangeNative?: (event: ChangeEvent<HTMLInputElement>) => void;
     id: string;
     errorElementId?: string;
 }

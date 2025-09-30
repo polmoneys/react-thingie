@@ -71,43 +71,47 @@ export default function AutocompLite(props: AutocompLiteProps) {
         inputRef.current?.focus();
     };
 
-    const onInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    const onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (showSuggestion) {
-            if (e.key === 'ArrowDown') {
-                e.preventDefault();
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
                 setHighlightIndex((prev) =>
                     prev < suggestions.length - 1 ? prev + 1 : prev,
                 );
                 return;
             }
-            if (e.key === 'ArrowUp') {
-                e.preventDefault();
+            if (event.key === 'ArrowUp') {
+                event.preventDefault();
                 setHighlightIndex((prev) => (prev > 0 ? prev - 1 : 0));
                 return;
             }
-            if (e.key === 'Enter' || e.key === 'Tab') {
+            if (event.key === 'Enter' || event.key === 'Tab') {
                 if (highlightIndex >= 0 && suggestions[highlightIndex]) {
-                    e.preventDefault();
+                    event.preventDefault();
                     addSelected(suggestions[highlightIndex]);
                 }
                 return;
             }
-            if (e.key === 'Escape') {
+            if (event.key === 'Escape') {
                 setShowSuggestion(false);
                 return;
             }
         } else {
             // when suggestion list hidden:
-            if (e.key === 'Enter' && inputValue.trim()) {
+            if (event.key === 'Enter' && inputValuevent.trim()) {
                 // allow creating new tags from free text
-                e.preventDefault();
-                addSelected(inputValue.trim());
+                event.preventDefault();
+                addSelected(inputValuevent.trim());
                 return;
             }
         }
         // Backspace deletes last chip when input is empty
-        if (e.key === 'Backspace' && inputValue === '' && selected.length > 0) {
-            e.preventDefault();
+        if (
+            event.key === 'Backspace' &&
+            inputValue === '' &&
+            selected.length > 0
+        ) {
+            event.preventDefault();
             removeSelectedAt(selected.length - 1);
         }
     };
@@ -116,9 +120,9 @@ export default function AutocompLite(props: AutocompLiteProps) {
         s: string, // use mouseDown to avoid losing focus before click
     ) => addSelected(s);
     useEffect(() => {
-        const onClickOutside = (e: MouseEvent) => {
+        const onClickOutside = (event: MouseEvent) => {
             if (!containerRef.current) return;
-            if (!containerRef.current.contains(e.target as Node)) {
+            if (!containerRef.current.contains(event.target as Node)) {
                 setShowSuggestion(false);
             }
         };

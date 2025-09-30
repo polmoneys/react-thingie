@@ -3,6 +3,8 @@ import Card from '../Card';
 import Dialog from '../Dialog';
 import Shape from '../Shape';
 import useURLDialogs from '../useURL';
+import useURLLoose from '../useURLLoose';
+import { callAll } from '../utils';
 
 import Actionsheet from './ActionSheet';
 import Tray from './Tray';
@@ -14,11 +16,15 @@ export default function DemoDialog() {
     const isDialogOpen = dialogs === 'dialog';
     const isSheetOpen = dialogs === 'sheet';
 
+    const { state, onOpen, onClose: onClose2 } = useURLLoose(['xoxo']);
+    const isTrayOpen2 = state === 'xoxo';
+
     return (
         <>
             <div className="row gap sm">
                 <Button onClick={() => onOpenDialog()}>Dialog open</Button>
                 <Button onClick={() => onOpenTray()}>Tray open</Button>
+                <Button onClick={() => onOpen('xoxo')}>Tray open 2</Button>
 
                 <Actionsheet
                     trigger={({ isOpen }) => {
@@ -82,7 +88,10 @@ export default function DemoDialog() {
                 </Card>
             </Dialog>
 
-            <Tray isOpen={isTrayOpen} onClose={onClose}>
+            <Tray
+                isOpen={isTrayOpen || isTrayOpen2}
+                onClose={callAll(onClose, onClose2)}
+            >
                 <Card component="div">
                     <Card.Title>Lorem ipsun dolor</Card.Title>
                     <Card.Content>

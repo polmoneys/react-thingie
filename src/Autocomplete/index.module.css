@@ -64,4 +64,10 @@
     &.isActive {
         filter: hue-rotate(120deg);
     }
+    & .chipLabel {
+    }
+    & .chipRemove {
+        display: inline-flex;
+        margin-left: var(--gap-1);
+    }
 }

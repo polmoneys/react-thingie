@@ -9,8 +9,8 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
     (props: TextInputLabelProps, ref: ForwardedRef<HTMLInputElement>) => {
         const {
             id,
-            // value,
             onChange,
+            onChangeNative,
             gridTemplateColumns,
             gridTemplateRows,
             label,
@@ -37,7 +37,10 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
                         {...(has(errorElementId) && {
                             'aria-describedby': errorElementId,
                         })}
-                        onChange={(event) => onChange(event.target.value)}
+                        onChange={(event) => {
+                            onChangeNative?.(event);
+                            onChange(event.target.value);
+                        }}
                     />
                 </Ring>
             </div>

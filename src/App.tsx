@@ -1,4 +1,5 @@
 import DemoAutocompLite from './Autocomplete/Demo';
+import DemoMultiple from './Autocomplete/DemoMultiple';
 import DemoCards from './Card/Demo';
 import DemoDialog from './Dialog/Demo';
 import DemoIcons from './Icon/Demo';
@@ -17,6 +18,8 @@ function App() {
             <aside id="aside" className="col sm gap"></aside>
 
             <main style={{ padding: 'var(--gap-3)', minHeight: '100vh' }}>
+                <DemoMultiple />
+                <br />
                 <DemoAutocompLite />
                 <br />
                 <DemoIcons />
