@@ -24,9 +24,15 @@ export default function DemoWebWorker({
     const [sample, setSample] = useState<any[]>([]);
     const worker = useMemo(
         () =>
-            new Worker(new URL('./array.ts', import.meta.url), {
-                type: 'module',
-            }),
+            new Worker(
+                new URL(
+                    '../utilities/web-worker-compute-array.ts',
+                    import.meta.url,
+                ),
+                {
+                    type: 'module',
+                },
+            ),
         [],
     );
     const rpc = useWorker(worker);
