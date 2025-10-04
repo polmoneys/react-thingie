@@ -1,40 +1,77 @@
-import DemoAutocompLite from './Autocomplete/Demo';
-import DemoMultiple from './Autocomplete/DemoMultiple';
-import DemoCards from './Card/Demo';
-import DemoDialog from './Dialog/Demo';
-import DemoIcons from './Icon/Demo';
-import DemoList from './List/Demo';
-import DemoMenu from './Menu/Demo';
-import DemoPopovers from './Popover/Demo';
-import DemoPortal from './Portal/Demo';
-import DemoRadio from './Radio/Demo';
-import DemoTable from './Table/Demo';
+import useDemos from './Demos/useURLDemos';
+import AutocompLite from './Dumb/Autocomplete';
+import DemoRenderer from './Demos';
 
 import './App.css';
 
+const DEMOS_V1 = [
+    'AutoCompLite',
+    'Card',
+    'DatePicker',
+    'Dialog',
+    'Icon',
+    'List',
+    'Menu',
+    'Popover',
+    'Portal',
+    'Radio',
+    'Stream',
+    'Table',
+];
+
 function App() {
+    // useEffect(() => {
+    //     style('#main')
+    //         .color('#fff')
+    //         .backgroundColor('#000')
+    //         .filter('blur(2px)');
+    // }, []);
+    //
+
+    const { toggleDemo, demos } = useDemos();
+
     return (
         <>
             <aside id="aside" className="col sm gap"></aside>
 
-            <main style={{ padding: 'var(--gap-3)', minHeight: '100vh' }}>
-                <DemoMultiple />
+            <main
+                id="main"
+                style={{
+                    padding: 'var(--gap-3)',
+                    minHeight: '100vh',
+                }}
+            >
+                <AutocompLite
+                    inputProps={{
+                        placeholder: `Search ${DEMOS_V1.length} demos`,
+                    }}
+                    options={DEMOS_V1}
+                    value={demos}
+                    onChange={(next) => {
+                        // first
+                        if (demos.length === 0) {
+                            next.map((d) => toggleDemo(d));
+                            return;
+                        }
+                        // remove
+                        if (demos.length > next.length) {
+                            demos
+                                .filter((i) => !next.includes(i))
+                                .map((d) => toggleDemo(d));
+                            return;
+                        }
+                        // add
+                        next.filter((i) => !demos.includes(i)).map((d) =>
+                            toggleDemo(d),
+                        );
+                    }}
+                    limit={3}
+                    id="search-demos"
+                />
                 <br />
-                <DemoAutocompLite />
-                <br />
-                <DemoIcons />
-                <br />
-                <DemoRadio />
-                <DemoList />
-                <DemoTable />
-                <DemoCards />
-                <DemoPopovers />
-                <br />
-                <DemoPortal />
-                <br />
-                <DemoMenu />
-                <br />
-                <DemoDialog />
+                <DemoRenderer demos={demos} />
+                {/*<DemoWebWorker />
+                 */}
                 <br />
             </main>
         </>

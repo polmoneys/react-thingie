@@ -4,16 +4,12 @@ import { FocusScope } from '@react-aria/focus';
 import { useKeyboard } from 'react-aria';
 import ReactDOM from 'react-dom';
 
+import useViewportSize from '../utilities/useViewportSize';
 import { clsx } from '../utils';
 
 import type { DialogProps } from './interfaces';
-import useViewportSize from './useViewportSize';
 
 import styles from './index.module.css';
-
-// const Tray = dynamic<TrayProps>(() => import('../Dialog/Tray').then((comp) => comp as never), {
-//     ssr: false,
-// });
 
 export default function Tray({
     children,

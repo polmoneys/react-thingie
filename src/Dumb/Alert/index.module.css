@@ -1,0 +1,26 @@
+.alert {
+    padding: var(--gap-2);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+
+    &.positive {
+        background-color: mediumseagreen;
+        color: currentColor;
+    }
+    &.negative {
+        background-color: var(--red);
+        color: currentColor;
+    }
+    &.neutral {
+        background-color: var(--white);
+    }
+
+    &.pending {
+        display: flex;
+        place-content: center;
+        place-items: center;
+        width: fit-content;
+        margin: 0 auto;
+    }
+}

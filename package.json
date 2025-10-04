@@ -10,16 +10,28 @@
         "lint": "eslint .",
         "scan": "npx react-scan@latest http://localhost:5173/",
         "preview": "vite preview",
-        "clear": "vite --force"
+        "clear": "vite --force",
+        "lm": "lms server start --cors",
+        "component": "node scripts/component.js",
+        "#foo": "npm run component -- src/Foo/index.tsx",
+        "#withCSS": "npm run component -- src/Foo/index.tsx --css"
     },
     "dependencies": {
         "@react-aria/focus": "^3.21.1",
-        "nuqs": "^2.6.0",
+        "@tanstack/react-query": "^5.90.2",
+        "dayjs": "^1.11.18",
+        "nuqs": "^2.7.0",
+        "openai": "^6.0.0",
         "react": "^19.1.1",
         "react-aria": "^3.43.1",
+        "react-aria-components": "^1.12.2",
         "react-dom": "^19.1.1",
         "react-intersection-observer": "^9.16.0",
+        "react-markdown": "^10.1.0",
         "react-stick": "^5.0.7",
+        "rehype-mermaid": "^3.0.0",
+        "remark-breaks": "^4.0.0",
+        "remark-gfm": "^4.0.1",
         "resize-observer-polyfill": "^1.5.1"
     },
     "devDependencies": {

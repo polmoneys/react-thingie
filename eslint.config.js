@@ -6,6 +6,8 @@ import tseslint from 'typescript-eslint';
 import { globalIgnores } from 'eslint/config';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
+// const localRules = require('./eslint-rules.js');
+
 export default tseslint.config([
     globalIgnores(['dist']),
     {
@@ -24,8 +26,11 @@ export default tseslint.config([
             'simple-import-sort': simpleImportSort,
         },
         rules: {
-            // "no-unused-vars": ["error",{ "varsIgnorePattern": "^_" }]
-            'no-unused-vars': 'off',
+            '@typescript-eslint/no-explicit-any': 'warn',
+            '@typescript-eslint/no-unused-vars': [
+                'warn',
+                { varsIgnorePattern: '^_' },
+            ],
             'react-refresh/only-export-components': 'warn',
             'simple-import-sort/imports': [
                 'error',
@@ -54,6 +59,19 @@ export default tseslint.config([
                 },
             ],
             'simple-import-sort/exports': 'error',
+            // 'no-restricted-imports': [
+            //     'error',
+            //     {
+            //         paths: [
+            //             {
+            //                 name: 'react-redux',
+            //                 importNames: ['useSelector'],
+            //                 message:
+            //                     'Import useSelector from "@/config/store/useSelector" instead for proper typing.',
+            //             },
+            //         ],
+            //     },
+            // ],
         },
     },
 ]);

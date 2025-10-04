@@ -1,0 +1,43 @@
+.react-aria-DatePicker {
+    color: var(--text-color);
+
+    .react-aria-Group {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+    }
+
+    .react-aria-Button {
+        background: var(--accent);
+        color: currentColor;
+        forced-color-adjust: none;
+        border: none;
+
+        &[data-pressed] {
+            box-shadow: none;
+            background: var(--red);
+        }
+
+        &[data-focus-visible] {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+        }
+    }
+
+    .react-aria-DateInput {
+        padding: var(--gap-1) 2.5rem var(--gap-1) var(--gap-2);
+        background-color: var(--white);
+    }
+}
+
+.react-aria-Popover {
+    background-color: var(--white);
+    font-size: var(--font-size-0);
+    & * {
+        font-size: var(--font-size-0);
+    }
+}
+
+.react-aria-Popover[data-trigger='DatePicker'] {
+    max-width: unset;
+}

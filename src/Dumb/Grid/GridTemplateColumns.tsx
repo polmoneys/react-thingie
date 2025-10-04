@@ -1,0 +1,54 @@
+import { useMemo } from 'react';
+
+import type { Unit } from '../../Thingie/interfaces';
+import { clsx, has } from '../../utils';
+
+import type { ColumnsGridProps } from './interfaces';
+import { computeResponsiveValues } from './utils';
+
+import styles from './index.module.css';
+
+export default function GridTemplateColumns(props: ColumnsGridProps) {
+    const {
+        children,
+        gap,
+        padding,
+        gridTemplateColumns,
+        className,
+        component: Component = 'div',
+        dangerous,
+    } = props;
+
+    const style = useMemo(() => {
+        const paddingValues = computeResponsiveValues<Unit>(padding);
+        const gapValues = computeResponsiveValues<Unit>(gap);
+        const gridTemplateColumnsValues =
+            computeResponsiveValues<Unit>(gridTemplateColumns);
+
+        const customStyle = {
+            '--hug-padding': paddingValues.xs,
+            '--hug-padding-sm': paddingValues.sm,
+            '--hug-padding-md': paddingValues.md,
+            '--hug-padding-lg': paddingValues.lg,
+            '--hug-padding-xl': paddingValues.xl,
+            '--hug-gap': gapValues.xs,
+            '--hug-gap-sm': gapValues.sm,
+            '--hug-gap-md': gapValues.md,
+            '--hug-gap-lg': gapValues.lg,
+            '--hug-gap-xl': gapValues.xl,
+            '--hug-grid-template-columns': gridTemplateColumnsValues.xs,
+            '--hug-grid-template-columns-sm': gridTemplateColumnsValues.sm,
+            '--hug-grid-template-columns-md': gridTemplateColumnsValues.md,
+            '--hug-grid-template-columns-lg': gridTemplateColumnsValues.lg,
+            '--hug-grid-template-columns-xl': gridTemplateColumnsValues.xl,
+        };
+
+        return has(dangerous) ? { ...dangerous, ...customStyle } : customStyle;
+    }, [dangerous, gap, gridTemplateColumns, padding]);
+
+    return (
+        <Component className={clsx(styles.columns, className)} style={style}>
+            {children}
+        </Component>
+    );
+}

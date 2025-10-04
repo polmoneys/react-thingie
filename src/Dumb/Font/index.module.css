@@ -1,0 +1,160 @@
+.grotesk {
+    font-family: 'Brandon Grotesque';
+    font-weight: 900;
+    font-style: normal;
+}
+
+.poppins-light {
+    font-family: 'Poppins', serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: 'Poppins', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-semibold {
+    font-family: 'Poppins', serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.poppins-regular-italic {
+    font-family: 'Poppins', serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.inherit {
+    font-size: inherit;
+}
+
+.xs {
+    font-size: var(--font-xs);
+}
+.sm {
+    font-size: var(--font-sm);
+}
+.md {
+    font-size: var(--font-md);
+}
+.lg {
+    font-size: var(--font-lg);
+}
+.xl {
+    font-size: var(--font-xl);
+}
+
+:is(.xl, .lg) {
+    line-height: 1;
+    overflow-wrap: break-word;
+}
+
+:is(.xl, .lg)::first-letter {
+    text-transform: var(--shout);
+}
+
+.xl:has(b),
+.lg:has(b),
+.md:has(b),
+.sm:has(b) {
+    font-size: inherit;
+}
+
+.uppercase {
+    text-transform: var(--shout);
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.numeric {
+    font-variant-numeric: tabular-nums;
+}
+
+.break {
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
+.hyphenate {
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.inert {
+    user-select: none;
+}
+
+.clamp {
+    --clamp-lines: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--clamp-lines);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ellipsis {
+    cursor: pointer;
+}
+.ellipsis > * {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ellipsis:hover > * {
+    background-color: inherit;
+    contain: paint;
+    width: fit-content;
+    min-width: 100%;
+    background-color: var(--white);
+}
+
+.maskX {
+    --mask-text: rgb(var(--black));
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent,
+        var(--mask-text) 15%,
+        var(--mask-text) 85%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        90deg,
+        transparent,
+        var(--mask-text) 15%,
+        var(--mask-text) 85%,
+        transparent 100%
+    );
+}
+
+.maskY {
+    --mask-text: rgb(var(--black));
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        var(--mask-text)
+    );
+    mask-image: linear-gradient(to bottom, transparent, var(--mask-text));
+}
+
+.emoji-green-to-red {
+    filter: hue-rotate(-120deg);
+}
+
+.emoji-red-to-green {
+    filter: hue-rotate(120deg);
+}
+
+.vertical {
+    letter-spacing: 0.2em;
+    text-orientation: mixed;
+    writing-mode: vertical-rl;
+}

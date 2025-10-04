@@ -1,8 +1,8 @@
-import Font from '../Font';
+import { COLUMNS, Thingie, USERS } from '../Demos/Tables';
+import Alert from '../Dumb/Alert';
+import Font from '../Dumb/Font';
+import Rows from '../Dumb/Rows';
 import { formatSelectedKeys } from '../utils';
-
-import { COLUMNS, Thingie, USERS } from './Demo';
-import Rows from './Rows';
 
 export default function UsersTable() {
     const { useSelection } = Thingie;
@@ -10,18 +10,20 @@ export default function UsersTable() {
     const selection = api.exportSelected();
 
     return (
-        <section
-            style={{
-                margin: 'var(--gap-3) 0',
-            }}
-        >
-            <div className="row gap sm underline">
-                <Font.Bold>
+        <>
+            <Alert
+                style={{
+                    display: 'flex',
+                    gap: 'var(--gap-1)',
+                    width: 'fit-content',
+                    marginTop: 'var(--gap-3)',
+                }}
+            >
+                <Font.Bold className="underline">
                     {formatSelectedKeys(new Set(selection.map((x) => x.name)))}.
                     Total ({api.selectedCount})
                 </Font.Bold>
-            </div>
-
+            </Alert>
             <Rows
                 columns={COLUMNS}
                 gridTemplateColumns="2fr .5fr .25fr"
@@ -30,6 +32,6 @@ export default function UsersTable() {
                 api={api}
                 selectedBackgroundColor="var(--accent)"
             />
-        </section>
+        </>
     );
 }

@@ -1,15 +1,15 @@
 import { type ChangeEvent } from 'react';
 
-import Button from '../Button';
-import Checkbox, { type TriState } from '../Checkbox';
-import Font from '../Font';
-import Grid from '../Grid';
-import Mua from '../Mua';
-import Shape from '../Shape';
+import { Thingie } from '../Demos/List';
+import Alert from '../Dumb/Alert';
+import Button from '../Dumb/Button';
+import Checkbox, { type TriState } from '../Dumb/Checkbox';
+import Font from '../Dumb/Font';
+import Grid from '../Dumb/Grid';
+import Mua from '../Dumb/Group/Mua';
+import Shape from '../Dumb/Shape';
+import Slot from '../Dumb/Slot';
 import { formatSelectedKeys } from '../utils';
-
-import { Thingie } from './Demo';
-import Slot from './Slot';
 
 export default function StocksList() {
     const { useSelection } = Thingie;
@@ -27,20 +27,28 @@ export default function StocksList() {
     };
     return (
         <>
-            <div style={{ margin: 'var(--gap-3) 0' }}>
+            <Alert
+                style={{
+                    display: 'flex',
+                    gap: 'var(--gap-1)',
+                    width: 'fit-content',
+                    marginTop: 'var(--gap-3)',
+                }}
+            >
+                {' '}
                 <Font>
                     Selected count:{' '}
                     <Font.Bold component="span">
                         {api.selectedCount} , {formatted}
                     </Font.Bold>
                 </Font>
-            </div>
+            </Alert>
 
+            <br />
             <Mua
                 component="label"
                 dangerous={{
                     width: 'fit-content',
-                    margin: 'var(--gap-3) 0',
                 }}
             >
                 <Checkbox
@@ -50,7 +58,9 @@ export default function StocksList() {
                 />
                 Has selections
             </Mua>
-            <Grid gap="var(--gap-1)" width="10em" m="var(--gap-3) 0">
+            <br />
+
+            <Grid gap="var(--gap-1)" width="10em">
                 {api.items.map((s) => (
                     <Mua
                         component="label"
@@ -66,11 +76,18 @@ export default function StocksList() {
                     </Mua>
                 ))}
             </Grid>
+            <br />
+
             {api.items?.map((item, pos) => (
                 <Slot
                     key={item.id}
-                    gradient="var(--accent) 0, var(--accent) 60px, var(--white) 60px, var(--white) calc(100% - 132px), var(--nemesis) calc(100% - 132px),var(--nemesis) 100%"
-                    start={<Shape.Circle size={35} />}
+                    gradient={`${!api.isSelected(item) ? 'var(--accent)' : 'var(--red)'} 0, ${!api.isSelected(item) ? 'var(--accent)' : 'var(--red)'} 60px, var(--white) 60px, var(--white) calc(100% - 132px), var(--nemesis) calc(100% - 132px),var(--nemesis) 100%`}
+                    start={
+                        <Shape
+                            sides={api.isSelected(item) ? 4 : 22}
+                            size={22}
+                        />
+                    }
                     startWidth="60px"
                     end={
                         <Button onClick={() => api.toggle(item)}>
@@ -79,37 +96,32 @@ export default function StocksList() {
                     }
                     endWidth="130px"
                     dangerous={{
-                        backgroundColor: api.isSelected(item)
-                            ? 'red'
-                            : 'transparent',
                         marginBottom:
                             (api.items ?? []).length - 1 === pos
                                 ? 0
                                 : 'var(--gap-1)',
                     }}
                 >
-                    <Font
+                    <Font.Bold
                         px="var(--gap-3)"
                         clamp={1}
                         onClick={() => api.toggle(item)}
                     >
-                        {item.id} {item.code}
-                    </Font>
+                        {item.code}
+                    </Font.Bold>
                 </Slot>
             ))}
 
-            <div style={{ marginTop: 8 }}>
-                <Button
-                    onClick={() =>
-                        console.log('export ->', api.exportSelected())
-                    }
-                >
-                    Export
-                </Button>
-                <Button onClick={() => api.clear()} style={{ marginLeft: 8 }}>
-                    Clear
-                </Button>
-            </div>
+            <br />
+
+            <Button
+                onClick={() => console.log('export ->', api.exportSelected())}
+            >
+                Export
+            </Button>
+            <Button onClick={() => api.clear()} dangerous={{ marginLeft: 8 }}>
+                Clear
+            </Button>
         </>
     );
 }
