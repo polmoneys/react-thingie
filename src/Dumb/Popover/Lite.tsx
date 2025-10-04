@@ -1,15 +1,12 @@
-import { Children, type ReactElement, type ReactNode } from 'react';
+import { Children, type ReactNode } from 'react';
 
 import { useKeyboard } from 'react-aria';
 
+import type { RenderProp } from '../../interfaces';
 import { clsx } from '../../utils';
 import Button from '../Button';
 
 import styles from './Lite.module.css';
-
-interface RenderProp<TChildrenProps, TElement = unknown> {
-    (props: TChildrenProps): ReactElement<TElement>;
-}
 
 interface Props {
     id: string;

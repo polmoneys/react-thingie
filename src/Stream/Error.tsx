@@ -1,5 +1,5 @@
+import Alert from '../Dumb/Alert';
 import Font from '../Dumb/Font';
-import Group from '../Dumb/Group';
 
 export default function StreamError({
     show = false,
@@ -10,8 +10,8 @@ export default function StreamError({
 }) {
     if (!show) return null;
     return (
-        <Group component={'div'}>
-            <Font.Bold dangerousColor="var(--red)">Stream {error}</Font.Bold>
-        </Group>
+        <Alert mood="negative">
+            <Font.Bold>Stream {error}</Font.Bold>
+        </Alert>
     );
 }

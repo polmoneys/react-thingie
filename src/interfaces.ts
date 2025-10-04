@@ -1,3 +1,11 @@
+import type { ReactElement } from 'react';
+
+export interface RenderProp<TChildrenProps, TElement = unknown> {
+    (props: TChildrenProps): ReactElement<TElement>;
+}
+
+// type RenderProp<T> = (props: T) => ReactNode;
+
 export type CssVar = `var(--${string})`;
 export type NumericVar = `${number} ${CssVar}`;
 export type MinMax = `min(${string})` | `max(${string})`;

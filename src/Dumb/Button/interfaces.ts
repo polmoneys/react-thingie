@@ -1,9 +1,6 @@
-import type {
-    ComponentProps,
-    CSSProperties,
-    ReactElement,
-    ReactNode,
-} from 'react';
+import type { ComponentProps, CSSProperties, ReactNode } from 'react';
+
+import type { RenderProp } from '../../interfaces';
 
 export interface ButtonProps extends Omit<ComponentProps<'button'>, 'style'> {
     children: ReactNode;
@@ -14,10 +11,6 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'style'> {
     isActive?: boolean;
     stretch?: boolean;
     dangerous?: CSSProperties;
-}
-
-interface RenderProp<TChildrenProps, TElement = unknown> {
-    (props: TChildrenProps): ReactElement<TElement>;
 }
 
 export interface ButtonGroupProps {

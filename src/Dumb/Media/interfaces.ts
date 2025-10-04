@@ -1,12 +1,6 @@
-import type {
-    DetailedHTMLProps,
-    ReactElement,
-    VideoHTMLAttributes,
-} from 'react';
+import type { DetailedHTMLProps, VideoHTMLAttributes } from 'react';
 
-export interface RenderProp<TChildrenProps, TElement = unknown> {
-    (props: TChildrenProps): ReactElement<TElement>;
-}
+import type { RenderProp } from '../../interfaces';
 
 interface AspectRatio {
     ratio?: 'portrait' | 'landscape';
