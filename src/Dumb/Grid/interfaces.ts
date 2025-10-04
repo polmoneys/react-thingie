@@ -1,6 +1,6 @@
 import type { ElementType, HTMLAttributes, ReactNode } from 'react';
 
-import type { Unit } from '../../Thingie/interfaces';
+import type { Unit } from '../../interfaces';
 
 export const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type Breakpoint = (typeof BREAKPOINTS)[number];

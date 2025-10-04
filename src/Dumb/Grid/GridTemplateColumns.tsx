@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import type { Unit } from '../../Thingie/interfaces';
+import type { Unit } from '../../interfaces';
 import { clsx, has } from '../../utils';
 
 import type { ColumnsGridProps } from './interfaces';

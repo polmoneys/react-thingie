@@ -119,50 +119,6 @@ function SomeChild() {
         </>
     );
 }
-
-function Rows<T>({
-    gridTemplateColumns,
-    columns,
-    rows,
-    gap = '0',
-    gradient,
-    id = 'demo',
-    // "Order 12345"
-    label,
-    api,
-    ...rest
-}: RowsProps<T> & { api: SelectionAPI<T> }) {
-    return (
-        <div role="table" {...rest}>
-            <RowHeader
-                gridTemplateColumns={gridTemplateColumns}
-                columns={columns}
-                id={id}
-            />
-
-            <div role="rowgroup">
-                {rows.map((r, pos) => {
-                    const is = api?.isSelected(r);
-                    return (
-                        <Row<T>
-                            row={r}
-                            gridTemplateColumns={gridTemplateColumns}
-                            key={`${id}-${pos}`}
-                            columns={columns}
-                            label={label}
-                            rowIndex={pos}
-                            id={id}
-                            gap={gap}
-                            gradient={gradient}
-                            selected={is}
-                            onSelect={() => api.toggle(r)}
-                        />
-                    );
-                })}
-            </div>
-        </div>
-    );
-}
 ```
 
 ### Inspiration 💐

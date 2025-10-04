@@ -1,6 +1,6 @@
 import type { CSSProperties, ElementType, ReactNode } from 'react';
 
-import type { Unit } from '../../Thingie/interfaces';
+import type { Unit } from '../../interfaces';
 
 export type SlotProps = {
     start?: ReactNode;

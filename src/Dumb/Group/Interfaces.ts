@@ -5,7 +5,7 @@ import {
     type ReactNode,
 } from 'react';
 
-import type { Unit } from '../../Thingie/interfaces';
+import type { Unit } from '../../interfaces';
 
 const HTMLtag = [
     'main',

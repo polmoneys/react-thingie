@@ -70,9 +70,6 @@ function App() {
                 />
                 <br />
                 <DemoRenderer demos={demos} />
-                {/*<DemoWebWorker />
-                 */}
-                <br />
             </main>
         </>
     );

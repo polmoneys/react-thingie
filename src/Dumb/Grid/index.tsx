@@ -1,11 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 
-import type {
-    Calc,
-    CssVar,
-    MinMax,
-    WithSuffix,
-} from '../../Thingie/interfaces';
+import type { Calc, CssVar, MinMax, WithSuffix } from '../../interfaces';
 import { clsx, has } from '../../utils';
 
 import styles from './index.module.css';

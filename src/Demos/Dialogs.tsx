@@ -4,7 +4,7 @@ import Tray from '../Dialog/Tray';
 import Button from '../Dumb/Button';
 import Card from '../Dumb/Card';
 import Shape from '../Dumb/Shape';
-import useURLDialogs from '../useURL';
+import useURLDialogs from '../utilities/useURL';
 import useURLLite from '../utilities/useURLLite';
 import { callAll } from '../utils';
 

@@ -8,7 +8,7 @@ My work involves complex UI in React, this is how I roll for now.
 
 A piece of UI is a group, small ones should be done with `<Slots>` / `<GridTemplateColumns>` or `<Rows>`.
 
-A bunch of Slots becomes a `<List>` or `<Table>` that can be selected by **createThingie** that returns `<ContextProvider>` and `useSelection` hook.
+A bunch of Slots becomes a `<List>` or `<Table>` that can be selected by **createThingie** that returns `<ContextProvider>` and `useSelection` hook. [More](/react-thingie/src/Thingie/Readme.md)
 
 URLS are **QUEEN**
 
