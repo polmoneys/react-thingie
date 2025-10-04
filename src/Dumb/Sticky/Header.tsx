@@ -1,6 +1,6 @@
 import { type ReactNode, useRef } from 'react';
 
-import useClickContains from '../../Drawer/useClickContains';
+import useClickContains from '../../utilities/useClickContains';
 import useScroll from '../../utilities/useScroll';
 import { clsx } from '../../utils';
 import Font from '../Font';
