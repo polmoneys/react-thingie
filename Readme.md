@@ -1,3 +1,5 @@
+**Work in progress**
+
 ## Thingies for Reactjs
 
 My work involves complex UI in React, this is how I roll for now.
@@ -8,11 +10,11 @@ A piece of UI is a group, small ones should be done with `<Slots>` / `<GridTempl
 
 A bunch of Slots becomes a `<List>` or `<Table>` that can be selected by **createThingie** that returns `<ContextProvider>` and `useSelection` hook.
 
-**URLS are QUEEN** (nuqs over Router)
+URLS are **QUEEN**
 
 ### Slots / GridTemplateColumns
 
-Children with Start/End slots / Breakpoint aware gridTemplateColumns, gap and padding.
+Children with Start/End slots vs. Breakpoint aware gridTemplateColumns, gap and padding.
 
 ```tsx
 {
@@ -45,11 +47,11 @@ Children with Start/End slots / Breakpoint aware gridTemplateColumns, gap and pa
 }
 ```
 
-Them group well, as in:
-
-`<List/>` [source](https://github.com/polmoneys/Hug)
+Them group well as `<List/>`.
 
 ### Rows
+
+Rows with `<Header>`
 
 ```tsx
 <Rows
@@ -62,9 +64,7 @@ Them group well, as in:
 />
 ```
 
-`<Table/>` [source](https://github.com/polmoneys/Hug)
-
-Related work, `<Hug/>` [repository](https://github.com/polmoneys/Hug)
+Them group well as `<Table/>`
 
 ### Inspiration 💐
 
