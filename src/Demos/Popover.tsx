@@ -28,101 +28,7 @@ export default function PopoversGrid() {
 
             <Grid width="28em">
                 <Popover
-                    id="ttttt"
-                    backdrop="rgba(0,0,0,.77)"
-                    caption={({
-                        onClose,
-                        toggleCaption,
-                        captionProps,
-                        keyboardProps,
-                    }) => (
-                        <Card
-                            component="article"
-                            {...captionProps}
-                            dangerous={{
-                                backgroundColor: 'var(--nemesis)',
-                                color: 'var(--white)',
-                            }}
-                            {...keyboardProps}
-                        >
-                            <Card.Title>
-                                <Font.Bold size="xl">
-                                    Erik Gunnar Asplund on Swedish Grace.
-                                </Font.Bold>
-                            </Card.Title>
-                            <Card.Content>
-                                <Font>
-                                    Our requirements are more modest but at the
-                                    same time more responsible: buildings,
-                                    furniture, drinking glasses may well be
-                                    consumer items that we can destroy without
-                                    regret after they have served for some short
-                                    or long period, but while we use them we
-                                    expect them to full fill their role and
-                                    serve us perfectly, so perfectly that we can
-                                    also derive aesthetic enjoyment from
-                                    observing them in use.
-                                </Font>
-                            </Card.Content>
-                            <Card.Actions>
-                                <Button
-                                    dangerous={{
-                                        color: 'var(--nemesis)',
-                                    }}
-                                    autoFocus
-                                    onClick={() => {
-                                        toggleCaption();
-                                        onClose();
-                                    }}
-                                >
-                                    Close
-                                </Button>
-                            </Card.Actions>
-                        </Card>
-                    )}
-                >
-                    {({ toggleCaption, triggerProps }) => (
-                        <Card
-                            component="article"
-                            dangerous={{
-                                // maxHeight: '530px',
-                                backgroundColor: 'var(--accent)',
-                            }}
-                        >
-                            <Card.Title>
-                                <Font.Bold component="h2" size="xl">
-                                    Title
-                                </Font.Bold>
-                            </Card.Title>
-                            <Card.Content>
-                                <Font clamp={4}>
-                                    Our requirements are more modest but at the
-                                    same time more responsible: buildings,
-                                    furniture, drinking glasses may well be
-                                    consumer items that we can destroy without
-                                    regret after they have served for some short
-                                    or long period, but while we use them we
-                                    expect them to full fill their role and
-                                    serve us perfectly, so perfectly that we can
-                                    also derive aesthetic enjoyment from
-                                    observing them in use. Erik Gunnar Asplund
-                                    on **Swedish Grace**.
-                                </Font>
-                            </Card.Content>
-                            <Card.Actions>
-                                <Popover.Button
-                                    {...triggerProps}
-                                    onClick={() => toggleCaption()}
-                                >
-                                    Read More
-                                </Popover.Button>
-                            </Card.Actions>
-                        </Card>
-                    )}
-                </Popover>
-
-                <Popover
-                    id="ttttt333"
+                    id="popover-a"
                     backdrop="rgba(0,0,0,.1)"
                     caption={({
                         onClose,
@@ -135,8 +41,7 @@ export default function PopoversGrid() {
                             {...captionProps}
                             dangerous={{
                                 maxWidth: '300px',
-                                backgroundColor: 'var(--nemesis)',
-                                color: 'var(--white)',
+                                backgroundColor: 'var(--positive)',
                             }}
                             {...keyboardProps}
                         >
@@ -147,9 +52,6 @@ export default function PopoversGrid() {
                             </Card.Title>
                             <Card.Actions>
                                 <Button
-                                    dangerous={{
-                                        color: 'var(--nemesis)',
-                                    }}
                                     autoFocus
                                     onClick={() => {
                                         toggleCaption();
@@ -169,11 +71,11 @@ export default function PopoversGrid() {
                             dangerous={{
                                 // width: '330px!important',
                                 // maxWidth: '600px',
-                                backgroundColor: 'var(--accent)',
+                                backgroundColor: 'var(--neutral)',
                             }}
                         >
                             <Card.Content>
-                                <Font clamp={3}>
+                                <Font clamp={8}>
                                     Our requirements are more modest but at the
                                     same time more responsible: buildings,
                                     furniture, drinking glasses may well be
@@ -183,8 +85,7 @@ export default function PopoversGrid() {
                                     expect them to full fill their role and
                                     serve us perfectly, so perfectly that we can
                                     also derive aesthetic enjoyment from
-                                    observing them in use. Erik Gunnar Asplund
-                                    on **Swedish Grace**.
+                                    observing them in use.
                                 </Font>
                             </Card.Content>
                             <Card.Actions>
@@ -200,7 +101,7 @@ export default function PopoversGrid() {
                 </Popover>
 
                 <Popover
-                    id="ttttt"
+                    id="popover-b"
                     backdrop="rgba(0,0,0,.1)"
                     caption={({
                         onClose,
@@ -213,21 +114,15 @@ export default function PopoversGrid() {
                             {...captionProps}
                             dangerous={{
                                 maxWidth: '300px',
-                                backgroundColor: 'var(--nemesis)',
-                                color: 'var(--white)',
+                                backgroundColor: 'var(--positive)',
                             }}
                             {...keyboardProps}
                         >
                             <Card.Title>
-                                <Font.Bold>
-                                    Erik Gunnar Asplund on Swedish Grace.
-                                </Font.Bold>
+                                <Shape.Triangle />
                             </Card.Title>
                             <Card.Actions>
                                 <Button
-                                    dangerous={{
-                                        color: 'var(--nemesis)',
-                                    }}
                                     autoFocus
                                     onClick={() => {
                                         toggleCaption();
@@ -244,7 +139,7 @@ export default function PopoversGrid() {
                         <Card
                             component="article"
                             dangerous={{
-                                backgroundColor: 'var(--nemesis)',
+                                backgroundColor: 'var(--grey)',
                                 color: 'var(--white)',
                             }}
                         >
@@ -257,12 +152,13 @@ export default function PopoversGrid() {
                                     onClick={() => toggleCaption()}
                                 >
                                     Read More
-                                </Popover.Button>{' '}
+                                </Popover.Button>
                             </Card.Actions>
                         </Card>
                     )}
                 </Popover>
             </Grid>
+            <br />
         </>
     );
 }

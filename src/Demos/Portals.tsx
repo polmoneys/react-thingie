@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import Button from '../Dumb/Button';
-import Font from '../Dumb/Font';
 import createPortal from '../Dumb/Portal';
+import Shape from '../Dumb/Shape';
 import { callAll } from '../utils';
 
 const PortalDemo = createPortal('DemoPortal');
@@ -36,24 +36,13 @@ function DemoPortalContent() {
     return (
         <>
             <Portal>
-                <br />
-                <Font px="var(--gap-1)">I'm portaled into the portal </Font>
-                <br />
+                <Shape.Triangle size={90} />
             </Portal>
             {io && (
                 <Portal>
-                    <Font px="var(--gap-1)">
-                        I'm a portal rendered conditionally{' '}
-                    </Font>
+                    <Shape.Square size={90} />
                 </Portal>
             )}
-            <Portal>
-                {io && (
-                    <Font px="var(--gap-1)">
-                        I'm conditionally rendered inside portal{' '}
-                    </Font>
-                )}
-            </Portal>
 
             <Button.Group direction="vertical">
                 {({ active, setActive }) => {
@@ -64,7 +53,7 @@ function DemoPortalContent() {
                                 isActive={active === 0}
                                 onClick={callAll(setPortal, () => setActive(0))}
                             >
-                                0%
+                                Set portal on aside element
                             </Button>
                             <Button
                                 stretch
@@ -73,26 +62,27 @@ function DemoPortalContent() {
                                     setActive(1),
                                 )}
                             >
-                                50%
+                                Fallback if !portalTarget
                             </Button>
                             <Button
                                 stretch
                                 isActive={active === 2}
                                 onClick={callAll(setAll, () => setActive(2))}
                             >
-                                75%
+                                Set aside and append
                             </Button>
                             <Button
                                 stretch
                                 isActive={active === 3}
                                 onClick={callAll(setNone, () => setActive(3))}
                             >
-                                100%
+                                Clear portals
                             </Button>
                         </>
                     );
                 }}
             </Button.Group>
+            <br />
         </>
     );
 }

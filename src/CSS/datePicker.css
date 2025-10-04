@@ -8,14 +8,14 @@
     }
 
     .react-aria-Button {
-        background: var(--accent);
+        background: var(--neutral);
         color: currentColor;
         forced-color-adjust: none;
         border: none;
 
         &[data-pressed] {
             box-shadow: none;
-            background: var(--red);
+            background: var(--negative);
         }
 
         &[data-focus-visible] {

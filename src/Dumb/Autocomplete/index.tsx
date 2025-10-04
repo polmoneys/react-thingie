@@ -1,6 +1,6 @@
 import { type KeyboardEvent, useEffect, useRef, useState } from 'react';
 
-import { clsx } from '../../utils';
+import { clsx, has } from '../../utils';
 import TextInputLabel from '../InputText';
 
 import Chips from './Chips';
@@ -12,11 +12,12 @@ import styles from './index.module.css';
 export default function AutocompLite(props: AutocompLiteProps) {
     const {
         options,
-        limit = 2,
+        limit = 3,
         id = 'autocomplete-',
         value: selected = [],
         onChange,
         inputProps,
+        dangerous,
         ...rest
     } = props;
 
@@ -132,7 +133,10 @@ export default function AutocompLite(props: AutocompLiteProps) {
     }, []);
 
     return (
-        <div className={styles.autocompLite}>
+        <div
+            className={styles.autocompLite}
+            {...(has(dangerous) && { style: dangerous })}
+        >
             <div
                 ref={containerRef}
                 className={clsx(
@@ -154,6 +158,11 @@ export default function AutocompLite(props: AutocompLiteProps) {
                         value={inputValue}
                         onChange={onInputChange}
                         onKeyDown={onInputKeyDown}
+                        onFocus={() => {
+                            if (inputValue === '') {
+                                openSuggestions(options);
+                            }
+                        }}
                         placeholder={
                             selected.length === 0
                                 ? (inputProps?.placeholder ?? 'Search')

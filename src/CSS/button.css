@@ -1,6 +1,6 @@
 :where(html) {
     --button-bg: var(--white);
-    --button-bg-active: var(--red);
+    --button-bg-active: var(--negative);
     --button-hit-area: var(--hit-area-height);
 }
 
@@ -81,7 +81,7 @@ button {
     }
 
     &:focus-within {
-        border-color: var(--accent);
+        border-color: var(--neutral);
     }
 }
 

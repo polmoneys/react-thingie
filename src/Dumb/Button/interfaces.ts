@@ -1,6 +1,6 @@
 import type { ComponentProps, CSSProperties, ReactNode } from 'react';
 
-import type { RenderProp } from '../../interfaces';
+import type { Mood, RenderProp } from '../../interfaces';
 
 export interface ButtonProps extends Omit<ComponentProps<'button'>, 'style'> {
     children: ReactNode;
@@ -9,6 +9,8 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'style'> {
     isIcon?: boolean;
     isText?: boolean;
     isActive?: boolean;
+    isPending?: boolean;
+    mood?: Mood;
     stretch?: boolean;
     dangerous?: CSSProperties;
 }

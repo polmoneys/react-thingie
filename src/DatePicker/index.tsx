@@ -74,7 +74,7 @@ export default function DatePick<T extends DateValue>({
                                         textAlign: 'center',
                                         cursor: 'default',
                                         background: isSelected
-                                            ? 'var(--accent)'
+                                            ? 'var(--neutral)'
                                             : '',
                                     })}
                                 />

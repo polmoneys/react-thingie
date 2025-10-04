@@ -1,25 +1,38 @@
-.spinner {
-    animation-duration: 0.75s;
-    animation-iteration-count: infinite;
-    animation-name: rotate-forever;
-    animation-timing-function: ease-in-out;
-    height: 30px;
-    width: 30px;
-    border: 6px solid #ffffff;
-    border-right-color: transparent;
-    border-radius: 50%;
-    display: inline-flex;
-}
 .icon {
     vertical-align: middle;
     overflow: hidden;
 }
 
-@keyframes rotate-forever {
+.progress {
+    width: min(200px, 80vw);
+    overflow: hidden;
+    position: relative;
+    height: 0.5rem;
+    background: rgba(255, 255, 255, 0.25);
+    &::before {
+        content: '';
+        position: absolute;
+        left: -130%;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        animation: progress 4s linear infinite;
+    }
+}
+
+@keyframes progress {
     0% {
-        transform: rotate(0deg);
+        left: -130%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        left: 130%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    51% {
+        background: rgba(255, 255, 255, 0.5);
     }
     100% {
-        transform: rotate(360deg);
+        background: rgba(255, 255, 255, 0.5);
     }
 }

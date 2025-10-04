@@ -17,12 +17,12 @@
     }
 }
 main {
-    background-color: var(--nemesis);
     overflow: hidden;
 }
 
-aside {
-    background-color: var(--accent);
+aside,
+[data-portal-fallback] {
+    background-color: var(--positive);
     position: fixed;
     bottom: 0px;
     left: 50%;
@@ -31,15 +31,15 @@ aside {
     z-index: 999;
     box-shadow: var(--shadow);
     border-radius: var(--border-radius);
+    border-bottom: none;
+    &:has(*) {
+        border: var(--border);
+        padding: var(--gap-3);
+    }
 }
 
 [data-portal-fallback] {
-    position: fixed;
-    top: 3vw;
-    left: 3vw;
-    background-color: aliceblue;
-    padding: 2em;
-    color: plum;
+    background-color: var(--negative);
 }
 
 [data-popover-backdrop='backdrop'] {
@@ -99,22 +99,6 @@ aside {
     /* expands from 0px to 200px */
     grid-template-rows: auto calc(var(--open) * 200px);
 }
-
-/*
---red-if-togglersalltrue:
-    var(--tog1)
-    var(--tog2)
-    var(--tog3)
-    red;
-
---red-if-anytogglertrue:
-    var(--tog1,
-        var(--tog2,
-            var(--tog3)
-        )
-    )
-    red;
-*/
 
 @media (any-hover: hover) and (pointer: fine) {
     /* Reveal the button only on hover */

@@ -8,12 +8,12 @@ export default function Rows<T>({
     gridTemplateColumns,
     columns,
     rows,
-    gap = '0',
     id = 'demo',
     // "Order 12345"
     label,
     api,
     selectedBackgroundColor,
+    px,
     ...rest
 }: RowsProps<T> & { api: SelectionAPI<T> }) {
     return (
@@ -22,6 +22,7 @@ export default function Rows<T>({
                 gridTemplateColumns={gridTemplateColumns}
                 columns={columns}
                 id={id}
+                px={px}
             />
 
             <div role="rowgroup">
@@ -36,7 +37,6 @@ export default function Rows<T>({
                             label={label}
                             rowIndex={pos}
                             id={id}
-                            gap={gap}
                             selected={selected}
                             onSelect={() => api.toggle(r)}
                             selectedBackgroundColor={selectedBackgroundColor}

@@ -1,7 +1,7 @@
 import { type ReactNode, useState } from 'react';
 
 import Font from '../Dumb/Font';
-import Grid from '../Dumb/Grid';
+import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 import Radio from '../Dumb/Radio';
 import Shape from '../Dumb/Shape';
 import { clsx } from '../utils';
@@ -20,9 +20,12 @@ const RadioCard = ({
             placeItems: 'center',
             placeContent: 'center',
             width: '100%',
-            backgroundColor: 'var(--accent)',
+            height: '100%',
+            backgroundColor: 'var(--grey-80)',
+            color: 'var(--white)',
             border: 'var(--border)',
             borderRadius: 'var(--border-radius)',
+            boxShadow: 'var(--shadow)',
         }}
     >
         {children}
@@ -35,205 +38,195 @@ export default function DemoRadio() {
 
     return (
         <>
-            <Grid>
-                <div
-                    style={{
-                        width: '100%',
-                        // border: 'var(--border)',
-                        display: 'grid',
-                        gap: 'var(--gap-1)',
-                        gridTemplateColumns: 'repeat(2,1fr)',
-                        gridTemplateRows: 'repeat(2,1fr)',
+            <GridTemplateColumns
+                gap={{ xs: 'var(--gap-1)' }}
+                gridTemplateColumns={{ xs: '1fr', sm: '1fr 1fr' }}
+                dangerous={{ maxWidth: 'min(400px, 80vw)', margin: '0 auto' }}
+            >
+                <Radio
+                    id="rating-1"
+                    value="alpha"
+                    name="rating"
+                    checked={selectedRadio?.rating === 'alpha'}
+                    onChangeAsString={(value) => {
+                        setRadio({ rating: value });
                     }}
                 >
-                    <Radio
-                        id="rating-1"
-                        value="alpha"
-                        name="rating"
-                        checked={selectedRadio?.rating === 'alpha'}
-                        onChangeAsString={(value) => {
-                            setRadio({ rating: value });
-                        }}
-                    >
-                        {({ checked }) => {
-                            return (
-                                <RadioCard>
-                                    {checked ? (
-                                        <Shape.Circle />
-                                    ) : (
-                                        <Font.Bold>Alpha</Font.Bold>
-                                    )}
-                                </RadioCard>
-                            );
-                        }}
-                    </Radio>
+                    {({ checked }) => {
+                        return (
+                            <RadioCard>
+                                {checked ? (
+                                    <Shape.Square fill="var(--white)" />
+                                ) : (
+                                    <Font.Bold>Alpha</Font.Bold>
+                                )}
+                            </RadioCard>
+                        );
+                    }}
+                </Radio>
 
-                    <Radio
-                        id="rating-2"
-                        value="beta"
-                        name="rating"
-                        checked={selectedRadio?.rating === 'beta'}
-                        onChangeAsString={(value) => {
-                            setRadio({ rating: value });
-                        }}
-                    >
-                        {({ checked }) => {
-                            return (
-                                <RadioCard>
-                                    {checked ? (
-                                        <Shape.Circle />
-                                    ) : (
-                                        <Font.Bold>Beta</Font.Bold>
-                                    )}
-                                </RadioCard>
-                            );
-                        }}
-                    </Radio>
-
-                    <Radio
-                        id="rating-3"
-                        value="delta"
-                        name="rating"
-                        checked={selectedRadio?.rating === 'delta'}
-                        onChangeAsString={(value) => {
-                            setRadio({ rating: value });
-                        }}
-                    >
-                        {({ checked }) => {
-                            return (
-                                <RadioCard>
-                                    {checked ? (
-                                        <Shape.Circle />
-                                    ) : (
-                                        <Font.Bold>Delta</Font.Bold>
-                                    )}
-                                </RadioCard>
-                            );
-                        }}
-                    </Radio>
-
-                    <Radio
-                        id="rating-4"
-                        value="epsilon"
-                        name="rating"
-                        checked={selectedRadio?.rating === 'epsilon'}
-                        onChangeAsString={(value) => {
-                            setRadio({ rating: value });
-                        }}
-                    >
-                        {({ checked }) => {
-                            return (
-                                <RadioCard>
-                                    {checked ? (
-                                        <Shape.Circle />
-                                    ) : (
-                                        <Font.Bold>Epsilon</Font.Bold>
-                                    )}
-                                </RadioCard>
-                            );
-                        }}
-                    </Radio>
-                </div>
-
-                <div
-                    style={{
-                        width: '100%',
-                        // border: 'var(--border)',
-                        display: 'grid',
-                        gap: 'var(--gap-1)',
-                        gridTemplateColumns: 'repeat(2,1fr)',
-                        gridTemplateRows: 'repeat(2,1fr)',
+                <Radio
+                    id="rating-2"
+                    value="beta"
+                    name="rating"
+                    checked={selectedRadio?.rating === 'beta'}
+                    onChangeAsString={(value) => {
+                        setRadio({ rating: value });
                     }}
                 >
-                    <Radio
-                        id="rating-1"
-                        value="alpha"
-                        name="rating"
-                        checked={selectedRadio?.rating === 'alpha'}
-                        onChangeAsString={(value) => {
-                            setRadio({ rating: value });
-                        }}
-                    >
-                        {({ checked }) => {
-                            return (
-                                <RadioCard ratio={'landscape'}>
-                                    {checked ? (
-                                        <Shape.Circle />
-                                    ) : (
-                                        <Font.Bold>Alpha</Font.Bold>
-                                    )}
-                                </RadioCard>
-                            );
-                        }}
-                    </Radio>
+                    {({ checked }) => {
+                        return (
+                            <RadioCard>
+                                {checked ? (
+                                    <Shape.Square fill="var(--white)" />
+                                ) : (
+                                    <Font.Bold>Beta</Font.Bold>
+                                )}
+                            </RadioCard>
+                        );
+                    }}
+                </Radio>
 
-                    <Radio
-                        id="rating-2"
-                        value="beta"
-                        name="rating"
-                        checked={selectedRadio?.rating === 'beta'}
-                        onChangeAsString={(value) => {
-                            setRadio({ rating: value });
-                        }}
-                    >
-                        {({ checked }) => {
-                            return (
-                                <RadioCard ratio={'landscape'}>
-                                    {checked ? (
-                                        <Shape.Circle />
-                                    ) : (
-                                        <Font.Bold>Beta</Font.Bold>
-                                    )}
-                                </RadioCard>
-                            );
-                        }}
-                    </Radio>
+                <Radio
+                    id="rating-3"
+                    value="delta"
+                    name="rating"
+                    checked={selectedRadio?.rating === 'delta'}
+                    onChangeAsString={(value) => {
+                        setRadio({ rating: value });
+                    }}
+                >
+                    {({ checked }) => {
+                        return (
+                            <RadioCard>
+                                {checked ? (
+                                    <Shape.Square fill="var(--white)" />
+                                ) : (
+                                    <Font.Bold>Delta</Font.Bold>
+                                )}
+                            </RadioCard>
+                        );
+                    }}
+                </Radio>
 
-                    <Radio
-                        id="rating-3"
-                        value="delta"
-                        name="rating"
-                        checked={selectedRadio?.rating === 'delta'}
-                        onChangeAsString={(value) => {
-                            setRadio({ rating: value });
-                        }}
-                    >
-                        {({ checked }) => {
-                            return (
-                                <RadioCard ratio={'landscape'}>
-                                    {checked ? (
-                                        <Shape.Circle />
-                                    ) : (
-                                        <Font.Bold>Delta</Font.Bold>
-                                    )}
-                                </RadioCard>
-                            );
-                        }}
-                    </Radio>
+                <Radio
+                    id="rating-4"
+                    value="epsilon"
+                    name="rating"
+                    checked={selectedRadio?.rating === 'epsilon'}
+                    onChangeAsString={(value) => {
+                        setRadio({ rating: value });
+                    }}
+                >
+                    {({ checked }) => {
+                        return (
+                            <RadioCard>
+                                {checked ? (
+                                    <Shape.Square fill="var(--white)" />
+                                ) : (
+                                    <Font.Bold>Epsilon</Font.Bold>
+                                )}
+                            </RadioCard>
+                        );
+                    }}
+                </Radio>
+            </GridTemplateColumns>
 
-                    <Radio
-                        id="rating-4"
-                        value="epsilon"
-                        name="rating"
-                        checked={selectedRadio?.rating === 'epsilon'}
-                        onChangeAsString={(value) => {
-                            setRadio({ rating: value });
-                        }}
-                    >
-                        {({ checked }) => {
-                            return (
-                                <RadioCard ratio={'landscape'}>
-                                    {checked ? (
-                                        <Shape.Circle />
-                                    ) : (
-                                        <Font.Bold>Epsilon</Font.Bold>
-                                    )}
-                                </RadioCard>
-                            );
-                        }}
-                    </Radio>
-                </div>
-            </Grid>
+            <br />
+            <GridTemplateColumns
+                gap={{ xs: 'var(--gap-1)' }}
+                gridTemplateColumns={{ xs: '1fr', sm: '1fr 1fr' }}
+                dangerous={{ maxWidth: 'min(480px, 80vw)', margin: '0 auto' }}
+            >
+                <Radio
+                    id="rating-1"
+                    value="alpha"
+                    name="rating-b"
+                    checked={selectedRadio?.rating === 'alpha'}
+                    onChangeAsString={(value) => {
+                        setRadio({ rating: value });
+                    }}
+                >
+                    {({ checked }) => {
+                        return (
+                            <RadioCard ratio={'landscape'}>
+                                {checked ? (
+                                    <Shape.Square fill="var(--white)" />
+                                ) : (
+                                    <Font.Bold>Alpha</Font.Bold>
+                                )}
+                            </RadioCard>
+                        );
+                    }}
+                </Radio>
+
+                <Radio
+                    id="rating-2"
+                    value="beta"
+                    name="rating-b"
+                    checked={selectedRadio?.rating === 'beta'}
+                    onChangeAsString={(value) => {
+                        setRadio({ rating: value });
+                    }}
+                >
+                    {({ checked }) => {
+                        return (
+                            <RadioCard ratio={'landscape'}>
+                                {checked ? (
+                                    <Shape.Square fill="var(--white)" />
+                                ) : (
+                                    <Font.Bold>Beta</Font.Bold>
+                                )}
+                            </RadioCard>
+                        );
+                    }}
+                </Radio>
+
+                <Radio
+                    id="rating-3"
+                    value="delta"
+                    name="rating-b"
+                    checked={selectedRadio?.rating === 'delta'}
+                    onChangeAsString={(value) => {
+                        setRadio({ rating: value });
+                    }}
+                >
+                    {({ checked }) => {
+                        return (
+                            <RadioCard ratio={'landscape'}>
+                                {checked ? (
+                                    <Shape.Square fill="var(--white)" />
+                                ) : (
+                                    <Font.Bold>Delta</Font.Bold>
+                                )}
+                            </RadioCard>
+                        );
+                    }}
+                </Radio>
+
+                <Radio
+                    id="rating-4"
+                    value="epsilon"
+                    name="rating-b"
+                    checked={selectedRadio?.rating === 'epsilon'}
+                    onChangeAsString={(value) => {
+                        setRadio({ rating: value });
+                    }}
+                >
+                    {({ checked }) => {
+                        return (
+                            <RadioCard ratio={'landscape'}>
+                                {checked ? (
+                                    <Shape.Square fill="var(--white)" />
+                                ) : (
+                                    <Font.Bold>Epsilon</Font.Bold>
+                                )}
+                            </RadioCard>
+                        );
+                    }}
+                </Radio>
+            </GridTemplateColumns>
+            <br />
         </>
     );
 }

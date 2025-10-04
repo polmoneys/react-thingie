@@ -21,7 +21,7 @@ Children with Start/End slots vs. Breakpoint aware gridTemplateColumns, gap and 
     items?.map((item, pos) => (
         <Slot
             key={item.id}
-            gradient={`${!api.isSelected(item) ? 'var(--accent)' : 'var(--red)'} 0, ${!api.isSelected(item) ? 'var(--accent)' : 'var(--red)'} 60px, var(--white) 60px, var(--white) calc(100% - 132px), var(--nemesis) calc(100% - 132px),var(--nemesis) 100%`}
+            gradient={`${!api.isSelected(item) ? 'var(--neutral)' : 'var(--negative)'} 0, ${!api.isSelected(item) ? 'var(--neutral)' : 'var(--negative)'} 60px, var(--white) 60px, var(--white) calc(100% - 132px), var(--grey) calc(100% - 132px),var(--grey) 100%`}
             start={<Shape sides={api.isSelected(item) ? 4 : 22} size={22} />}
             startWidth="60px"
             end={
@@ -60,7 +60,7 @@ Rows with `<Header>`
     rows={USERS}
     label="users of imaginary app"
     api={api}
-    selectedBackgroundColor="var(--accent)"
+    selectedBackgroundColor="var(--neutral)"
 />
 ```
 

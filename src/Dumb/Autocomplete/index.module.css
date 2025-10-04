@@ -42,24 +42,29 @@
 
 .results {
     background-color: var(--white);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--shadow);
+    border: var(--border);
     border: border;
 
     overflow: auto;
     max-height: min(300px, 40vh);
 
+    position: relative;
+    z-index: var(--z-max);
+    margin-top: var(--gap-1);
+
     .suggestion {
         padding: var(--gap-2);
         cursor: pointer;
 
-        &.highlighted {
-            background-color: var(--accent);
+        &:is(:hover, .highlighted) {
+            background-color: var(--neutral);
         }
     }
 }
 
 .chip {
-    background-color: var(--nemesis);
+    background-color: var(--grey);
 
     &.isActive {
         filter: hue-rotate(120deg);

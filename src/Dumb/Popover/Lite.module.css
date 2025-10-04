@@ -31,16 +31,22 @@
     width: max-content;
 }
 
-.item {
-    justify-content: space-between;
-    & > * {
-        width: 100%;
-    }
-}
-
 .menuItems {
     width: 100% !important;
 }
+
+.item {
+    & > * {
+        width: 100%;
+        &:first-of-type {
+            margin-top: calc(var(--border-width) / 2);
+        }
+        &:not(:last-of-type) {
+            margin-bottom: calc(var(--border-width) / 2);
+        }
+    }
+}
+
 .button {
     min-height: var(--menu-tappable-offset);
 }

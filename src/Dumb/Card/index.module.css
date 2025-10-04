@@ -1,15 +1,13 @@
 .card {
     /* --card-min-height: 12vh; */
     --card-padding: var(--gap-3);
-    --card-selection-bg: var(--black);
-    --card-selection-color: var(--white);
 
     position: relative;
     display: flex;
     flex-direction: column;
     background-color: var(--white);
     border: var(--border);
-    box-shadow: var(--shadow-1);
+    box-shadow: var(--shadow);
     hyphens: auto;
     word-break: break-word;
     width: 100%;
@@ -41,11 +39,6 @@
 
     & footer {
         margin-top: auto;
-    }
-
-    &::selection {
-        background-color: var(--card-selection-bg);
-        color: var(--card-selection-color);
     }
 }
 

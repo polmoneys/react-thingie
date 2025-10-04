@@ -1,32 +1,38 @@
 import { type ChangeEvent } from 'react';
 
 import { clsx } from '../../utils';
+import Ring from '../Ring';
 
 import type { RadioProps } from './interfaces';
 
-import styles from './index.module.css';
-
 export default function Radio(props: RadioProps) {
-    const { onChangeAsString, id, name, checked, value, children, ...rest } =
-        props;
+    const {
+        onChangeAsString,
+        id,
+        name,
+        checked,
+        value,
+        children,
+        className,
+        ...rest
+    } = props;
 
     const onRadioChange = (event: ChangeEvent<HTMLInputElement>) =>
         onChangeAsString?.(event.target.value);
 
     return (
-        <label
-            htmlFor={id}
-            className={clsx(styles.label, checked && styles.checked)}
-        >
-            <input
-                type="radio"
-                id={id}
-                name={name}
-                value={value}
-                checked={checked}
-                onChange={onRadioChange}
-                {...rest}
-            />
+        <label htmlFor={id} className={clsx(className)}>
+            <Ring>
+                <input
+                    type="radio"
+                    id={id}
+                    name={name}
+                    value={value}
+                    checked={checked}
+                    onChange={onRadioChange}
+                    {...rest}
+                />
+            </Ring>
 
             {children({
                 checked: props?.checked ?? false,

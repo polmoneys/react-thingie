@@ -19,18 +19,25 @@ export default function UsersTable() {
                     marginTop: 'var(--gap-3)',
                 }}
             >
-                <Font.Bold className="underline">
+                <Font.Bold>
                     {formatSelectedKeys(new Set(selection.map((x) => x.name)))}.
                     Total ({api.selectedCount})
                 </Font.Bold>
             </Alert>
+            <br />
             <Rows
                 columns={COLUMNS}
-                gridTemplateColumns="2fr .5fr .25fr"
+                gridTemplateColumns="2fr 1fr .25fr"
                 rows={USERS}
                 label="users of imaginary app"
                 api={api}
-                selectedBackgroundColor="var(--accent)"
+                selectedBackgroundColor="var(--positive)"
+                style={{
+                    border: 'var(--border)',
+                    boxShadow: 'var(--shadow)',
+                    borderRadius: 'var(--border-radius)',
+                }}
+                px="var(--gap-1)"
             />
         </>
     );

@@ -15,6 +15,7 @@ function Button(props: ButtonProps) {
         stretch = false,
         className,
         dangerous,
+        mood = 'neutral',
         ...buttonProps
     } = props;
     return (
@@ -27,6 +28,8 @@ function Button(props: ButtonProps) {
                     isText && 'text',
                     isActive && 'active',
                     stretch && 'stretch',
+                    mood === 'positive' && 'positive',
+                    mood === 'negative' && 'negative',
                 )}
                 {...(has(dangerous) && { style: dangerous })}
             >
@@ -40,9 +43,17 @@ function Button(props: ButtonProps) {
 
 const Text = ({ isText, ...rest }: ButtonProps) => <Button {...rest} isText />;
 const Icon = ({ isIcon, ...rest }: ButtonProps) => <Button {...rest} isIcon />;
+const Positive = ({ mood, ...rest }: ButtonProps) => (
+    <Button {...rest} mood="positive" />
+);
+const Negative = ({ mood, ...rest }: ButtonProps) => (
+    <Button {...rest} mood="negative" />
+);
 
 export default Object.assign(Button, {
     Text,
     Icon,
     Group,
+    Positive,
+    Negative,
 });

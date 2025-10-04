@@ -3,7 +3,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow);
+    border: var(--border);
     border-radius: var(--border-radius);
     padding: var(--gap-3);
     background-color: var(--white);
@@ -42,7 +43,6 @@
     overflow: auto;
     /* https://caniuse.com/css-overscroll-behavior */
     overscroll-behavior: contain;
-    box-shadow: var(--shadow);
 }
 
 .tray.isOpen {

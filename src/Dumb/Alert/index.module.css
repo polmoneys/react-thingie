@@ -5,15 +5,15 @@
     box-shadow: var(--shadow);
 
     &.positive {
-        background-color: mediumseagreen;
+        background-color: var(--positive);
         color: currentColor;
     }
     &.negative {
-        background-color: var(--red);
+        background-color: var(--negative);
         color: currentColor;
     }
     &.neutral {
-        background-color: var(--white);
+        background-color: var(--neutral);
     }
 
     &.pending {
@@ -22,5 +22,13 @@
         place-items: center;
         width: fit-content;
         margin: 0 auto;
+    }
+
+    &.block {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: var(--z-max);
+        transform: translate(-50%, -50%);
     }
 }

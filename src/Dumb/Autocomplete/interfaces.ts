@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from 'react';
+import type { CSSProperties, InputHTMLAttributes } from 'react';
 
 export interface ChipsProps {
     selected: Array<string>;
@@ -20,6 +20,7 @@ export interface AutocompLiteProps {
     id: string;
     limit?: number;
     inputProps?: Partial<InputHTMLAttributes<HTMLInputElement>>;
+    dangerous?: CSSProperties;
 }
 
 export interface OptionsProps {
@@ -27,5 +28,4 @@ export interface OptionsProps {
     show: boolean;
     onChange: (item: string) => void;
     highlightIndex: number;
-    limit?: number;
 }

@@ -1,5 +1,7 @@
 import type { ComponentProps } from 'react';
 
+import type { Unit } from '../../interfaces';
+
 export type Column<T> = {
     field: keyof T;
     render: (value: unknown, row: T, rowIndex: number) => React.ReactNode;
@@ -9,8 +11,8 @@ export type Column<T> = {
 export type RowHeaderProps<T> = {
     gridTemplateColumns: string;
     columns: Column<T>[];
-    gap?: string;
     id?: string;
+    px: Unit;
 };
 
 export type RowProps<T> = {
@@ -18,7 +20,6 @@ export type RowProps<T> = {
     columns: Column<T>[];
     row: T;
     rowIndex?: number;
-    gap?: string;
     selected?: boolean;
     label: string;
     id?: string;
@@ -31,9 +32,9 @@ export type RowsProps<T> = {
     columns: Column<T>[];
     rows: T[];
     rowIndex?: number;
-    gap?: string;
     selected?: boolean;
     selectedBackgroundColor?: string;
     label: string;
     id?: string;
+    px: Unit;
 } & ComponentProps<'div'>;

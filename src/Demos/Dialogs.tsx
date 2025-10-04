@@ -3,6 +3,7 @@ import Actionsheet from '../Dialog/ActionSheet';
 import Tray from '../Dialog/Tray';
 import Button from '../Dumb/Button';
 import Card from '../Dumb/Card';
+import Group from '../Dumb/Group';
 import Shape from '../Dumb/Shape';
 import useURLDialogs from '../utilities/useURL';
 import useURLLite from '../utilities/useURLLite';
@@ -20,7 +21,7 @@ export default function DemoDialog() {
 
     return (
         <>
-            <div className="row gap sm">
+            <Group.Row flexWrap="wrap">
                 <Button onClick={() => onOpenDialog()}>Dialog open</Button>
                 <Button onClick={() => onOpenTray()}>Tray open</Button>
                 <Button onClick={() => onOpen('xoxo')}>Tray open 2</Button>
@@ -66,7 +67,8 @@ export default function DemoDialog() {
                         Action 3
                     </Button>
                 </Actionsheet>
-            </div>
+            </Group.Row>
+            <br />
 
             <Dialog isOpen={isDialogOpen} onClose={() => onClose()}>
                 <Card
@@ -98,8 +100,8 @@ export default function DemoDialog() {
                         <Shape.Triangle />
                         <Shape.Square />
                         <Shape.Circle />
-                        <Button onClick={(e) => e.preventDefault()}>
-                            Action 1
+                        <Button onClick={callAll(onClose, onClose2)}>
+                            On close
                         </Button>
                     </Card.Content>
                 </Card>

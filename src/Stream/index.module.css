@@ -20,7 +20,7 @@
         margin-top: var(--gap-3);
         display: flex;
         gap: var(--gap-1);
-        color: var(--accent);
+        color: var(--neutral);
         text-decoration: underline;
     }
 

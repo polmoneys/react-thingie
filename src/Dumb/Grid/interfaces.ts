@@ -1,4 +1,9 @@
-import type { ElementType, HTMLAttributes, ReactNode } from 'react';
+import type {
+    CSSProperties,
+    ElementType,
+    HTMLAttributes,
+    ReactNode,
+} from 'react';
 
 import type { Unit } from '../../interfaces';
 
@@ -15,7 +20,7 @@ type SpacingProps = {
 };
 
 type GridProps = {
-    gridTemplateColumns?: R<Unit>;
+    gridTemplateColumns?: R<string>;
 };
 
 export interface ColumnsGridProps
@@ -24,7 +29,7 @@ export interface ColumnsGridProps
         GridProps {
     component?: ElementType;
     // component?: 'div' | 'ul' | 'ol' | 'section' | 'form';
-    dangerous?: Record<string, Unit>;
+    dangerous?: CSSProperties;
     children?: ReactNode;
     gradient?: string;
 }

@@ -1,12 +1,9 @@
 .header {
     width: min(100%, 100vw);
-    min-height: var(--hit-area-height);
-    z-index: 20;
-    border-bottom: var(--border);
-    background-color: var(--white);
     &.sticky {
         position: sticky;
-        top: 0;
+        top: var(--sticky-top);
+        z-index: var(--z-max);
         transform: none;
     }
 }

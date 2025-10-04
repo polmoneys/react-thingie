@@ -27,24 +27,8 @@ export default function StocksList() {
     };
     return (
         <>
-            <Alert
-                style={{
-                    display: 'flex',
-                    gap: 'var(--gap-1)',
-                    width: 'fit-content',
-                    marginTop: 'var(--gap-3)',
-                }}
-            >
-                {' '}
-                <Font>
-                    Selected count:{' '}
-                    <Font.Bold component="span">
-                        {api.selectedCount} , {formatted}
-                    </Font.Bold>
-                </Font>
-            </Alert>
-
             <br />
+
             <Mua
                 component="label"
                 dangerous={{
@@ -78,10 +62,28 @@ export default function StocksList() {
             </Grid>
             <br />
 
+            <Alert
+                style={{
+                    display: 'flex',
+                    gap: 'var(--gap-1)',
+                    width: 'fit-content',
+                }}
+            >
+                {' '}
+                <Font>
+                    Selected count:{' '}
+                    <Font.Bold component="span">
+                        {api.selectedCount} , {formatted}
+                    </Font.Bold>
+                </Font>
+            </Alert>
+
+            <br />
+
             {api.items?.map((item, pos) => (
                 <Slot
                     key={item.id}
-                    gradient={`${!api.isSelected(item) ? 'var(--accent)' : 'var(--red)'} 0, ${!api.isSelected(item) ? 'var(--accent)' : 'var(--red)'} 60px, var(--white) 60px, var(--white) calc(100% - 132px), var(--nemesis) calc(100% - 132px),var(--nemesis) 100%`}
+                    gradient={`${!api.isSelected(item) ? 'var(--transparent)' : 'var(--positive)'} 0, ${!api.isSelected(item) ? 'var(--transparent)' : 'var(--positive)'} 60px, var(--neutral) 60px, var(--neutral) calc(100% - 132px), var(--white) calc(100% - 132px),var(--white) 100%`}
                     start={
                         <Shape
                             sides={api.isSelected(item) ? 4 : 22}
@@ -90,12 +92,13 @@ export default function StocksList() {
                     }
                     startWidth="60px"
                     end={
-                        <Button onClick={() => api.toggle(item)}>
+                        <Button.Text onClick={() => api.toggle(item)}>
                             {api.isSelected(item) ? 'Remove' : 'Add'}
-                        </Button>
+                        </Button.Text>
                     }
                     endWidth="130px"
                     dangerous={{
+                        border: 'var(--border)',
                         marginBottom:
                             (api.items ?? []).length - 1 === pos
                                 ? 0
@@ -114,14 +117,19 @@ export default function StocksList() {
 
             <br />
 
-            <Button
+            <Button.Positive
                 onClick={() => console.log('export ->', api.exportSelected())}
             >
                 Export
-            </Button>
-            <Button onClick={() => api.clear()} dangerous={{ marginLeft: 8 }}>
+            </Button.Positive>
+            <Button.Negative
+                onClick={() => api.clear()}
+                dangerous={{ marginLeft: 8 }}
+            >
                 Clear
-            </Button>
+            </Button.Negative>
+            <br />
+            <br />
         </>
     );
 }

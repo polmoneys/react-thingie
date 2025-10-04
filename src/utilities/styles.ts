@@ -8,8 +8,8 @@ style('#app')
 
 // set a custom property and continue chaining
 style('#app')
-  .setProperty('--accent', 'hotpink')
-  .color('var(--accent)');
+  .setProperty('--neutral', 'hotpink')
+  .color('var(--neutral)');
 
 // get a value
 const currentColor = style('#app').color();

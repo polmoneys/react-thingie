@@ -10,9 +10,6 @@ input[type='checkbox'] {
     background-color: var(--checkbox-bg);
     position: relative;
     border: var(--border);
-    &:focus {
-        outline: 1px solid transparent;
-    }
 }
 
 input[type='checkbox']:not([disabled]):checked {

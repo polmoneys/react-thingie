@@ -23,7 +23,7 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
         const paddingValues = computeResponsiveValues<Unit>(padding);
         const gapValues = computeResponsiveValues<Unit>(gap);
         const gridTemplateColumnsValues =
-            computeResponsiveValues<Unit>(gridTemplateColumns);
+            computeResponsiveValues<string>(gridTemplateColumns);
 
         const customStyle = {
             '--hug-padding': paddingValues.xs,

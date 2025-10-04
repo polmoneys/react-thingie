@@ -1,39 +1,42 @@
 :where(html) {
-    --transparent: transparent;
-    --black: #0b0b0b;
-    --white: #f9f9f9;
-
-    --accent: #be9fef;
-    --nemesis: #bababa;
-    --red: red;
+    --white: #f4f4f4;
+    --black: #212121;
 
     --space: oklch;
-    --grey-20: color-mix(in var(--space), black 20%, white);
-    --grey-40: color-mix(in var(--space), black 40%, white);
-    --grey: color-mix(in var(--space), black, white);
-    --grey-60: color-mix(in var(--space), black 60%, white);
-    --grey-80: color-mix(in var(--space), black 80%, white);
+    --grey-20: color-mix(in var(--space), var(--black) 20%, var(--white));
+    --grey-40: color-mix(in var(--space), var(--black) 40%, var(--white));
+    --grey: color-mix(in var(--space), var(--black), var(--white));
+    --grey-60: color-mix(in var(--space), var(--black) 60%, var(--white));
+    --grey-80: color-mix(in var(--space), var(--black) 80%, var(--white));
 
-    --accent-mixer: var(--accent) 30%;
-    --accent-grey-20: color-mix(
+    --positive: #23d160;
+    --neutral: var(--grey-40);
+    --negative: #ff3860;
+
+    --negative-mixer: var(--negative) 30%;
+    --negative-grey-20: color-mix(
         in var(--space),
         var(--grey-20),
-        var(--accent-mixer)
+        var(--negative-mixer)
     );
-    --accent-grey-40: color-mix(
+    --negative-grey-40: color-mix(
         in var(--space),
         var(--grey-40),
-        var(--accent-mixer)
+        var(--negative-mixer)
     );
-    --accent-grey: color-mix(in var(--space), var(--grey), var(--accent-mixer));
-    --accent-grey-60: color-mix(
+    --negative-grey: color-mix(
+        in var(--space),
+        var(--grey),
+        var(--negative-mixer)
+    );
+    --negative-grey-60: color-mix(
         in var(--space),
         var(--grey-60),
-        var(--accent-mixer)
+        var(--negative-mixer)
     );
-    --accent-grey-80: color-mix(
+    --negative-grey-80: color-mix(
         in var(--space),
         var(--grey-80),
-        var(--accent-mixer)
+        var(--negative-mixer)
     );
 }

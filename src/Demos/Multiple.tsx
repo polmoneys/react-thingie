@@ -15,15 +15,18 @@ export default function DemoMultiple() {
     const [selected, setSelected] = useState<StateItem[]>([]);
 
     return (
-        <AutocompLiteMultiple
-            options={states}
-            value={selected}
-            onChange={setSelected}
-            limit={3}
-            getItemLabel={(item) => item.name}
-            match={(item, query) =>
-                item.name.toLowerCase().startsWith(query.toLowerCase())
-            }
-        />
+        <>
+            <AutocompLiteMultiple
+                options={states}
+                value={selected}
+                onChange={setSelected}
+                limit={3}
+                getItemLabel={(item) => item.name}
+                match={(item, query) =>
+                    item.name.toLowerCase().startsWith(query.toLowerCase())
+                }
+            />
+            <br />
+        </>
     );
 }

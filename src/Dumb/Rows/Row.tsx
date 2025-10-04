@@ -6,7 +6,6 @@ export default function Row<T>({
     gridTemplateColumns,
     columns,
     row,
-    gap = '0',
     selected = false,
     id = 'demo',
     rowIndex = 0,
@@ -19,12 +18,11 @@ export default function Row<T>({
         () => ({
             display: 'grid',
             gridTemplateColumns,
-            columnGap: gap,
             ...(selected && {
                 backgroundColor: selectedBackgroundColor,
             }),
         }),
-        [gridTemplateColumns, gap, selected, selectedBackgroundColor],
+        [gridTemplateColumns, selected, selectedBackgroundColor],
     );
 
     const rowHeaderId = `${id}-row-${rowIndex}-header`;

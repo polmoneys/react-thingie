@@ -15,6 +15,7 @@ export interface AlertProps extends ComponentProps<'div'> {
     children: ReactNode;
     mood?: 'positive' | 'negative' | 'neutral';
     isPending?: boolean;
+    block?: boolean;
 }
 
 function Alert(props: AlertProps) {
@@ -26,6 +27,7 @@ function Alert(props: AlertProps) {
         className,
         mood = 'neutral',
         isPending = false,
+        block = false,
         ...groupProps
     } = props;
 
@@ -40,6 +42,7 @@ function Alert(props: AlertProps) {
                 className,
                 styles[mood],
                 isPending && styles.pending,
+                block && styles.block,
             )}
         >
             {children}

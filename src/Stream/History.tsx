@@ -21,7 +21,9 @@ export default function StreamHistory() {
                         padding: 'var(--gap-3)',
                         borderRadius: 'var(--border-radius)',
                         background:
-                            m.role === 'user' ? 'var(--accent)' : 'var(--red)',
+                            m.role === 'user'
+                                ? 'var(--neutral)'
+                                : 'var(--negative)',
                     }}
                 >
                     <Card.Title dangerous={{ padding: 0 }}>

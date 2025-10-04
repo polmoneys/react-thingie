@@ -12,7 +12,7 @@ import type { TldrProps } from './interfaces';
 export default function Popover(props: TldrProps) {
     const {
         children,
-        position = 'top center',
+        position = 'bottom left',
         caption,
         sameWidthCaption = false,
         autoFlipHorizontally = false,

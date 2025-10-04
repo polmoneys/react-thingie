@@ -1,5 +1,6 @@
 import useDemos from './Demos/useURLDemos';
 import AutocompLite from './Dumb/Autocomplete';
+import StickyHeader from './Dumb/Sticky/Header';
 import DemoRenderer from './Demos';
 
 import './App.css';
@@ -39,35 +40,42 @@ function App() {
                 style={{
                     padding: 'var(--gap-3)',
                     minHeight: '100vh',
+                    overflow: 'visible',
                 }}
             >
-                <AutocompLite
-                    inputProps={{
-                        placeholder: `Search ${DEMOS_V1.length} demos`,
-                    }}
-                    options={DEMOS_V1}
-                    value={demos}
-                    onChange={(next) => {
-                        // first
-                        if (demos.length === 0) {
-                            next.map((d) => toggleDemo(d));
-                            return;
-                        }
-                        // remove
-                        if (demos.length > next.length) {
-                            demos
-                                .filter((i) => !next.includes(i))
-                                .map((d) => toggleDemo(d));
-                            return;
-                        }
-                        // add
-                        next.filter((i) => !demos.includes(i)).map((d) =>
-                            toggleDemo(d),
-                        );
-                    }}
-                    limit={3}
-                    id="search-demos"
-                />
+                <StickyHeader height="130px">
+                    <AutocompLite
+                        inputProps={{
+                            placeholder: `Search ${DEMOS_V1.length} demos`,
+                        }}
+                        options={DEMOS_V1}
+                        value={demos}
+                        onChange={(next) => {
+                            // first
+                            if (demos.length === 0) {
+                                next.map((d) => toggleDemo(d));
+                                return;
+                            }
+                            // remove
+                            if (demos.length > next.length) {
+                                demos
+                                    .filter((i) => !next.includes(i))
+                                    .map((d) => toggleDemo(d));
+                                return;
+                            }
+                            // add
+                            next.filter((i) => !demos.includes(i)).map((d) =>
+                                toggleDemo(d),
+                            );
+                        }}
+                        limit={3}
+                        id="search-demos"
+                        dangerous={{
+                            boxShadow: 'var(--shadow)',
+                        }}
+                    />
+                </StickyHeader>
+
                 <br />
                 <DemoRenderer demos={demos} />
             </main>

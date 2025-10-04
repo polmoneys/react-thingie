@@ -1,27 +1,21 @@
 import { type ReactNode, useRef } from 'react';
 
-import useClickContains from '../../utilities/useClickContains';
+import type { Unit } from '../../interfaces';
 import useScroll from '../../utilities/useScroll';
 import { clsx } from '../../utils';
-import Font from '../Font';
 
 import styles from './index.module.css';
 
 interface Props {
     children: ReactNode;
+    height: Unit;
     sticky?: boolean;
 }
 
 export default function StickyHeader(props: Props) {
-    const { sticky = false, children } = props;
+    const { sticky = false, children, height } = props;
     const ref = useRef<HTMLElement | null>(null);
     const forcedSticky = useScroll(window) >= 200;
-
-    useClickContains({
-        ref,
-        onInside: () => console.log('in'),
-        onOutside: () => console.log('out'),
-    });
 
     return (
         <nav
@@ -30,11 +24,8 @@ export default function StickyHeader(props: Props) {
                 styles.header,
                 (sticky || forcedSticky) && styles.sticky,
             )}
-            // {...(minimized && {
-            //     onClick: onToggle,
-            // })}
+            style={{ height }}
         >
-            {!open && <Font className={styles.trigger}>✨</Font>}
             {children}
         </nav>
     );

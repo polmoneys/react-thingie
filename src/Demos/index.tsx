@@ -106,7 +106,7 @@ export default function DemoRenderer({
                     <Suspense
                         key={name}
                         fallback={
-                            <Alert mood="positive" isPending>
+                            <Alert isPending block>
                                 <Icon.Loading />
                             </Alert>
                         }

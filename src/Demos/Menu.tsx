@@ -54,9 +54,12 @@ export default function DemoMenu() {
                 component="div"
                 dangerous={{
                     maxWidth: 'min(300px,60vw)',
-                    backgroundColor: 'var(--accent)',
+                    backgroundColor: 'var(--neutral)',
                     borderRadius: 'var(--border-radius)',
+                    border: 'var(--border)',
                     padding: 'var(--gap-3)',
+                    boxShadow: 'var(--shadow)',
+                    marginTop: 'var(--gap-1)',
                 }}
             >
                 {openMenu ? (
@@ -75,6 +78,7 @@ export default function DemoMenu() {
                     <Font.Bold>No menu selected</Font.Bold>
                 )}
             </Group.Col>
+            <br />
         </>
     );
 }

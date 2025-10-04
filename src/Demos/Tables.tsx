@@ -38,13 +38,17 @@ export const COLUMNS: Column<Person>[] = [
     {
         label: 'Email',
         field: 'email',
-        render: (v) => <ColumnCell>{v as string}</ColumnCell>,
+        render: (v) => (
+            <ColumnCell dangerous={{ paddingLeft: 'var(--gap-1)' }}>
+                {v as string}
+            </ColumnCell>
+        ),
     },
     {
         label: 'Age',
         field: 'age',
         render: (v) => (
-            <ColumnCell>
+            <ColumnCell dangerous={{ paddingLeft: 'var(--gap-1)' }}>
                 <strong>{v as string}</strong>
             </ColumnCell>
         ),
