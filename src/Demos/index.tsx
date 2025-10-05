@@ -23,7 +23,8 @@ export type DemosLabels =
     | 'Portal'
     | 'Radio'
     | 'Stream'
-    | 'Table';
+    | 'Table'
+    | 'WebWorker';
 
 const DEMO_IMPORTERS: Record<
     DemosLabels,
@@ -43,6 +44,8 @@ const DEMO_IMPORTERS: Record<
     Radio: () => import(/* webpackChunkName: "demo-radio" */ './Radios'),
     Stream: () => import(/* webpackChunkName: "demo-stream" */ './Stream'),
     Table: () => import(/* webpackChunkName: "demo-table" */ './Tables'),
+    WebWorker: () =>
+        import(/* webpackChunkName: "demo-web-worker" */ './WebWorker'),
 };
 
 // MODULE-LEVEL CACHE: stable Lazy components across renders

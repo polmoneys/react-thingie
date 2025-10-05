@@ -4,18 +4,6 @@
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
 
-    &.positive {
-        background-color: var(--positive);
-        color: currentColor;
-    }
-    &.negative {
-        background-color: var(--negative);
-        color: currentColor;
-    }
-    &.neutral {
-        background-color: var(--neutral);
-    }
-
     &.pending {
         display: flex;
         place-content: center;

@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 
-export type RequireAtLeastOne<T> = {
-    [K in keyof T]: Required<Pick<T, K>> & Partial<Omit<T, K>>;
-}[keyof T];
+import type { RequireAtLeastOne } from '../interfaces';
 
 type IntersectionOptions = RequireAtLeastOne<{
     ref?: React.RefObject<Element>;

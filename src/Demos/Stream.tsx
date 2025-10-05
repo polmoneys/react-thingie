@@ -11,9 +11,7 @@ export default function DemoStream() {
 
     return (
         <>
-            {/*<Icon.Loading /> */}
             <StreamPrompt />
-
             <StreamHistory />
             <StreamAnswer content={streamedText} />
             <StreamError

@@ -4,8 +4,10 @@
     padding: var(--gap-1);
     gap: var(--gap-2);
     display: grid;
-    grid-template-columns: 113px 1fr 200px;
-
+    grid-template-columns: 120px 1fr 200px;
+    & > *:first-child {
+        width: 100% !important;
+    }
     & input {
         padding: 0 var(--gap-3);
         border: var(--border);

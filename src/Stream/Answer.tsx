@@ -4,6 +4,7 @@ import rehypeMermaid from 'rehype-mermaid';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 
+import Alert from '../Dumb/Alert';
 import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
 import { clsx } from '../utils';
@@ -24,7 +25,15 @@ export default function StreamAnswer({
     lite?: boolean;
     content: string;
 }) {
-    if (content.trim() === '') return <Font.Bold>No active stream</Font.Bold>;
+    if (content.trim() === '')
+        return (
+            <>
+                <br />
+                <Alert mood="negative">
+                    <Font.Bold>No active stream</Font.Bold>
+                </Alert>
+            </>
+        );
     return (
         <Group
             flexDirection="column"

@@ -6,6 +6,10 @@ export interface RenderProp<TChildrenProps, TElement = unknown> {
 
 // type RenderProp<T> = (props: T) => ReactNode;
 
+export type RequireAtLeastOne<T> = {
+    [K in keyof T]: Required<Pick<T, K>> & Partial<Omit<T, K>>;
+}[keyof T];
+
 export type Mood = 'neutral' | 'positive' | 'negative';
 
 export type CssVar = `var(--${string})`;

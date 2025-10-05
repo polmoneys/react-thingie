@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import Button from '../Dumb/Button';
+import Font from '../Dumb/Font';
+import Icon from '../Dumb/Icon';
 import TextInputLabel from '../Dumb/InputText';
 import PopoverLite from '../Dumb/Popover/Lite';
 
@@ -22,18 +24,20 @@ export default function StreamPrompt() {
 
     return (
         <div className={styles.prompt}>
-            <PopoverLite id="menu-test" label="Some cta">
+            <PopoverLite
+                id="menu-test"
+                label={
+                    <>
+                        <Font.Bold>Tools</Font.Bold>
+                        <Icon.ChevronDown size={22} />
+                    </>
+                }
+            >
                 {() => (
                     <>
-                        <Button onClick={() => console.log('a')}>
-                            Action A
-                        </Button>
-                        <Button onClick={() => console.log('b')}>
-                            Action B
-                        </Button>
-                        <Button onClick={() => console.log('c')}>
-                            Action C
-                        </Button>
+                        <Button onClick={() => console.log('a')}>File</Button>
+                        <Button onClick={() => console.log('b')}>Speak</Button>
+                        <Button onClick={() => console.log('c')}>Think</Button>
                     </>
                 )}
             </PopoverLite>
@@ -52,7 +56,7 @@ export default function StreamPrompt() {
                 }}
                 disabled={mutation.isPending}
             />
-            <Button
+            <Button.Positive
                 dangerous={{
                     justifySelf: 'stretch',
                     alignSelf: 'stretch',
@@ -63,7 +67,7 @@ export default function StreamPrompt() {
                 disabled={mutation.isPending || !input.trim()}
             >
                 Send
-            </Button>
+            </Button.Positive>
         </div>
     );
 }

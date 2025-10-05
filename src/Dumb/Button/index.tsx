@@ -1,7 +1,7 @@
 import { clsx, has } from '../../utils';
 import Ring from '../Ring';
 
-import Group from './ButtonGroup';
+import Group from './Group';
 import type { ButtonProps } from './interfaces';
 
 function Button(props: ButtonProps) {

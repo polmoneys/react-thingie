@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 
+import Alert from '../Dumb/Alert';
+import Font from '../Dumb/Font';
 import { useWorker } from '../utilities/web-worker';
+import { formatSelectedKeys } from '../utils';
 
 export const ITEMS = [
     { id: 1, name: 'Alice', age: 25, active: true },
@@ -35,15 +38,20 @@ export default function DemoWebWorker({
             ),
         [],
     );
-    const rpc = useWorker(worker);
+    const workerApi = useWorker(worker);
 
     useEffect(() => {
         let cancelled = false;
 
         (async () => {
             try {
-                await rpc.call('setData', { data: items }, undefined, 5000);
-                const res = await rpc.call(
+                await workerApi.call(
+                    'setData',
+                    { data: items },
+                    undefined,
+                    5000,
+                );
+                const res = await workerApi.call(
                     'filterMap',
                     {
                         predicate: { type: 'keyEq', key: 'active', val: true },
@@ -52,9 +60,10 @@ export default function DemoWebWorker({
                     undefined,
                     5000,
                 );
-                if (cancelled) return; // don't set state if unmounted
+                // don't set state if unmounted
+                if (cancelled) return;
                 setSample((res as any).result.slice(0, 10));
-                const len = await rpc.call(
+                const len = await workerApi.call(
                     'getLength',
                     undefined,
                     undefined,
@@ -71,15 +80,14 @@ export default function DemoWebWorker({
 
         return () => {
             cancelled = true;
-            // no explicit rpc.terminate() necessary when useWorkerRpc was created with autoTerminate:true
+            // no explicit workerApi.terminate() necessary when useWorkerRpc was created with autoTerminate:true
         };
-    }, [rpc, items]);
+    }, [workerApi, items]);
 
     return (
-        <div>
-            <h3>Object processing</h3>
-            <p>Worker data length: {count ?? '...'}</p>
-            <p>Sample names: {sample.join(', ')}</p>
-        </div>
+        <Alert mood="positive">
+            <Font.Bold>Worker data length: {count ?? '...'}</Font.Bold>
+            <Font>Sample names: {formatSelectedKeys(new Set(sample))}</Font>
+        </Alert>
     );
 }

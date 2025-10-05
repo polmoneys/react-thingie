@@ -49,6 +49,7 @@
 
 .button {
     min-height: var(--menu-tappable-offset);
+    width: 100%;
 }
 
 .button ~ .menu:focus-within,

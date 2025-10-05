@@ -4,7 +4,9 @@ import { clsx } from '../../utils';
 
 import type { ButtonGroupProps } from './interfaces';
 
-export default function Group(props: ButtonGroupProps) {
+import styles from './index.module.css';
+
+export default function ButtonGroup(props: ButtonGroupProps) {
     const {
         initial = 0,
         className,
@@ -14,10 +16,14 @@ export default function Group(props: ButtonGroupProps) {
 
     const [active, setActive] = useState(initial);
 
-    const isVertical = direction === 'vertical';
-    const classNames = clsx(className, 'buttonGroup', isVertical && 'vertical');
     return (
-        <div className={classNames}>
+        <div
+            className={clsx(
+                className,
+                styles.root,
+                direction === 'vertical' && styles.vertical,
+            )}
+        >
             {children &&
                 children({
                     active,

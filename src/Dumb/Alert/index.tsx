@@ -40,7 +40,7 @@ function Alert(props: AlertProps) {
             className={clsx(
                 styles.alert,
                 className,
-                styles[mood],
+                mood,
                 isPending && styles.pending,
                 block && styles.block,
             )}

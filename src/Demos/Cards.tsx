@@ -1,11 +1,18 @@
 import Button from '../Dumb/Button';
 import Card from '../Dumb/Card';
-import Grid from '../Dumb/Grid';
+import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 
 export default function CardsGrid() {
     return (
         <>
-            <Grid width="25em">
+            <GridTemplateColumns
+                gridTemplateColumns={{
+                    xs: '1fr',
+                    sm: '1fr 1fr',
+                    md: '1fr 1fr 1fr',
+                }}
+                gap={{ xs: 'var(--gap-2)' }}
+            >
                 <Card
                     component="div"
                     ratio="portrait"
@@ -53,8 +60,16 @@ export default function CardsGrid() {
                         }}
                     />
                 </Card>*/}
-            </Grid>
-            <Grid width="17em">
+            </GridTemplateColumns>
+            <br />
+            <GridTemplateColumns
+                gridTemplateColumns={{
+                    xs: '1fr',
+                    sm: '1fr 1fr',
+                    md: '1fr 1fr 1fr',
+                }}
+                gap={{ xs: 'var(--gap-2)' }}
+            >
                 <Card component="div" ratio="landscape">
                     <Card.Title>Lorem ipsun</Card.Title>
                     <Card.Media
@@ -91,7 +106,7 @@ export default function CardsGrid() {
                         }}
                     />
                 </Card>
-            </Grid>
+            </GridTemplateColumns>
             <br />
         </>
     );

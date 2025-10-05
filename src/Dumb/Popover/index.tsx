@@ -1,4 +1,4 @@
-import { type CSSProperties, type ReactNode, useMemo, useState } from 'react';
+import { type ReactNode, useMemo, useState } from 'react';
 
 import { FocusScope } from '@react-aria/focus';
 import { useKeyboard } from 'react-aria';
@@ -64,8 +64,14 @@ export default function Popover(props: TldrProps) {
         <>
             {backdrop != undefined && isCaptionShown && (
                 <div
-                    data-popover-backdrop="backdrop"
-                    style={{ '--backdrop': backdrop } as CSSProperties}
+                    style={{
+                        position: 'fixed',
+                        width: '100%',
+                        height: '100%',
+                        inset: 0,
+                        zIndex: 1,
+                        backgroundColor: backdrop,
+                    }}
                 />
             )}
             <Stick

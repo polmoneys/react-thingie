@@ -36,8 +36,8 @@
     }
     .ratio {
         &:is(.auto, .square, .landscape, .portrait, .ultrawide) {
-            height: auto;
-            width: auto;
+            height: 100%;
+            width: 100%;
         }
     }
 }

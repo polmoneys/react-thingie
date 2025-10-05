@@ -8,10 +8,7 @@ import { queryClient } from './utilities/queryClient.ts';
 import App from './App.tsx';
 
 import './CSS/index.css';
-import './CSS/button.css';
-import './CSS/checkbox.css';
 import './CSS/colors.css';
-import './CSS/popover.css';
 import './CSS/ratio.css';
 import './CSS/utils.css';
 // react-aria

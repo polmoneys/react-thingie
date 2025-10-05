@@ -227,9 +227,80 @@ a:is(:not([class])) {
     }
 }
 
+:where(html) {
+    --button-bg: var(--white);
+    --button-bg-active: var(--negative);
+    --button-hit-area: var(--hit-area-height);
+}
+
+button {
+    text-decoration: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: start;
+
+    line-height: 1.1;
+    background-color: var(--button-bg);
+    transition:
+        background 220ms ease-in-out,
+        180ms box-shadow ease-in-out;
+
+    min-width: var(--button-hit-area);
+    min-height: var(--button-hit-area);
+    width: fit-content;
+    height: fit-content;
+
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    border: var(--border);
+    padding: 0 var(--gap-1);
+
+    &:has(svg) {
+        justify-content: space-around;
+        gap: var(--gap-1);
+    }
+    & svg {
+        pointer-events: none;
+        /* pointer-events: stroke | fill */
+    }
+
+    &.text {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        &:focus {
+            font-weight: var(--font-bold);
+        }
+    }
+
+    &.icon {
+        max-width: max-content;
+    }
+
+    &.active {
+        background-color: var(--button-bg-active);
+    }
+
+    &:disabled {
+        opacity: var(--opacity-disabled);
+        cursor: not-allowed;
+    }
+    &.stretch {
+        width: 100%;
+    }
+}
+
 :where(input[type='text']) {
     /* iOS */
     --input-font-size: max(16px, 1em);
+    font-size: --input-font-size;
+}
+
+label:has(input[type='radio']) {
+    position: relative;
 }
 
 input[type='radio'] {
@@ -239,16 +310,46 @@ input[type='radio'] {
     inset: 0;
 }
 
-label:has(input[type='radio']) {
+input[type='checkbox'] {
+    --checkbox-bg: var(--white);
+    --checkbox-hit-area: var(--hit-area-height);
+    height: var(--checkbox-hit-area);
+    width: var(--checkbox-hit-area);
+    aspect-ratio: 1;
+    background-color: var(--checkbox-bg);
     position: relative;
+    border: var(--border);
 }
 
-/*label:has(input[type='radio']:focus:not(.ringKeyboard)) {
-    border-color: var(--ring-border) !important;
+input[type='checkbox']:not([disabled]):checked {
+    &::after {
+        --checkbox-indeterminate-height: 8px;
+        position: absolute;
+        content: '';
+        background-color: currentColor;
+        height: var(--checkbox-indeterminate-height);
+        width: calc(100% - 20px);
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%) rotate(-45deg);
+        border-radius: var(--border-radius);
+    }
 }
-label:has(input[type='radio']:focus:not(.ring)) {
-    border-color: var(--ringKeyboard-border) !important;
-}*/
+
+input[type='checkbox']:indeterminate {
+    &::after {
+        --checkbox-indeterminate-height: 8px;
+        position: absolute;
+        content: '';
+        background-color: currentColor;
+        height: var(--checkbox-indeterminate-height);
+        width: calc(100% - 20px);
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: var(--border-radius);
+    }
+}
 
 /* <Ring> component */
 .ringless {
@@ -260,18 +361,6 @@ label:has(input[type='radio']:focus:not(.ring)) {
 .ringKeyboard {
     border: var(--border);
     border-color: var(--ringKeyboard-border) !important;
-}
-
-.positive {
-    background-color: var(--positive) !important;
-    color: currentColor;
-}
-.negative {
-    background-color: var(--negative) !important;
-    color: currentColor;
-}
-.neutral {
-    background-color: var(--neutral) !important;
 }
 
 ul {

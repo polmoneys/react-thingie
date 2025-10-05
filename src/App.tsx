@@ -1,6 +1,11 @@
+import { useState } from 'react';
+
 import useDemos from './Demos/useURLDemos';
+import Alert from './Dumb/Alert';
 import AutocompLite from './Dumb/Autocomplete';
+import Font from './Dumb/Font';
 import StickyHeader from './Dumb/Sticky/Header';
+import { Timer } from './utilities/timer';
 import DemoRenderer from './Demos';
 
 import './App.css';
@@ -18,6 +23,7 @@ const DEMOS_V1 = [
     'Radio',
     'Stream',
     'Table',
+    'WebWorker',
 ];
 
 function App() {
@@ -31,6 +37,10 @@ function App() {
 
     const { toggleDemo, demos } = useDemos();
 
+    const [showAlert, setAlert] = useState(true);
+
+    new Timer(() => setAlert(false), 2000);
+
     return (
         <>
             <aside id="aside" className="col sm gap"></aside>
@@ -43,6 +53,19 @@ function App() {
                     overflow: 'visible',
                 }}
             >
+                {showAlert && (
+                    <>
+                        <Alert
+                            mood="positive"
+                            style={{ width: 'fit-content', margin: '0 auto' }}
+                        >
+                            <Font.Bold>
+                                {DEMOS_V1.length} & growing :)
+                            </Font.Bold>
+                        </Alert>
+                        <br />
+                    </>
+                )}
                 <StickyHeader height="130px">
                     <AutocompLite
                         inputProps={{
@@ -75,7 +98,6 @@ function App() {
                         }}
                     />
                 </StickyHeader>
-
                 <br />
                 <DemoRenderer demos={demos} />
             </main>

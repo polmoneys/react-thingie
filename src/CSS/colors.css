@@ -40,3 +40,15 @@
         var(--negative-mixer)
     );
 }
+
+.positive {
+    background-color: var(--positive) !important;
+    color: currentColor;
+}
+.negative {
+    background-color: var(--negative) !important;
+    color: currentColor;
+}
+.neutral {
+    background-color: var(--neutral) !important;
+}

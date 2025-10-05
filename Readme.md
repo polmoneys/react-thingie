@@ -14,7 +14,7 @@ URLS are **QUEEN**
 
 ### Slots / GridTemplateColumns
 
-Children with Start/End slots vs. Breakpoint aware gridTemplateColumns, gap and padding.
+Children with Start & End slots
 
 ```tsx
 {
@@ -49,9 +49,43 @@ Children with Start/End slots vs. Breakpoint aware gridTemplateColumns, gap and 
 
 Them group well as `<List/>`.
 
+**vs.** Breakpoint aware gridTemplateColumns, gap and padding.
+
+````tsx
+
+<GridTemplateColumns
+    gridTemplateColumns={{
+        xs: '1fr',
+        sm: '1fr 1fr',
+        md: '1fr 1fr 1fr',
+    }}
+    gap={{ xs: 'var(--gap-2)' }}
+>
+    <Card
+        component="div"
+        ratio="portrait"
+        gradient={`#fff 0, #fff 70px, var(--grey-4) 70px, var(--grey-4) calc(100% - 87px), var(--grey-3) calc(100% - 87px), var(--grey-3) 100%`}
+    >
+        <Card.Title>Lorem ipsun dolor</Card.Title>
+        <Card.Content>
+            <p>
+                Lorem ipsun dolor sit amet indisciplinctur gloria at
+                est.{' '}
+            </p>
+        </Card.Content>
+
+        <Card.Actions>
+            <Button>Add</Button>
+        </Card.Actions>
+    </Card>
+    {/*...*/}
+</GridTemplateColumns>
+
+``
+
 ### Rows
 
-Rows with `<Header>`
+Rows with `<Header>` and custom cell rendering.
 
 ```tsx
 <Rows
@@ -62,7 +96,7 @@ Rows with `<Header>`
     api={api}
     selectedBackgroundColor="var(--neutral)"
 />
-```
+````
 
 Them group well as `<Table/>`
 
