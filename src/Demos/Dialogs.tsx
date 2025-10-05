@@ -3,7 +3,9 @@ import Actionsheet from '../Dialog/ActionSheet';
 import Tray from '../Dialog/Tray';
 import Button from '../Dumb/Button';
 import Card from '../Dumb/Card';
+import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
+import Icon from '../Dumb/Icon';
 import Shape from '../Dumb/Shape';
 import useURLDialogs from '../utilities/useURL';
 import useURLLite from '../utilities/useURLLite';
@@ -48,22 +50,13 @@ export default function DemoDialog() {
                     isOpen={isSheetOpen}
                     onClose={() => onClose()}
                 >
-                    <Button
-                        className={'action-sheet-button'}
-                        onClick={(e) => e.preventDefault()}
-                    >
+                    <Button onClick={(e) => e.preventDefault()}>
                         Action 1
                     </Button>
-                    <Button
-                        className={'action-sheet-button'}
-                        onClick={(e) => e.preventDefault()}
-                    >
+                    <Button onClick={(e) => e.preventDefault()}>
                         Action 2
                     </Button>
-                    <Button
-                        className={'action-sheet-button'}
-                        onClick={(e) => e.preventDefault()}
-                    >
+                    <Button onClick={(e) => e.preventDefault()}>
                         Action 3
                     </Button>
                 </Actionsheet>
@@ -76,15 +69,40 @@ export default function DemoDialog() {
                     ratio="landscape"
                     dangerous={{ width: 'min(750px,80vw)' }}
                 >
-                    <Card.Title>Lorem ipsun dolor</Card.Title>
-                    <Card.Content>
-                        <Shape.Triangle />
-                        <Shape.Triangle />
-                        <Shape.Square />
-                        <Shape.Circle />
+                    <Card.Title
+                        dangerous={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            borderBottom: 'var(--border)',
+                            minHeight: 'var(--hit-area-height)',
+                            padding: '0 var(--gap-2) 0 var(--gap-3)',
+                        }}
+                    >
+                        <Font>Lorem ipsun dolor</Font>
+                        <Button.Icon
+                            className="ml-a"
+                            onClick={() => onClose()}
+                            isText
+                        >
+                            <Icon.X size={36} circle={false} />
+                        </Button.Icon>
+                    </Card.Title>
+                    <Card.Content dangerous={{ textAlign: 'center' }}>
+                        <Shape.Triangle
+                            size={250}
+                            transforms="translateY(36px)"
+                        />
                     </Card.Content>
-                    <Card.Actions>
-                        <Button onClick={() => onClose()}>Close</Button>{' '}
+                    <Card.Actions
+                        dangerous={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            borderTop: 'var(--border)',
+                            height: 'var(--hit-area-height)',
+                            justifyContent: 'flex-end',
+                        }}
+                    >
+                        <Button onClick={() => onClose()}>Close</Button>
                     </Card.Actions>
                 </Card>
             </Dialog>
@@ -93,17 +111,34 @@ export default function DemoDialog() {
                 isOpen={isTrayOpen || isTrayOpen2}
                 onClose={callAll(onClose, onClose2)}
             >
-                <Card component="div">
-                    <Card.Title>Lorem ipsun dolor</Card.Title>
-                    <Card.Content>
-                        <Shape.Triangle />
-                        <Shape.Triangle />
-                        <Shape.Square />
-                        <Shape.Circle />
-                        <Button onClick={callAll(onClose, onClose2)}>
-                            On close
-                        </Button>
+                <Card component="div" dangerous={{ width: 'min(750px,80vw)' }}>
+                    <Card.Title
+                        dangerous={{
+                            display: 'flex',
+                            placeContent: 'center',
+                            borderBottom: 'var(--border)',
+                            height: 'var(--hit-area-height)',
+                        }}
+                    >
+                        <Font>Lorem ipsun dolor</Font>
+                    </Card.Title>
+                    <Card.Content dangerous={{ textAlign: 'center' }}>
+                        <Shape.Square
+                            size={350}
+                            transforms="translateY(22px)"
+                        />
                     </Card.Content>
+                    <Card.Actions
+                        className="mt-a"
+                        dangerous={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Button stretch onClick={callAll(onClose, onClose2)}>
+                            Close
+                        </Button>
+                    </Card.Actions>
                 </Card>
             </Tray>
         </>

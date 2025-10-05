@@ -239,7 +239,7 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    align-self: start;
+    /*align-self: start;*/
 
     line-height: 1.1;
     background-color: var(--button-bg);
