@@ -1,4 +1,4 @@
-**Work in progress**
+**Work in progress** [Quick demo](https://polmoneys.github.io/react-thingie)
 
 ## Thingies for Reactjs
 
