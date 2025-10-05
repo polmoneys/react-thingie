@@ -41,6 +41,9 @@ function App() {
 
     new Timer(() => setAlert(false), 2000);
 
+    // const [show, setShow] = useState(false);
+    // new Timer(() => setShow(true), 3000);
+
     return (
         <>
             <aside id="aside" className="col sm gap"></aside>

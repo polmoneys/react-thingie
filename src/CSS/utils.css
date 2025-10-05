@@ -2,6 +2,10 @@
     height: 1lh;
 }
 
+.noise {
+    filter: blur(2px);
+}
+
 .mt-a {
     margin-top: auto !important;
 }

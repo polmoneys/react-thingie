@@ -99,19 +99,15 @@ export default Group;
 // Flex
 Group.Row = (props: GroupProps) => {
     const { className, ...rest } = props;
-    return <Group className={clsx(className, 'row')} {...rest} />;
+    return <Group className={clsx(className, styles.row)} {...rest} />;
 };
 Group.Col = (props: GroupProps) => {
     const { className, ...rest } = props;
-    return <Group className={clsx(className, 'column')} {...rest} />;
+    return <Group className={clsx(className, styles.col)} {...rest} />;
 };
 Group.ColRow = (props: GroupProps) => {
     const { className, ...rest } = props;
-    return <Group className={clsx(className, 'rowCol')} {...rest} />;
-};
-Group.Unit = (props: GroupProps) => {
-    const { className, ...rest } = props;
-    return <Group className={clsx(className, 'unit')} {...rest} />;
+    return <Group className={clsx(className, styles.colRow)} {...rest} />;
 };
 
 // Aspect ratio

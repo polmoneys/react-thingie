@@ -1,6 +1,12 @@
 .react-aria-DatePicker {
-    color: var(--text-color);
+    &[data-invalid] {
+    }
 
+    &[data-open] {
+    }
+
+    & .react-aria-Label {
+    }
     .react-aria-Group {
         display: flex;
         width: fit-content;
@@ -15,7 +21,7 @@
 
         &[data-pressed] {
             box-shadow: none;
-            background: var(--negative);
+            background: var(--positive);
         }
 
         &[data-focus-visible] {
@@ -33,11 +39,40 @@
 .react-aria-Popover {
     background-color: var(--white);
     font-size: var(--font-size-0);
+
+    &[data-trigger='DatePicker'] {
+        max-width: unset;
+    }
     & * {
         font-size: var(--font-size-0);
     }
 }
 
-.react-aria-Popover[data-trigger='DatePicker'] {
-    max-width: unset;
+.react-aria-CalendarCell {
+    &[data-today] {
+    }
+
+    &[data-unavailable] {
+    }
+
+    &[data-selected] {
+        background-color: var(--positive) !important;
+    }
+    &[data-hovered] {
+    }
+    &[data-pressed] {
+    }
+
+    &[data-focused]:not([data-selected]) {
+        outline-color: var(--positive);
+        color: var(--positive);
+    }
+    &[data-isFocusVisible] {
+        outline-color: var(--positive);
+    }
+}
+.react-aria-Dialog {
+}
+
+.react-aria-Calendar {
 }

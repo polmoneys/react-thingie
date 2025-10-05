@@ -7,6 +7,24 @@
     }
 }
 
+.row,
+.col,
+.colRow {
+    display: flex;
+}
+.col {
+    flex-direction: column;
+}
+.colRow {
+    flex-direction: column;
+}
+
+@media (orientation: landscape) {
+    .colRow {
+        flex-direction: row;
+    }
+}
+
 .ad {
     display: grid;
     grid-template-columns: repeat(12, 1fr);

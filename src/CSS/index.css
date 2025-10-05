@@ -258,6 +258,15 @@ button {
     border: var(--border);
     padding: 0 var(--gap-1);
 
+    transition-property: background-color, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+
+    &:hover {
+    }
+    &:active {
+        transform: scale(0.97);
+    }
     &:has(svg) {
         justify-content: space-around;
         gap: var(--gap-1);

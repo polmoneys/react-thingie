@@ -6,8 +6,8 @@ import useDates from '../DatePicker/useDates';
 import Button from '../Dumb/Button';
 import Checkbox from '../Dumb/Checkbox';
 import Font from '../Dumb/Font';
+import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 import Group from '../Dumb/Group';
-import Mua from '../Dumb/Group/Mua';
 import Icon from '../Dumb/Icon';
 
 const Range = lazy(() => import('../DatePicker/Range'));
@@ -67,37 +67,60 @@ export default function DatesDemo({
                 selectedPeriod={selectedPeriod}
             />
 
-            <Mua>
-                <Font>Oldest date </Font>
-                <Font.Bold component="strong">
-                    {oldestInceptionDate ?? '—'}
-                </Font.Bold>
-            </Mua>
-
-            <Mua
-                component="label"
+            <GridTemplateColumns
+                gridTemplateColumns={{ xs: '1fr 44px' }}
                 dangerous={{
-                    width: 'fit-content',
-                    margin: 'var(--gap-3) 0',
+                    maxWidth: '320px',
+                    placeContent: 'start',
+                    alignItems: 'center',
                 }}
             >
-                Adjust to last working day
+                <Font>
+                    Last working day{' '}
+                    <Font.Bold component="span">(EOM)</Font.Bold>
+                </Font>
+
                 <Checkbox
                     checked={endOfMonth}
                     onChange={(event) => toggleEndOfMonth(event.target.checked)}
                 />
-            </Mua>
+            </GridTemplateColumns>
 
-            <Mua>
-                <Font>Start </Font>
-                <Font.Bold component="strong"> {startDate}</Font.Bold>
-            </Mua>
+            <GridTemplateColumns
+                gridTemplateColumns={{ xs: '1fr 1fr' }}
+                className="positive"
+                gap={{ xs: 'var(--gap-2)' }}
+                dangerous={{
+                    border: 'var(--border)',
+                    padding: 'var(--gap-2)',
+                    maxWidth: 'min(600px,80vw)',
+                }}
+            >
+                <Group variant="grid" gridTemplateColumns="120px 1fr">
+                    <Font>Start </Font>
+                    <Font.Bold component="strong"> {startDate}</Font.Bold>
+                </Group>
 
-            <Mua>
-                <Font>End </Font>
-                <Font.Bold component="strong"> {endDate}</Font.Bold>
-            </Mua>
-
+                <Group variant="grid" gridTemplateColumns="120px 1fr">
+                    <Font>End </Font>
+                    <Font.Bold component="strong"> {endDate}</Font.Bold>
+                </Group>
+            </GridTemplateColumns>
+            <Group
+                variant="grid"
+                gridTemplateColumns="130px 1fr"
+                className="negative"
+                dangerous={{
+                    border: 'var(--border)',
+                    padding: 'var(--gap-2)',
+                    width: 'fit-content',
+                }}
+            >
+                <Font>Oldest date </Font>
+                <Font.Bold component="strong">
+                    {oldestInceptionDate ?? '—'}
+                </Font.Bold>
+            </Group>
             {showUI && (
                 <Suspense fallback={<Icon.Loading />}>
                     <Range
