@@ -100,6 +100,8 @@ Rows with `<Header>` and custom cell rendering.
 
 Them group well as `<Table/>`
 
+**Work in progress**
+
 ### Inspiration 💐
 
 > Our requirements are more modest but at the same time more responsible:
