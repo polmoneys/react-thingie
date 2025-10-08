@@ -15,7 +15,10 @@
     }
 
     &:focus-within {
-        border-color: var(--neutral);
+        border-color: var(--ring-color);
+    }
+    &:focus-visible {
+        border-color: var(--ringKeyboard-color);
     }
 }
 

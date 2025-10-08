@@ -16,6 +16,7 @@ export type DemosLabels =
     | 'Card'
     | 'DatePicker'
     | 'Dialog'
+    | 'Excel'
     | 'Icon'
     | 'List'
     | 'Menu'
@@ -24,6 +25,7 @@ export type DemosLabels =
     | 'Radio'
     | 'Stream'
     | 'Table'
+    | 'Tree'
     | 'WebWorker';
 
 const DEMO_IMPORTERS: Record<
@@ -36,6 +38,7 @@ const DEMO_IMPORTERS: Record<
     DatePicker: () =>
         import(/* webpackChunkName: "demo-picker" */ './DatePicker'),
     Dialog: () => import(/* webpackChunkName: "demo-dialog" */ './Dialogs'),
+    Excel: () => import(/* webpackChunkName: "demo-excel" */ './Excel'),
     Icon: () => import(/* webpackChunkName: "demo-icon" */ './Icons'),
     List: () => import(/* webpackChunkName: "demo-list" */ './List'),
     Menu: () => import(/* webpackChunkName: "demo-menu" */ './Menu'),
@@ -44,6 +47,7 @@ const DEMO_IMPORTERS: Record<
     Radio: () => import(/* webpackChunkName: "demo-radio" */ './Radios'),
     Stream: () => import(/* webpackChunkName: "demo-stream" */ './Stream'),
     Table: () => import(/* webpackChunkName: "demo-table" */ './Tables'),
+    Tree: () => import(/* webpackChunkName: "demo-tree" */ './Tree'),
     WebWorker: () =>
         import(/* webpackChunkName: "demo-web-worker" */ './WebWorker'),
 };

@@ -14,6 +14,7 @@ export interface AlertProps extends ComponentProps<'div'> {
     relevant?: AriaAttributes['aria-relevant'];
     children: ReactNode;
     mood?: 'positive' | 'negative' | 'neutral';
+    fitContent?: boolean;
     isPending?: boolean;
     block?: boolean;
 }
@@ -28,6 +29,7 @@ function Alert(props: AlertProps) {
         mood = 'neutral',
         isPending = false,
         block = false,
+        fitContent = false,
         ...groupProps
     } = props;
 
@@ -43,6 +45,7 @@ function Alert(props: AlertProps) {
                 mood,
                 isPending && styles.pending,
                 block && styles.block,
+                fitContent && styles.fit,
             )}
         >
             {children}

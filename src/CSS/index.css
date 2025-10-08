@@ -20,20 +20,27 @@
     --hit-area-height: max(44px, 2em);
     --hit-area-width: 10ch;
 
+    /* if we were brave we'd use more em*/
     --gap-1: 0.4rem;
-    --gap-2: 0.6rem;
-    --gap-3: 1.8rem;
+    --gap-2: 0.8rem;
+    --gap-3: 1.2rem;
+    --gap-4: 1.8rem;
+    --gap-5: 2rem;
+
+    --px: 0 var(--gap-3);
+    --pxy: var(--gap-3);
 
     --shadow: 0 1px 3px hsla(0, 0%, 0%, 0.12), 0 1px 2px hsla(0, 0%, 0%, 0.24);
     --border-radius: 0.2rem;
 
     --border-width: 2px;
     --border: var(--border-width) solid currentColor;
-    --ring-border: var(--grey-20);
-    --ringKeyboard-border: var(--positive);
+    --ring-color: var(--grey-20);
+    --ringKeyboard-color: var(--positive);
 
     --scrollbar-size: min(8px, 0.8em);
     --opacity-disabled: 0.6;
+    --bg-disabled: var(--neutral);
     --animation-duration: 0.3s;
 
     --z-max: 999;
@@ -207,7 +214,8 @@ a:is(:not([class])) {
     button,
     input[type='text'],
     input[type='checkbox'],
-    input[type='radio']
+    input[type='radio'],
+    select
 ) {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -256,7 +264,7 @@ button {
     -webkit-tap-highlight-color: transparent;
 
     border: var(--border);
-    padding: 0 var(--gap-1);
+    padding: var(--px);
 
     transition-property: background-color, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -300,12 +308,34 @@ button {
     &.stretch {
         width: 100%;
     }
+
+    &.reset {
+        all: unset;
+    }
+
+    &:has([data-icon]) {
+        border: transparent;
+    }
+
+    &:has([data-icon]):focus-within {
+        & svg {
+            fill: var(--ring-color);
+        }
+    }
+
+    &:has([data-icon]):focus-visible {
+        & svg {
+            fill: var(--ringKeyboard-color);
+        }
+    }
 }
 
 :where(input[type='text']) {
     /* iOS */
     --input-font-size: max(16px, 1em);
     font-size: --input-font-size;
+    padding: var(--px);
+    min-height: var(--hit-area-height);
 }
 
 label:has(input[type='radio']) {
@@ -360,16 +390,25 @@ input[type='checkbox']:indeterminate {
     }
 }
 
+select {
+    padding: 0 44px 0 var(--gap-2);
+    min-height: var(--button-hit-area);
+
+    &::-ms-expand {
+        display: none;
+    }
+}
+
 /* <Ring> component */
 .ringless {
 }
 .ring {
     border: var(--border);
-    border-color: var(--ring-border) !important;
+    border-color: var(--ring-color) !important;
 }
 .ringKeyboard {
     border: var(--border);
-    border-color: var(--ringKeyboard-border) !important;
+    border-color: var(--ringKeyboard-color) !important;
 }
 
 ul {

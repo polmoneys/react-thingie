@@ -41,6 +41,21 @@
     );
 }
 
+.theme {
+    padding: var(--pxy) !important;
+    background-color: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+}
+
+.theme-inset {
+    background-color: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+}
+
 .positive {
     background-color: var(--positive) !important;
     color: currentColor;

@@ -12,6 +12,7 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'style'> {
     isPending?: boolean;
     mood?: Mood;
     stretch?: boolean;
+    unset?: boolean;
     dangerous?: CSSProperties;
 }
 

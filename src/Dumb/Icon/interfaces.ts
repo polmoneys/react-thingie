@@ -14,7 +14,8 @@ export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
     strokeLinecap?: React.SVGProps<SVGLineElement>['strokeLinecap'];
     strokeLinejoin?: React.SVGProps<SVGLineElement>['strokeLinejoin'];
     stroke?: string;
-    strokeScale?: boolean | number;
     fill?: string;
+    fillPolyLines?: string;
     circle?: boolean;
+    transform?: string;
 }

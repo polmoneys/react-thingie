@@ -11,6 +11,9 @@ export type TextInputLabelProps = CommonProps & {
     label: string;
     gridTemplateColumns?: string;
     gridTemplateRows?: string;
+    classNames?: {
+        input?: string;
+    };
 };
 
 export type TextInputProps = CommonProps & {

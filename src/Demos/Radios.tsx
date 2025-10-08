@@ -58,6 +58,7 @@ export default function DemoRadio() {
     return (
         <>
             <Group.Col
+                component={'form'}
                 dangerous={{ maxWidth: 'min(300px,80vw)', margin: '0 auto' }}
             >
                 <Radio

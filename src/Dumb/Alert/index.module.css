@@ -19,4 +19,8 @@
         z-index: var(--z-max);
         transform: translate(-50%, -50%);
     }
+
+    &.fit {
+        width: fit-content;
+    }
 }

@@ -78,7 +78,7 @@ export default function DemoIcons() {
 
                         <Icon.X size={48} />
                         <Icon.X size={72} />
-                        <Icon.X size={72} strokeScale={1.4} />
+                        <Icon.X size={72} strokeWidth={2} />
                     </Group>
                 )}
             </ContainerSize>

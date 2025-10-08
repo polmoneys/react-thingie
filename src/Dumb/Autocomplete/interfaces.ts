@@ -1,7 +1,10 @@
 import type { CSSProperties, InputHTMLAttributes } from 'react';
 
+type Item = string;
+type Items = Array<Item>;
+
 export interface ChipsProps {
-    selected: Array<string>;
+    selected: Items;
     onRemove: (item: number) => void;
     limit: number;
 }
@@ -13,19 +16,21 @@ export type BasicItem = {
 };
 
 export interface AutocompLiteProps {
-    options: Array<string>;
-    value: Array<string>;
-    onChange: (selection: Array<string>) => void;
+    options: Items;
+    value: Items;
+    onChange: (selection: Items) => void;
     onChangeQuery?: (query: string) => void;
     id: string;
     limit?: number;
     inputProps?: Partial<InputHTMLAttributes<HTMLInputElement>>;
     dangerous?: CSSProperties;
+    disabledOptions?: Items;
 }
 
 export interface OptionsProps {
-    items: Array<string>;
+    items: Items;
     show: boolean;
     onChange: (item: string) => void;
     highlightIndex: number;
+    disabledOptions?: Items;
 }

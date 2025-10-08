@@ -17,6 +17,7 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
         className,
         component: Component = 'div',
         dangerous,
+        breakEqualHeight,
     } = props;
 
     const style = useMemo(() => {
@@ -41,10 +42,17 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
             '--hug-grid-template-columns-md': gridTemplateColumnsValues.md,
             '--hug-grid-template-columns-lg': gridTemplateColumnsValues.lg,
             '--hug-grid-template-columns-xl': gridTemplateColumnsValues.xl,
+            ...(has(breakEqualHeight) && { alignItems: 'start' }),
         };
 
-        return has(dangerous) ? { ...dangerous, ...customStyle } : customStyle;
-    }, [dangerous, gap, gridTemplateColumns, padding]);
+        return has(dangerous)
+            ? {
+                  ...dangerous,
+                  ...customStyle,
+                  ...(has(breakEqualHeight) && { alignItems: 'start' }),
+              }
+            : customStyle;
+    }, [breakEqualHeight, dangerous, gap, gridTemplateColumns, padding]);
 
     return (
         <Component className={clsx(styles.columns, className)} style={style}>

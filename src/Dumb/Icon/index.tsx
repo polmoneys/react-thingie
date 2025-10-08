@@ -1,3 +1,5 @@
+import { has } from '../../utils';
+
 import type { IconProps, LineInput, Point } from './interfaces';
 import Loading from './Loading';
 import { BASE_VIEWBOX, pointsToString, rotateShapes } from './utils';
@@ -14,9 +16,10 @@ export default function Icon({
     strokeLinejoin = 'round',
     stroke = 'currentColor',
     fill = 'none',
+    fillPolyLines = 'none',
     circle = true,
     children,
-    strokeScale,
+    transform,
     ...rest
 }: IconProps) {
     const cx = viewBoxSize / 2;
@@ -30,35 +33,60 @@ export default function Icon({
         center,
     );
 
-    let scaleFactor = 1;
-    if (strokeScale === true) scaleFactor = viewBoxSize / BASE_VIEWBOX;
-    else if (typeof strokeScale === 'number') scaleFactor = strokeScale;
-    const computedStrokeWidth = Math.max(0.01, strokeWidth * scaleFactor);
-
     return (
         <svg
+            data-icon=""
             viewBox={`0 0 ${viewBoxSize} ${viewBoxSize}`}
             width={size}
             height={size}
             stroke={stroke}
             fill={fill}
-            strokeWidth={computedStrokeWidth}
+            strokeWidth={strokeWidth}
             strokeLinecap={strokeLinecap}
             strokeLinejoin={strokeLinejoin}
+            {...(has(transform) && { style: { transform } })}
             {...rest}
         >
-            {circle && <circle cx={cx} cy={cy} r={cx - padding} />}
+            {circle && (
+                <circle
+                    cx={cx}
+                    cy={cy}
+                    r={cx - padding}
+                    vectorEffect="non-scaling-stroke"
+                    stroke={stroke}
+                    strokeWidth={strokeWidth}
+                    strokeLinecap={strokeLinecap}
+                    strokeLinejoin={strokeLinejoin}
+                    fill="none"
+                />
+            )}
             {rp?.map((poly, i) => (
                 <polyline
                     key={`poly-${i}`}
                     points={pointsToString(poly)}
-                    fill="none"
+                    fill={fillPolyLines}
+                    stroke={stroke}
+                    strokeWidth={strokeWidth}
+                    strokeLinecap={strokeLinecap}
+                    strokeLinejoin={strokeLinejoin}
+                    vectorEffect="non-scaling-stroke"
                 />
             ))}
             {rl?.map((seg, i) => {
                 const [[x1, y1], [x2, y2]] = seg;
                 return (
-                    <line key={`line-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} />
+                    <line
+                        key={`line-${i}`}
+                        x1={x1}
+                        y1={y1}
+                        x2={x2}
+                        y2={y2}
+                        stroke={stroke}
+                        strokeWidth={strokeWidth}
+                        strokeLinecap={strokeLinecap}
+                        strokeLinejoin={strokeLinejoin}
+                        vectorEffect="non-scaling-stroke"
+                    />
                 );
             })}
             {children}
@@ -91,6 +119,117 @@ const xLines: LineInput[] = [
 ];
 Icon.X = ({ lines, polylines, rotate, ...rest }: IconProps) => (
     <Icon lines={xLines} {...rest} />
+);
+
+const infoLines: LineInput[] = [
+    [
+        [12, 13],
+        [12, 16],
+    ],
+    [
+        [12, 8],
+        [12, 9],
+    ],
+];
+Icon.Info = ({ lines, polylines, rotate, ...rest }: IconProps) => (
+    <Icon lines={infoLines} {...rest} />
+);
+
+const addLines: Point[] = [
+    [6, 12],
+    [18, 12],
+];
+
+Icon.Remove = ({ lines, polylines, rotate, circle, ...rest }: IconProps) => (
+    <Icon
+        polylines={[addLines]}
+        // circle={false}
+        {...rest}
+    />
+);
+
+const removeLines: LineInput[] = [
+    [
+        [6, 12],
+        [18, 12],
+    ],
+    [
+        [12, 6],
+        [12, 18],
+    ],
+];
+
+Icon.Add = ({ lines, polylines, rotate, circle, ...rest }: IconProps) => (
+    <Icon
+        lines={removeLines}
+        // circle={false}
+        {...rest}
+    />
+);
+
+const exportLines: Point[] = [
+    [7, 7],
+    [7, 17],
+    [7, 7],
+    [17, 7],
+    [17, 7],
+    [17, 17],
+    [17, 17],
+    [7, 17],
+];
+
+Icon.ExportSheet = ({
+    lines,
+    polylines,
+    rotate,
+    circle,
+    ...rest
+}: IconProps) => (
+    <Icon
+        polylines={[exportLines]}
+        // circle={false}
+        {...rest}
+    />
+);
+
+const exportLines2: LineInput[] = [
+    [
+        [7, 7],
+        [7, 17],
+    ],
+    [
+        [7, 7],
+        [17, 7],
+    ],
+    [
+        [17, 7],
+        [17, 17],
+    ],
+    [
+        [17, 17],
+        [7, 17],
+    ],
+
+    [
+        [8, 5],
+        [8, 7],
+    ],
+    [
+        [8, 5],
+        [16, 5],
+    ],
+    [
+        [16, 5],
+        [16, 7],
+    ],
+    [
+        [16, 7],
+        [8, 7],
+    ],
+];
+
+Icon.ExportSheets = ({ lines, polylines, rotate, ...rest }: IconProps) => (
+    <Icon lines={exportLines2} {...rest} />
 );
 
 Icon.Loading = Loading;

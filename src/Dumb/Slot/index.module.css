@@ -9,8 +9,13 @@
     padding: 0 !important;
 
     &:focus-within {
-        border-color: red;
+        border-color: var(--ring-color);
     }
+
+    &:focus-within {
+        border-color: var(--ringKeyboard-color);
+    }
+
     &.hasStart {
         grid-template-columns: var(--start) minmax(0, 1fr);
     }

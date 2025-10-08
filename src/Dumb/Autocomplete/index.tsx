@@ -1,4 +1,10 @@
-import { type KeyboardEvent, useEffect, useRef, useState } from 'react';
+import {
+    type KeyboardEvent,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react';
 
 import { clsx, has } from '../../utils';
 import TextInputLabel from '../InputText';
@@ -18,8 +24,14 @@ export default function AutocompLite(props: AutocompLiteProps) {
         onChange,
         inputProps,
         dangerous,
+        disabledOptions = [],
         ...rest
     } = props;
+
+    const disabledSet = useMemo(
+        () => new Set(disabledOptions),
+        [disabledOptions],
+    );
 
     const [inputValue, setInputValue] = useState<string>('');
     const [suggestions, setSuggestions] = useState<Array<string>>([]);
@@ -29,9 +41,25 @@ export default function AutocompLite(props: AutocompLiteProps) {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
 
+    const itemsEmpty = () => suggestions.length === 0;
+
+    const findFirstEnabledIndex = (items: string[]) =>
+        items.findIndex((s) => !disabledSet.has(s));
+
+    const findNextEnabled = (start: number, dir: 1 | -1) => {
+        if (itemsEmpty()) return -1;
+        let i = start;
+        while (true) {
+            i = i + dir;
+            if (i < 0 || i >= suggestions.length) return start; // stop at current if none found
+            if (!disabledSet.has(suggestions[i])) return i;
+        }
+    };
+
     const openSuggestions = (filtered: Array<string>) => {
         setSuggestions(filtered);
-        setHighlightIndex(filtered.length > 0 ? 0 : -1);
+        const firstEnabled = findFirstEnabledIndex(filtered);
+        setHighlightIndex(firstEnabled >= 0 ? firstEnabled : -1);
         setShowSuggestion(filtered.length > 0);
     };
 
@@ -53,6 +81,15 @@ export default function AutocompLite(props: AutocompLiteProps) {
 
     const addSelected = (value: string) => {
         if (!value) return;
+
+        if (disabledSet.has(value)) {
+            // silently ignore or optionally show a small UI message
+            inputRef.current?.focus();
+            setInputValue('');
+            setShowSuggestion(false);
+            return;
+        }
+
         if (selected.includes(value)) {
             setInputValue('');
             setShowSuggestion(false);
@@ -74,23 +111,30 @@ export default function AutocompLite(props: AutocompLiteProps) {
     };
 
     const onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (showSuggestion) {
+        if (showSuggestion && suggestions.length > 0) {
             if (event.key === 'ArrowDown') {
                 event.preventDefault();
-                setHighlightIndex((prev) =>
-                    prev < suggestions.length - 1 ? prev + 1 : prev,
-                );
+                setHighlightIndex((prev) => {
+                    const start = prev >= 0 ? prev : -1;
+                    return findNextEnabled(start, 1);
+                });
                 return;
             }
             if (event.key === 'ArrowUp') {
                 event.preventDefault();
-                setHighlightIndex((prev) => (prev > 0 ? prev - 1 : 0));
+                setHighlightIndex((prev) => {
+                    const start = prev >= 0 ? prev : suggestions.length;
+                    return findNextEnabled(start, -1);
+                });
                 return;
             }
             if (event.key === 'Enter' || event.key === 'Tab') {
                 if (highlightIndex >= 0 && suggestions[highlightIndex]) {
                     event.preventDefault();
-                    addSelected(suggestions[highlightIndex]);
+                    const chosen = suggestions[highlightIndex];
+                    if (!disabledSet.has(chosen)) {
+                        addSelected(chosen);
+                    }
                 }
                 return;
             }
@@ -101,9 +145,16 @@ export default function AutocompLite(props: AutocompLiteProps) {
         } else {
             // when suggestion list hidden:
             if (event.key === 'Enter' && inputValue.trim()) {
-                // allow creating new tags from free text
+                // allow creating new tags from free text, but not if that text is a disabled option
                 event.preventDefault();
-                addSelected(inputValue.trim());
+                const trimmed = inputValue.trim();
+                if (!disabledSet.has(trimmed)) {
+                    addSelected(trimmed);
+                } else {
+                    // do nothing (or show a message)
+                    setInputValue('');
+                    inputRef.current?.focus();
+                }
                 return;
             }
         }
@@ -118,9 +169,12 @@ export default function AutocompLite(props: AutocompLiteProps) {
         }
     };
 
-    const onSuggestionMouseDown = (
-        s: string, // use mouseDown to avoid losing focus before click
-    ) => addSelected(s);
+    const onSuggestionMouseDown = (s: string) => {
+        if (disabledSet.has(s)) return;
+        // use mouseDown to avoid losing focus before click
+        addSelected(s);
+    };
+
     useEffect(() => {
         const onClickOutside = (event: MouseEvent) => {
             if (!containerRef.current) return;
@@ -180,6 +234,7 @@ export default function AutocompLite(props: AutocompLiteProps) {
                 items={suggestions}
                 onChange={onSuggestionMouseDown}
                 highlightIndex={highlightIndex}
+                disabledOptions={disabledOptions}
             />
         </div>
     );

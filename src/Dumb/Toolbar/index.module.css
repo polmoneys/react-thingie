@@ -1,0 +1,15 @@
+.root {
+    display: flex;
+    width: fit-content;
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    &.col {
+        flex-direction: column;
+    }
+}
+
+.separator {
+    width: var(--border-width);
+    background-color: currentColor;
+}

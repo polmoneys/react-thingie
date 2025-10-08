@@ -32,4 +32,5 @@ export interface ColumnsGridProps
     dangerous?: CSSProperties;
     children?: ReactNode;
     gradient?: string;
+    breakEqualHeight?: boolean;
 }

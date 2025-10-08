@@ -1,6 +1,6 @@
 import { type CSSProperties, type ForwardedRef, forwardRef } from 'react';
 
-import { has } from '../../utils';
+import { clsx, has } from '../../utils';
 import Ring from '../Ring';
 
 import { type TextInputLabelProps } from './interfaces';
@@ -16,6 +16,7 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
             label,
             errorElementId,
             className,
+            classNames,
             ...rest
         } = props;
 
@@ -23,6 +24,7 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
             display: 'grid',
             ...(has(gridTemplateColumns) && { gridTemplateColumns }),
             ...(has(gridTemplateRows) && { gridTemplateRows }),
+            alignItems: 'center',
         } as CSSProperties;
         return (
             <div style={options} {...(has(className) && { className })}>
@@ -30,6 +32,7 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
                 <Ring isTextInput>
                     <input
                         {...rest}
+                        className={clsx(classNames?.input)}
                         id={id}
                         name={id}
                         type="text"

@@ -22,7 +22,9 @@ const DEMOS_V1 = [
     'Portal',
     'Radio',
     'Stream',
+    'Excel',
     'Table',
+    'Tree',
     'WebWorker',
 ];
 
@@ -56,24 +58,12 @@ function App() {
                     overflow: 'visible',
                 }}
             >
-                {showAlert && (
-                    <>
-                        <Alert
-                            mood="positive"
-                            style={{ width: 'fit-content', margin: '0 auto' }}
-                        >
-                            <Font.Bold>
-                                {DEMOS_V1.length} & growing :)
-                            </Font.Bold>
-                        </Alert>
-                        <br />
-                    </>
-                )}
                 <StickyHeader height="130px">
                     <AutocompLite
                         inputProps={{
                             placeholder: `Search ${DEMOS_V1.length} demos`,
                         }}
+                        disabledOptions={['Stream', 'WebWorker']}
                         options={DEMOS_V1}
                         value={demos}
                         onChange={(next) => {
@@ -101,6 +91,21 @@ function App() {
                         }}
                     />
                 </StickyHeader>
+                <br />
+                {showAlert && (
+                    <>
+                        <Alert
+                            mood="positive"
+                            style={{ width: 'fit-content', margin: '0 auto' }}
+                        >
+                            <Font.Bold>
+                                {DEMOS_V1.length} & growing :)
+                            </Font.Bold>
+                        </Alert>
+                        <br />
+                    </>
+                )}
+
                 <br />
                 <DemoRenderer demos={demos} />
             </main>

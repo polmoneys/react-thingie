@@ -33,3 +33,9 @@ export type Unit =
     | 'end'
     | 'fit-content'
     | 'wrap';
+
+export interface DemoOptions {
+    label: string;
+    disabled?: boolean;
+    id: number | string;
+}

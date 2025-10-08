@@ -60,6 +60,13 @@
         &:is(:hover, .highlighted) {
             background-color: var(--neutral);
         }
+
+        &.disabled {
+            pointer-events: none;
+            cursor: not-allowed !important;
+            opacity: var(--opacity-disabled) !important;
+            background-color: var(--bg-disabled) !important;
+        }
     }
 }
 
