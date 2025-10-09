@@ -1,11 +1,49 @@
 import Alert from '../Dumb/Alert';
 import Font from '../Dumb/Font';
 import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
-import RecursiveItem, { FileOrFolder } from '../Dumb/Tree/RecursiveItem';
-import { initialFileSystem } from '../Dumb/Tree/reducer';
+import Group from '../Dumb/Group';
+import Tree, { FileOrFolder } from '../Dumb/Tree/';
+import type { FileSystem } from '../Dumb/Tree/interfaces';
 import useTree from '../Dumb/Tree/useTree';
 
 import styles from '../Dumb/Tree/index.module.css';
+
+export const initialFileSystem: FileSystem = {
+    0: {
+        id: 0,
+        title: 'Macintosh HD',
+        type: 'folder',
+        childIds: [1, 2, 8],
+        parentId: null,
+    },
+    1: {
+        id: 1,
+        title: 'Applications',
+        type: 'folder',
+        childIds: [3, 4],
+        parentId: 0,
+    },
+    2: { id: 2, title: 'Users', type: 'folder', childIds: [5, 6], parentId: 0 },
+    3: {
+        id: 3,
+        title: 'Visual Studio Code.app',
+        type: 'file',
+        childIds: [],
+        parentId: 1,
+    },
+    4: { id: 4, title: 'iTerm.app', type: 'file', childIds: [], parentId: 1 },
+    5: { id: 5, title: 'alice', type: 'folder', childIds: [7], parentId: 2 },
+    6: {
+        id: 6,
+        title: 'shared',
+        type: 'folder',
+        childIds: [],
+        parentId: 2,
+        disabled: true,
+    },
+    7: { id: 7, title: 'todo.txt', type: 'file', childIds: [], parentId: 5 },
+    8: { id: 8, title: 'Library', type: 'folder', childIds: [], parentId: 0 },
+};
 
 export default function FileSystemTree() {
     const {
@@ -19,8 +57,10 @@ export default function FileSystemTree() {
     return (
         <>
             <Alert mood="negative" fitContent>
-                <Font.Bold> {fs[selectedId]?.title ?? '(none)'}</Font.Bold>
-                <FileOrFolder type={fs[selectedId]?.type ?? ''} />
+                <Group.Row gap="var(--gap-2)">
+                    <FileOrFolder type={fs[selectedId]?.type ?? ''} />
+                    <Font.Bold> {fs[selectedId]?.title ?? '(none)'}</Font.Bold>
+                </Group.Row>
             </Alert>
             <br />
             <GridTemplateColumns
@@ -29,9 +69,10 @@ export default function FileSystemTree() {
                 gridTemplateColumns={{ xs: '1fr', sm: '1fr 1.7fr' }}
             >
                 <ul className={styles.ul}>
-                    <RecursiveItem
+                    <Tree
                         expanded={expanded}
                         setSelectedId={setSelectedId}
+                        selectedId={selectedId}
                         toggleExpand={toggleExpand}
                         node={tree}
                         depth={0}

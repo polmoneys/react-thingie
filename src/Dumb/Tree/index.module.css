@@ -11,6 +11,12 @@
     margin-bottom: var(--gap-1);
 }
 
+.li:not([data-depth='0']):has(:focus-within) {
+    & div:not(.row + ul) > div {
+        background-color: var(--negative) !important;
+    }
+}
+
 .row {
     display: flex;
     padding-left: calc((var(--tree-item-level) - 1) * var(--gap-2));

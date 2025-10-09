@@ -57,7 +57,7 @@ export default function Icon({
                     strokeWidth={strokeWidth}
                     strokeLinecap={strokeLinecap}
                     strokeLinejoin={strokeLinejoin}
-                    fill="none"
+                    fill={fill}
                 />
             )}
             {rp?.map((poly, i) => (

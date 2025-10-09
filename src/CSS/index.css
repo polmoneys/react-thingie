@@ -390,6 +390,10 @@ input[type='checkbox']:indeterminate {
     }
 }
 
+input[type='range'] {
+    accent-color: var(--info);
+}
+
 select {
     padding: 0 44px 0 var(--gap-2);
     min-height: var(--button-hit-area);

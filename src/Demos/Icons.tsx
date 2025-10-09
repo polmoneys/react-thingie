@@ -25,26 +25,9 @@ export default function DemoIcons() {
                         <Icon.X />
                         <Icon.Chevron />
                         <Icon.ChevronDown />
-                        <Icon
-                            lines={[
-                                [
-                                    [6, 12],
-                                    [18, 12],
-                                ],
-                                [
-                                    [12, 6],
-                                    [12, 18],
-                                ],
-                            ]}
-                        />
-                        <Icon
-                            lines={[
-                                [
-                                    [6, 12],
-                                    [18, 12],
-                                ],
-                            ]}
-                        />
+                        <Icon.Add fill="var(--info)" />
+
+                        <Icon.Remove fillPolyLines="var(--info)" />
                         <Icon
                             rotate={90}
                             lines={[
@@ -72,13 +55,16 @@ export default function DemoIcons() {
                                 ],
                             ]}
                         />
-                        <Icon.X fill="var(--neutral)" />
-                        <Icon.X stroke="var(--neutral)" />
+                        <Icon.X />
+                        <Icon.X stroke="var(--info)" />
                         <Icon.X circle={false} />
 
-                        <Icon.X size={48} />
-                        <Icon.X size={72} />
-                        <Icon.X size={72} strokeWidth={2} />
+                        <Icon.ExportSheet
+                            size={48}
+                            fillPolyLines="var(--info)"
+                        />
+                        <Icon.ExportSheets size={72} fill="var(--info)" />
+                        <Icon.ExportSheets size={72} strokeWidth={1} />
                     </Group>
                 )}
             </ContainerSize>
@@ -95,16 +81,26 @@ export default function DemoIcons() {
                         }}
                     >
                         <Shape.Triangle />
-                        <Shape.Square />
-                        <Shape sides={5} />
-                        <Shape sides={6} />
-                        <Shape sides={7} />
-                        <Shape sides={8} fill="var(--neutral)" />
-                        <Shape sides={9} />
-                        <Shape sides={10} />
-                        <Shape sides={11} />
-                        <Shape sides={12} />
-                        <Shape.Circle />
+                        <Shape.Square fill="var(--positive)" />
+                        <Shape sides={5} fill="var(--positive)" />
+                        <Shape sides={6} fill="var(--positive)" />
+                        <Shape
+                            sides={7}
+                            fill="var(--negative)"
+                            stroke="var(--positive)"
+                            strokeWidth={4}
+                        />
+                        <Shape
+                            sides={8}
+                            fill="var(--positive)"
+                            stroke="var(--negative)"
+                            strokeWidth={4}
+                        />
+                        <Shape sides={9} fill="var(--positive)" />
+                        <Shape sides={10} fill="var(--positive)" />
+                        <Shape sides={11} fill="var(--positive)" />
+                        <Shape sides={12} fill="var(--positive)" />
+                        <Shape.Circle fill="var(--info)" />
                     </Group>
                 )}
             </ContainerSize>
@@ -121,12 +117,20 @@ export default function DemoIcons() {
                     }
                 />
 
+                {/*<datalist id="values">
+                    <option value="0" label="very cold!"></option>
+                    <option value="25" label="cool"></option>
+                    <option value="50" label="medium"></option>
+                    <option value="75" label="getting warm!"></option>
+                    <option value="100" label="hot!"></option>
+                </datalist>*/}
+
                 <StrokeDashoffset
                     progress={progress}
                     viewBox="0 0 73.76 45.715"
                     height="172.781"
                     width="278.7779"
-                    strokeColor="var(--neutral)"
+                    strokeColor="var(--info)"
                 >
                     <path
                         fill="none"

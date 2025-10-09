@@ -12,6 +12,7 @@
     --positive: #23d160;
     --neutral: var(--grey-40);
     --negative: #ff3860;
+    --info: #ffff4b;
 
     --negative-mixer: var(--negative) 30%;
     --negative-grey-20: color-mix(

@@ -66,6 +66,17 @@ aside,
     width: fit-content;
 }
 
+datalist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    writing-mode: vertical-lr;
+    width: 100%;
+    & option {
+        padding: 0;
+    }
+}
+
 @media (orientation: landscape) {
     .underline {
         text-decoration: underline;

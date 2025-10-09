@@ -1,4 +1,4 @@
-import { type ComponentProps,memo, useMemo } from 'react';
+import { type ComponentProps, memo, useMemo } from 'react';
 
 import { has, polygon } from './utils';
 
@@ -8,6 +8,8 @@ interface Props extends ComponentProps<'div'> {
     fill?: string;
     transforms?: string;
     viewbox?: string;
+    stroke?: string;
+    strokeWidth?: number;
 }
 
 const Shape = (props: Props) => {
@@ -18,6 +20,8 @@ const Shape = (props: Props) => {
         transforms,
         className,
         viewbox,
+        strokeWidth = 0,
+        stroke,
     } = props;
 
     const polyPath = useMemo(() => {
@@ -40,7 +44,11 @@ const Shape = (props: Props) => {
                 style: { transform: transforms },
             })}
         >
-            <path d={polyPath} />
+            <path
+                d={polyPath}
+                {...(has(stroke) && { stroke })}
+                strokeWidth={strokeWidth}
+            />
         </svg>
     );
 };
