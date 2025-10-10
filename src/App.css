@@ -13,7 +13,7 @@
     & > *:not(:last-of-type) {
         border-bottom: var(--border);
         margin-bottom: var(--gap-1);
-        min-height: calc(var(--hit-area-height) * 1.5);
+        min-height: calc(var(--min-height) * 1.5);
     }
 }
 main {
@@ -22,6 +22,9 @@ main {
 
 aside,
 [data-portal-fallback] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
     background-color: var(--positive);
     position: fixed;
     bottom: 0px;
@@ -62,10 +65,6 @@ aside,
     border-radius: 50%;
 }
 
-.fit {
-    width: fit-content;
-}
-
 datalist {
     display: flex;
     flex-direction: column;
@@ -77,39 +76,12 @@ datalist {
     }
 }
 
-@media (orientation: landscape) {
-    .underline {
-        text-decoration: underline;
-        -webkit-text-decoration: currentColor solid underline;
-        text-decoration: currentColor solid underline;
-    }
-    .underline-double {
-        text-decoration: underline;
-        -webkit-text-decoration: currentColor wavy underline;
-        text-decoration: currentColor wavy underline;
-    }
-}
-
 /*
-  <label class="summary">
-    <input type="checkbox" class="toggle">
-    <strong>Show details</strong>
-    <div class="details">
-      <p>Here are the juicy details that slide down.</p>
-    </div>
-  </label>
+    Mouse only
+    .element:focus:not(:focus-visible) {
+        outline: none;
+    }
 */
-.summary {
-    --open: 0;
-    display: grid;
-    grid-template-rows: auto 0px;
-    transition: grid-template-rows 0.3s ease;
-}
-.summary:has(.toggle:checked) {
-    --open: 1;
-    /* expands from 0px to 200px */
-    grid-template-rows: auto calc(var(--open) * 200px);
-}
 
 @media (any-hover: hover) and (pointer: fine) {
     /* Reveal the button only on hover */

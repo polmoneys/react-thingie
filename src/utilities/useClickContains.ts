@@ -1,6 +1,6 @@
 import { type RefObject, useEffect } from 'react';
 
-const useClickContains = ({
+export default function useClickContains({
     ref,
     onInside,
     onOutside,
@@ -8,7 +8,7 @@ const useClickContains = ({
     ref: RefObject<HTMLElement | null>;
     onOutside?: () => void;
     onInside?: () => void;
-}) => {
+}) {
     useEffect(() => {
         const onClick = (event: MouseEvent) => {
             const aside = ref.current;
@@ -25,6 +25,4 @@ const useClickContains = ({
             });
         };
     });
-};
-
-export default useClickContains;
+}

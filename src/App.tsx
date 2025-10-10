@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
+import { DEMOS_V2 } from './Demos/mock';
 import useDemos from './Demos/useURLDemos';
 import Alert from './Dumb/Alert';
-import AutocompLite from './Dumb/Autocomplete';
+import AutocompLite from './Dumb/AutocompLite';
+import type { AutocompLiteOption } from './Dumb/AutocompLite/interfaces';
+import useAutocompleteDestination from './Dumb/AutocompLite/useAutocomplite';
 import Font from './Dumb/Font';
 import StickyHeader from './Dumb/Sticky/Header';
 import { Timer } from './utilities/timer';
@@ -10,23 +13,10 @@ import DemoRenderer from './Demos';
 
 import './App.css';
 
-const DEMOS_V1 = [
-    'AutoCompLite',
-    'Card',
-    'DatePicker',
-    'Dialog',
-    'Icon',
-    'List',
-    'Menu',
-    'Popover',
-    'Portal',
-    'Radio',
-    'Stream',
-    'Excel',
-    'Table',
-    'Tree',
-    'WebWorker',
-];
+const mapper = (p: (typeof DEMOS_V2)[number]): AutocompLiteOption => ({
+    ...p,
+    full: `${p.label}, ${p.tag}, ${p.production}`,
+});
 
 function App() {
     // useEffect(() => {
@@ -40,15 +30,36 @@ function App() {
     const { toggleDemo, demos } = useDemos();
 
     const [showAlert, setAlert] = useState(true);
-
     new Timer(() => setAlert(false), 2000);
 
-    // const [show, setShow] = useState(false);
-    // new Timer(() => setShow(true), 3000);
+    const {
+        selected,
+        liveMessage,
+        filteredOptions,
+        toggleOption,
+        query,
+        setQuery,
+        setPopover,
+        showPopover,
+    } = useAutocompleteDestination({
+        places: DEMOS_V2,
+        mapper,
+        initialQuery: '',
+        multi: true,
+    });
+
+    const onToggleOptionSetUrl = (option: AutocompLiteOption) => {
+        toggleOption(option);
+        if (demos.includes(option.id)) {
+            demos.filter((i) => i === option.id).map((d) => toggleDemo(d));
+            return;
+        }
+        toggleDemo(option.id);
+    };
 
     return (
         <>
-            <aside id="aside" className="col sm gap"></aside>
+            <aside id="aside"></aside>
 
             <main
                 id="main"
@@ -60,38 +71,28 @@ function App() {
             >
                 <StickyHeader height="130px">
                     <AutocompLite
-                        inputProps={{
-                            placeholder: `Search ${DEMOS_V1.length} demos`,
-                        }}
-                        disabledOptions={['Stream', 'WebWorker']}
-                        options={DEMOS_V1}
-                        value={demos}
-                        onChange={(next) => {
-                            // first
-                            if (demos.length === 0) {
-                                next.map((d) => toggleDemo(d));
-                                return;
-                            }
-                            // remove
-                            if (demos.length > next.length) {
-                                demos
-                                    .filter((i) => !next.includes(i))
-                                    .map((d) => toggleDemo(d));
-                                return;
-                            }
-                            // add
-                            next.filter((i) => !demos.includes(i)).map((d) =>
-                                toggleDemo(d),
-                            );
-                        }}
-                        limit={3}
-                        id="search-demos"
-                        dangerous={{
-                            boxShadow: 'var(--shadow)',
-                        }}
-                    />
+                        placeholder={`Search ${DEMOS_V2.length} demos`}
+                        id="app-autocompLite"
+                        toggleOption={onToggleOptionSetUrl}
+                        options={filteredOptions}
+                        a11y={liveMessage ?? ''}
+                        query={query}
+                        setQuery={setQuery}
+                        selected={selected}
+                        label="Browse demos"
+                        onToggle={() => setPopover((prev) => !prev)}
+                        showPopover={showPopover}
+                        showChips
+                    >
+                        {filteredOptions.length === 0 ? (
+                            <Alert>
+                                <Font>No Demos match</Font>
+                            </Alert>
+                        ) : null}
+                    </AutocompLite>
                 </StickyHeader>
                 <br />
+
                 {showAlert && (
                     <>
                         <Alert
@@ -99,7 +100,7 @@ function App() {
                             style={{ width: 'fit-content', margin: '0 auto' }}
                         >
                             <Font.Bold>
-                                {DEMOS_V1.length} & growing :)
+                                {DEMOS_V2.length} & growing :)
                             </Font.Bold>
                         </Alert>
                         <br />

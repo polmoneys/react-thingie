@@ -17,8 +17,8 @@
     --font-line-height-sm: 1;
     --shout: uppercase !important;
 
-    --hit-area-height: max(44px, 2em);
-    --hit-area-width: 10ch;
+    --min-height: max(44px, 2em);
+    --min-width: 10ch;
 
     /* if we were brave we'd use more em*/
     --gap-1: 0.4rem;
@@ -37,6 +37,8 @@
     --border: var(--border-width) solid currentColor;
     --ring-color: var(--grey-20);
     --ringKeyboard-color: var(--positive);
+    --ios-notch: env(safe-area-inset-top) env(safe-area-inset-right)
+        env(safe-area-inset-bottom) env(safe-area-inset-left);
 
     --scrollbar-size: min(8px, 0.8em);
     --opacity-disabled: 0.6;
@@ -110,7 +112,7 @@ html {
     }
 
     & *::selection {
-        color: var(--positive);
+        color: var(--neutral);
         text-shadow: 0 0.1px 0px rgba(0, 0, 0, 1);
     }
 
@@ -238,7 +240,7 @@ a:is(:not([class])) {
 :where(html) {
     --button-bg: var(--white);
     --button-bg-active: var(--negative);
-    --button-hit-area: var(--hit-area-height);
+    --button-hit-area: var(--min-height);
 }
 
 button {
@@ -271,6 +273,7 @@ button {
     transition-duration: 0.15s;
 
     &:hover {
+        background-color: var(--neutral);
     }
     &:active {
         transform: scale(0.97);
@@ -330,12 +333,19 @@ button {
     }
 }
 
+/*button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    -webkit-appearance: button;
+}*/
+
 :where(input[type='text']) {
     /* iOS */
     --input-font-size: max(16px, 1em);
     font-size: --input-font-size;
     padding: var(--px);
-    min-height: var(--hit-area-height);
+    min-height: var(--min-height);
 }
 
 label:has(input[type='radio']) {
@@ -351,7 +361,7 @@ input[type='radio'] {
 
 input[type='checkbox'] {
     --checkbox-bg: var(--white);
-    --checkbox-hit-area: var(--hit-area-height);
+    --checkbox-hit-area: var(--min-height);
     height: var(--checkbox-hit-area);
     width: var(--checkbox-hit-area);
     aspect-ratio: 1;
@@ -415,9 +425,37 @@ select {
     border-color: var(--ringKeyboard-color) !important;
 }
 
-ul {
-    list-style-position: inside;
+ul,
+li {
+    list-style: none;
 }
+
+table {
+    border-color: currentColor;
+}
+
+fieldset {
+    border-color: var(--transparent);
+}
+
+legend {
+    padding: 0;
+}
+
+summary {
+    display: list-item;
+    cursor: pointer;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+    height: auto;
+}
+
+/*::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}*/
 
 @view-transition {
     navigation: auto;

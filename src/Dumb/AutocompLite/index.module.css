@@ -1,0 +1,74 @@
+.root {
+    position: relative;
+}
+
+.results {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    border: var(--border);
+    border: border;
+    position: absolute;
+    top: calc(var(--min-height) * 2);
+    overflow: auto;
+    max-height: min(300px, 40vh);
+    width: 100%;
+    z-index: var(--z-max);
+    margin-top: var(--gap-1);
+
+    &:focus {
+        outline: var(--border);
+        outline-color: var(--ring-color) !important;
+    }
+
+    .suggestion {
+        cursor: pointer;
+        padding: var(--px);
+        line-height: var(--min-height);
+        min-height: var(--min-height);
+
+        &:is(:hover, .highlighted) {
+            background-color: var(--info);
+        }
+
+        &.disabled {
+            pointer-events: none;
+            cursor: not-allowed !important;
+            opacity: var(--opacity-disabled) !important;
+            background-color: var(--bg-disabled) !important;
+        }
+
+        &.selected {
+            background-color: var(--positive);
+        }
+    }
+}
+
+.splits {
+    display: flex;
+    gap: var(--gap-1);
+    .split {
+        opacity: 0.7;
+        &.match {
+            font-weight: bold;
+            text-decoration: underline;
+            -webkit-text-decoration: currentColor solid underline;
+            text-decoration: currentColor solid underline;
+            opacity: 1;
+        }
+    }
+}
+
+.chip {
+    background-color: var(--positive);
+    border-radius: var(--border-radius);
+
+    &.isActive {
+        filter: hue-rotate(120deg);
+    }
+    & .chipLabel {
+    }
+    & .chipRemove {
+        display: inline-flex;
+        margin-left: var(--gap-1);
+    }
+}

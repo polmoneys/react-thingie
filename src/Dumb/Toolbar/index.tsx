@@ -44,9 +44,12 @@ ToolBar.Group = ({
     label,
     children,
     separator,
+    className,
 }: ToolBarProps & { separator?: 'vertical' | 'horizontal' }) => (
     <>
-        <Group.Row aria-label={label}>{children}</Group.Row>
+        <Group.Row aria-label={label} className={clsx(className)}>
+            {children}
+        </Group.Row>
         {has(separator) && (
             <Separator orientation={separator} className={styles.separator} />
         )}

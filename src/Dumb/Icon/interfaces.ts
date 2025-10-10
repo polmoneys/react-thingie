@@ -18,4 +18,5 @@ export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
     fillPolyLines?: string;
     circle?: boolean;
     transform?: string;
+    font?: boolean;
 }

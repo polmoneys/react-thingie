@@ -26,7 +26,6 @@ export default function DemoIcons() {
                         <Icon.Chevron />
                         <Icon.ChevronDown />
                         <Icon.Add fill="var(--info)" />
-
                         <Icon.Remove fillPolyLines="var(--info)" />
                         <Icon
                             rotate={90}
@@ -55,10 +54,8 @@ export default function DemoIcons() {
                                 ],
                             ]}
                         />
-                        <Icon.X />
                         <Icon.X stroke="var(--info)" />
                         <Icon.X circle={false} />
-
                         <Icon.ExportSheet
                             size={48}
                             fillPolyLines="var(--info)"
@@ -104,6 +101,19 @@ export default function DemoIcons() {
                     </Group>
                 )}
             </ContainerSize>
+            <br />
+            {/*<Group.Row gap="var(--gap-2)" flexWrap="wrap">
+                <Font>✅</Font>
+                <Font className="bright">✅</Font>
+                <Font className="emoji-red-check">✅</Font>
+                <Font>🎈</Font>
+                <Font className="bright">🎈</Font>
+                <Font className="emoji-red-check">🎈</Font>
+                <Font>🆒</Font>
+                <Font className="bright">🆒</Font>
+                <Font className="emoji-red-check">🆒</Font>
+            </Group.Row>
+            <br />*/}
 
             <GridTemplateColumns
                 gridTemplateColumns={{ xs: '1fr', md: '200px 1fr' }}

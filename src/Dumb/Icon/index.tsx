@@ -1,8 +1,10 @@
-import { has } from '../../utils';
+import { clsx, has } from '../../utils';
 
 import type { IconProps, LineInput, Point } from './interfaces';
 import Loading from './Loading';
 import { BASE_VIEWBOX, pointsToString, rotateShapes } from './utils';
+
+import styles from './index.module.css';
 
 export default function Icon({
     size = 64,
@@ -20,6 +22,8 @@ export default function Icon({
     circle = true,
     children,
     transform,
+    font,
+    className,
     ...rest
 }: IconProps) {
     const cx = viewBoxSize / 2;
@@ -44,6 +48,7 @@ export default function Icon({
             strokeWidth={strokeWidth}
             strokeLinecap={strokeLinecap}
             strokeLinejoin={strokeLinejoin}
+            className={clsx(styles.icon, has(font) && styles.font, className)}
             {...(has(transform) && { style: { transform } })}
             {...rest}
         >

@@ -58,10 +58,6 @@ export default function RecursiveItem(props: TreeProps) {
                 aria-expanded={isFolder ? isExpanded : undefined}
                 aria-disabled={node.disabled ?? undefined}
                 className={clsx(styles.row, node.disabled && styles.disabled)}
-                onClick={() => {
-                    if (node.disabled) return;
-                    setSelectedId(node.id);
-                }}
                 style={{ paddingLeft: depth * INDENT_PX }}
             >
                 {isFolder ? (
@@ -89,23 +85,30 @@ export default function RecursiveItem(props: TreeProps) {
                     </Button.Transparent>
                 ) : null}
 
-                <Group.Row
-                    alignItems="center"
-                    dangerous={{
-                        backgroundColor: isFocused
-                            ? 'var(--info)'
-                            : node.disabled
-                              ? 'var(--neutral)'
-                              : 'var(--positive)',
-                        padding: 'var(--gap-1)',
-                        border: 'var(--border)',
-                        borderRadius: 'var(--border-radius)',
-                        boxShadow: 'var(--box-shadow)',
+                <button
+                    onClick={() => {
+                        if (node.disabled) return;
+                        setSelectedId(node.id);
                     }}
                 >
-                    <FileOrFolder type={node.type} />
-                    <Font.Bold>{node.title}</Font.Bold>
-                </Group.Row>
+                    <Group.Row
+                        alignItems="center"
+                        dangerous={{
+                            backgroundColor: isFocused
+                                ? 'var(--info)'
+                                : node.disabled
+                                  ? 'var(--neutral)'
+                                  : 'var(--positive)',
+                            padding: 'var(--gap-1)',
+                            border: 'var(--border)',
+                            borderRadius: 'var(--border-radius)',
+                            boxShadow: 'var(--box-shadow)',
+                        }}
+                    >
+                        <FileOrFolder type={node.type} />
+                        <Font.Bold>{node.title}</Font.Bold>
+                    </Group.Row>
+                </button>
             </div>
 
             {isFolder && expanded[node.id] && node.children.length > 0 && (

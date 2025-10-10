@@ -74,7 +74,7 @@ export default function DemoDialog() {
                             display: 'flex',
                             alignItems: 'center',
                             borderBottom: 'var(--border)',
-                            minHeight: 'var(--hit-area-height)',
+                            minHeight: 'var(--min-height)',
                             padding: '0 var(--gap-2) 0 var(--gap-3)',
                         }}
                     >
@@ -98,7 +98,7 @@ export default function DemoDialog() {
                             display: 'flex',
                             alignItems: 'center',
                             borderTop: 'var(--border)',
-                            height: 'var(--hit-area-height)',
+                            height: 'var(--min-height)',
                             justifyContent: 'flex-end',
                         }}
                     >
@@ -117,7 +117,7 @@ export default function DemoDialog() {
                             display: 'flex',
                             placeContent: 'center',
                             borderBottom: 'var(--border)',
-                            height: 'var(--hit-area-height)',
+                            height: 'var(--min-height)',
                         }}
                     >
                         <Font>Lorem ipsun dolor</Font>

@@ -65,6 +65,12 @@
     background-color: var(--negative) !important;
     color: currentColor;
 }
+
+.info {
+    background-color: var(--info) !important;
+    color: currentColor;
+}
+
 .neutral {
     background-color: var(--neutral) !important;
 }
