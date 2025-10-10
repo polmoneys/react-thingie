@@ -34,7 +34,6 @@ export default function AutocompLiteSplitOption(
             onMouseDown={() => {
                 if (!isDisabled) onSelect(position);
             }}
-
             // ref={(el) => {
             //     if (optionRefs === null) return;
             //     if (el) {

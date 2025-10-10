@@ -15,6 +15,7 @@ export interface AutcompLiteProps {
     showPopover?: boolean;
     showChips?: boolean;
     chipLimit?: number;
+    isSticky?: boolean;
 }
 export interface AutocompLiteOption
     extends Record<string, string | boolean | undefined> {

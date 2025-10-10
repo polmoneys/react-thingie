@@ -1,37 +1,13 @@
-import { useMemo } from 'react';
+import { useState } from 'react';
 
 import Button from '../Dumb/Button';
+import useExcelExport from '../Dumb/Excel';
+import type { ColumnDefinition } from '../Dumb/Excel/interfaces';
 import Font from '../Dumb/Font';
 import Icon from '../Dumb/Icon';
 import ToolBar from '../Dumb/Toolbar';
-import useExcelExport from '../Excel';
-import type { ColumnDefinition } from '../Excel/interfaces';
 
-const monthEnd = (y: number, m: number) => new Date(Date.UTC(y, m + 1, 0));
-
-const makeYearData = (year: number, basePrice: number, volatility = 0.06) => {
-    // produce 12 month closing prices with light randomness
-    const rows: any[] = [];
-    rows.push([{ value: 'Name' }, { value: 'Date' }, { value: 'Close' }]);
-
-    let price = basePrice;
-    for (let m = 0; m < 12; m++) {
-        // small random walk
-        const change = (Math.random() * 2 - 1) * volatility * price;
-        price = Math.max(1, +(price + change).toFixed(2));
-        rows.push([
-            {
-                value: `$TOCK NAM€ ${m}`,
-                fontWeight: 'bold',
-                color: '#f9f9f9',
-                backgroundColor: '#222222',
-            },
-            { value: monthEnd(year, m) },
-            { value: price, format: '#,##0.00' },
-        ]);
-    }
-    return rows;
-};
+import { demoPlaces } from './Destinations';
 
 const columns = [
     { align: 'left', width: 80 },
@@ -39,28 +15,58 @@ const columns = [
     { align: 'right', width: 22 },
 ] as Array<ColumnDefinition>;
 
+const sheet1Places = demoPlaces.slice(0, 15).map((p) => [
+    {
+        value: p.city,
+        fontWeight: 'bold',
+        backgroundColor: '#cccccc',
+    },
+    {
+        value: p.state ?? '-',
+    },
+    {
+        value: p.country,
+    },
+]);
+const sheet2Places = demoPlaces.slice(15, demoPlaces.length - 1).map((p) => [
+    {
+        value: p.city,
+        fontWeight: 'bold',
+        backgroundColor: '#cccccc',
+    },
+    {
+        value: p.state ?? '-',
+    },
+    {
+        value: p.country,
+    },
+]);
+
 export default function DemoExcel() {
+    const [open, setOpen] = useState(true);
+
     const { exportSingleSheet, exportMultipleSheets, isLoading } =
         useExcelExport({
             onError: () => console.log('Export failed. Please try again.'),
         });
 
-    const year1Rows = useMemo(() => makeYearData(2023, 120), []);
-    const year2Rows = useMemo(() => makeYearData(2024, 180), []);
-
     const onExport = async () => {
         await exportSingleSheet({
-            filename: 'fake-tech-stock-year-1',
-            data: year1Rows,
+            filename: 'destinations-top-15',
+            data: sheet1Places,
             columns,
-            sheetName: 'Year 1 (2023)',
+            sheetName: 'top 15 cities (2025)',
         });
     };
 
     const onExportMultipleSheets = async () => {
         await exportMultipleSheets('fake-tech-stock-2023-2024', [
-            { data: year1Rows, columns, sheetName: 'Year 1 (2023)' },
-            { data: year2Rows, columns, sheetName: 'Year 2 (2024)' },
+            { data: sheet1Places, columns, sheetName: 'top 15 cities (2025)' },
+            {
+                data: sheet2Places,
+                columns,
+                sheetName: 'top 15-25 cities (2025)',
+            },
         ]);
     };
 
@@ -70,26 +76,44 @@ export default function DemoExcel() {
             <br />
             <ToolBar
                 label="exports"
-                dangerous={{ backgroundColor: 'var(--negative)' }}
+                dangerous={{
+                    backgroundColor: 'var(--negative)',
+                    border: 'var(--border)',
+                    boxShadow: 'var(--shadow)',
+                }}
             >
-                <ToolBar.Group label="sheet 1" separator="vertical">
+                <ToolBar.Group label="Info" separator="vertical">
                     <Button.Transparent
                         isPending={isLoading}
                         isIcon
-                        onClick={onExport}
+                        onClick={() => setOpen((prev) => !prev)}
                     >
-                        <Icon.ExportSheet />
+                        {open ? <Icon.X /> : <Icon.Add />}
                     </Button.Transparent>
                 </ToolBar.Group>
-                <ToolBar.Group label="sheet 1 and 2">
-                    <Button.Transparent
-                        isPending={isLoading}
-                        isIcon
-                        onClick={onExportMultipleSheets}
-                    >
-                        <Icon.ExportSheets fillPolyLines="currentColor" />
-                    </Button.Transparent>
-                </ToolBar.Group>
+
+                {open && (
+                    <>
+                        <ToolBar.Group label="sheet 1" separator="vertical">
+                            <Button.Transparent
+                                isPending={isLoading}
+                                isIcon
+                                onClick={onExport}
+                            >
+                                <Icon.ExportSheet />
+                            </Button.Transparent>
+                        </ToolBar.Group>
+                        <ToolBar.Group label="sheet 1 and 2">
+                            <Button.Transparent
+                                isPending={isLoading}
+                                isIcon
+                                onClick={onExportMultipleSheets}
+                            >
+                                <Icon.ExportSheets fillPolyLines="currentColor" />
+                            </Button.Transparent>
+                        </ToolBar.Group>
+                    </>
+                )}
             </ToolBar>
             <br />
         </>

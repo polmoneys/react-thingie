@@ -15,7 +15,7 @@ interface Stock {
     id: string;
 }
 
-import StocksList from '../List';
+import StocksList from '../Dumb/List';
 
 export const Thingie = createThingie<Stock>('MyStockThingie');
 

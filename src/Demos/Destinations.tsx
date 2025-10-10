@@ -4,7 +4,7 @@ import type { AutocompLiteOption } from '../Dumb/AutocompLite/interfaces';
 import useAutocompleteDestination from '../Dumb/AutocompLite/useAutocomplite';
 import Font from '../Dumb/Font';
 
-const demoPlaces = [
+export const demoPlaces = [
     {
         id: 'paris',
         city: 'Paris',

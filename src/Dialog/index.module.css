@@ -29,7 +29,7 @@
     box-shadow: var(--shadow);
     width: min(750px, calc(100% - 1em));
     height: var(--tray-min-height);
-    max-height: min(var(--tray-min-height), 70vh);
+    max-height: min(var(--tray-min-height), 80vh);
     /*max-height trumps height, but not min-height */
     padding-bottom: env(safe-area-inset-bottom);
     display: flex;
@@ -53,7 +53,7 @@
     display: grid;
     grid-template-rows: 100vh auto auto;
     gap: var(--gap-3);
-    padding: min(200px, 20vw);
+    padding: min(200px, 10vw);
     position: fixed;
     inset: 0;
     max-block-size: 100vh;

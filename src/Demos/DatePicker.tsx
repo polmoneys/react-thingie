@@ -87,7 +87,7 @@ export default function DatesDemo({
             </GridTemplateColumns>
 
             <GridTemplateColumns
-                gridTemplateColumns={{ xs: '1fr 1fr' }}
+                gridTemplateColumns={{ xs: '1fr ', sm: '1fr 1fr' }}
                 className="positive"
                 gap={{ xs: 'var(--gap-2)' }}
                 dangerous={{

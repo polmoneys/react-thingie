@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 
 import type { Column } from '../Dumb/Rows/interfaces';
-import UsersTable from '../Table';
+import UsersTable from '../Dumb/Table';
 import createThingie from '../Thingie';
 import { has } from '../utils';
 

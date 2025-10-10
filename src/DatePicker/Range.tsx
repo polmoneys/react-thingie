@@ -1,7 +1,7 @@
 import { parseDate } from '@internationalized/date';
 import type { ReactNode } from 'react';
 
-import Group from '../Dumb/Group';
+import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 
 import DatePick from '.';
 
@@ -23,27 +23,32 @@ export default function Range({
 }: RangeProps) {
     if (oldestInceptionDate === null) return null;
     return (
-        <Group gap="var(--gap-3)">
-            <DatePick
-                label="Start"
-                minValue={parseDate(oldestInceptionDate)}
-                value={parseDate(start)}
-                maxValue={parseDate(end)}
-                onChange={(value) => {
-                    if (!value) return;
-                    setStart(value.toString());
-                }}
-            />
-            <DatePick
-                label="Test label"
-                minValue={parseDate(start)}
-                value={parseDate(end)}
-                onChange={(value) => {
-                    if (!value) return;
-                    setEnd(value.toString());
-                }}
-            />
+        <>
+            <GridTemplateColumns
+                gridTemplateColumns={{ xs: '1fr', md: '1f 1fr' }}
+                gap={{ xs: 'var(--gap-2)' }}
+            >
+                <DatePick
+                    label="Start"
+                    minValue={parseDate(oldestInceptionDate)}
+                    value={parseDate(start)}
+                    maxValue={parseDate(end)}
+                    onChange={(value) => {
+                        if (!value) return;
+                        setStart(value.toString());
+                    }}
+                />
+                <DatePick
+                    label="Test label"
+                    minValue={parseDate(start)}
+                    value={parseDate(end)}
+                    onChange={(value) => {
+                        if (!value) return;
+                        setEnd(value.toString());
+                    }}
+                />
+            </GridTemplateColumns>
             {children ?? null}
-        </Group>
+        </>
     );
 }

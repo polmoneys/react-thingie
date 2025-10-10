@@ -87,19 +87,22 @@ export default function DemoDialog() {
                             <Icon.X size={36} circle={false} />
                         </Button.Icon>
                     </Card.Title>
-                    <Card.Content dangerous={{ textAlign: 'center' }}>
-                        <Shape.Triangle
-                            size={250}
-                            transforms="translateY(36px)"
-                        />
+                    <Card.Content
+                        dangerous={{
+                            placeContent: 'center',
+                            textAlign: 'center',
+                        }}
+                    >
+                        <Shape.Triangle size={50} />
                     </Card.Content>
                     <Card.Actions
                         dangerous={{
                             display: 'flex',
                             alignItems: 'center',
                             borderTop: 'var(--border)',
-                            height: 'var(--min-height)',
+                            minHeight: 'var(--min-height)',
                             justifyContent: 'flex-end',
+                            padding: 'var(--gap-2) var(--gap-4) var(--gap-2)',
                         }}
                     >
                         <Button onClick={() => onClose()}>Close</Button>
@@ -122,11 +125,13 @@ export default function DemoDialog() {
                     >
                         <Font>Lorem ipsun dolor</Font>
                     </Card.Title>
-                    <Card.Content dangerous={{ textAlign: 'center' }}>
-                        <Shape.Square
-                            size={350}
-                            transforms="translateY(22px)"
-                        />
+                    <Card.Content
+                        dangerous={{
+                            placeContent: 'center',
+                            textAlign: 'center',
+                        }}
+                    >
+                        <Shape.Square size={50} />
                     </Card.Content>
                     <Card.Actions
                         className="mt-a"

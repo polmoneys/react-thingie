@@ -1,7 +1,6 @@
 .root {
     display: flex;
     width: fit-content;
-    border: var(--border);
     border-radius: var(--border-radius);
 
     &.col {

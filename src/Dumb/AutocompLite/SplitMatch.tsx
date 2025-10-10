@@ -25,8 +25,8 @@ export default function SplitMatch({
     searchText = '',
     separator = ',',
     caseSensitive = false,
-    global = true,
-    includeSeparator = true,
+    global = false,
+    includeSeparator = false,
 }: SplitMatchProps) {
     if (typeof children !== 'string')
         console.warn('Provide a string as children');
@@ -43,8 +43,6 @@ export default function SplitMatch({
     );
 
     if (!text) return null;
-
-    let separatorRemoved = false;
 
     const parts = dividers.map((dividerIndex, i) => {
         const prevIndex = dividers[i - 1] || 0;
@@ -90,26 +88,16 @@ export default function SplitMatch({
             else nodes.push(<Fragment key={key}>{buf}</Fragment>);
         }
 
-        // optionally trim separator at end (handle strings and element children safely)
-        if (
-            !includeSeparator &&
-            separator &&
-            nodes.length &&
-            !separatorRemoved
-        ) {
+        if (!includeSeparator && separator && nodes.length) {
             const lastIdx = nodes.length - 1;
             const last = nodes[lastIdx];
 
             if (typeof last === 'string') {
                 if (last.endsWith(separator)) {
                     nodes[lastIdx] = last.slice(0, -separator.length);
-                    separatorRemoved = true;
                 }
             } else if (isValidElement(last)) {
-                // safe cast to access children
-                const el = last as ReactElement<{
-                    children?: ReactNode;
-                }>;
+                const el = last as ReactElement<{ children?: ReactNode }>;
                 if (typeof el.props.children === 'string') {
                     const t = el.props.children as string;
                     if (t.endsWith(separator)) {
@@ -118,7 +106,6 @@ export default function SplitMatch({
                                 {t.slice(0, -separator.length)}
                             </Fragment>
                         );
-                        separatorRemoved = true;
                     }
                 }
             }
@@ -129,7 +116,7 @@ export default function SplitMatch({
                 key={`split-${i}`}
                 className={clsx(
                     styles.split,
-                    `split-${i}`,
+                    styles[`split-${i}`],
                     isSplitMatch && styles.match,
                 )}
                 data-index={i}

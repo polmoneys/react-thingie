@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 import { useKeyboard } from 'react-aria';
 
@@ -28,14 +28,23 @@ export default function AutocompLite(props: AutcompLiteProps) {
         showPopover,
         showChips = false,
         chipLimit,
+        isSticky,
     } = props;
 
     const rootRef = useRef<HTMLDivElement | null>(null);
 
+    const onIn = useCallback(() => {
+        return !showPopover ? onToggle() : () => ({});
+    }, [showPopover, onToggle]);
+    const onOut = useCallback(() => {
+        console.log({ showPopover }, 'KJ');
+        return showPopover ? onToggle() : () => ({});
+    }, [showPopover, onToggle]);
+
     useClickContains({
         ref: rootRef,
-        onInside: () => onToggle(),
-        onOutside: () => onToggle(),
+        onInside: onIn,
+        onOutside: onOut,
     });
 
     const { keyboardProps } = useKeyboard({
@@ -54,14 +63,14 @@ export default function AutocompLite(props: AutcompLiteProps) {
                     {a11y}
                 </div>
             )}
-            {showChips && (
+            {showChips && !isSticky && (
                 <Chips
                     selected={selected}
                     onRemove={(option) => toggleOption(option)}
                     limit={chipLimit ?? 3}
                 />
             )}
-            <div className={styles.root} {...keyboardProps}>
+            <div ref={rootRef} className={styles.root} {...keyboardProps}>
                 <TextInputLabel
                     placeholder={placeholder}
                     gridTemplateRows="1fr 1fr"
@@ -71,7 +80,6 @@ export default function AutocompLite(props: AutcompLiteProps) {
                     value={query}
                     onChange={(v) => setQuery(v)}
                     classNames={{ input: 'theme-inset' }}
-                    // onKeyDown={onInputKeyDown}
                     autoComplete="off"
                     aria-autocomplete="list"
                     aria-expanded="true"

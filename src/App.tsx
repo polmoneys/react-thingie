@@ -46,6 +46,7 @@ function App() {
         mapper,
         initialQuery: '',
         multi: true,
+        initialSelectedIds: demos,
     });
 
     const onToggleOptionSetUrl = (option: AutocompLiteOption) => {
@@ -53,8 +54,9 @@ function App() {
         if (demos.includes(option.id)) {
             demos.filter((i) => i === option.id).map((d) => toggleDemo(d));
             return;
+        } else {
+            toggleDemo(option.id);
         }
-        toggleDemo(option.id);
     };
 
     return (
@@ -70,26 +72,31 @@ function App() {
                 }}
             >
                 <StickyHeader height="130px">
-                    <AutocompLite
-                        placeholder={`Search ${DEMOS_V2.length} demos`}
-                        id="app-autocompLite"
-                        toggleOption={onToggleOptionSetUrl}
-                        options={filteredOptions}
-                        a11y={liveMessage ?? ''}
-                        query={query}
-                        setQuery={setQuery}
-                        selected={selected}
-                        label="Browse demos"
-                        onToggle={() => setPopover((prev) => !prev)}
-                        showPopover={showPopover}
-                        showChips
-                    >
-                        {filteredOptions.length === 0 ? (
-                            <Alert>
-                                <Font>No Demos match</Font>
-                            </Alert>
-                        ) : null}
-                    </AutocompLite>
+                    {({ isSticky }) => (
+                        <>
+                            <AutocompLite
+                                placeholder={`Search ${DEMOS_V2.length} demos`}
+                                id="app-autocompLite"
+                                toggleOption={onToggleOptionSetUrl}
+                                options={filteredOptions}
+                                a11y={liveMessage ?? ''}
+                                query={query}
+                                setQuery={setQuery}
+                                selected={selected}
+                                label={isSticky ? '' : 'Browse demos'}
+                                onToggle={() => setPopover((prev) => !prev)}
+                                showPopover={showPopover}
+                                showChips
+                                isSticky={isSticky}
+                            >
+                                {filteredOptions.length === 0 ? (
+                                    <Alert>
+                                        <Font>No Demos match</Font>
+                                    </Alert>
+                                ) : null}
+                            </AutocompLite>
+                        </>
+                    )}
                 </StickyHeader>
                 <br />
 

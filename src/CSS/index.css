@@ -417,11 +417,11 @@ select {
 .ringless {
 }
 .ring {
-    border: var(--border);
+    border: var(--border) !important;
     border-color: var(--ring-color) !important;
 }
 .ringKeyboard {
-    border: var(--border);
+    border: var(--border) !important;
     border-color: var(--ringKeyboard-color) !important;
 }
 

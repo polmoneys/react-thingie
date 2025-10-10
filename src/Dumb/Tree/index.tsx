@@ -59,6 +59,10 @@ export default function RecursiveItem(props: TreeProps) {
                 aria-disabled={node.disabled ?? undefined}
                 className={clsx(styles.row, node.disabled && styles.disabled)}
                 style={{ paddingLeft: depth * INDENT_PX }}
+                onClick={() => {
+                    if (node.disabled) return;
+                    setSelectedId(node.id);
+                }}
             >
                 {isFolder ? (
                     <Button.Transparent
@@ -85,30 +89,23 @@ export default function RecursiveItem(props: TreeProps) {
                     </Button.Transparent>
                 ) : null}
 
-                <button
-                    onClick={() => {
-                        if (node.disabled) return;
-                        setSelectedId(node.id);
+                <Group.Row
+                    alignItems="center"
+                    dangerous={{
+                        backgroundColor: isFocused
+                            ? 'var(--info)'
+                            : node.disabled
+                              ? 'var(--neutral)'
+                              : 'var(--positive)',
+                        padding: 'var(--gap-1)',
+                        border: 'var(--border)',
+                        borderRadius: 'var(--border-radius)',
+                        boxShadow: 'var(--box-shadow)',
                     }}
                 >
-                    <Group.Row
-                        alignItems="center"
-                        dangerous={{
-                            backgroundColor: isFocused
-                                ? 'var(--info)'
-                                : node.disabled
-                                  ? 'var(--neutral)'
-                                  : 'var(--positive)',
-                            padding: 'var(--gap-1)',
-                            border: 'var(--border)',
-                            borderRadius: 'var(--border-radius)',
-                            boxShadow: 'var(--box-shadow)',
-                        }}
-                    >
-                        <FileOrFolder type={node.type} />
-                        <Font.Bold>{node.title}</Font.Bold>
-                    </Group.Row>
-                </button>
+                    <FileOrFolder type={node.type} />
+                    <Font.Bold>{node.title}</Font.Bold>
+                </Group.Row>
             </div>
 
             {isFolder && expanded[node.id] && node.children.length > 0 && (

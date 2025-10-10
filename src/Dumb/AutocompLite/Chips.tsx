@@ -17,8 +17,8 @@ export default function Chips(props: ChipsProps) {
     if (selected.length === 0) return null;
 
     return (
-        <ToolBar label="Selected destinations" className={styles.chips}>
-            <ToolBar.Group label="" className={styles.chips}>
+        <ToolBar label="Selected destinations">
+            <ToolBar.Group label="Remove them">
                 {selected
                     .slice(0, showAll ? selected.length : limit)
                     .map((item) => (
@@ -34,7 +34,10 @@ export default function Chips(props: ChipsProps) {
                     ))}
             </ToolBar.Group>
 
-            <ToolBar.Group label={`${showAll ? 'Hide some' : 'Show all'}`}>
+            <ToolBar.Group
+                label={`${showAll ? 'Hide some' : 'Show all'}`}
+                className={styles.chipRemove}
+            >
                 {selected.length > limit && (
                     <Button onClick={onToggle}>
                         {!showAll ? `+ ${selected.length - limit}` : 'Hide'}
