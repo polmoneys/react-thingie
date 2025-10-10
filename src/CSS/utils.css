@@ -2,14 +2,6 @@
     height: 1lh;
 }
 
-.fit {
-    width: fit-content;
-}
-
-.noise {
-    filter: blur(2px);
-}
-
 .mt-a {
     margin-top: auto !important;
 }
@@ -34,8 +26,25 @@
 	needs flex wrapping active */
 }
 
+.fit {
+    width: fit-content;
+}
+
 .cover {
     inset: 0;
+}
+
+@media (orientation: landscape) {
+    .underline {
+        text-decoration: underline;
+        -webkit-text-decoration: currentColor solid underline;
+        text-decoration: currentColor solid underline;
+    }
+    .underline-double {
+        text-decoration: underline;
+        -webkit-text-decoration: currentColor wavy underline;
+        text-decoration: currentColor wavy underline;
+    }
 }
 
 .select-all {
@@ -70,97 +79,8 @@
     width: 1px;
 }
 
-@media (orientation: landscape) {
-    .underline {
-        text-decoration: underline;
-        -webkit-text-decoration: currentColor solid underline;
-        text-decoration: currentColor solid underline;
-    }
-    .underline-double {
-        text-decoration: underline;
-        -webkit-text-decoration: currentColor wavy underline;
-        text-decoration: currentColor wavy underline;
-    }
-}
-
 .invisible {
     pointer-events: none;
     position: absolute;
     visibility: hidden;
-}
-
-.saturate {
-    filter: saturate(0.2);
-}
-
-:where(html) {
-    --bright: 1.1;
-    --brighter: 1.3;
-    --brightest: 2.4;
-}
-
-.bright {
-    filter: brightness(var(--brighter));
-}
-
-.fix-logo {
-    mix-blend-mode: darken;
-    /* difference overlay */
-    filter: grayscale(100%) contrast(1%);
-    &:hover {
-        mix-blend-mode: normal;
-        filter: none;
-    }
-}
-
-.fix-white-bg {
-    mix-blend-mode: multiply;
-}
-
-.emoji-red-check {
-    filter: hue-rotate(-120deg);
-}
-
-.w-b {
-    color: var(--white);
-    mix-blend-mode: difference;
-}
-
-.b-w {
-    color: var(--white);
-    background-color: var(--black);
-    mix-blend-mode: multiply;
-}
-
-/*
-<h2 style="--gap:50px;--c:purple">Adding some gap </h2>
-<h2 style="--width:100vw;--c:blue;--thickness:7px">Title</h2>
-<h2 style="--c:green;--thickness:5px;--width:50px;--gap:20px">Another Title</h2>
-*/
-
-.-X- {
-    --thickness: 3px;
-    --c: currentColor;
-    --width: 100px;
-    --gap: 10px;
-    border-image: linear-gradient(
-            #0000 calc(50% - var(--thickness) / 2),
-            var(--c) 0 calc(50% + var(--thickness) / 2),
-            #0000 0
-        )
-        0 1/0 var(--width) / 0 calc(var(--width) + var(--gap));
-
-    width: fit-content;
-}
-
-.hero img {
-    --background-img-brightness: 0.45;
-    --background-img-saturate: 1.25;
-
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    /* decrease brightness to improve text contrast */
-    filter: brightness(var(--background-img-brightness))
-        saturate(var(--background-img-saturate));
 }

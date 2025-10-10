@@ -4,6 +4,7 @@ import { useKeyboard } from 'react-aria';
 
 import useClickContains from '../../utilities/useClickContains';
 import { has } from '../../utils';
+import Alert from '../Alert';
 import TextInputLabel from '../InputText';
 
 import Chips from './Chips';
@@ -59,9 +60,7 @@ export default function AutocompLite(props: AutcompLiteProps) {
     return (
         <>
             {a11y.trim().length > 0 && (
-                <div aria-live="polite" className="offscreen" role="status">
-                    {a11y}
-                </div>
+                <Alert className="offscreen">{a11y}</Alert>
             )}
             {showChips && !isSticky && (
                 <Chips

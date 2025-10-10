@@ -1,15 +1,15 @@
 import Button from '../Dumb/Button';
 import Card from '../Dumb/Card';
 import Font from '../Dumb/Font';
-import Grid from '../Dumb/Grid';
+import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 import Popover from '../Dumb/Popover';
-import PopoverLite from '../Dumb/Popover/Lite';
+// import PopoverLite from '../Dumb/Popover/Lite';
 import Shape from '../Dumb/Shape';
 
 export default function PopoversGrid() {
     return (
         <>
-            <PopoverLite id="menu-test" label="Some cta">
+            {/*<PopoverLite id="menu-test" label="Some cta">
                 {() => (
                     <>
                         <Button onClick={() => console.log('a')}>
@@ -24,9 +24,12 @@ export default function PopoversGrid() {
                     </>
                 )}
             </PopoverLite>
-            <br />
+            <br />*/}
 
-            <Grid width="28em">
+            <GridTemplateColumns
+                gridTemplateColumns={{ xs: '1fr', md: '1fr 1fr' }}
+                gap={{ xs: 'var(--gap-2)' }}
+            >
                 <Popover
                     id="popover-a"
                     backdrop="rgba(0,0,0,.1)"
@@ -40,7 +43,7 @@ export default function PopoversGrid() {
                             component="div"
                             {...captionProps}
                             dangerous={{
-                                maxWidth: '300px',
+                                maxWidth: 'min(300px,80vw)',
                                 backgroundColor: 'var(--positive)',
                             }}
                             {...keyboardProps}
@@ -66,11 +69,8 @@ export default function PopoversGrid() {
                 >
                     {({ toggleCaption, triggerProps }) => (
                         <Card
-                            ratio="landscape"
                             component="article"
                             dangerous={{
-                                // width: '330px!important',
-                                // maxWidth: '600px',
                                 backgroundColor: 'var(--neutral)',
                             }}
                         >
@@ -113,7 +113,7 @@ export default function PopoversGrid() {
                             component="div"
                             {...captionProps}
                             dangerous={{
-                                maxWidth: '300px',
+                                maxWidth: '100%',
                                 backgroundColor: 'var(--positive)',
                             }}
                             {...keyboardProps}
@@ -139,6 +139,7 @@ export default function PopoversGrid() {
                         <Card
                             component="article"
                             dangerous={{
+                                maxWidth: 'min(300px,80vw)',
                                 backgroundColor: 'var(--grey)',
                                 color: 'var(--white)',
                             }}
@@ -157,7 +158,7 @@ export default function PopoversGrid() {
                         </Card>
                     )}
                 </Popover>
-            </Grid>
+            </GridTemplateColumns>
             <br />
         </>
     );

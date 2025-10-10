@@ -37,5 +37,6 @@ export interface FontProps extends AriaAttributes {
     kind?: FontKind;
     clamp?: number;
     inherit?: boolean;
+    vertical?: boolean;
     onClick?: () => void;
 }

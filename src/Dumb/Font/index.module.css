@@ -116,45 +116,29 @@
     background-color: var(--white);
 }
 
-.maskX {
-    --mask-text: rgb(var(--black));
-    -webkit-mask-image: linear-gradient(
-        90deg,
-        transparent,
-        var(--mask-text) 15%,
-        var(--mask-text) 85%,
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        90deg,
-        transparent,
-        var(--mask-text) 15%,
-        var(--mask-text) 85%,
-        transparent 100%
-    );
-}
-
-.maskY {
-    --mask-text: rgb(var(--black));
-
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent,
-        var(--mask-text)
-    );
-    mask-image: linear-gradient(to bottom, transparent, var(--mask-text));
-}
-
-.emoji-green-to-red {
-    filter: hue-rotate(-120deg);
-}
-
-.emoji-red-to-green {
-    filter: hue-rotate(120deg);
-}
-
 .vertical {
     letter-spacing: 0.2em;
     text-orientation: mixed;
     writing-mode: vertical-rl;
+}
+
+/*
+<h2 style="--gap:50px;--c:purple">Adding some gap </h2>
+<h2 style="--width:100vw;--c:blue;--thickness:7px">Title</h2>
+<h2 style="--c:green;--thickness:5px;--width:50px;--gap:20px">Another Title</h2>
+*/
+
+.-X- {
+    --thickness: 3px;
+    --c: currentColor;
+    --width: 100px;
+    --gap: 10px;
+    border-image: linear-gradient(
+            #0000 calc(50% - var(--thickness) / 2),
+            var(--c) 0 calc(50% + var(--thickness) / 2),
+            #0000 0
+        )
+        0 1/0 var(--width) / 0 calc(var(--width) + var(--gap));
+
+    width: fit-content;
 }

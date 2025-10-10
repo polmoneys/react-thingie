@@ -72,7 +72,11 @@ export default function DemoExcel() {
 
     return (
         <>
-            <Font>Toolbar to export T[] to Excel. Choose 1 sheet or 2</Font>
+            <Font>
+                Toolbar to export T[] to Excel. Choose 1 sheet or 2 of top 25
+                destinations as seen in{' '}
+                <Font.Bold component="span">AutocompLite</Font.Bold> demo.
+            </Font>
             <br />
             <ToolBar
                 label="exports"

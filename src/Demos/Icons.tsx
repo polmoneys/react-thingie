@@ -105,13 +105,13 @@ export default function DemoIcons() {
             {/*<Group.Row gap="var(--gap-2)" flexWrap="wrap">
                 <Font>✅</Font>
                 <Font className="bright">✅</Font>
-                <Font className="emoji-red-check">✅</Font>
+                <Font className="emoji-green-to-red">✅</Font>
                 <Font>🎈</Font>
                 <Font className="bright">🎈</Font>
-                <Font className="emoji-red-check">🎈</Font>
+                <Font className="emoji-green-to-red">🎈</Font>
                 <Font>🆒</Font>
                 <Font className="bright">🆒</Font>
-                <Font className="emoji-red-check">🆒</Font>
+                <Font className="emoji-green-to-red">🆒</Font>
             </Group.Row>
             <br />*/}
 

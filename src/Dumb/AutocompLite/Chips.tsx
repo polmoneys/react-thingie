@@ -17,8 +17,8 @@ export default function Chips(props: ChipsProps) {
     if (selected.length === 0) return null;
 
     return (
-        <ToolBar label="Selected destinations">
-            <ToolBar.Group label="Remove them">
+        <ToolBar label="Selected destinations" className={styles.chips}>
+            <ToolBar.Group label="Remove them" className={styles.chips}>
                 {selected
                     .slice(0, showAll ? selected.length : limit)
                     .map((item) => (

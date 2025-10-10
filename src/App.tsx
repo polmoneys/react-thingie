@@ -1,14 +1,11 @@
-import { useState } from 'react';
-
 import { DEMOS_V2 } from './Demos/mock';
 import useDemos from './Demos/useURLDemos';
 import Alert from './Dumb/Alert';
 import AutocompLite from './Dumb/AutocompLite';
 import type { AutocompLiteOption } from './Dumb/AutocompLite/interfaces';
-import useAutocompleteDestination from './Dumb/AutocompLite/useAutocomplite';
+import useAutocomplite from './Dumb/AutocompLite/useAutocomplite';
 import Font from './Dumb/Font';
 import StickyHeader from './Dumb/Sticky/Header';
-import { Timer } from './utilities/timer';
 import DemoRenderer from './Demos';
 
 import './App.css';
@@ -29,8 +26,8 @@ function App() {
 
     const { toggleDemo, demos } = useDemos();
 
-    const [showAlert, setAlert] = useState(true);
-    new Timer(() => setAlert(false), 2000);
+    // const [showAlert, setAlert] = useState(true);
+    // new Timer(() => setAlert(false), 2000);
 
     const {
         selected,
@@ -41,7 +38,7 @@ function App() {
         setQuery,
         setPopover,
         showPopover,
-    } = useAutocompleteDestination({
+    } = useAutocomplite({
         places: DEMOS_V2,
         mapper,
         initialQuery: '',
@@ -71,7 +68,7 @@ function App() {
                     overflow: 'visible',
                 }}
             >
-                <StickyHeader height="130px">
+                <StickyHeader height="200px">
                     {({ isSticky }) => (
                         <>
                             <AutocompLite
@@ -98,9 +95,11 @@ function App() {
                         </>
                     )}
                 </StickyHeader>
-                <br />
 
-                {showAlert && (
+                {/*
+                  <br />
+
+                  {showAlert && (
                     <>
                         <Alert
                             mood="positive"
@@ -112,7 +111,7 @@ function App() {
                         </Alert>
                         <br />
                     </>
-                )}
+                )}*/}
 
                 <br />
                 <DemoRenderer demos={demos} />

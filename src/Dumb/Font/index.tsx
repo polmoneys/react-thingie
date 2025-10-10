@@ -20,6 +20,7 @@ function Font(props: FontProps) {
         clamp = 0,
         inherit,
         px,
+        vertical = false,
         ...rest
     } = props;
 
@@ -41,8 +42,9 @@ function Font(props: FontProps) {
                 options.includes('maskY') && styles.maskY,
                 shouldClamp && styles.clamp,
                 inherit && styles.inherit,
+                vertical && styles.vertical,
             ),
-        [className, kind, size, options, shouldClamp, inherit],
+        [className, kind, size, options, shouldClamp, inherit, vertical],
     );
 
     return (

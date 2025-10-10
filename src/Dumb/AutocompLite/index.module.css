@@ -64,6 +64,10 @@
     margin-left: auto;
 }
 
+.chips {
+    flex-wrap: wrap;
+}
+
 .chip {
     border-radius: var(--border-radius);
     border: var(--border) !important;
