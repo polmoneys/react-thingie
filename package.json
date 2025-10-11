@@ -14,7 +14,14 @@
         "lm": "lms server start --cors",
         "component": "node scripts/component.js",
         "#foo": "npm run component -- src/Foo/index.tsx",
-        "#withCSS": "npm run component -- src/Foo/index.tsx --css"
+        "#withCSS": "npm run component -- src/Foo/index.tsx --css",
+        "play": "npx playwright test",
+        "playUI": "npx playwright test --ui",
+        "codegen": "npx playwright codegen http://localhost:5173/react-thingie",
+        "#bar": "npx playwright test bar",
+        "test": "vitest",
+        "test:run": "vitest run",
+        "test:watch": "vitest --watch"
     },
     "dependencies": {
         "@react-aria/focus": "^3.21.1",
@@ -38,6 +45,8 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.33.0",
+        "@playwright/test": "^1.56.0",
+        "@types/node": "^24.7.1",
         "@types/react": "^19.1.10",
         "@types/react-dom": "^19.1.7",
         "@vitejs/plugin-react": "^5.0.0",
@@ -45,9 +54,11 @@
         "eslint-plugin-react-hooks": "^5.2.0",
         "eslint-plugin-react-refresh": "^0.4.20",
         "eslint-plugin-simple-import-sort": "^12.1.1",
+        "fast-check": "^4.3.0",
         "globals": "^16.3.0",
         "typescript": "~5.8.3",
         "typescript-eslint": "^8.39.1",
-        "vite": "^7.1.2"
+        "vite": "^7.1.2",
+        "vitest": "^3.2.4"
     }
 }
