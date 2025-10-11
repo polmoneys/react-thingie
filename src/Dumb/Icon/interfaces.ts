@@ -15,8 +15,40 @@ export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
     strokeLinejoin?: React.SVGProps<SVGLineElement>['strokeLinejoin'];
     stroke?: string;
     fill?: string;
-    fillPolyLines?: string;
+    fillChildren?: string;
     circle?: boolean;
     transform?: string;
     font?: boolean;
 }
+
+export type RectInput = {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    // rounded corners
+    rx?: number;
+    ry?: number;
+    fill?: string;
+    stroke?: string;
+    strokeWidth?: number;
+};
+
+export type CircleInput = {
+    cx: number;
+    cy: number;
+    r: number;
+    fill?: string;
+    stroke?: string;
+    strokeWidth?: number;
+};
+
+export type EllipseInput = {
+    cx: number;
+    cy: number;
+    rx: number;
+    ry: number;
+    fill?: string;
+    stroke?: string;
+    strokeWidth?: number;
+};

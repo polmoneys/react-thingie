@@ -30,7 +30,7 @@ export default function Tray({
 
     const viewport = useViewportSize();
     const [height, setHeight] = useState(viewport.height); // vs. viewportHeight
-    const timeoutRef = useRef(0);
+    const timeoutRef = useRef<number | NodeJS.Timeout>(0);
 
     useEffect(() => {
         clearTimeout(timeoutRef.current);

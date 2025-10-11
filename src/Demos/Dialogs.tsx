@@ -25,40 +25,40 @@ export default function DemoDialog() {
             <Group.Row flexWrap="wrap">
                 <Button onClick={() => onOpenDialog()}>Dialog open</Button>
                 <Button onClick={() => onOpenTray()}>Tray open</Button>
-                <Button onClick={() => onOpen('xoxo')}>Tray open 2</Button>
+                <Button onClick={() => onOpen('tray2')}>Tray open 2</Button>
+                <Actionsheet
+                    trigger={({ isOpen }) => {
+                        return (
+                            <Button
+                                type="button"
+                                onClick={() => onOpenSheet()}
+                                aria-expanded={isOpen}
+                            >
+                                Show action sheet
+                            </Button>
+                        );
+                    }}
+                    unTrigger={({ onClose: onCloseLocal }) => {
+                        return (
+                            <Button type="reset" onClick={onCloseLocal}>
+                                Cancel
+                            </Button>
+                        );
+                    }}
+                    isOpen={isSheetOpen}
+                    onClose={() => onClose()}
+                >
+                    <Button onClick={(event) => event.preventDefault()}>
+                        Action 1
+                    </Button>
+                    <Button onClick={(event) => event.preventDefault()}>
+                        Action 2
+                    </Button>
+                    <Button onClick={(event) => event.preventDefault()}>
+                        Action 3
+                    </Button>
+                </Actionsheet>
             </Group.Row>
-            <Actionsheet
-                trigger={({ isOpen }) => {
-                    return (
-                        <Button
-                            type="button"
-                            onClick={() => onOpenSheet()}
-                            aria-expanded={isOpen}
-                        >
-                            Show action sheet
-                        </Button>
-                    );
-                }}
-                unTrigger={({ onClose: onCloseLocal }) => {
-                    return (
-                        <Button type="reset" onClick={onCloseLocal}>
-                            Cancel
-                        </Button>
-                    );
-                }}
-                isOpen={isSheetOpen}
-                onClose={() => onClose()}
-            >
-                <Button onClick={(event) => event.preventDefault()}>
-                    Action 1
-                </Button>
-                <Button onClick={(event) => event.preventDefault()}>
-                    Action 2
-                </Button>
-                <Button onClick={(event) => event.preventDefault()}>
-                    Action 3
-                </Button>
-            </Actionsheet>
 
             <Dialog isOpen={isDialogOpen} onClose={() => onClose()}>
                 <Dialog.Title
@@ -108,9 +108,10 @@ export default function DemoDialog() {
                 <Dialog.Title
                     dangerous={{
                         display: 'flex',
-                        placeContent: 'center',
+                        alignItems: 'center',
                         borderBottom: 'var(--border)',
-                        height: 'var(--min-height)',
+                        minHeight: 'var(--min-height)',
+                        padding: '0 var(--gap-2) 0 var(--gap-3)',
                     }}
                 >
                     <Font>Lorem ipsun dolor</Font>

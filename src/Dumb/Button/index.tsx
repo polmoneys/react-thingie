@@ -61,12 +61,17 @@ const Negative = ({ mood, ...rest }: ButtonProps) => (
     <Button {...rest} mood="negative" />
 );
 
-const Transparent = ({ dangerous, ...rest }: ButtonProps) => (
+const Transparent = ({
+    dangerous,
+    border = true,
+    ...rest
+}: ButtonProps & { border?: boolean }) => (
     <Button
         {...rest}
         dangerous={{
             ...(has(dangerous) && { dangerous }),
             backgroundColor: 'var(--transparent)',
+            border: border ? 'var(--border)' : '1px solid transparent',
         }}
     />
 );

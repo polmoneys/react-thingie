@@ -26,7 +26,7 @@ export default function DemoIcons() {
                         <Icon.Chevron />
                         <Icon.ChevronDown />
                         <Icon.Add fill="var(--info)" />
-                        <Icon.Remove fillPolyLines="var(--info)" />
+                        <Icon.Remove fillChildren="var(--info)" />
                         <Icon
                             rotate={90}
                             lines={[
@@ -58,10 +58,19 @@ export default function DemoIcons() {
                         <Icon.X circle={false} />
                         <Icon.ExportSheet
                             size={48}
-                            fillPolyLines="var(--info)"
+                            fillChildren="var(--info)"
                         />
                         <Icon.ExportSheets size={72} fill="var(--info)" />
                         <Icon.ExportSheets size={72} strokeWidth={1} />
+                        <Icon.Preview
+                            stroke="var(--info)"
+                            fillChildren="var(--info)"
+                        />
+                        <Icon.Preview
+                            circle={false}
+                            stroke="var(--info)"
+                            fillChildren="var(--info)"
+                        />
                     </Group>
                 )}
             </ContainerSize>

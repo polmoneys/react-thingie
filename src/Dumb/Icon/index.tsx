@@ -1,6 +1,13 @@
 import { clsx, has } from '../../utils';
 
-import type { IconProps, LineInput, Point } from './interfaces';
+import type {
+    CircleInput,
+    EllipseInput,
+    IconProps,
+    LineInput,
+    Point,
+    RectInput,
+} from './interfaces';
 import Loading from './Loading';
 import { BASE_VIEWBOX, pointsToString, rotateShapes } from './utils';
 
@@ -18,7 +25,7 @@ export default function Icon({
     strokeLinejoin = 'round',
     stroke = 'currentColor',
     fill = 'none',
-    fillPolyLines = 'none',
+    fillChildren: fillPolyLines = 'none',
     circle = true,
     children,
     transform,
@@ -36,6 +43,9 @@ export default function Icon({
         rotate,
         center,
     );
+
+    const rotateGroup =
+        rotate !== 0 ? `rotate(${rotate} ${cx} ${cy})` : undefined;
 
     return (
         <svg
@@ -94,10 +104,72 @@ export default function Icon({
                     />
                 );
             })}
-            {children}
+
+            {has(children) && <g transform={rotateGroup}>{children}</g>}
         </svg>
     );
 }
+
+export const Rect = ({
+    x,
+    y,
+    width,
+    height,
+    rx,
+    stroke,
+    strokeWidth,
+    fill,
+}: RectInput) => (
+    <rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        rx={rx}
+        vectorEffect="non-scaling-stroke"
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        fill={fill}
+    />
+);
+export const Ellipse = ({
+    cx,
+    cy,
+    rx,
+    ry,
+    stroke,
+    strokeWidth,
+    fill,
+}: EllipseInput) => (
+    <ellipse
+        cx={cx}
+        cy={cy}
+        rx={rx}
+        ry={ry}
+        vectorEffect="non-scaling-stroke"
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        fill={fill}
+    />
+);
+export const Circle = ({
+    cx,
+    cy,
+    r,
+    stroke,
+    strokeWidth,
+    fill,
+}: CircleInput) => (
+    <circle
+        cx={cx}
+        cy={cy}
+        r={r}
+        vectorEffect="non-scaling-stroke"
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        fill={fill}
+    />
+);
 
 const chevron: Point[] = [
     [10, 8],
@@ -145,7 +217,7 @@ const addLines: Point[] = [
     [18, 12],
 ];
 
-Icon.Remove = ({ lines, polylines, rotate, circle, ...rest }: IconProps) => (
+Icon.Remove = ({ lines, polylines, rotate, ...rest }: IconProps) => (
     <Icon
         polylines={[addLines]}
         // circle={false}
@@ -164,7 +236,7 @@ const removeLines: LineInput[] = [
     ],
 ];
 
-Icon.Add = ({ lines, polylines, rotate, circle, ...rest }: IconProps) => (
+Icon.Add = ({ lines, polylines, rotate, ...rest }: IconProps) => (
     <Icon
         lines={removeLines}
         // circle={false}
@@ -172,29 +244,35 @@ Icon.Add = ({ lines, polylines, rotate, circle, ...rest }: IconProps) => (
     />
 );
 
-const exportLines: Point[] = [
-    [7, 7],
-    [7, 17],
-    [7, 7],
-    [17, 7],
-    [17, 7],
-    [17, 17],
-    [17, 17],
-    [7, 17],
-];
-
 Icon.ExportSheet = ({
     lines,
     polylines,
     rotate,
-    circle,
+    fillChildren,
     ...rest
 }: IconProps) => (
     <Icon
-        polylines={[exportLines]}
         // circle={false}
         {...rest}
-    />
+    >
+        <Rect x={7} y={7} width={10} height={10} fill={fillChildren} />
+    </Icon>
+);
+
+Icon.Preview = ({
+    lines,
+    polylines,
+    rotate,
+    fillChildren,
+    ...rest
+}: IconProps) => (
+    <Icon
+        // circle={false}
+        {...rest}
+    >
+        <Ellipse cx={12} cy={12} rx={6} ry={4} stroke={fillChildren} />
+        <Circle cx={12} cy={12} r={2} stroke={fillChildren} />
+    </Icon>
 );
 
 const exportLines2: LineInput[] = [
@@ -238,3 +316,4 @@ Icon.ExportSheets = ({ lines, polylines, rotate, ...rest }: IconProps) => (
 );
 
 Icon.Loading = Loading;
+Icon.LoadingBar = Loading;

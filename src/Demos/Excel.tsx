@@ -113,7 +113,7 @@ export default function DemoExcel() {
                                 isIcon
                                 onClick={onExportMultipleSheets}
                             >
-                                <Icon.ExportSheets fillPolyLines="currentColor" />
+                                <Icon.ExportSheets fillChildren="currentColor" />
                             </Button.Transparent>
                         </ToolBar.Group>
                     </>

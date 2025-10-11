@@ -69,7 +69,7 @@ const Content = ({
     dangerous?: CSSProperties;
 }) => (
     <div
-        {...(className !== undefined && { className })}
+        className={clsx(styles.content, className)}
         {...(has(style) && { style })}
     >
         {children}

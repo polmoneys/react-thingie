@@ -59,13 +59,10 @@ export default function RecursiveItem(props: TreeProps) {
                 aria-disabled={node.disabled ?? undefined}
                 className={clsx(styles.row, node.disabled && styles.disabled)}
                 style={{ paddingLeft: depth * INDENT_PX }}
-                onClick={() => {
-                    if (node.disabled) return;
-                    setSelectedId(node.id);
-                }}
             >
                 {isFolder ? (
                     <Button.Transparent
+                        border={false}
                         isIcon
                         onClick={(event) => {
                             event.stopPropagation();
@@ -97,14 +94,22 @@ export default function RecursiveItem(props: TreeProps) {
                             : node.disabled
                               ? 'var(--neutral)'
                               : 'var(--positive)',
-                        padding: 'var(--gap-1)',
                         border: 'var(--border)',
                         borderRadius: 'var(--border-radius)',
                         boxShadow: 'var(--box-shadow)',
                     }}
                 >
-                    <FileOrFolder type={node.type} />
-                    <Font.Bold>{node.title}</Font.Bold>
+                    <Button.Transparent
+                        border={false}
+                        onClick={(event) => {
+                            event.stopPropagation();
+                            if (node.disabled) return;
+                            setSelectedId(node.id);
+                        }}
+                    >
+                        <FileOrFolder type={node.type} />
+                        <Font.Bold>{node.title}</Font.Bold>
+                    </Button.Transparent>
                 </Group.Row>
             </div>
 
