@@ -5,6 +5,7 @@ import Font from '../Dumb/Font';
 import Icon from '../Dumb/Icon';
 import TextInputLabel from '../Dumb/InputText';
 import PopoverLite from '../Dumb/Popover/Lite';
+import ToolBar from '../Dumb/Toolbar';
 
 import useStream from './useStream';
 
@@ -34,11 +35,21 @@ export default function StreamPrompt() {
                 }
             >
                 {() => (
-                    <>
-                        <Button onClick={() => console.log('a')}>File</Button>
-                        <Button onClick={() => console.log('b')}>Speak</Button>
-                        <Button onClick={() => console.log('c')}>Think</Button>
-                    </>
+                    <ToolBar label="Options">
+                        <ToolBar.Group label="Interactions">
+                            <Button onClick={() => console.log('a')}>
+                                File
+                            </Button>
+                            <Button onClick={() => console.log('b')}>
+                                Speak
+                            </Button>
+                        </ToolBar.Group>
+                        <ToolBar.Group label="Go pro">
+                            <Button onClick={() => console.log('c')}>
+                                Upgrade
+                            </Button>
+                        </ToolBar.Group>
+                    </ToolBar>
                 )}
             </PopoverLite>
             <TextInputLabel

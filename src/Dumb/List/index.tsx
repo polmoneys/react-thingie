@@ -1,7 +1,7 @@
 import { type ChangeEvent } from 'react';
 
 import { Thingie } from '../../Demos/List';
-import { formatSelectedKeys } from '../../utils';
+import { formatSelectedKeys } from '../../utilities/intl';
 import Alert from '../Alert';
 import Button from '../Button';
 import Checkbox, { type TriState } from '../Checkbox';

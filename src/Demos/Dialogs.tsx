@@ -67,7 +67,7 @@ export default function DemoDialog() {
                 <Card
                     component="div"
                     ratio="landscape"
-                    dangerous={{ width: 'min(750px,80vw)' }}
+                    dangerous={{ width: 'min(750px,92vw)' }}
                 >
                     <Card.Title
                         dangerous={{
@@ -114,7 +114,7 @@ export default function DemoDialog() {
                 isOpen={isTrayOpen || isTrayOpen2}
                 onClose={callAll(onClose, onClose2)}
             >
-                <Card component="div" dangerous={{ width: 'min(750px,80vw)' }}>
+                <Card component="div" dangerous={{ width: 'min(750px,92vw)' }}>
                     <Card.Title
                         dangerous={{
                             display: 'flex',

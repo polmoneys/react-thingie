@@ -1,3 +1,6 @@
+// const grouped = Object.groupBy(tasks, task => task.status);
+// const lastUnread = messages.findLast(msg => !msg.read);
+
 export function splitArray<T>(items: T[], fn: (el: T) => boolean): [T[], T[]] {
     const match = [] as T[];
     const dispose = [] as T[];

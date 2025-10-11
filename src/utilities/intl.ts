@@ -1,3 +1,24 @@
+type ListFormatOptions = {
+    type?: 'conjunction' | 'disjunction';
+    style?: 'long' | 'short';
+};
+
+const defaultOptions: ListFormatOptions = {
+    type: 'conjunction',
+    style: 'long',
+};
+const defaultLocale = 'en';
+
+export function formatSelectedKeys(
+    selection: Set<React.Key>,
+    options = defaultOptions,
+    locale = defaultLocale,
+) {
+    return new Intl.ListFormat(locale, options).format(
+        [...selection].map((item) => item.toString()),
+    );
+}
+
 /*
   Usage:
   const value = 1234.567;

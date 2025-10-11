@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 
 import Alert from '../Dumb/Alert';
 import Font from '../Dumb/Font';
+import { formatSelectedKeys } from '../utilities/intl';
 import { useWorker } from '../utilities/web-worker';
-import { formatSelectedKeys } from '../utils';
 
 export const ITEMS = [
     { id: 1, name: 'Alice', age: 25, active: true },
@@ -74,7 +74,7 @@ export default function DemoWebWorker({
             } catch (err: any) {
                 // Ignore worker termination/lifecycle rejections — treat others as real errors
                 if (err?.code === 'WORKER_TERMINATED') return;
-                console.error('Worker error', err);
+                console.warn('Worker error', err);
             }
         })();
 

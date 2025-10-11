@@ -1,5 +1,5 @@
 import { COLUMNS, Thingie, USERS } from '../../Demos/Tables';
-import { formatSelectedKeys } from '../../utils';
+import { formatSelectedKeys } from '../../utilities/intl';
 import Alert from '../Alert';
 import Font from '../Font';
 import Rows from '../Rows';
