@@ -5,6 +5,8 @@
     transform: translate(-50%, -50%);
     border-radius: var(--border-radius);
     background-color: var(--white);
+    display: flex;
+    flex-direction: column;
 }
 
 .overlay {

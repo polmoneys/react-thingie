@@ -6,7 +6,8 @@ export function extractPowerWords(
     const processedQuery = query
         .toLowerCase()
         .replace(/[^\w\s'’-]/gi, '')
-        .replace(/\s{2,}/g, ' '); // remove any extra whitespace
+        .replace(/\s{2,}/g, ' ')
+        .trim();
 
     if (processedQuery === '') return [[], []];
 

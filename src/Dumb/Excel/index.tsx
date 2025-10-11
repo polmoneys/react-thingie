@@ -19,7 +19,6 @@ export default function useExcelExport({ onError }: UseExcelExportOptions) {
     const onCatch = useCallback(
         (err: unknown) => {
             const e = err instanceof Error ? err : new Error(String(err));
-            console.log({ e });
             setError(e);
             if (onError) onError(e);
             else console.error(e);

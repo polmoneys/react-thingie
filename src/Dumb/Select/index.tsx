@@ -4,7 +4,21 @@ import Group from '../Group';
 import Icon from '../Icon';
 import Ring from '../Ring';
 
-interface Props extends Omit<ComponentProps<'select'>, 'onChange'> {
+/*
+
+<Select
+    className="theme-inset"
+    placeholder="Choose"
+    value={newType}
+    onChange={(e) => setNewType(e as NodeType)}
+>
+    <option value="file">File</option>
+    <option value="folder">Folder</option>
+</Select>
+
+*/
+
+interface SelectProps extends Omit<ComponentProps<'select'>, 'onChange'> {
     onChange: (selected: string) => void;
     placeholder: string;
 }
@@ -15,7 +29,7 @@ export default function Select({
     children,
     placeholder,
     ...rest
-}: Props) {
+}: SelectProps) {
     return (
         <Group.Row component="label" alignItems="center">
             <Ring>
