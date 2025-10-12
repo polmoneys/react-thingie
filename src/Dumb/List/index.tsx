@@ -17,6 +17,7 @@ export default function StocksList() {
     const api = useSelection();
     const formatted = formatSelectedKeys(api.selectedKeys);
 
+    console.log({ formatted });
     const onChangeLeader = (event: ChangeEvent<HTMLInputElement>) => {
         const el = event.currentTarget;
 
@@ -73,7 +74,8 @@ export default function StocksList() {
                 <Font>
                     Selected count:{' '}
                     <Font.Bold component="span">
-                        {api.selectedCount} , {formatted}
+                        {api.selectedCount} {api.selectedCount > 0 ? ',' : ''}{' '}
+                        {formatted}
                     </Font.Bold>
                 </Font>
             </Alert>

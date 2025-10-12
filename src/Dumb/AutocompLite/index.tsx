@@ -38,7 +38,6 @@ export default function AutocompLite(props: AutcompLiteProps) {
         return !showPopover ? onToggle() : () => ({});
     }, [showPopover, onToggle]);
     const onOut = useCallback(() => {
-        console.log({ showPopover }, 'KJ');
         return showPopover ? onToggle() : () => ({});
     }, [showPopover, onToggle]);
 

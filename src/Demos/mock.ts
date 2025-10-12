@@ -18,12 +18,6 @@ export const DEMOS_V2 = [
         production: 'alpha',
     },
     {
-        id: 'Destinations',
-        label: 'Destinations',
-        tag: 'Dumb',
-        production: 'v1.0',
-    },
-    {
         id: 'Dialog',
         label: 'Dialog',
         tag: 'Dumb',
@@ -69,7 +63,7 @@ export const DEMOS_V2 = [
     {
         id: 'Stream',
         label: 'Stream',
-        tag: 'Dumb',
+        tag: 'Advanced',
         production: 'alpha',
         disabled: true,
     },
@@ -94,7 +88,7 @@ export const DEMOS_V2 = [
     {
         id: 'WebWorker',
         label: 'WebWorker',
-        tag: 'Dumb',
+        tag: 'Advanced',
         production: 'alpha',
         disabled: true,
     },

@@ -47,6 +47,13 @@
     display: flex;
     gap: var(--gap-1);
     width: 100%;
+    /*flex-direction: column;*/
+    flex-wrap: wrap;
+    @media (min-width: 500px) {
+        & {
+            flex-wrap: nowrap;
+        }
+    }
     .split {
         opacity: 0.7;
         &.match {
@@ -57,11 +64,6 @@
             opacity: 1;
         }
     }
-}
-
-.split-2 {
-    display: inline-flex;
-    margin-left: auto;
 }
 
 .chips {

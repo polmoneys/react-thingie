@@ -15,7 +15,6 @@ export type DemosLabels =
     | 'AutoCompLite'
     | 'Card'
     | 'DatePicker'
-    | 'Destinations'
     | 'Dialog'
     | 'Excel'
     | 'Icon'
@@ -38,8 +37,6 @@ const DEMO_IMPORTERS: Record<
     Card: () => import(/* webpackChunkName: "demo-card" */ './Cards'),
     DatePicker: () =>
         import(/* webpackChunkName: "demo-picker" */ './DatePicker'),
-    Destinations: () =>
-        import(/* webpackChunkName: "demo-destinations" */ './Destinations'),
     Dialog: () => import(/* webpackChunkName: "demo-dialog" */ './Dialogs'),
     Excel: () => import(/* webpackChunkName: "demo-excel" */ './Excel'),
     Icon: () => import(/* webpackChunkName: "demo-icon" */ './Icons'),

@@ -55,6 +55,16 @@ aside,
     background-color: var(--backdrop);
 }
 
+#autocompLite-demos {
+    & [data-index='1'] {
+        display: inline-flex;
+        margin-left: auto;
+    }
+}
+
+.is-swiping {
+    background-color: red;
+}
 .circle,
 .square {
     aspect-ratio: 1;

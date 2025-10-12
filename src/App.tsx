@@ -12,10 +12,10 @@ import './App.css';
 
 const mapper = (p: (typeof DEMOS_V2)[number]): AutocompLiteOption => ({
     ...p,
-    full: `${p.label}, ${p.tag}, ${p.production}`,
+    full: `${p.label}, ${p.tag} `,
 });
 
-function App() {
+export default function App() {
     // useEffect(() => {
     //     style('#main')
     //         .color('#fff')
@@ -25,9 +25,6 @@ function App() {
     //
 
     const { toggleDemo, demos } = useDemos();
-
-    // const [showAlert, setAlert] = useState(true);
-    // new Timer(() => setAlert(false), 2000);
 
     const {
         selected,
@@ -68,7 +65,7 @@ function App() {
                     overflow: 'visible',
                 }}
             >
-                <StickyHeader height="200px">
+                <StickyHeader height="200px" id="autocompLite-demos">
                     {({ isSticky }) => (
                         <>
                             <AutocompLite
@@ -96,28 +93,10 @@ function App() {
                     )}
                 </StickyHeader>
 
-                {/*
-                  <br />
-
-                  {showAlert && (
-                    <>
-                        <Alert
-                            mood="positive"
-                            style={{ width: 'fit-content', margin: '0 auto' }}
-                        >
-                            <Font.Bold>
-                                {DEMOS_V2.length} & growing :)
-                            </Font.Bold>
-                        </Alert>
-                        <br />
-                    </>
-                )}*/}
-
                 <br />
+
                 <DemoRenderer demos={demos} />
             </main>
         </>
     );
 }
-
-export default App;

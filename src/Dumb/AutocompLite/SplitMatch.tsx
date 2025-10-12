@@ -119,6 +119,7 @@ export default function SplitMatch({
                     styles[`split-${i}`],
                     isSplitMatch && styles.match,
                 )}
+                // use [data-index="1"] for CSS styling
                 data-index={i}
             >
                 {nodes}

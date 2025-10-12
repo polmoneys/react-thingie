@@ -1,5 +1,41 @@
 ```ts
 
+const palette = HAPPY_COLORS;
+
+const schema = [
+    {
+        column: 'serie',
+        type: String,
+        value: (item: any) => item.serie,
+        width: 30,
+        wrap: true,
+    },
+    {
+        column: 'label',
+        type: String,
+        value: (item: any) => item.label,
+        width: 50,
+        wrap: true,
+    },
+    {
+        column: 'value',
+        type: String,
+        value: (item: any) => formatNumber(item.value),
+        width: 20,
+        fontWeight: 'bold' as const,
+    },
+    {
+        column: 'date',
+        type: String,
+        value: (item: any) => formatDateTime(new Date(item.date)),
+        width: 30,
+    },
+];
+
+const { setSearchParams, pointInUrlDetails } = useSparklineUrl();
+
+
+
 <div style={{ width: '400px' }}>
     {pointInUrlDetails() !== undefined && (
         <>
@@ -70,39 +106,6 @@ const CustomTooltip = (props: TooltipProps) => {
     );
 };
 
- const palette = HAPPY_COLORS;
-
- const schema = [
-     {
-         column: 'serie',
-         type: String,
-         value: (item: any) => item.serie,
-         width: 30,
-         wrap: true,
-     },
-     {
-         column: 'label',
-         type: String,
-         value: (item: any) => item.label,
-         width: 50,
-         wrap: true,
-     },
-     {
-         column: 'value',
-         type: String,
-         value: (item: any) => formatNumber(item.value),
-         width: 20,
-         fontWeight: 'bold' as const,
-     },
-     {
-         column: 'date',
-         type: String,
-         value: (item: any) => formatDateTime(new Date(item.date)),
-         width: 30,
-     },
- ];
-
- const { setSearchParams, pointInUrlDetails } = useSparklineUrl();
 
 
 ```

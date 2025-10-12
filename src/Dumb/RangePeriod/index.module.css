@@ -1,0 +1,130 @@
+.range {
+    display: inline-block;
+    position: relative;
+    width: 128px;
+    height: 16px;
+}
+
+.range input[type='range'] {
+    width: 128px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    color: var(--info);
+    accent-color: currentcolor;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    appearance: none;
+    background: transparent;
+    pointer-events: none;
+}
+
+.range input::-webkit-slider-thumb {
+    pointer-events: auto;
+}
+
+.range input::-webkit-slider-runnable-track {
+    height: 0;
+}
+
+.range input:before,
+.range input:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    height: 8px;
+    width: 100%;
+    top: 4px;
+    border-radius: 8px;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.range input:before {
+    background-color: var(--neutral);
+    border-color: #b2b2b2;
+}
+
+/*.range:hover input:before {
+    background: #e5e4e5;
+    border-color: #9a9a9b;
+}
+
+.range:hover input:after {
+    filter: brightness(0.8);
+}*/
+
+.range input:active:before {
+    background-color: #f5f5f5;
+    border-color: #c1c1c1;
+    z-index: -1;
+}
+
+.range input:after {
+    --range: calc(var(--maxLimit) - var(--minLimit));
+    --minPercentage: calc(var(--minVal) / var(--range) * 100%);
+    --maxPercentage: calc((var(--range) - var(--maxVal)) / var(--range) * 100%);
+    background: currentcolor;
+    clip-path: inset(0 var(--maxPercentage) 0 var(--minPercentage));
+    z-index: -2;
+    pointer-events: none;
+    border: none;
+}
+
+.range input:active:after {
+    /*filter: brightness(1.35);*/
+    z-index: -1;
+}
+
+.range input:nth-child(1)::-moz-range-track {
+    --range: calc(var(--maxLimit) - var(--minLimit));
+    --minPercentage: calc(var(--minVal) / var(--range) * 100%);
+    --maxPercentage: calc(var(--maxVal) / var(--range) * 100%);
+
+    background: linear-gradient(
+        to right,
+        #e9e9ed 0%,
+        #e9e9ed var(--minPercentage),
+        currentcolor var(--minPercentage),
+        currentcolor var(--maxPercentage),
+        #e9e9ed var(--maxPercentage),
+        #e9e9ed 100%
+    );
+}
+
+.range input:nth-child(1)::-moz-range-track {
+    border: 1px solid #908f9c;
+}
+
+.range input::-moz-range-track {
+    height: 5px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.range input::-moz-range-thumb {
+    pointer-events: auto;
+    background: #676773;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+}
+
+.range input:hover::-moz-range-thumb {
+    background: #484850;
+    /*filter: brightness(1);*/
+}
+
+.range input:hover::-moz-range-track {
+    filter: brightness(0.9);
+}
+
+.range input:active::-moz-range-thumb {
+    background: currentcolor;
+    filter: brightness(1.1);
+}
