@@ -4,8 +4,8 @@ import { FocusScope } from '@react-aria/focus';
 import { useKeyboard } from 'react-aria';
 import ReactDOM from 'react-dom';
 
-import useViewportSize from '../utilities/useViewportSize';
-import { clsx } from '../utils';
+import useViewportSize from '../../utilities/useViewportSize';
+import { clsx } from '../../utils';
 
 import type { DialogProps } from './interfaces';
 

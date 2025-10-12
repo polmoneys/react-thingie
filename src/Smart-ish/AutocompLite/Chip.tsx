@@ -1,7 +1,7 @@
+import Button from '../../Dumb/Button';
+import type { ButtonProps } from '../../Dumb/Button/interfaces';
+import Icon from '../../Dumb/Icon';
 import { clsx } from '../../utils';
-import Button from '../Button';
-import type { ButtonProps } from '../Button/interfaces';
-import Icon from '../Icon';
 
 import styles from './index.module.css';
 

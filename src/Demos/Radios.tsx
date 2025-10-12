@@ -1,10 +1,10 @@
 import { type ReactNode, useState } from 'react';
 
 import Font from '../Dumb/Font';
-import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 import Group from '../Dumb/Group';
 import Radio from '../Dumb/Radio';
 import Shape from '../Dumb/Shape';
+import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
 import { clsx } from '../utils';
 
 const RadioCard = ({

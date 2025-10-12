@@ -1,7 +1,7 @@
 import { parseDate } from '@internationalized/date';
 import type { ReactNode } from 'react';
 
-import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
+import GridTemplateColumns from '../../Enlightment/GridTemplateColumns';
 
 import DatePick from '.';
 

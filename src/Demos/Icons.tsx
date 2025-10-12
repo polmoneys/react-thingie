@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 import Group from '../Dumb/Group';
 import Icon from '../Dumb/Icon';
 import Shape from '../Dumb/Shape';
 import ContainerSize from '../Dumb/Size';
 import StrokeDashoffset from '../Dumb/StrokeDashOffset';
+import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
 
 export default function DemoIcons() {
     const [progress, setProgress] = useState(0);

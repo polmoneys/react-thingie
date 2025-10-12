@@ -6,8 +6,8 @@ import {
     useMemo,
 } from 'react';
 
+import Font from '../../Dumb/Font';
 import { clsx } from '../../utils';
-import Font from '../Font';
 
 import type { SplitMatchProps } from './interfaces';
 import {

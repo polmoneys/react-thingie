@@ -4,7 +4,7 @@ import { FocusScope } from '@react-aria/focus';
 import { useKeyboard } from 'react-aria';
 import ReactDOM from 'react-dom';
 
-import { clsx, has } from '../utils';
+import { clsx, has } from '../../utils';
 
 import type { DialogProps } from './interfaces';
 

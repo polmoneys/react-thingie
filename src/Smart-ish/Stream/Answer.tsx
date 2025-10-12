@@ -4,10 +4,10 @@ import rehypeMermaid from 'rehype-mermaid';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 
-import Alert from '../Dumb/Alert';
-import Font from '../Dumb/Font';
-import Group from '../Dumb/Group';
-import { clsx } from '../utils';
+import Alert from '../../Dumb/Alert';
+import Font from '../../Dumb/Font';
+import Group from '../../Dumb/Group';
+import { clsx } from '../../utils';
 
 import styles from './index.module.css';
 

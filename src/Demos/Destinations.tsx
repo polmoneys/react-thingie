@@ -1,8 +1,8 @@
 import Alert from '../Dumb/Alert';
-import AutocompLite from '../Dumb/AutocompLite';
-import type { AutocompLiteOption } from '../Dumb/AutocompLite/interfaces';
-import useAutocompleteDestination from '../Dumb/AutocompLite/useAutocomplite';
 import Font from '../Dumb/Font';
+import AutocompLite from '../Smart-ish/AutocompLite';
+import type { AutocompLiteOption } from '../Smart-ish/AutocompLite/interfaces';
+import useAutocompleteDestination from '../Smart-ish/AutocompLite/useAutocomplite';
 
 export const demoPlaces = [
     {

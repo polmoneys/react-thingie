@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 
-import type { RenderProp } from '../interfaces';
+import type { RenderProp } from '../../interfaces';
 
 export interface DialogProps extends HTMLAttributes<HTMLDivElement> {
     onClose: () => void;

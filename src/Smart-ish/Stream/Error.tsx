@@ -1,5 +1,5 @@
-import Alert from '../Dumb/Alert';
-import Font from '../Dumb/Font';
+import Alert from '../../Dumb/Alert';
+import Font from '../../Dumb/Font';
 
 export default function StreamError({
     show = false,

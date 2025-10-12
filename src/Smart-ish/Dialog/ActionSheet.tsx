@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from 'react';
 
 import { useKeyboard } from 'react-aria';
 
-import { clsx } from '../utils';
+import { clsx } from '../../utils';
 
 import type { ActionSheetProps } from './interfaces';
 

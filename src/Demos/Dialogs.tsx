@@ -1,11 +1,11 @@
-import Dialog from '../Dialog';
-import Actionsheet from '../Dialog/ActionSheet';
-import Tray from '../Dialog/Tray';
 import Button from '../Dumb/Button';
 import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
 import Icon from '../Dumb/Icon';
 import Shape from '../Dumb/Shape';
+import Dialog from '../Smart-ish/Dialog';
+import Actionsheet from '../Smart-ish/Dialog/ActionSheet';
+import Tray from '../Smart-ish/Dialog/Tray';
 import useURLDialogs from '../utilities/useURL';
 import useURLLite from '../utilities/useURLLite';
 import { callAll } from '../utils';

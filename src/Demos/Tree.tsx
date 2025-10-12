@@ -1,10 +1,10 @@
 import Alert from '../Dumb/Alert';
 import Font from '../Dumb/Font';
-import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 import Group from '../Dumb/Group';
 import Tree, { FileOrFolder } from '../Dumb/Tree/';
 import type { FileSystem } from '../Dumb/Tree/interfaces';
 import useTree from '../Dumb/Tree/useTree';
+import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
 
 import styles from '../Dumb/Tree/index.module.css';
 

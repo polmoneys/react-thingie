@@ -2,10 +2,10 @@ import { useCallback, useRef } from 'react';
 
 import { useKeyboard } from 'react-aria';
 
+import Alert from '../../Dumb/Alert';
+import TextInputLabel from '../../Dumb/InputText';
 import useClickContains from '../../utilities/useClickContains';
 import { has } from '../../utils';
-import Alert from '../Alert';
-import TextInputLabel from '../InputText';
 
 import Chips from './Chips';
 import type { AutcompLiteProps } from './interfaces';

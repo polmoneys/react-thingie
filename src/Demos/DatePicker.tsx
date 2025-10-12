@@ -1,16 +1,16 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 
-import type { Period } from '../DatePicker/interfaces';
-import Periods from '../DatePicker/Periods';
-import useDates from '../DatePicker/useDates';
 import Button from '../Dumb/Button';
 import Checkbox from '../Dumb/Checkbox';
 import Font from '../Dumb/Font';
-import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 import Group from '../Dumb/Group';
 import Icon from '../Dumb/Icon';
+import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
+import type { Period } from '../Smart-ish/DatePicker/interfaces';
+import Periods from '../Smart-ish/DatePicker/Periods';
+import useDates from '../Smart-ish/DatePicker/useDates';
 
-const Range = lazy(() => import('../DatePicker/Range'));
+const Range = lazy(() => import('../Smart-ish/DatePicker/Range'));
 
 const periods: Period[] = [
     { id: 'oneDay', label: '1D' },

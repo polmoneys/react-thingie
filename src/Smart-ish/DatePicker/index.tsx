@@ -20,7 +20,7 @@ import {
     Text,
 } from 'react-aria-components';
 
-import Icon from '../Dumb/Icon';
+import Icon from '../../Dumb/Icon';
 
 interface MyDatePickerProps<T extends DateValue> extends DatePickerProps<T> {
     label?: string;

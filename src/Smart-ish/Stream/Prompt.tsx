@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import Button from '../Dumb/Button';
-import Font from '../Dumb/Font';
-import Icon from '../Dumb/Icon';
-import TextInputLabel from '../Dumb/InputText';
-import PopoverLite from '../Dumb/Popover/Lite';
-import ToolBar from '../Dumb/Toolbar';
+import Button from '../../Dumb/Button';
+import Font from '../../Dumb/Font';
+import Icon from '../../Dumb/Icon';
+import TextInputLabel from '../../Dumb/InputText';
+import PopoverLite from '../../Dumb/Popover/Lite';
+import ToolBar from '../../Dumb/Toolbar';
 
 import useStream from './useStream';
 

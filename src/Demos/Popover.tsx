@@ -1,10 +1,10 @@
 import Button from '../Dumb/Button';
 import Card from '../Dumb/Card';
 import Font from '../Dumb/Font';
-import GridTemplateColumns from '../Dumb/Grid/GridTemplateColumns';
 import Popover from '../Dumb/Popover';
 // import PopoverLite from '../Dumb/Popover/Lite';
 import Shape from '../Dumb/Shape';
+import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
 
 export default function PopoversGrid() {
     return (

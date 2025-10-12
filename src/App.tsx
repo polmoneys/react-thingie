@@ -1,11 +1,12 @@
 import { DEMOS_V2 } from './Demos/mock';
+import Temp from './Demos/Temp';
 import useDemos from './Demos/useURLDemos';
 import Alert from './Dumb/Alert';
-import AutocompLite from './Dumb/AutocompLite';
-import type { AutocompLiteOption } from './Dumb/AutocompLite/interfaces';
-import useAutocomplite from './Dumb/AutocompLite/useAutocomplite';
 import Font from './Dumb/Font';
 import StickyHeader from './Dumb/Sticky/Header';
+import AutocompLite from './Smart-ish/AutocompLite';
+import type { AutocompLiteOption } from './Smart-ish/AutocompLite/interfaces';
+import useAutocomplite from './Smart-ish/AutocompLite/useAutocomplite';
 import DemoRenderer from './Demos';
 
 import './App.css';
@@ -94,7 +95,7 @@ export default function App() {
                 </StickyHeader>
 
                 <br />
-
+                <Temp />
                 <DemoRenderer demos={demos} />
             </main>
         </>

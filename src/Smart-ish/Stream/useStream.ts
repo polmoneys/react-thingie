@@ -5,7 +5,7 @@ import {
     QUERY_KEY_STREAM,
     QUERY_KEY_STREAM_CHAT,
     QUERY_KEY_STREAM_HISTORY,
-} from '../utilities/queryClient';
+} from '../../utilities/queryClient';
 
 import { openai } from './config';
 import type { ChatMessage } from './interfaces';

@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
 
+import type { ColumnsGridProps } from '../../Dumb/Grid/interfaces';
+import { computeResponsiveValues } from '../../Dumb/Grid/utils';
 import type { Unit } from '../../interfaces';
 import { clsx, has } from '../../utils';
-
-import type { ColumnsGridProps } from './interfaces';
-import { computeResponsiveValues } from './utils';
 
 import styles from './index.module.css';
 

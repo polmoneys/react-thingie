@@ -1,8 +1,8 @@
-import StreamAnswer from '../Stream/Answer';
-import StreamError from '../Stream/Error';
-import StreamHistory from '../Stream/History';
-import StreamPrompt from '../Stream/Prompt';
-import useStream from '../Stream/useStream';
+import StreamAnswer from '../Smart-ish/Stream/Answer';
+import StreamError from '../Smart-ish/Stream/Error';
+import StreamHistory from '../Smart-ish/Stream/History';
+import StreamPrompt from '../Smart-ish/Stream/Prompt';
+import useStream from '../Smart-ish/Stream/useStream';
 
 export default function DemoStream() {
     const { mutation, streamedText } = useStream();

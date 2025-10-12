@@ -1,0 +1,93 @@
+.columns {
+    display: grid;
+    padding: var(--hug-padding, 0);
+    gap: var(--hug-gap, 0);
+    grid-template-columns: var(--hug-grid-template-columns, none);
+
+    & > * {
+        min-width: 0;
+    }
+}
+
+@media (min-width: 600px) {
+    .columns {
+        padding: var(--hug-padding-sm, var(--hug-padding, 0));
+        gap: var(--hug-gap-sm, var(--hug-gap, 0));
+        grid-template-columns: var(
+            --hug-grid-template-columns-sm,
+            var(--hug-grid-template-columns, none)
+        );
+    }
+}
+@media (min-width: 960px) {
+    .columns {
+        padding: var(
+            --hug-padding-md,
+            var(--hug-padding-sm, var(--hug-padding, 0))
+        );
+        gap: var(--hug-gap-md, var(--hug-gap-sm, var(--hug-gap, 0)));
+        grid-template-columns: var(
+            --hug-grid-template-columns-md,
+            var(
+                --hug-grid-template-columns-sm,
+                var(--hug-grid-template-columns, none)
+            )
+        );
+    }
+}
+@media (min-width: 1280px) {
+    .columns {
+        padding: var(
+            --hug-padding-lg,
+            var(--hug-padding-md, var(--hug-padding-sm, var(--hug-padding, 0)))
+        );
+        gap: var(
+            --hug-gap-lg,
+            var(--hug-gap-md, var(--hug-gap-sm, var(--hug-gap, 0)))
+        );
+        grid-template-columns: var(
+            --hug-grid-template-columns-lg,
+            var(
+                --hug-grid-template-columns-md,
+                var(
+                    --hug-grid-template-columns-sm,
+                    var(--hug-grid-template-columns, none)
+                )
+            )
+        );
+    }
+}
+@media (min-width: 1920px) {
+    .columns {
+        padding: var(
+            --hug-padding-xl,
+            var(
+                --hug-padding-lg,
+                var(
+                    --hug-padding-md,
+                    var(--hug-padding-sm, var(--hug-padding, 0))
+                )
+            )
+        );
+        gap: var(
+            --hug-gap-xl,
+            var(
+                --hug-gap-lg,
+                var(--hug-gap-md, var(--hug-gap-sm, var(--hug-gap, 0)))
+            )
+        );
+        grid-template-columns: var(
+            --hug-grid-template-columns-xl,
+            var(
+                --hug-grid-template-columns-lg,
+                var(
+                    --hug-grid-template-columns-md,
+                    var(
+                        --hug-grid-template-columns-sm,
+                        var(--hug-grid-template-columns, none)
+                    )
+                )
+            )
+        );
+    }
+}

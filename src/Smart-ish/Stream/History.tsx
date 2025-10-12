@@ -1,6 +1,6 @@
-import Card from '../Dumb/Card';
-import Font from '../Dumb/Font';
-import Group from '../Dumb/Group';
+import Card from '../../Dumb/Card';
+import Font from '../../Dumb/Font';
+import Group from '../../Dumb/Group';
 
 import StreamAnswer from './Answer';
 import useStream from './useStream';

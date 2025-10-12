@@ -1,5 +1,5 @@
-import Button from '../Dumb/Button';
-import { sliceByRanges } from '../utilities/chunk';
+import Button from '../../Dumb/Button';
+import { sliceByRanges } from '../../utilities/chunk';
 
 import type { Period, PeriodId } from './interfaces';
 

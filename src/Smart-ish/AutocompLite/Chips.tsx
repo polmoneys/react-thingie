@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import Button from '../Button';
-import ToolBar from '../Toolbar';
+import Button from '../../Dumb/Button';
+import ToolBar from '../../Dumb/Toolbar';
 
 import Chip from './Chip';
 import type { ChipsProps } from './interfaces';
