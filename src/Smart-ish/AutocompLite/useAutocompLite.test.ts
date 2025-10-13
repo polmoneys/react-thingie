@@ -66,14 +66,11 @@ describe('useAutocompLite utilities', () => {
                     const q = (rawQuery || '').trim().toLowerCase();
                     const tokens = q.split(/\s+/).filter(Boolean);
 
-                    // if query produced no tokens then res should equal options (already tested above),
-                    // but to be safe only run the detailed checks when tokens exist.
                     if (tokens.length === 0) {
                         expect(res).toEqual(options);
                         return;
                     }
 
-                    // every option returned must contain all tokens
                     for (const o of res) {
                         for (const t of tokens) {
                             if (!((o._search || '') as string).includes(t)) {

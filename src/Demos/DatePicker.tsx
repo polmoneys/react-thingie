@@ -5,7 +5,7 @@ import Checkbox from '../Dumb/Checkbox';
 import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
 import Icon from '../Dumb/Icon';
-import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
+import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 import type { Period } from '../Smart-ish/DatePicker/interfaces';
 import Periods from '../Smart-ish/DatePicker/Periods';
 import useDates from '../Smart-ish/DatePicker/useDates';

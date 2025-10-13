@@ -4,7 +4,7 @@ import Group from '../Dumb/Group';
 import Tree, { FileOrFolder } from '../Dumb/Tree/';
 import type { FileSystem } from '../Dumb/Tree/interfaces';
 import useTree from '../Dumb/Tree/useTree';
-import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
+import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 
 import styles from '../Dumb/Tree/index.module.css';
 

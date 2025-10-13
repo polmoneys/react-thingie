@@ -1,6 +1,6 @@
 import Button from '../Dumb/Button';
 import Card from '../Dumb/Card';
-import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
+import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 
 export default function CardsGrid() {
     return (

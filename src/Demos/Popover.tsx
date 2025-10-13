@@ -4,7 +4,7 @@ import Font from '../Dumb/Font';
 import Popover from '../Dumb/Popover';
 // import PopoverLite from '../Dumb/Popover/Lite';
 import Shape from '../Dumb/Shape';
-import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
+import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 
 export default function PopoversGrid() {
     return (

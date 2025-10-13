@@ -12,3 +12,9 @@ export default function queryURL(name: string) {
     const qs = url.search || `?${url.hash.slice(1)}`;
     return new URLSearchParams(qs).get(name);
 }
+
+// 🔥 `/api/cities?country=${country}` VS.
+// '/api/cities?' +
+//   new URLSearchParams([
+//     [ 'country', country ]
+//   ])

@@ -66,8 +66,6 @@ describe('computeRangeForPeriod and isPeriodEnabled', () => {
         'custom',
     ];
 
-    // Replace the 'computeRangeForPeriod returns start/end as clamped days and start <= end' test with this:
-
     it('computeRangeForPeriod returns start/end as clamped days and start <= end (except inception with oldest > today)', () => {
         fc.assert(
             fc.property(
@@ -75,7 +73,7 @@ describe('computeRangeForPeriod and isPeriodEnabled', () => {
                 fc.option(safeDateArb),
                 fc.constantFrom(...allPeriods),
                 (d, maybeOldestDate, period) => {
-                    const today = dayFromDate(d); // use clampToDay(dayjs(d)) as before
+                    const today = dayFromDate(d);
                     const oldest = maybeOldestDate
                         ? dayFromDate(maybeOldestDate)
                         : null;
@@ -99,8 +97,7 @@ describe('computeRangeForPeriod and isPeriodEnabled', () => {
                         oldest &&
                         oldest.isAfter(today, 'day')
                     ) {
-                        // allowed: start may be after end
-                        expect(iso(start)).toBe(iso(oldest)); // still verify it's using oldest
+                        expect(iso(start)).toBe(iso(oldest));
                     } else {
                         // otherwise start must be same-or-before end
                         expect(!start.isAfter(end, 'day')).toBe(true);
@@ -121,7 +118,6 @@ describe('computeRangeForPeriod and isPeriodEnabled', () => {
                         ? dayFromDate(maybeOldest)
                         : null;
 
-                    // oneDay
                     {
                         const { start, end } = computeRangeForPeriod(
                             'oneDay',
@@ -134,7 +130,6 @@ describe('computeRangeForPeriod and isPeriodEnabled', () => {
                         );
                     }
 
-                    // YTD
                     {
                         const { start } = computeRangeForPeriod(
                             'YTD',
@@ -146,7 +141,6 @@ describe('computeRangeForPeriod and isPeriodEnabled', () => {
                         );
                     }
 
-                    // inception: uses oldest if provided
                     {
                         const res = computeRangeForPeriod(
                             'inception',
@@ -160,7 +154,6 @@ describe('computeRangeForPeriod and isPeriodEnabled', () => {
                         }
                     }
 
-                    // custom returns start=end=today
                     {
                         const res = computeRangeForPeriod(
                             'custom',

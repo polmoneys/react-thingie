@@ -5,7 +5,7 @@ import Icon from '../Dumb/Icon';
 import Shape from '../Dumb/Shape';
 import ContainerSize from '../Dumb/Size';
 import StrokeDashoffset from '../Dumb/StrokeDashOffset';
-import GridTemplateColumns from '../Enlightment/GridTemplateColumns';
+import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 
 export default function DemoIcons() {
     const [progress, setProgress] = useState(0);

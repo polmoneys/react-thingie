@@ -22,3 +22,6 @@ export function removeDuplicatesBy<T, K>(
         return true;
     });
 }
+
+// const opts = [a,b,c]
+// const optsChanged = !opts.every( (item, i) => prevOpts.current[i] === item)
