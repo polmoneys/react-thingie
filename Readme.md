@@ -3,11 +3,30 @@
 ## Thingies for Reactjs
 
 My work involves complex UI in React, this is how I roll for now.
-We have `Dumb`, `Smart-ish` and `Inspired` (favs) components
+We have `Dumb`, `Smart-ish` and `Inspired`.
 
 ### Lore
 
-It all started with **createThingie** that returns `<ContextProvider>` and `useSelection` hook. [Read More](/src/Thingie/Readme.md) about Thingie.
+Attempt 27392794472. Previous work, [Boost](https://github.com/polmoneys/boost), [Apoteosis](https://www.apotheosis.party/), [Hug component](https://github.com/polmoneys/Hug)...
+
+### Inspired
+
+`GridTemplateColumns` inspired by MUI.
+
+```tsx
+// works for gap & padding too
+
+<GridTemplateColumns
+    gridTemplateColumns={{
+        xs: '1fr',
+        md: '1fr 1fr',
+        lg: '1fr 1fr 1fr',
+        xl: '1fr 1fr 1fr 1fr',
+    }}
+>
+    {/* children */}
+</GridTemplateColumns>
+```
 
 **Work in progress**
 
