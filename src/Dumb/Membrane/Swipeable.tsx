@@ -1,6 +1,6 @@
 import { type ReactNode, useRef } from 'react';
 
-import { useSwipe } from '../../utilities/useSwipe';
+import useSwipe from '../../utilities/useSwipe';
 import type { SwipeSummary } from '../../utilities/useSwipe/interfaces';
 import { clsx, has } from '../../utils';
 // import type { RenderProp } from '../../interfaces';

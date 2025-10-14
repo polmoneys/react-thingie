@@ -6,8 +6,8 @@ import Shape from '../Dumb/Shape';
 import Dialog from '../Smart-ish/Dialog';
 import Actionsheet from '../Smart-ish/Dialog/ActionSheet';
 import Tray from '../Smart-ish/Dialog/Tray';
+import useURLLite from '../Smart-ish/Dialog/useURLLite';
 import useURLDialogs from '../utilities/useURL';
-import useURLLite from '../utilities/useURLLite';
 import { callAll } from '../utils';
 
 export default function DemoDialog() {

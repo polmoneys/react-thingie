@@ -1,3 +1,33 @@
+export type Colors = Record<'start' | 'end', string>;
+export type Percentage = `${string}%`;
+export type Direction = 'x' | 'y';
+export interface Stop {
+    stop: Percentage;
+    color: string;
+}
+
+export type Stops = Array<Stop>;
+
+/*
+
+export const workweekBackground = repeatGradient(
+  { start: 'transparent', end: 'var(--bg-idle)' },
+  '20%',
+  'x',
+)
+*/
+
+export const repeatGradient = (
+    colors: Colors,
+    size: Percentage,
+    direction: Direction,
+): string => `repeating-linear-gradient(
+    ${direction === 'x' ? '90deg' : '0deg'},
+    ${colors?.start ?? 'currentColor'},
+    ${colors?.start ?? 'currentColor'} ${size},
+    ${colors?.end ?? 'transparent'} ${size},
+    ${colors?.end ?? 'transparent'} ${Number(size.replace('%', '')) * 2}%)`;
+
 /*
 
 export const meterBackground = customGradient(
@@ -29,34 +59,7 @@ export const meterBackground = customGradient(
   ],
   'x',
 )
-
-export const workweekBackground = repeatGradient(
-  { start: 'transparent', end: 'var(--bg-idle)' },
-  '20%',
-  'x',
-)
-
 */
-export type Colors = Record<'start' | 'end', string>;
-export type Percentage = `${string}%`;
-export type Direction = 'x' | 'y';
-export interface Stop {
-    stop: Percentage;
-    color: string;
-}
-
-export type Stops = Array<Stop>;
-
-export const repeatGradient = (
-    colors: Colors,
-    size: Percentage,
-    direction: Direction,
-): string => `repeating-linear-gradient(
-    ${direction === 'x' ? '90deg' : '0deg'},
-    ${colors?.start ?? 'currentColor'},
-    ${colors?.start ?? 'currentColor'} ${size},
-    ${colors?.end ?? 'transparent'} ${size},
-    ${colors?.end ?? 'transparent'} ${Number(size.replace('%', '')) * 2}%)`;
 
 export const customGradient = (stops: Stops, direction: Direction): string =>
     `linear-gradient(${direction === 'x' ? '90deg' : '0deg'}, ${stops

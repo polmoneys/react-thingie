@@ -13,7 +13,9 @@ import {
     mapPercentToDistanceHuman,
 } from './utils';
 
-export function useSwipe<T extends Element = HTMLElement>(
+// hint: Dumb/Membrane/Swipeable.tsx
+
+export default function useSwipe<T extends Element = HTMLElement>(
     providedRef?: RefObject<T | null> | null,
     options: UseSwipeOptions = {},
 ) {

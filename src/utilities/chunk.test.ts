@@ -4,14 +4,15 @@ import { describe, expect, it } from 'vitest';
 import { sliceByRanges } from './chunk';
 
 type Range = [number, number];
+type Matrix<T> = Array<Array<T>>;
 
 function referenceSliceByRanges<T>(
     arr: readonly T[],
     ranges: Array<[number, number]>,
     allowNegative = false,
-): T[][] {
+): Matrix<T> {
     const n = arr.length;
-    const out: T[][] = [];
+    const out: Matrix<T> = [];
 
     for (const r of ranges) {
         const [rawStart, rawEnd] = r;
