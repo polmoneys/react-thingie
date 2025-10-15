@@ -3,15 +3,18 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 export type KeyFn<T> = (item: T, index: number) => string | number;
 
 export type UseSlidingWindow2Options<T> = {
-    items: T[]; // source array (can be large)
-    itemHeight: number; // px, fixed height simplifies math
-    pageSize?: number; // how many items per 'page' chunk (<= 100). Default 100
-    maxRendered?: number; // maximum items mounted at a time. Default 20 (required by you)
-    // how many items to shift the window by when crossing an edge. Default 5
+    items: T[];
+    itemHeight: number;
+    pageSize?: number;
+    maxRendered?: number;
+    // items to shift the window by when crossing an edge
     step?: number;
-    initialIndex?: number; // initial scroll index (global index into items)
-    keyExtractor?: KeyFn<T>; // optional key extractor for stable keys
-    alignToStep?: boolean; // whether windowStart should snap to multiples of `step` (default true)
+    // initial scroll index (global index into items)
+    initialIndex?: number;
+    // optional key extractor for stable keys
+    keyExtractor?: KeyFn<T>;
+    // whether windowStart should snap to multiples of `step` (default true)
+    alignToStep?: boolean;
     onWindowChange?: (windowStart: number, windowSize: number) => void; // hook user callback
 };
 
@@ -26,13 +29,10 @@ export default function useSlidingWindow2<T>({
     alignToStep = true,
     onWindowChange,
 }: UseSlidingWindow2Options<T>) {
-    // sanitize pageSize
     const effectivePageSize = Math.min(100, Math.max(1, Math.floor(pageSize)));
 
-    // total items
     const total = items.length;
 
-    // clamp helper
     const clamp = useCallback(
         (v: number) => {
             const maxStart = Math.max(0, total - maxRendered);
@@ -58,10 +58,8 @@ export default function useSlidingWindow2<T>({
         (total - windowStart - windowSize) * itemHeight,
     );
 
-    // container ref to attach scroll listener externally
     const containerRef = useRef<HTMLDivElement | null>(null);
 
-    // page calculation helpers
     const pageIndexOf = useCallback(
         (globalIndex: number) => {
             return Math.floor(globalIndex / effectivePageSize);
@@ -78,7 +76,6 @@ export default function useSlidingWindow2<T>({
         return arr;
     }, [windowStart, windowSize, pageIndexOf]);
 
-    // exposed visible slice and stable keys
     const visibleItems = useMemo(() => {
         return items.slice(windowStart, windowStart + windowSize);
     }, [items, windowStart, windowSize]);
@@ -135,7 +132,6 @@ export default function useSlidingWindow2<T>({
         clamp,
     ]);
 
-    // programmatic scroll helpers
     const scrollToIndex = useCallback(
         (index: number, align: 'start' | 'center' | 'end' = 'start') => {
             const el = containerRef.current;
@@ -195,7 +191,6 @@ export default function useSlidingWindow2<T>({
         [clamp, itemHeight, windowStart],
     );
 
-    // notify consumer of window changes
     useEffect(() => {
         onWindowChange?.(windowStart, windowSize);
     }, [windowStart, windowSize, onWindowChange]);
@@ -206,26 +201,21 @@ export default function useSlidingWindow2<T>({
         [pageRangeForWindow],
     );
 
-    // Return a small api
     return {
-        // refs & layout
         containerRef,
         topSpacer,
         bottomSpacer,
         itemHeight,
 
-        // data to render
         visibleItems,
         visibleKeys,
         windowStart,
         windowSize,
 
-        // paging / pages info
         effectivePageSize,
         pageOf: pageIndexOf,
         touchedPages,
 
-        // actions
         scrollToIndex,
         gotoPage,
         shiftWindow,
