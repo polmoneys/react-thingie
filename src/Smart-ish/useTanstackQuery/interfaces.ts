@@ -1,3 +1,5 @@
+import type { QueryState } from '@tanstack/react-query';
+
 type QueryKey = readonly unknown[];
 
 export interface UseTanstackQueryOptions {
@@ -47,6 +49,6 @@ export interface UseTanstackQueryReturn {
     refetch: (options?: { force?: boolean }) => Promise<void>;
 
     getQueryState: <TData = unknown, TError = Error>() =>
-        | import('@tanstack/react-query').QueryState<TData, TError>
+        | QueryState<TData, TError>
         | undefined;
 }
