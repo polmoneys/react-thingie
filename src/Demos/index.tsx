@@ -18,8 +18,10 @@ export type DemosLabels =
     | 'DatePicker'
     | 'Dialog'
     | 'Editor'
+    | 'Embeds'
     | 'Excel'
     | 'Icon'
+    | 'Lifeboats'
     | 'List'
     | 'Menu'
     | 'Popover'
@@ -27,6 +29,7 @@ export type DemosLabels =
     | 'Radio'
     | 'SlidingWindow'
     | 'Stream'
+    | 'Swipeable'
     | 'Table'
     | 'Tree'
     | 'WebWorker';
@@ -43,8 +46,11 @@ const DEMO_IMPORTERS: Record<
         import(/* webpackChunkName: "demo-picker" */ './DatePicker'),
     Dialog: () => import(/* webpackChunkName: "demo-dialog" */ './Dialogs'),
     Editor: () => import(/* webpackChunkName: "demo-editor" */ './Editor'),
+    Embeds: () => import(/* webpackChunkName: "demo-embeds" */ './Embeds'),
     Excel: () => import(/* webpackChunkName: "demo-excel" */ './Excel'),
     Icon: () => import(/* webpackChunkName: "demo-icon" */ './Icons'),
+    Lifeboats: () =>
+        import(/* webpackChunkName: "demo-lifeboats" */ './Lifeboats'),
     List: () => import(/* webpackChunkName: "demo-list" */ './List'),
     Menu: () => import(/* webpackChunkName: "demo-menu" */ './Menu'),
     Popover: () => import(/* webpackChunkName: "demo-popover" */ './Popover'),
@@ -53,6 +59,8 @@ const DEMO_IMPORTERS: Record<
     SlidingWindow: () =>
         import(/* webpackChunkName: "demo-sliding-window" */ './SlidingWindow'),
     Stream: () => import(/* webpackChunkName: "demo-stream" */ './Stream'),
+    Swipeable: () =>
+        import(/* webpackChunkName: "demo-swipeable" */ './Swipeable'),
     Table: () => import(/* webpackChunkName: "demo-table" */ './Tables'),
     Tree: () => import(/* webpackChunkName: "demo-tree" */ './Tree'),
     WebWorker: () =>

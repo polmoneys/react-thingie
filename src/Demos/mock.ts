@@ -36,6 +36,13 @@ export const DEMOS_V2 = [
         production: 'v1.0',
     },
     {
+        id: 'Embeds',
+        label: 'Embeds',
+        tag: 'Inspired',
+        production: 'v1.0',
+        disabled: true,
+    },
+    {
         id: 'Excel',
         label: 'Excel',
         tag: 'Dumb',
@@ -46,6 +53,13 @@ export const DEMOS_V2 = [
         label: 'Icon',
         tag: 'Dumb',
         production: 'v1.0',
+    },
+    {
+        id: 'Lifeboats',
+        label: 'Lifeboats',
+        tag: 'Inspired',
+        production: 'v1.0',
+        disabled: true,
     },
     {
         id: 'List',
@@ -91,7 +105,13 @@ export const DEMOS_V2 = [
         production: 'alpha',
         disabled: true,
     },
-
+    {
+        id: 'Swipeable',
+        label: 'Swipeable',
+        tag: 'Dumb',
+        production: 'v1.0',
+        disabled: true,
+    },
     {
         id: 'Table',
         label: 'Table',

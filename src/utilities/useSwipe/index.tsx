@@ -42,7 +42,7 @@ export default function useSwipe<T extends Element = HTMLElement>(
     const activeRef = useRef(false);
     const [isSwiping, setIsSwiping] = useState(false);
 
-    function scheduleFlush(
+    function scheduleRaf(
         sizePx: number,
         onMoveFlush?: (data: MoveData) => void,
     ) {
@@ -66,11 +66,11 @@ export default function useSwipe<T extends Element = HTMLElement>(
         const el = ref.current as unknown as Element | null;
         if (!el) return undefined;
 
-        function onPointerDown(e: PointerEvent) {
-            if (e.pointerType === 'mouse' && e.button !== 0) return;
+        function onPointerDown(event: PointerEvent) {
+            if (event.pointerType === 'mouse' && event.button !== 0) return;
 
             if (ignoreInteractive) {
-                const target = e.target as Element | null;
+                const target = event.target as Element | null;
                 if (
                     target &&
                     target.closest &&
@@ -80,7 +80,7 @@ export default function useSwipe<T extends Element = HTMLElement>(
             }
 
             try {
-                (el as Element).setPointerCapture?.(e.pointerId);
+                (el as Element).setPointerCapture?.(event.pointerId);
             } catch {
                 //
             }
@@ -89,26 +89,26 @@ export default function useSwipe<T extends Element = HTMLElement>(
             setIsSwiping(true);
             const rect = (el as Element).getBoundingClientRect();
             const p: Point = {
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top,
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top,
             };
             startRef.current = p;
             lastRef.current = p;
         }
 
-        function onPointerMove(e: PointerEvent) {
+        function onPointerMove(event: PointerEvent) {
             if (!activeRef.current) return;
             const rect = (el as Element).getBoundingClientRect();
             lastRef.current = {
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top,
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top,
             };
             const sizePx =
                 optSize ?? Math.max(rect.width || 1, rect.height || 1);
-            scheduleFlush(sizePx);
+            scheduleRaf(sizePx);
         }
 
-        function onPointerUp(e: PointerEvent) {
+        function onPointerUp(event: PointerEvent) {
             if (!activeRef.current) return;
             activeRef.current = false;
             if (rafRef.current) {
@@ -130,7 +130,7 @@ export default function useSwipe<T extends Element = HTMLElement>(
                 startRef.current = null;
                 lastRef.current = null;
                 try {
-                    (el as Element).releasePointerCapture?.(e.pointerId);
+                    (el as Element).releasePointerCapture?.(event.pointerId);
                 } catch {
                     //
                 }
@@ -140,7 +140,7 @@ export default function useSwipe<T extends Element = HTMLElement>(
                 startRef.current = null;
                 lastRef.current = null;
                 try {
-                    (el as Element).releasePointerCapture?.(e.pointerId);
+                    (el as Element).releasePointerCapture?.(event.pointerId);
                 } catch {
                     //
                 }
@@ -167,7 +167,7 @@ export default function useSwipe<T extends Element = HTMLElement>(
 
                     if (preventDefaultOnSwipe) {
                         try {
-                            e.preventDefault();
+                            event.preventDefault();
                         } catch {
                             //
                         }
@@ -176,7 +176,7 @@ export default function useSwipe<T extends Element = HTMLElement>(
             }
 
             try {
-                (el as Element).releasePointerCapture?.(e.pointerId);
+                (el as Element).releasePointerCapture?.(event.pointerId);
             } catch {
                 //
             }

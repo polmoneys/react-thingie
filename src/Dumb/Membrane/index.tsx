@@ -13,17 +13,6 @@ import { angleToDirection, computeSummaryFromData } from './utils';
 
 import styles from './index.module.css';
 
-/*
-
-<Membrane
-    className="theme positive"
-    label="joystick"
-    onMove={(dataMove) => console.log({ dataMove })}
-    onStart={(dataStart) => console.log({ dataStart })}
-    onEnd={(dataEnd) => console.log({ dataEnd })}
-/>
-
-*/
 export default function Membrane({
     width = 300,
     height = 220,
@@ -36,6 +25,7 @@ export default function Membrane({
     onEnd,
     children,
     label,
+    circleFill = 'currentColor',
 }: MembraneProps) {
     const elRef = useRef<HTMLDivElement | null>(null);
     const startRef = useRef<Point | null>(null);
@@ -238,8 +228,7 @@ export default function Membrane({
                         cx={destination.x}
                         cy={destination.y}
                         r={18}
-                        fill="var(--negative)"
-                        opacity={0.75}
+                        fill={circleFill}
                     />
                 ) : null}
                 {overlay ? (

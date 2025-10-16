@@ -55,4 +55,5 @@ export interface MembraneProps {
     // called when pointer up/cancel
     onEnd?: (payload: { summary: MoveSummary; details: MoveData }) => void;
     children?: ReactNode;
+    circleFill?: string;
 }

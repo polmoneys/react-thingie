@@ -1,36 +1,22 @@
-import { type ReactNode, useRef } from 'react';
+import { useRef } from 'react';
 
+import type { RenderProp } from '../../interfaces';
 import useSwipe from '../../utilities/useSwipe';
 import type { SwipeSummary } from '../../utilities/useSwipe/interfaces';
 import { clsx, has } from '../../utils';
-// import type { RenderProp } from '../../interfaces';
-
-/*
-
-<Swipeable
-    lock="x"
-    touchAction="pan-x"
-    classNames={{ root: 'theme', isSwiping: 'positive' }}
-    onEnd={(d) => console.log({ d })}
->
-    <Button>jaslñjasñjsal sl</Button>
-</Swipeable>
-
-*/
 
 interface SwipeableProps {
     touchAction: 'pan-x' | 'pan-y';
     lock?: 'x' | 'y';
     threshold?: number;
     onEnd: (summary: SwipeSummary) => void;
-    children: ReactNode;
     classNames?: {
         root?: string;
         isSwiping?: string;
     };
-    // children?: RenderProp<{
-    //     isSwiping: boolean;
-    // }>;
+    children: RenderProp<{
+        isSwiping: boolean;
+    }>;
 }
 
 export default function Swipeable(props: SwipeableProps) {
@@ -62,7 +48,7 @@ export default function Swipeable(props: SwipeableProps) {
                 isSwiping && classNames?.isSwiping,
             )}
         >
-            {children}
+            {children({ isSwiping })}
         </div>
     );
 }

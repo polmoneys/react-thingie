@@ -4,6 +4,8 @@ export interface RenderProp<TChildrenProps, TElement = unknown> {
     (props: TChildrenProps): ReactElement<TElement>;
 }
 
+export type LooseT<T extends string> = T | (string & {});
+
 // type RenderProp<T> = (props: T) => ReactNode;
 
 export type RequireAtLeastOne<T> = {
