@@ -24,7 +24,7 @@ function StarWarsCharacters() {
     queryFn: fetchCharacters
   });
 
-  const characterHelpers = useQueryHelper({
+  const characterHelpers = useTanstackQuery({
     queryKey: ['starwars', 'characters']
   });
 

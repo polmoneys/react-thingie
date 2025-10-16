@@ -1,5 +1,4 @@
 import { DEMOS_V2 } from './Demos/mock';
-import Temp from './Demos/Temp';
 import useDemos from './Demos/useURLDemos';
 import Alert from './Dumb/Alert';
 import Font from './Dumb/Font';
@@ -95,7 +94,6 @@ export default function App() {
                 </StickyHeader>
 
                 <br />
-                <Temp />
                 <DemoRenderer demos={demos} />
             </main>
         </>

@@ -13,6 +13,7 @@ import Icon from '../Dumb/Icon';
 
 export type DemosLabels =
     | 'AutoCompLite'
+    | 'Basket'
     | 'Card'
     | 'DatePicker'
     | 'Dialog'
@@ -23,6 +24,7 @@ export type DemosLabels =
     | 'Popover'
     | 'Portal'
     | 'Radio'
+    | 'SlidingWindow'
     | 'Stream'
     | 'Table'
     | 'Tree'
@@ -35,6 +37,7 @@ const DEMO_IMPORTERS: Record<
     AutoCompLite: () =>
         import(/* webpackChunkName: "demo-autocomplite" */ './Destinations'),
     Card: () => import(/* webpackChunkName: "demo-card" */ './Cards'),
+    Basket: () => import(/* webpackChunkName: "demo-basket" */ './Basket'),
     DatePicker: () =>
         import(/* webpackChunkName: "demo-picker" */ './DatePicker'),
     Dialog: () => import(/* webpackChunkName: "demo-dialog" */ './Dialogs'),
@@ -45,6 +48,8 @@ const DEMO_IMPORTERS: Record<
     Popover: () => import(/* webpackChunkName: "demo-popover" */ './Popover'),
     Portal: () => import(/* webpackChunkName: "demo-portal" */ './Portals'),
     Radio: () => import(/* webpackChunkName: "demo-radio" */ './Radios'),
+    SlidingWindow: () =>
+        import(/* webpackChunkName: "demo-sliding-window" */ './SlidingWindow'),
     Stream: () => import(/* webpackChunkName: "demo-stream" */ './Stream'),
     Table: () => import(/* webpackChunkName: "demo-table" */ './Tables'),
     Tree: () => import(/* webpackChunkName: "demo-tree" */ './Tree'),

@@ -62,6 +62,11 @@ aside,
     }
 }
 
+.slidind-window-container {
+    background-color: #ccc;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
 .is-swiping {
     background-color: red;
 }

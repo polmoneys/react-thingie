@@ -1,0 +1,25 @@
+:where(html) {
+    --space: hsl;
+    --saturation: 100%;
+    --lightness: 80%;
+
+    --positive: 153deg;
+    --negative: 31deg;
+    --info: 56deg;
+    --accent: 265deg;
+    --accent-2: 278deg;
+    --accent-3: 297deg;
+
+    --color-positive: var(--space)
+        (var(--positive), var(--saturation), var(--lightness));
+    --color-negative: var(--space)
+        (var(--negative), var(--saturation), var(--lightness));
+    --color-info: var(--space)
+        (var(--info), var(--saturation), var(--lightness));
+    --color-accent: var(--space)
+        (var(--accent), var(--saturation), var(--lightness));
+    --color-accent-2: var(--space)
+        (var(--accent-2), var(--saturation), var(--lightness));
+    --color-accent-3: var(--space)
+        (var(--accent-3), var(--saturation), var(--lightness));
+}

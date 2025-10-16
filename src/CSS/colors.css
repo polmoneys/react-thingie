@@ -42,19 +42,19 @@
     );
 }
 
-.theme {
-    padding: var(--pxy) !important;
+.theme,
+.theme-inset,
+.theme-transparent {
     background-color: var(--white);
     border: var(--border);
     box-shadow: var(--shadow);
     border-radius: var(--border-radius);
 }
-
-.theme-inset {
-    background-color: var(--white);
-    border: var(--border);
-    box-shadow: var(--shadow);
-    border-radius: var(--border-radius);
+.theme {
+    padding: var(--pxy) !important;
+}
+.theme-transparent {
+    background-color: var(--transparent);
 }
 
 .positive {
@@ -79,33 +79,17 @@
     filter: blur(2px);
 }
 
-.maskX {
-    --mask-text: rgb(var(--black));
-    -webkit-mask-image: linear-gradient(
-        90deg,
-        transparent,
-        var(--mask-text) 15%,
-        var(--mask-text) 85%,
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        90deg,
-        transparent,
-        var(--mask-text) 15%,
-        var(--mask-text) 85%,
-        transparent 100%
-    );
-}
-
-.maskY {
-    --mask-text: rgb(var(--black));
-
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent,
-        var(--mask-text)
-    );
-    mask-image: linear-gradient(to bottom, transparent, var(--mask-text));
+.noise-scroll {
+    transition-property:
+        filter,
+        -webkit-backdrop-filter;
+    transition-property: filter;
+    transition-property:
+        filter,
+        -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    filter: blur(1px);
 }
 
 .saturate {

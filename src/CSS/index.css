@@ -45,7 +45,11 @@
     --bg-disabled: var(--neutral);
     --animation-duration: 0.3s;
 
+    --z-0: -1;
+    --z-1: 1;
+    --z-2: 2;
     --z-max: 999;
+
     --sticky-top: var(--gap-3);
 }
 
@@ -77,6 +81,7 @@ html {
     /* sync bgcolor with *-scrollbar-track */
     background-color: var(--grey);
     color: var(--black);
+    /*accent-color: var(--positive);*/
 
     &::-webkit-scrollbar {
         width: var(--scrollbar-size);

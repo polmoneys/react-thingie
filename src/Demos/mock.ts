@@ -6,6 +6,12 @@ export const DEMOS_V2 = [
         production: 'v1.0',
     },
     {
+        id: 'Basket',
+        label: 'Basket',
+        tag: 'Smart-ish',
+        production: 'v1.0',
+    },
+    {
         id: 'Card',
         label: 'Card',
         tag: 'Dumb',
@@ -14,13 +20,13 @@ export const DEMOS_V2 = [
     {
         id: 'DatePicker',
         label: 'DatePicker',
-        tag: 'Advanced',
+        tag: 'Smart-ish',
         production: 'alpha',
     },
     {
         id: 'Dialog',
         label: 'Dialog',
-        tag: 'Dumb',
+        tag: 'Smart-ish',
         production: 'v1.0',
     },
     {
@@ -61,9 +67,15 @@ export const DEMOS_V2 = [
         production: 'v1.0',
     },
     {
+        id: 'SlidingWindow',
+        label: 'SlidingWindow',
+        tag: 'Smart-ish',
+        production: 'alpha',
+    },
+    {
         id: 'Stream',
         label: 'Stream',
-        tag: 'Advanced',
+        tag: 'Smart-ish',
         production: 'alpha',
         disabled: true,
     },
@@ -88,7 +100,7 @@ export const DEMOS_V2 = [
     {
         id: 'WebWorker',
         label: 'WebWorker',
-        tag: 'Advanced',
+        tag: 'Smart-ish',
         production: 'alpha',
         disabled: true,
     },

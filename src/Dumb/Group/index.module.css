@@ -63,3 +63,20 @@
         grid-column: span 12;
     }
 }
+
+.app {
+    --app-gutter: 20px;
+    padding: var(--app-gutter) 0;
+    display: grid;
+    grid-gap: var(--app-gutter) 0;
+    grid-template-columns: var(--app-gutter) 1fr var(--app-gutter);
+    align-content: start;
+
+    & > .container {
+        grid-column: 2 / -2;
+    }
+
+    & > .container.full {
+        grid-column: 1 / -1;
+    }
+}
