@@ -17,6 +17,7 @@ export type DemosLabels =
     | 'Card'
     | 'DatePicker'
     | 'Dialog'
+    | 'Editor'
     | 'Excel'
     | 'Icon'
     | 'List'
@@ -41,6 +42,7 @@ const DEMO_IMPORTERS: Record<
     DatePicker: () =>
         import(/* webpackChunkName: "demo-picker" */ './DatePicker'),
     Dialog: () => import(/* webpackChunkName: "demo-dialog" */ './Dialogs'),
+    Editor: () => import(/* webpackChunkName: "demo-editor" */ './Editor'),
     Excel: () => import(/* webpackChunkName: "demo-excel" */ './Excel'),
     Icon: () => import(/* webpackChunkName: "demo-icon" */ './Icons'),
     List: () => import(/* webpackChunkName: "demo-list" */ './List'),

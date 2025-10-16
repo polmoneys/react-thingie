@@ -7,4 +7,5 @@ export type Opts<T, D> = {
     mapper?: Mapper<T, D>;
     historyLimit?: number;
     enableHistory?: boolean;
+    valueDedup?: boolean;
 };

@@ -1,15 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { deepEqual } from 'assert';
 import { produce } from 'immer';
 
 import type { Opts } from './interfaces';
 
-export default function useItem<T extends object, D extends object = T>(
+export default function useItemEditor<T extends object, D extends object = T>(
     initial: T,
     opts?: Opts<T, D>,
 ) {
-    const { mapper, historyLimit = 50, enableHistory = true } = opts || {};
+    const {
+        mapper,
+        historyLimit = 50,
+        enableHistory = true,
+        valueDedup = true,
+    } = opts || {};
 
     const toDraftRef = useRef(mapper?.toDraft);
     const fromDraftRef = useRef(mapper?.fromDraft);
@@ -26,8 +30,6 @@ export default function useItem<T extends object, D extends object = T>(
     const historyRef = useRef<D[]>(enableHistory ? [initialDraft] : []);
     const pointerRef = useRef<number>(enableHistory ? 0 : -1);
 
-    // When the `initial` prop changes from parent, sync original + draft and reset history.
-    // This avoids computing mapper on every render and avoids accidental state churn.
     useEffect(() => {
         setOriginal(initial);
         const mapped = toDraftRef.current
@@ -40,26 +42,56 @@ export default function useItem<T extends object, D extends object = T>(
         }
     }, [initial, enableHistory]);
 
+    // deepEqual helper (used only if valueDedup=true)
+    const deepEqual = useCallback((a: any, b: any): boolean => {
+        if (a === b) return true;
+        if (a instanceof Date && b instanceof Date)
+            return a.getTime() === b.getTime();
+        if (a instanceof Date || b instanceof Date) return false;
+        if (
+            typeof a !== 'object' ||
+            typeof b !== 'object' ||
+            a == null ||
+            b == null
+        )
+            return a === b;
+        if (Array.isArray(a) || Array.isArray(b)) {
+            if (!Array.isArray(a) || !Array.isArray(b)) return false;
+            if (a.length !== b.length) return false;
+            for (let i = 0; i < a.length; i++)
+                if (!deepEqual(a[i], b[i])) return false;
+            return true;
+        }
+        const ka = Object.keys(a);
+        const kb = Object.keys(b);
+        if (ka.length !== kb.length) return false;
+        for (const k of ka) {
+            if (!Object.prototype.hasOwnProperty.call(b, k)) return false;
+            if (!deepEqual(a[k], b[k])) return false;
+        }
+        return true;
+    }, []);
+
     const pushHistory = useCallback(
         (nextDraft: D) => {
             if (!enableHistory) return;
-
             const h = historyRef.current;
             const p = pointerRef.current;
-
-            // drop future if we undid
             if (p < h.length - 1) h.splice(p + 1);
-
             const last = h.length ? h[h.length - 1] : undefined;
-
-            // value-based dedupe: avoids duplicates even if references differ
-            if (last !== undefined && deepEqual(last, nextDraft)) {
+            if (last === nextDraft) {
                 pointerRef.current = h.length - 1;
                 return;
             }
-
+            if (
+                valueDedup &&
+                last !== undefined &&
+                deepEqual(last, nextDraft as any)
+            ) {
+                pointerRef.current = h.length - 1;
+                return;
+            }
             h.push(nextDraft);
-
             if (h.length > historyLimit) {
                 h.shift();
                 pointerRef.current = h.length - 1;
@@ -67,19 +99,16 @@ export default function useItem<T extends object, D extends object = T>(
                 pointerRef.current = h.length - 1;
             }
         },
-        [enableHistory, historyLimit],
+        [enableHistory, historyLimit, valueDedup, deepEqual],
     );
 
     const set = useCallback(
         (partial: Partial<D>) => {
             setDraft((prev) => {
-                // produce new state — mutate draftState in-place inside recipe
                 const next = produce(prev, (draftState: D) => {
                     Object.assign(draftState, partial);
                 });
-                // avoid updating state if nothing changed (produce may return prev)
                 if (next === prev) return prev;
-
                 pushHistory(next);
                 return next;
             });
@@ -88,7 +117,7 @@ export default function useItem<T extends object, D extends object = T>(
     );
 
     const setAt = useCallback(
-        (path: string, value: unknown) => {
+        (path: string, value: any) => {
             setDraft((prev) => {
                 const next = produce(prev, (draftState: any) => {
                     const segs = path.split('.').filter(Boolean);
@@ -100,9 +129,7 @@ export default function useItem<T extends object, D extends object = T>(
                     }
                     cur[segs[segs.length - 1]] = value;
                 });
-
                 if (next === prev) return prev;
-
                 pushHistory(next);
                 return next;
             });
@@ -138,9 +165,7 @@ export default function useItem<T extends object, D extends object = T>(
         if (!enableHistory) return;
         if (pointerRef.current > 0) {
             pointerRef.current -= 1;
-            const snap = historyRef.current[pointerRef.current];
-            // setDraft to a snapshot reference (no produce needed)
-            setDraft(snap);
+            setDraft(historyRef.current[pointerRef.current]);
         }
     }, [enableHistory]);
 
@@ -167,8 +192,15 @@ export default function useItem<T extends object, D extends object = T>(
             : (draft as unknown as T);
     }, [draft]);
 
-    // const _history = () => clone(historyRef.current);
-    // const _pointer = () => pointerRef.current;
+    const _historyForDebug = useCallback(() => {
+        try {
+            return JSON.parse(JSON.stringify(historyRef.current));
+        } catch {
+            return historyRef.current.map((s) => ({
+                ...(s as unknown as any),
+            }));
+        }
+    }, []);
 
     return {
         original,
@@ -181,7 +213,6 @@ export default function useItem<T extends object, D extends object = T>(
         canUndo,
         onServerResponse200,
         commit,
-        // _history,
-        // _pointer,
+        _historyForDebug,
     };
 }

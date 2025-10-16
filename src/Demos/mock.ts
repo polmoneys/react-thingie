@@ -30,6 +30,18 @@ export const DEMOS_V2 = [
         production: 'v1.0',
     },
     {
+        id: 'Editor',
+        label: 'Editor',
+        tag: 'Smart-ish',
+        production: 'v1.0',
+    },
+    {
+        id: 'Excel',
+        label: 'Excel',
+        tag: 'Dumb',
+        production: 'alpha',
+    },
+    {
         id: 'Icon',
         label: 'Icon',
         tag: 'Dumb',
@@ -79,12 +91,7 @@ export const DEMOS_V2 = [
         production: 'alpha',
         disabled: true,
     },
-    {
-        id: 'Excel',
-        label: 'Excel',
-        tag: 'Dumb',
-        production: 'alpha',
-    },
+
     {
         id: 'Table',
         label: 'Table',
