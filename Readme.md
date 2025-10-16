@@ -3,7 +3,7 @@
 ## Thingies for Reactjs
 
 My work involves complex UI in React, this is how I roll for now.
-We have `Dumb (n)`, `Smart-ish (7)` and `Inspired (2)`.
+We have `Dumb (n)`, `Smart-ish (7)` and `Inspired (3)`.
 
 ### Lore
 
