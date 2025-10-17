@@ -9,7 +9,6 @@ import useAutocomplite from './Smart-ish/AutocompLite/useAutocomplite';
 import DemoRenderer from './Demos';
 
 import './App.css';
-import Temp from './Demos/Temp';
 
 const mapper = (p: (typeof DEMOS_V2)[number]): AutocompLiteOption => ({
     ...p,
@@ -95,7 +94,6 @@ export default function App() {
                 </StickyHeader>
 
                 <br />
-                <Temp />
                 <DemoRenderer demos={demos} />
             </main>
         </>
