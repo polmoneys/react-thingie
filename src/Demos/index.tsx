@@ -31,6 +31,7 @@ export type DemosLabels =
     | 'Stream'
     | 'Swipeable'
     | 'Table'
+    | 'Tabs'
     | 'Tree'
     | 'WebWorker';
 
@@ -61,6 +62,7 @@ const DEMO_IMPORTERS: Record<
     Stream: () => import(/* webpackChunkName: "demo-stream" */ './Stream'),
     Swipeable: () =>
         import(/* webpackChunkName: "demo-swipeable" */ './Swipeable'),
+    Tabs: () => import(/* webpackChunkName: "demo-tabs" */ './Tabs'),
     Table: () => import(/* webpackChunkName: "demo-table" */ './Tables'),
     Tree: () => import(/* webpackChunkName: "demo-tree" */ './Tree'),
     WebWorker: () =>

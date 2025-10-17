@@ -11,10 +11,6 @@ interface Props {
     name?: string;
 }
 
-/*
-    https://codepen.io/bramus/pen/MWZYdmX
-    */
-
 function Disclosure({ summary, children, name, className }: Props) {
     return (
         <details

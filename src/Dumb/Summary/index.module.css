@@ -32,7 +32,7 @@
         background: var(--white);
 
         & > summary {
-            padding: 0.5em;
+            padding: var(--gap-2);
             border-bottom: var(--border);
             cursor: pointer;
 
@@ -64,7 +64,7 @@
             height: 1lh;
             aspect-ratio: 1;
             text-align: center;
-            border-radius: 50%;
+            border-radius: var(--border-radius);
             margin-right: var(--gap-3);
         }
     }

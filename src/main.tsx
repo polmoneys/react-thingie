@@ -11,8 +11,7 @@ import './CSS/index.css';
 import './CSS/colors.css';
 import './CSS/ratio.css';
 import './CSS/utils.css';
-// react-aria
-import './CSS/datePicker.css';
+import './CSS/react-aria.css';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>

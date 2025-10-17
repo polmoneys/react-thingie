@@ -1,0 +1,246 @@
+.react-aria-DatePicker {
+    &[data-invalid] {
+    }
+
+    &[data-open] {
+    }
+
+    & .react-aria-Label {
+    }
+    .react-aria-Group {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+    }
+
+    .react-aria-Button {
+        background: var(--neutral);
+        color: currentColor;
+        forced-color-adjust: none;
+        border: none;
+
+        &[data-pressed] {
+            box-shadow: none;
+            background: var(--positive);
+        }
+
+        &[data-focus-visible] {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+        }
+    }
+
+    .react-aria-DateInput {
+        padding: var(--gap-1) 2.5rem var(--gap-1) var(--gap-2);
+        background-color: var(--white);
+    }
+}
+
+.react-aria-Popover {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+
+    &[data-trigger='DatePicker'] {
+        max-width: unset;
+    }
+    & * {
+        font-size: var(--font-size-0);
+    }
+}
+
+.react-aria-CalendarCell {
+    &[data-today] {
+    }
+
+    &[data-unavailable] {
+    }
+
+    &[data-selected] {
+        background-color: var(--positive) !important;
+    }
+    &[data-hovered] {
+    }
+    &[data-pressed] {
+    }
+
+    &[data-focused]:not([data-selected]) {
+        outline-color: var(--positive);
+        color: var(--positive);
+    }
+    &[data-isFocusVisible] {
+        outline-color: var(--positive);
+    }
+}
+.react-aria-Dialog {
+}
+
+.react-aria-Calendar {
+}
+
+.my-tab {
+    background-color: var(--neutral);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    padding: var(--px);
+    min-height: var(--min-height);
+    line-height: var(--min-height);
+    &:focus {
+        border-color: var(--ring-color);
+    }
+    &:focus-visible {
+        outline: none;
+        border-color: var(--ringKeyboard-color);
+    }
+    &[data-selected='true'] {
+        background-color: var(--info);
+    }
+}
+
+[data-orientation='horizontal'] .my-tab {
+    &:not(:last-of-type) {
+        margin-right: var(--gap-1);
+    }
+}
+
+[data-orientation='vertical'] .my-tab {
+    &:not(:last-of-type) {
+        margin-bottom: var(--gap-1);
+    }
+}
+
+.react-aria-TabList {
+    display: flex;
+    position: relative;
+
+    &[data-orientation='vertical'] {
+        flex-direction: column;
+        width: fit-content;
+    }
+}
+
+.react-aria-Tab {
+    &[data-disabled] {
+        color: var(--text-color-disabled);
+    }
+}
+
+.react-aria-TabPanel {
+    outline: none;
+}
+
+.my-menu-trigger {
+    background-color: var(--neutral);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: var(--px);
+    border-radius: var(--border-radius);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: var(--min-height);
+    line-height: var(--min-height);
+    outline: none;
+    word-break: break-all;
+
+    &:focus {
+        border-color: var(--ring-color);
+    }
+    &:focus-visible {
+        border-color: var(--ringKeyboard-color);
+    }
+
+    & span {
+        font: inherit;
+    }
+
+    & svg {
+        transform: translateX(4px);
+    }
+
+    &[aria-expanded='true'] {
+        & svg {
+            transform: translateX(4px) rotate(180deg);
+        }
+    }
+}
+
+.react-aria-Menu {
+    max-height: inherit;
+    overflow: auto;
+    min-width: 170px;
+    outline: none;
+    border: var(--border);
+    & .react-aria-MenuSection:not(:first-child) {
+        margin-top: var(--gap-2);
+    }
+    & .react-aria-Header {
+        padding: 0 0.714rem;
+        font-weight: var(--font-bold);
+    }
+}
+
+.react-aria-MenuItem {
+    padding: 0 var(--gap-1);
+    min-height: var(--min-height);
+    outline: none;
+    cursor: default;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    align-items: center;
+    forced-color-adjust: none;
+
+    &:hover {
+        background: var(--neutral);
+    }
+
+    & + .react-aria-MenuItem {
+        border-top: 0;
+    }
+
+    &[data-focused] {
+        background: var(--neutral);
+    }
+
+    &[data-selection-mode] {
+        padding-left: 24px;
+
+        &::before {
+            position: absolute;
+            left: 4px;
+            font-weight: 600;
+        }
+
+        &[data-selection-mode='multiple'][data-selected]::before {
+            content: '–';
+            content: '–' / '';
+            alt: ' ';
+            position: absolute;
+            left: 4px;
+            font-weight: 600;
+        }
+
+        &[data-selection-mode='single'][data-selected]::before {
+            content: '●';
+            content: '●' / '';
+            transform: scale(0.5);
+        }
+    }
+}
+
+.react-aria-Separator {
+    height: var(--border-width);
+    background: currentColor;
+    margin: 2px 4px;
+}
+
+.react-aria-Popover[data-trigger='SubmenuTrigger'][data-placement='right'] {
+    margin-left: -5px;
+}
+
+.react-aria-Popover[data-trigger='SubmenuTrigger'][data-placement='left'] {
+    margin-right: -5px;
+}

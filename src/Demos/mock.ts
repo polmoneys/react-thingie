@@ -119,6 +119,12 @@ export const DEMOS_V2 = [
         production: 'v1.0',
     },
     {
+        id: 'Tabs',
+        label: 'Tabs',
+        tag: 'Dumb',
+        production: 'v1.0',
+    },
+    {
         id: 'Tree',
         label: 'Tree',
         tag: 'Dumb',

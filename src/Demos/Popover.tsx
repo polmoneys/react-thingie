@@ -2,30 +2,12 @@ import Button from '../Dumb/Button';
 import Card from '../Dumb/Card';
 import Font from '../Dumb/Font';
 import Popover from '../Dumb/Popover';
-// import PopoverLite from '../Dumb/Popover/Lite';
 import Shape from '../Dumb/Shape';
 import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 
 export default function PopoversGrid() {
     return (
         <>
-            {/*<PopoverLite id="menu-test" label="Some cta">
-                {() => (
-                    <>
-                        <Button onClick={() => console.log('a')}>
-                            Action A
-                        </Button>
-                        <Button onClick={() => console.log('b')}>
-                            Action B
-                        </Button>
-                        <Button onClick={() => console.log('c')}>
-                            Action C
-                        </Button>
-                    </>
-                )}
-            </PopoverLite>
-            <br />*/}
-
             <GridTemplateColumns
                 gridTemplateColumns={{ xs: '1fr', md: '1fr 1fr' }}
                 gap={{ xs: 'var(--gap-2)' }}
