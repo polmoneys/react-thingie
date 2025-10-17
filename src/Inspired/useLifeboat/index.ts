@@ -45,7 +45,6 @@ export default function useLifeboats() {
             queryClient.invalidateQueries({ queryKey: QUERY_KEY });
         },
     });
-
     const updateMutation = useMutation({
         mutationFn: ({
             key,
@@ -58,14 +57,12 @@ export default function useLifeboats() {
             queryClient.invalidateQueries({ queryKey: QUERY_KEY });
         },
     });
-
     const deleteMutation = useMutation({
         mutationFn: (key: string) => deleteLifeboat(key),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: QUERY_KEY });
         },
     });
-
     const deleteAllMutation = useMutation({
         mutationFn: deleteAllLifeboats,
         onSuccess: () => {
@@ -83,7 +80,6 @@ export default function useLifeboats() {
         },
         [createMutation],
     );
-
     const update = useCallback(
         (key: string, value: string | number | Array<unknown> | null) => {
             return updateMutation.mutateAsync({ key, value });
@@ -96,7 +92,6 @@ export default function useLifeboats() {
         },
         [deleteMutation],
     );
-
     const removeAll = useCallback(() => {
         return deleteAllMutation.mutateAsync();
     }, [deleteAllMutation]);
