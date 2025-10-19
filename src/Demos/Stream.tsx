@@ -18,6 +18,7 @@ export default function DemoStream() {
                 show={mutation.isError}
                 error={String(mutation.error?.message ?? 'Try again later')}
             />
+            <br />
         </>
     );
 }

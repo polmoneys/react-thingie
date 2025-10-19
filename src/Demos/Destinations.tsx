@@ -230,6 +230,7 @@ export default function DemoDestinations() {
                     </Alert>
                 ) : null}
             </AutocompLite>
+            <br />
         </>
     );
 }

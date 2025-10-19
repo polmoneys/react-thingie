@@ -19,8 +19,11 @@ const LazyQRCodeGenerator = lazy(() =>
 
 export default function EmbedsDemo() {
     return (
-        <Suspense fallback={<QRCodeGeneratorFallback />}>
-            <LazyQRCodeGenerator />
-        </Suspense>
+        <>
+            <Suspense fallback={<QRCodeGeneratorFallback />}>
+                <LazyQRCodeGenerator />
+            </Suspense>
+            <br />
+        </>
     );
 }

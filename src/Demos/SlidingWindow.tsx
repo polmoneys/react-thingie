@@ -182,6 +182,7 @@ export default function SlidingWindowDemo() {
                     </Font>
                 </Alert>
             </div>
+            <br />
         </>
     );
 }

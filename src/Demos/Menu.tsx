@@ -96,6 +96,9 @@ export default function DemoMenu() {
     ];
 
     const [selected, setSelected] = useState<Selection>(new Set([1, 3]));
+    const [selectedSingle, setSelectedSingle] = useState<Selection>(
+        new Set([1]),
+    );
 
     return (
         <>
@@ -107,18 +110,18 @@ export default function DemoMenu() {
                 <Menu items={menuActions} label="Settings" />
                 <Menu items={allActions} label="Options" />
                 <Menu.Sections
-                    label="Files"
+                    label="Multiple"
                     items={openWindows}
                     selectionMode="multiple"
                     selectedKeys={selected}
                     onSelectionChange={setSelected}
                 />
                 <Menu.Sections
-                    label="Files 2"
+                    label="Single"
                     items={openWindows}
                     selectionMode="single"
-                    selectedKeys={selected}
-                    onSelectionChange={setSelected}
+                    selectedKeys={selectedSingle}
+                    onSelectionChange={setSelectedSingle}
                 />
             </GridTemplateColumns>
 

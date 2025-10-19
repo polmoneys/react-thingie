@@ -60,6 +60,8 @@ export default function DemoDialog() {
                 </Actionsheet>
             </Group.Row>
 
+            <br />
+
             <Dialog isOpen={isDialogOpen} onClose={() => onClose()}>
                 <Dialog.Title
                     dangerous={{

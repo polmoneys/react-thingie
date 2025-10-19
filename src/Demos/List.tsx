@@ -22,12 +22,15 @@ export const Thingie = createThingie<Stock>('MyStockThingie');
 export default function DemoList() {
     const { Thingie: ListProvider } = Thingie;
     return (
-        <ListProvider
-            items={TECH_STOCKS}
-            keySelector={(s) => s.code}
-            initialSelectedKeys={['AAPL']}
-        >
-            <StocksList />
-        </ListProvider>
+        <>
+            <ListProvider
+                items={TECH_STOCKS}
+                keySelector={(s) => s.code}
+                initialSelectedKeys={['AAPL']}
+            >
+                <StocksList />
+            </ListProvider>
+            <br />
+        </>
     );
 }

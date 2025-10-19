@@ -261,6 +261,7 @@ export default function SwapiDemo() {
             {views.selectedIds.length > 0 && (
                 <Button onClick={() => api.clear()}>Clear All</Button>
             )}
+            <br />
         </>
     );
 }

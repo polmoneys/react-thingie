@@ -85,9 +85,12 @@ export default function DemoWebWorker({
     }, [workerApi, items]);
 
     return (
-        <Alert mood="positive">
-            <Font.Bold>Worker data length: {count ?? '...'}</Font.Bold>
-            <Font>Sample names: {formatSelectedKeys(new Set(sample))}</Font>
-        </Alert>
+        <>
+            <Alert mood="positive">
+                <Font.Bold>Worker data length: {count ?? '...'}</Font.Bold>
+                <Font>Sample names: {formatSelectedKeys(new Set(sample))}</Font>
+            </Alert>
+            <br />
+        </>
     );
 }

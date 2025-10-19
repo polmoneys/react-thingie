@@ -121,6 +121,7 @@ export default function DemoLifeboats() {
                     <Icon.LoadingBar />
                 </>
             )}
+            <br />
         </>
     );
 }
