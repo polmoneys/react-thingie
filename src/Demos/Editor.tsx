@@ -112,7 +112,7 @@ export default function DemoEditor() {
             >
                 <Alert mood="positive">
                     <Font.Bold>Draft:</Font.Bold>
-                    <pre>
+                    <pre style={{ overflow: 'scroll' }}>
                         {JSON.stringify(
                             editor.draft,
                             (_k, v) =>
@@ -124,13 +124,17 @@ export default function DemoEditor() {
 
                 <Alert>
                     <Font.Bold>Original (server):</Font.Bold>
-                    <pre>{JSON.stringify(editor.original, null, 2)}</pre>
+                    <pre style={{ overflow: 'scroll' }}>
+                        {JSON.stringify(editor.original, null, 2)}
+                    </pre>
                 </Alert>
             </GridTemplateColumns>
             <br />
             <Alert mood="negative">
                 <Font.Bold>History (safe debug):</Font.Bold>
-                <pre>{JSON.stringify(editor._historyForDebug(), null, 2)}</pre>
+                <pre style={{ overflow: 'scroll' }}>
+                    {JSON.stringify(editor._historyForDebug(), null, 2)}
+                </pre>
             </Alert>
             <br />
         </>

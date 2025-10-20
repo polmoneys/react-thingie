@@ -1,11 +1,8 @@
 import { useState } from 'react';
 
 import Button from '../../Dumb/Button';
-import Font from '../../Dumb/Font';
-import Icon from '../../Dumb/Icon';
 import TextInputLabel from '../../Dumb/InputText';
-import PopoverLite from '../../Dumb/Popover/Lite';
-import ToolBar from '../../Dumb/Toolbar';
+import Select from '../../Dumb/Select';
 
 import useStream from './useStream';
 
@@ -25,33 +22,17 @@ export default function StreamPrompt() {
 
     return (
         <div className={styles.prompt}>
-            <PopoverLite
-                id="menu-test"
-                label={
-                    <>
-                        <Font.Bold>Tools</Font.Bold>
-                        <Icon.ChevronDown size={22} />
-                    </>
-                }
+            <Select
+                className="theme-inset"
+                placeholder="Choose"
+                onChange={() => ({})}
+                // value={newType}
+                // onChange={(e) => setNewType(e as NodeType)}
             >
-                {() => (
-                    <ToolBar label="Options">
-                        <ToolBar.Group label="Interactions">
-                            <Button onClick={() => console.log('a')}>
-                                File
-                            </Button>
-                            <Button onClick={() => console.log('b')}>
-                                Speak
-                            </Button>
-                        </ToolBar.Group>
-                        <ToolBar.Group label="Go pro">
-                            <Button onClick={() => console.log('c')}>
-                                Upgrade
-                            </Button>
-                        </ToolBar.Group>
-                    </ToolBar>
-                )}
-            </PopoverLite>
+                <option value="file">File</option>
+                <option value="folder">Folder</option>
+            </Select>
+
             <TextInputLabel
                 label=""
                 id="prompt-input"

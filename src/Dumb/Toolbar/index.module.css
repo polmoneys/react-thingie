@@ -2,6 +2,7 @@
     display: flex;
     width: fit-content;
     border-radius: var(--border-radius);
+    flex-wrap: wrap;
 
     &.col {
         flex-direction: column;

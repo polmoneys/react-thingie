@@ -266,10 +266,7 @@ Icon.Preview = ({
     fillChildren,
     ...rest
 }: IconProps) => (
-    <Icon
-        // circle={false}
-        {...rest}
-    >
+    <Icon {...rest}>
         <Ellipse cx={12} cy={12} rx={6} ry={4} stroke={fillChildren} />
         <Circle cx={12} cy={12} r={2} stroke={fillChildren} />
     </Icon>
@@ -313,6 +310,34 @@ const exportLines2: LineInput[] = [
 
 Icon.ExportSheets = ({ lines, polylines, rotate, ...rest }: IconProps) => (
     <Icon lines={exportLines2} {...rest} />
+);
+
+Icon.ThreeDots = ({
+    lines,
+    polylines,
+    rotate,
+    fillChildren = 'currentColor',
+    ...rest
+}: IconProps) => (
+    <Icon {...rest}>
+        <Circle cx={8} cy={12} r={1} fill={fillChildren} />
+        <Circle cx={12} cy={12} r={1} fill={fillChildren} />
+        <Circle cx={16} cy={12} r={1} fill={fillChildren} />
+    </Icon>
+);
+
+Icon.ThreeDotsVertical = ({
+    lines,
+    polylines,
+    rotate,
+    fillChildren = 'currentColor',
+    ...rest
+}: IconProps) => (
+    <Icon {...rest}>
+        <Circle cx={12} cy={8} r={1} fill={fillChildren} />
+        <Circle cx={12} cy={12} r={1} fill={fillChildren} />
+        <Circle cx={12} cy={16} r={1} fill={fillChildren} />
+    </Icon>
 );
 
 Icon.Loading = Loading;

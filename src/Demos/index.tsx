@@ -20,6 +20,7 @@ export type DemosLabels =
     | 'Editor'
     | 'Embeds'
     | 'Excel'
+    | 'Form'
     | 'Icon'
     | 'Lifeboats'
     | 'List'
@@ -49,6 +50,7 @@ const DEMO_IMPORTERS: Record<
     Editor: () => import(/* webpackChunkName: "demo-editor" */ './Editor'),
     Embeds: () => import(/* webpackChunkName: "demo-embeds" */ './Embeds'),
     Excel: () => import(/* webpackChunkName: "demo-excel" */ './Excel'),
+    Form: () => import(/* webpackChunkName: "demo-form" */ './Form'),
     Icon: () => import(/* webpackChunkName: "demo-icon" */ './Icons'),
     Lifeboats: () =>
         import(/* webpackChunkName: "demo-lifeboats" */ './Lifeboats'),

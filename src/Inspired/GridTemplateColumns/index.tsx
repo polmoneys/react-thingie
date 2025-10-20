@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 
-import type { ColumnsGridProps } from '../../Dumb/Grid/interfaces';
-import { computeResponsiveValues } from '../../Dumb/Grid/utils';
 import type { Unit } from '../../interfaces';
 import { clsx, has } from '../../utils';
+
+import type { ColumnsGridProps } from './interfaces';
+import { computeResponsiveValues } from './utils';
 
 import styles from './index.module.css';
 
@@ -17,6 +18,7 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
         component: Component = 'div',
         dangerous,
         breakEqualHeight,
+        gradient,
     } = props;
 
     const style = useMemo(() => {
@@ -24,6 +26,7 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
         const gapValues = computeResponsiveValues<Unit>(gap);
         const gridTemplateColumnsValues =
             computeResponsiveValues<string>(gridTemplateColumns);
+        const gradientValues = computeResponsiveValues<string>(gradient);
 
         const customStyle = {
             '--hug-padding': paddingValues.xs,
@@ -41,6 +44,11 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
             '--hug-grid-template-columns-md': gridTemplateColumnsValues.md,
             '--hug-grid-template-columns-lg': gridTemplateColumnsValues.lg,
             '--hug-grid-template-columns-xl': gridTemplateColumnsValues.xl,
+            '--hug-gradient': gradientValues.xs,
+            '--hug-gradient-sm': gradientValues.sm,
+            '--hug-gradient-md': gradientValues.md,
+            '--hug-gradient-lg': gradientValues.lg,
+            '--hug-gradient-xl': gradientValues.xl,
             ...(has(breakEqualHeight) && { alignItems: 'start' }),
         };
 
@@ -51,7 +59,14 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
                   ...(has(breakEqualHeight) && { alignItems: 'start' }),
               }
             : customStyle;
-    }, [breakEqualHeight, dangerous, gap, gridTemplateColumns, padding]);
+    }, [
+        breakEqualHeight,
+        dangerous,
+        gap,
+        gradient,
+        gridTemplateColumns,
+        padding,
+    ]);
 
     return (
         <Component className={clsx(styles.columns, className)} style={style}>

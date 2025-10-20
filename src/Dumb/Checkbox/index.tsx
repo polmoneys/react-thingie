@@ -2,11 +2,14 @@ import {
     type ChangeEventHandler,
     forwardRef,
     type InputHTMLAttributes,
+    type ReactNode,
     useEffect,
     useImperativeHandle,
     useRef,
 } from 'react';
 
+import { has } from '../../utils';
+import Font from '../Font';
 import Ring from '../Ring';
 
 /*
@@ -38,10 +41,13 @@ export interface CheckboxProps
     checked?: TriState;
     defaultChecked?: boolean;
     onChange?: ChangeEventHandler<HTMLInputElement>;
+    children?: ReactNode;
+    label?: string;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
-    const { checked, defaultChecked, onChange, id, ...rest } = props;
+    const { checked, defaultChecked, onChange, id, children, label, ...rest } =
+        props;
     const innerRef = useRef<HTMLInputElement | null>(null);
 
     if (id === undefined) console.warn('checkbox needs an ID ');
@@ -64,16 +70,20 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
     }, [checked]);
 
     return (
-        <Ring>
-            <input
-                type="checkbox"
-                id={id ?? 'checkbox'}
-                ref={innerRef}
-                defaultChecked={defaultChecked}
-                onChange={onChange}
-                {...rest}
-            />
-        </Ring>
+        <>
+            <Ring>
+                <input
+                    type="checkbox"
+                    id={id ?? 'checkbox'}
+                    ref={innerRef}
+                    defaultChecked={defaultChecked}
+                    onChange={onChange}
+                    {...rest}
+                />
+            </Ring>
+            {has(label) ? <Font>{label}</Font> : null}
+            {has(children) ? children : null}
+        </>
     );
 });
 

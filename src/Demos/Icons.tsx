@@ -71,6 +71,8 @@ export default function DemoIcons() {
                             stroke="var(--info)"
                             fillChildren="var(--info)"
                         />
+                        <Icon.ThreeDots />
+                        <Icon.ThreeDotsVertical />
                     </Group>
                 )}
             </ContainerSize>

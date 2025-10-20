@@ -30,6 +30,7 @@ export default function Radio(props: RadioProps) {
                     value={value}
                     checked={checked}
                     onChange={onRadioChange}
+                    className="radio"
                     {...rest}
                 />
             </Ring>

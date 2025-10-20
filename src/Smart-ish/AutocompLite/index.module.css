@@ -25,7 +25,6 @@
         padding: var(--px);
         line-height: var(--min-height);
         min-height: var(--min-height);
-
         &:is(:hover, .highlighted) {
             background-color: var(--info);
         }
