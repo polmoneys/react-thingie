@@ -1,96 +1,148 @@
 import { useEffect, useMemo, useState } from 'react';
 
+import * as Comlink from 'comlink';
+
 import Alert from '../Dumb/Alert';
+import Button from '../Dumb/Button';
 import Font from '../Dumb/Font';
-import { formatSelectedKeys } from '../utilities/intl';
-import { useWorker } from '../utilities/web-worker';
+import Group from '../Dumb/Group';
+import Icon from '../Dumb/Icon';
+import TextInputLabel from '../Dumb/InputText';
+import ToolBar from '../Dumb/Toolbar';
+import type { QrWorkerAPI } from '../utilities/qr.worker';
 
-export const ITEMS = [
-    { id: 1, name: 'Alice', age: 25, active: true },
-    { id: 2, name: 'Bob', age: 30, active: false },
-    { id: 3, name: 'Charlie', age: 22, active: true },
-    { id: 4, name: 'Diana', age: 35, active: true },
-    { id: 5, name: 'Eve', age: 28, active: false },
-    { id: 6, name: 'Frank', age: 40, active: true },
-    { id: 7, name: 'Grace', age: 19, active: true },
-    { id: 8, name: 'Hank', age: 50, active: false },
-    { id: 9, name: 'Ivy', age: 29, active: true },
-    { id: 10, name: 'Jack', age: 33, active: false },
-];
-
-export default function DemoWebWorker({
-    items = ITEMS,
-}: {
-    items?: Record<string, any>[];
-}) {
-    const [count, setCount] = useState<number | null>(null);
-    const [sample, setSample] = useState<any[]>([]);
+export default function DemoWebWorker() {
     const worker = useMemo(
         () =>
-            new Worker(
-                new URL(
-                    '../utilities/web-worker-compute-array.ts',
-                    import.meta.url,
-                ),
-                {
-                    type: 'module',
-                },
-            ),
+            new Worker(new URL('../utilities/qr.worker.ts', import.meta.url), {
+                type: 'module',
+            }),
         [],
     );
-    const workerApi = useWorker(worker);
+
+    const [text, setText] = useState('https://polmoneys.com');
+    const [result, setResult] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [terminated, setTerminated] = useState(false);
+
+    const api = useMemo(() => Comlink.wrap<QrWorkerAPI>(worker), [worker]);
 
     useEffect(() => {
-        let cancelled = false;
-
-        (async () => {
-            try {
-                await workerApi.call(
-                    'setData',
-                    { data: items },
-                    undefined,
-                    5000,
-                );
-                const res = await workerApi.call(
-                    'filterMap',
-                    {
-                        predicate: { type: 'keyEq', key: 'active', val: true },
-                        map: { type: 'pickKey', key: 'name' },
-                    },
-                    undefined,
-                    5000,
-                );
-                // don't set state if unmounted
-                if (cancelled) return;
-                setSample((res as any).result.slice(0, 10));
-                const len = await workerApi.call(
-                    'getLength',
-                    undefined,
-                    undefined,
-                    2000,
-                );
-                if (cancelled) return;
-                setCount((len as any).length);
-            } catch (err: any) {
-                // Ignore worker termination/lifecycle rejections — treat others as real errors
-                if (err?.code === 'WORKER_TERMINATED') return;
-                console.warn('Worker error', err);
-            }
-        })();
-
         return () => {
-            cancelled = true;
-            // no explicit workerApi.terminate() necessary when useWorkerRpc was created with autoTerminate:true
+            try {
+                if (!import.meta.env.DEV) {
+                    console.log('Dev mode');
+                    worker.terminate();
+                    setTerminated(true);
+                }
+            } catch (e) {
+                //
+            }
         };
-    }, [workerApi, items]);
+    }, [worker]);
+
+    const generateSvg = async () => {
+        setResult(null);
+        setError(null);
+        setLoading(true);
+        try {
+            const svg = await (api as any).generateSvg(text);
+            setResult(svg);
+        } catch (err: any) {
+            setError(err?.message ?? String(err));
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const generateDataUrl = async () => {
+        setResult(null);
+        setError(null);
+        setLoading(true);
+        try {
+            const dataUrl = await (api as any).generateDataUrl(text);
+            setResult(dataUrl);
+        } catch (err: any) {
+            setError(err?.message ?? String(err));
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <>
-            <Alert mood="positive">
-                <Font.Bold>Worker data length: {count ?? '...'}</Font.Bold>
-                <Font>Sample names: {formatSelectedKeys(new Set(sample))}</Font>
-            </Alert>
+            <TextInputLabel
+                id="qr-input"
+                label={<Icon.Info size={32} />}
+                value={text}
+                onChange={(v) => setText(v)}
+                gridTemplateColumns="44px 1fr"
+            />
+
             <br />
+            <ToolBar label="Actions" dangerous={{ gap: 'var(--gap-1)' }}>
+                <Button.Positive
+                    isPending={loading}
+                    {...(!loading && { start: <Icon.Add size={22} /> })}
+                    onClick={generateSvg}
+                >
+                    {loading ? 'Generating…' : 'SVG'}
+                </Button.Positive>
+                <Button.Positive
+                    isPending={loading}
+                    {...(!loading && { start: <Icon.Add size={22} /> })}
+                    onClick={generateDataUrl}
+                >
+                    {loading ? 'Generating…' : 'PNG DataURL'}
+                </Button.Positive>
+
+                <Button.Negative
+                    start={<Icon.X size={22} />}
+                    onClick={() => {
+                        worker.terminate();
+                        setTerminated(true);
+                    }}
+                >
+                    Terminate worker
+                </Button.Negative>
+            </ToolBar>
+            <br />
+
+            <Group.Col
+                className="theme info"
+                dangerous={{
+                    minHeight: '200px',
+                    placeContent: 'center',
+                    placeItems: 'center',
+                }}
+            >
+                {loading && <Icon.LoadingBar />}
+                {!loading &&
+                    result &&
+                    (result.startsWith('data:') ? (
+                        <img src={result} alt="QR" />
+                    ) : (
+                        <div dangerouslySetInnerHTML={{ __html: result }} />
+                    ))}
+                {!loading && !result && !error && (
+                    <Font.Bold>No QR generated yet.</Font.Bold>
+                )}
+            </Group.Col>
+
+            <br />
+            {error && (
+                <Alert mood="negative">
+                    <Font.Bold>Error:</Font.Bold> <Font>{error}</Font>
+                </Alert>
+            )}
+            <br />
+
+            <Alert mood={terminated ? 'negative' : 'info'}>
+                <Font.Bold>
+                    Worker status: {terminated ? 'OFF' : 'ON'}
+                </Font.Bold>
+            </Alert>
         </>
     );
 }

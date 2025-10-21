@@ -26,11 +26,13 @@
     "dependencies": {
         "@react-aria/focus": "^3.21.1",
         "@tanstack/react-query": "^5.90.2",
+        "comlink": "^4.4.2",
         "dayjs": "^1.11.18",
         "idb": "^8.0.3",
         "immer": "^10.1.3",
         "nuqs": "^2.7.0",
         "openai": "^6.0.0",
+        "qrcode-generator": "^2.0.4",
         "react": "^19.1.1",
         "react-aria": "^3.43.1",
         "react-aria-components": "^1.13.0",

@@ -1,4 +1,4 @@
-import { type ChangeEvent, type ComponentProps } from 'react';
+import { type ChangeEvent, type ComponentProps, type ReactNode } from 'react';
 
 interface CommonProps extends Omit<ComponentProps<'input'>, 'onChange'> {
     onChange: (val: string) => void;
@@ -8,7 +8,7 @@ interface CommonProps extends Omit<ComponentProps<'input'>, 'onChange'> {
 }
 
 export type TextInputLabelProps = CommonProps & {
-    label: string;
+    label: string | ReactNode;
     gridTemplateColumns?: string;
     gridTemplateRows?: string;
     classNames?: {

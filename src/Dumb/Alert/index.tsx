@@ -13,7 +13,7 @@ export interface AlertProps extends ComponentProps<'div'> {
     live?: 'polite' | 'off' | 'assertive';
     relevant?: AriaAttributes['aria-relevant'];
     children: ReactNode;
-    mood?: 'positive' | 'negative' | 'neutral';
+    mood?: 'positive' | 'negative' | 'neutral' | 'info';
     fitContent?: boolean;
     isPending?: boolean;
     block?: boolean;

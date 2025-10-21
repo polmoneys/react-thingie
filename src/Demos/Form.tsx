@@ -10,6 +10,7 @@ import UncontrolledForm, { type UncontrolledFormHandle } from '../Dumb/Form';
 import Group from '../Dumb/Group';
 import TextInputUncontrolled from '../Dumb/InputText/Uncontrolled';
 import GridTemplateColumns from '../Inspired/GridTemplateColumns';
+import useResizeObserver from '../utilities/useResizeObserver';
 
 const MyFormSchema = z.object({
     email: z.email({ message: 'Invalid email' }),
@@ -44,6 +45,10 @@ export default function FormDemos() {
         return raw;
     };
 
+    const referenceRef = useRef<HTMLFieldSetElement | null>(null);
+    const { width } = useResizeObserver(referenceRef);
+    const isXS = width === undefined ? false : width < 500;
+
     return (
         <>
             <UncontrolledForm<MyFormShape>
@@ -61,11 +66,11 @@ export default function FormDemos() {
                             id="email"
                             name="email"
                             defaultValue=""
-                            label="email"
+                            label="Email"
                             style={{ gap: 'var(--gap-2)' }}
                             errorToDisplay={errors.email}
                             gridTemplateColumns={
-                                !errors.email ? '100px 1fr' : '1fr'
+                                isXS || errors.email ? '1fr' : '80px 1fr'
                             }
                         />
 
@@ -73,14 +78,14 @@ export default function FormDemos() {
                             id="age"
                             name="age"
                             defaultValue=""
-                            label="age"
+                            label="Age"
                             errorToDisplay={errors.age}
                             style={{ gap: 'var(--gap-2)' }}
                             gridTemplateColumns={
-                                !errors.age ? '100px 1fr' : '1fr'
+                                isXS || errors.age ? '1fr' : '80px 1fr'
                             }
                         />
-                        <fieldset>
+                        <fieldset ref={referenceRef}>
                             <legend>Preferred contact</legend>
                             <label>
                                 <input
@@ -122,7 +127,7 @@ export default function FormDemos() {
                                 placeContent: 'center',
                             }}
                             gridTemplateColumns={{
-                                xs: !errors.agree ? '48px 1fr' : '1fr',
+                                xs: errors.agree || isXS ? '1fr' : '48px 1fr',
                             }}
                             gap={{ xs: 'var(--gap-2)' }}
                         >
@@ -144,7 +149,7 @@ export default function FormDemos() {
                         <GridTemplateColumns
                             dangerous={{ alignItems: 'center' }}
                             gridTemplateColumns={{
-                                xs: !errors.dob ? '120px 1fr' : '1fr',
+                                xs: errors.dob || isXS ? '1fr' : '120px 1fr',
                             }}
                             gap={{ xs: 'var(--gap-2)' }}
                             breakEqualHeight
@@ -169,9 +174,9 @@ export default function FormDemos() {
                 )}
             </UncontrolledForm>
             <br />
-            <Group.Row gap="var(--gap-3)">
+            <Group.Row gap="var(--gap-3)" flexWrap="wrap">
                 <Button type="submit" onClick={() => formRef.current?.submit()}>
-                    Submit from parent
+                    Submit
                 </Button>
                 <Button
                     onClick={async () => {
@@ -180,7 +185,7 @@ export default function FormDemos() {
                         console.log('values', formRef.current?.getValues());
                     }}
                 >
-                    Validate & Log All Values
+                    Validate
                 </Button>
             </Group.Row>
         </>
