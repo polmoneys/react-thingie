@@ -1,21 +1,22 @@
 /*
 
 // chain
-style('#app')
+imperativeStyles('#app')
   .color('#fff')
   .backgroundColor('#000')
   .filter('blur(2px)');
 
 // set a custom property and continue chaining
-style('#app')
+imperativeStyles('#app')
   .setProperty('--neutral', 'hotpink')
   .color('var(--neutral)');
 
 // get a value
-const currentColor = style('#app').color();
+const currentColor = imperativeStyles('#app').color();
 
 
 */
+
 type ScopedProps = 'color' | 'backgroundColor' | 'filter';
 
 type PropFn = {
@@ -29,7 +30,7 @@ export type ChainableStyle = {
     setProperty(name: string, value: string): ChainableStyle;
 };
 
-export function style(selector: string): ChainableStyle {
+export default function imperativeStyles(selector: string): ChainableStyle {
     const el = document.querySelector<HTMLElement>(selector);
     if (!el) throw new Error(`No element found for selector "${selector}"`);
 

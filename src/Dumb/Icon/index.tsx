@@ -183,6 +183,9 @@ Icon.Chevron = ({ polylines, lines, ...rest }: IconProps) => (
 Icon.ChevronDown = ({ polylines, rotate, lines, ...rest }: IconProps) => (
     <Icon polylines={[chevron]} rotate={90} {...rest} />
 );
+Icon.ChevronUp = ({ polylines, rotate, lines, ...rest }: IconProps) => (
+    <Icon polylines={[chevron]} rotate={270} {...rest} />
+);
 
 const xLines: LineInput[] = [
     [

@@ -1,5 +1,5 @@
 import Button from '../../Dumb/Button';
-import { sliceByRanges } from '../../utilities/chunk';
+import { chunkByRanges } from '../../utilities/chunk';
 
 import type { Period, PeriodId } from './interfaces';
 
@@ -15,7 +15,7 @@ export default function Periods({
     selectedPeriod,
     setPeriod,
 }: PeriodsProps) {
-    const groups = sliceByRanges(periods, [
+    const groups = chunkByRanges(periods, [
         [0, 4],
         [5, 10],
         [11, 13],

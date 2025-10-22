@@ -5,6 +5,7 @@ interface CommonProps extends Omit<ComponentProps<'input'>, 'onChange'> {
     onChangeNative?: (event: ChangeEvent<HTMLInputElement>) => void;
     id: string;
     errorElementId?: string;
+    endIcon?: ReactNode;
 }
 
 export type TextInputLabelProps = CommonProps & {

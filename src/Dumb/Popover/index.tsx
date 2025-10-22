@@ -4,7 +4,7 @@ import { FocusScope } from '@react-aria/focus';
 import { useKeyboard } from 'react-aria';
 import Stick from 'react-stick';
 
-import { moveFocusTo } from '../../utilities/focus';
+import { moveFocusTo } from '../../utilities/browser';
 import Button from '../Button';
 
 import type { TldrProps } from './interfaces';

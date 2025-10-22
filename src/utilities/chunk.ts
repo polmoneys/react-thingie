@@ -1,6 +1,6 @@
 export type Range = [number, number];
 
-export function sliceByRanges<T>(
+export function chunkByRanges<T>(
     arr: readonly T[],
     ranges: Range[],
     allowNegative: boolean = false,

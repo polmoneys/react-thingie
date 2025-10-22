@@ -1,23 +1,12 @@
-import { type ReactNode, useState } from 'react';
+import { useState } from 'react';
 
 import { InView } from 'react-intersection-observer';
 
 import { has } from '../../utils';
 
-interface Props {
-    children: ReactNode;
-    className?: string;
-    options?: {
-        threshold?: number;
-        rootMargin?: string;
-        triggerOnce?: boolean;
-    };
-    onChange?: (on: boolean) => void;
-    component?: string;
-    ifOn?: ReactNode;
-}
+import type { FenceProps } from './interfaces';
 
-export default function Fence(props: Props) {
+export default function Fence(props: FenceProps) {
     const { children, options, onChange, className, ifOn } = props;
     const [state, setState] = useState(false);
 

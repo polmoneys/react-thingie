@@ -1,3 +1,15 @@
+/* <Ring> component */
+.ringless {
+}
+.ring {
+    border: var(--border) !important;
+    border-color: var(--ring-color) !important;
+}
+.ringKeyboard {
+    border: var(--border) !important;
+    border-color: var(--ringKeyboard-color) !important;
+}
+
 .react-aria-DatePicker {
     &[data-invalid] {
     }

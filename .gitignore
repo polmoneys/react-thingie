@@ -3,6 +3,7 @@ eslint-rules
 sprite.svg
 Notes.md
 Temp.tsx
+useIntersectionObserver.tsx
 
 # Logs
 logs

@@ -1,3 +1,33 @@
+/* Chevron on AutocompLite */
+.text-input-label-root {
+    position: relative;
+    & svg {
+        position: absolute;
+        bottom: 0;
+        transform: translateY(-8px);
+        right: var(--gap-3);
+    }
+}
+
+.center {
+    display: grid;
+    place-content: center;
+}
+
+.unset {
+    border: unset;
+    padding: unset;
+    margin: unset;
+}
+
+.fit {
+    width: fit-content;
+}
+
+.cover {
+    inset: 0;
+}
+
 .icon-align-text {
     height: 1lh;
 }
@@ -19,24 +49,170 @@
     order: -1 !important;
 }
 
-.break-out {
+.break-into-new-line {
     flex: 0 0 100%;
     /* using 100% for flex-basis will force item to wrap into a
 	new line and take the full width.
 	needs flex wrapping active */
 }
 
-.fit {
-    width: fit-content;
+.select-all {
+    user-select: all;
 }
 
-.cover {
-    inset: 0;
+.select-none {
+    user-select: none;
 }
 
-.center {
-    display: grid;
-    place-content: center;
+.dead {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.offscreen {
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.invisible {
+    pointer-events: none;
+    position: absolute;
+    visibility: hidden;
+}
+
+:where(html) {
+    --ratio-square: 1;
+    --ratio-portrait: 9/16;
+    --ratio-landscape: 16/9;
+    --ratio-ultrawide: 18/5;
+}
+
+@supports (aspect-ratio: 1) {
+    .ratio {
+        &.auto {
+            aspect-ratio: auto;
+        }
+        &.square {
+            aspect-ratio: var(--ratio-square);
+        }
+        &.landscape {
+            aspect-ratio: var(--ratio-landscape);
+        }
+        &.portrait {
+            aspect-ratio: var(--ratio-portrait);
+        }
+        &.ultrawide {
+            aspect-ratio: var(--ratio-ultrawide);
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    .hide-portrait {
+        display: none !important;
+    }
+}
+@media (orientation: portrait) {
+    .hide-landscape {
+        display: none !important;
+    }
+    .ratio {
+        &:is(.auto, .square, .landscape, .portrait, .ultrawide) {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.scroll-snap-x {
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+
+    & > * {
+        scroll-snap-align: start;
+    }
+}
+
+.scroll-snap-y {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+
+    & > * {
+        scroll-snap-align: start;
+    }
+}
+
+.noise {
+    filter: blur(2px);
+}
+
+.noise-scroll {
+    transition-property:
+        filter,
+        -webkit-backdrop-filter;
+    transition-property: filter;
+    transition-property:
+        filter,
+        -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    filter: blur(1px);
+}
+
+.saturate {
+    filter: saturate(0.2);
+}
+
+.bright {
+    --bright: 1.7;
+    filter: brightness(var(--bright));
+}
+
+.fix-logo {
+    mix-blend-mode: darken;
+    /* difference overlay */
+    filter: grayscale(100%) contrast(1%);
+    &:hover {
+        mix-blend-mode: normal;
+        filter: none;
+    }
+}
+
+.fix-white-bg {
+    mix-blend-mode: multiply;
+}
+
+.emoji-green-to-red {
+    filter: hue-rotate(-120deg);
+}
+
+.emoji-red-to-green {
+    filter: hue-rotate(120deg);
+}
+
+.w-b {
+    color: var(--white);
+    mix-blend-mode: difference;
+}
+
+.b-w {
+    color: var(--white);
+    background-color: var(--black);
+    mix-blend-mode: multiply;
 }
 
 .maskX {
@@ -81,40 +257,121 @@
     }
 }
 
-.select-all {
-    user-select: all;
+.transition {
+    transition-property:
+        color,
+        background-color,
+        border-color,
+        text-decoration-color,
+        fill,
+        stroke,
+        opacity,
+        box-shadow,
+        transform,
+        filter,
+        -webkit-backdrop-filter;
+    transition-property:
+        color, background-color, border-color, text-decoration-color, fill,
+        stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property:
+        color,
+        background-color,
+        border-color,
+        text-decoration-color,
+        fill,
+        stroke,
+        opacity,
+        box-shadow,
+        transform,
+        filter,
+        backdrop-filter,
+        -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
 }
 
-.select-none {
-    user-select: none;
+.transition-bg-transform {
+    transition-property: background-color, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
 }
 
-.dead {
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
 }
 
-[hidden] {
-    display: none !important;
+.transition-colors {
+    transition-property:
+        color, background-color, border-color, text-decoration-color, fill,
+        stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
 }
 
-.offscreen {
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+.transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
 }
 
-.invisible {
-    pointer-events: none;
-    position: absolute;
-    visibility: hidden;
+.transition-transform {
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+}
+
+.longer {
+    transition-duration: 0.35s;
+}
+
+.ease-in {
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.ease-in-out {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ease-out {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.will-change-transform {
+    will-change: transform;
+}
+
+.wiggle {
+    animation: wiggle 400ms 50ms forwards ease-in-out;
+}
+
+.wiggle-hover:hover {
+    animation: wiggle 400ms 50ms forwards ease-in-out;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(8deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.fade-in {
+    animation: show 600ms 100ms cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+    opacity: 0;
+}
+
+@keyframes show {
+    100% {
+        opacity: 1;
+    }
 }

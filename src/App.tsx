@@ -20,7 +20,7 @@ const mapper = (p: (typeof DEMOS_V2)[number]): AutocompLiteOption => ({
 
 export default function App() {
     // useEffect(() => {
-    //     style('#main')
+    //     imperativeStyles('#main')
     //         .color('#fff')
     //         .backgroundColor('#000')
     //         .filter('blur(2px)');
@@ -105,6 +105,7 @@ export default function App() {
                 </StickyHeader>
 
                 <br />
+
                 <DemoRenderer demos={demos} />
             </main>
             {hasDemos && (

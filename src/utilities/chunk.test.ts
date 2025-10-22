@@ -1,7 +1,7 @@
 import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
 
-import { sliceByRanges } from './chunk';
+import { chunkByRanges } from './chunk';
 
 type Range = [number, number];
 type Matrix<T> = Array<Array<T>>;
@@ -70,7 +70,7 @@ describe('sliceByRanges (property tests)', () => {
                         ranges as Array<[number, number]>,
                         allowNegative,
                     );
-                    const actual = sliceByRanges(
+                    const actual = chunkByRanges(
                         arr,
                         ranges as Array<[number, number]>,
                         allowNegative,
@@ -88,7 +88,7 @@ describe('sliceByRanges (property tests)', () => {
                 rangesArb,
                 fc.boolean(),
                 (arr, ranges, allowNegative) => {
-                    const out = sliceByRanges(
+                    const out = chunkByRanges(
                         arr,
                         ranges as Array<[number, number]>,
                         allowNegative,
@@ -131,7 +131,7 @@ describe('sliceByRanges (property tests)', () => {
                     // pick two negative endpoints and ensure allowNegative true
                     const ranges: Range[] = [[a, b]];
                     const expected = referenceSliceByRanges(arr, ranges, true);
-                    const actual = sliceByRanges(arr, ranges, true);
+                    const actual = chunkByRanges(arr, ranges, true);
                     expect(actual).toEqual(expected);
                 },
             ),

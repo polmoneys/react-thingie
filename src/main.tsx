@@ -9,7 +9,6 @@ import App from './App.tsx';
 
 import './CSS/index.css';
 import './CSS/colors.css';
-import './CSS/ratio.css';
 import './CSS/utils.css';
 import './CSS/react-aria.css';
 

@@ -10,7 +10,7 @@ import Icon from '../Dumb/Icon';
 import Toolbar from '../Dumb/Toolbar';
 import useBasket from '../Smart-ish/useBasket';
 import useTanstackQuery from '../Smart-ish/useTanstackQuery';
-import { pluralize } from '../utilities/plurals';
+import { pluralize } from '../utilities/string';
 import { clsx } from '../utils';
 
 const RESOURCES = ['people', 'planets', 'starships'] as const;

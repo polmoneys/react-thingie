@@ -75,66 +75,28 @@
     background-color: var(--neutral) !important;
 }
 
-.noise {
-    filter: blur(2px);
-}
+.pastels {
+    --space: hsl;
+    --saturation: 100%;
+    --lightness: 80%;
 
-.noise-scroll {
-    transition-property:
-        filter,
-        -webkit-backdrop-filter;
-    transition-property: filter;
-    transition-property:
-        filter,
-        -webkit-backdrop-filter;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 0.15s;
-    filter: blur(1px);
-}
+    --positive: 153deg;
+    --negative: 31deg;
+    --info: 56deg;
+    --accent: 265deg;
+    --accent-2: 278deg;
+    --accent-3: 297deg;
 
-.saturate {
-    filter: saturate(0.2);
-}
-
-:where(html) {
-    --bright: 1.1;
-    --brighter: 1.3;
-    --brightest: 2.4;
-}
-
-.bright {
-    filter: brightness(var(--brighter));
-}
-
-.fix-logo {
-    mix-blend-mode: darken;
-    /* difference overlay */
-    filter: grayscale(100%) contrast(1%);
-    &:hover {
-        mix-blend-mode: normal;
-        filter: none;
-    }
-}
-
-.fix-white-bg {
-    mix-blend-mode: multiply;
-}
-
-.emoji-green-to-red {
-    filter: hue-rotate(-120deg);
-}
-
-.emoji-red-to-green {
-    filter: hue-rotate(120deg);
-}
-
-.w-b {
-    color: var(--white);
-    mix-blend-mode: difference;
-}
-
-.b-w {
-    color: var(--white);
-    background-color: var(--black);
-    mix-blend-mode: multiply;
+    --color-positive: var(--space)
+        (var(--positive), var(--saturation), var(--lightness));
+    --color-negative: var(--space)
+        (var(--negative), var(--saturation), var(--lightness));
+    --color-info: var(--space)
+        (var(--info), var(--saturation), var(--lightness));
+    --color-accent: var(--space)
+        (var(--accent), var(--saturation), var(--lightness));
+    --color-accent-2: var(--space)
+        (var(--accent-2), var(--saturation), var(--lightness));
+    --color-accent-3: var(--space)
+        (var(--accent-3), var(--saturation), var(--lightness));
 }

@@ -17,6 +17,7 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
             errorElementId,
             className,
             classNames,
+            endIcon,
             ...rest
         } = props;
 
@@ -27,7 +28,10 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
             alignItems: 'center',
         } as CSSProperties;
         return (
-            <div style={options} {...(has(className) && { className })}>
+            <div
+                style={options}
+                className={clsx('text-input-label-root', className)}
+            >
                 {label && <label htmlFor={id}>{label}</label>}
                 <Ring isTextInput>
                     <input
@@ -46,6 +50,8 @@ const TextInputLabel = forwardRef<HTMLInputElement, TextInputLabelProps>(
                         }}
                     />
                 </Ring>
+
+                {has(endIcon) ? endIcon : null}
             </div>
         );
     },
