@@ -40,7 +40,6 @@ export const DEMOS_V2 = [
         label: 'Embeds',
         tag: 'Inspired',
         production: 'v1.0',
-        disabled: true,
     },
     {
         id: 'Excel',
@@ -116,7 +115,6 @@ export const DEMOS_V2 = [
         label: 'Swipeable',
         tag: 'Dumb',
         production: 'v1.0',
-        disabled: true,
     },
     {
         id: 'Table',
@@ -141,6 +139,5 @@ export const DEMOS_V2 = [
         label: 'WebWorker',
         tag: 'Smart-ish',
         production: 'alpha',
-        disabled: true,
     },
 ];
