@@ -129,8 +129,8 @@ export const DEMOS_V2 = [
         production: 'v1.0',
     },
     {
-        id: 'Tree',
-        label: 'Tree',
+        id: 'Recursive',
+        label: 'Recursive',
         tag: 'Dumb',
         production: 'beta',
     },

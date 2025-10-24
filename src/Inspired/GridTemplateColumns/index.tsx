@@ -19,6 +19,7 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
         dangerous,
         breakEqualHeight,
         gradient,
+        ...rest
     } = props;
 
     const style = useMemo(() => {
@@ -69,7 +70,11 @@ export default function GridTemplateColumns(props: ColumnsGridProps) {
     ]);
 
     return (
-        <Component className={clsx(styles.columns, className)} style={style}>
+        <Component
+            className={clsx(styles.columns, className)}
+            style={style}
+            {...rest}
+        >
             {children}
         </Component>
     );

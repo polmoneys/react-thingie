@@ -28,12 +28,12 @@ export type DemosLabels =
     | 'Popover'
     | 'Portal'
     | 'Radio'
+    | 'Recursive'
     | 'SlidingWindow'
     | 'Stream'
     | 'Swipeable'
     | 'Table'
     | 'Tabs'
-    | 'Tree'
     | 'WebWorker';
 
 const DEMO_IMPORTERS: Record<
@@ -59,6 +59,7 @@ const DEMO_IMPORTERS: Record<
     Popover: () => import(/* webpackChunkName: "demo-popover" */ './Popover'),
     Portal: () => import(/* webpackChunkName: "demo-portal" */ './Portals'),
     Radio: () => import(/* webpackChunkName: "demo-radio" */ './Radios'),
+    Recursive: () => import(/* webpackChunkName: "demo-recursive" */ './Tree'),
     SlidingWindow: () =>
         import(/* webpackChunkName: "demo-sliding-window" */ './SlidingWindow'),
     Stream: () => import(/* webpackChunkName: "demo-stream" */ './Stream'),
@@ -66,7 +67,6 @@ const DEMO_IMPORTERS: Record<
         import(/* webpackChunkName: "demo-swipeable" */ './Swipeable'),
     Tabs: () => import(/* webpackChunkName: "demo-tabs" */ './Tabs'),
     Table: () => import(/* webpackChunkName: "demo-table" */ './Tables'),
-    Tree: () => import(/* webpackChunkName: "demo-tree" */ './Tree'),
     WebWorker: () =>
         import(/* webpackChunkName: "demo-web-worker" */ './WebWorker'),
 };

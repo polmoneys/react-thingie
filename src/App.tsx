@@ -105,7 +105,6 @@ export default function App() {
                 </StickyHeader>
 
                 <br />
-
                 <DemoRenderer demos={demos} />
             </main>
             {hasDemos && (

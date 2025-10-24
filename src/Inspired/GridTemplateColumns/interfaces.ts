@@ -33,4 +33,5 @@ export interface ColumnsGridProps
     dangerous?: CSSProperties;
     children?: ReactNode;
     breakEqualHeight?: boolean;
+    onClick?: () => void;
 }

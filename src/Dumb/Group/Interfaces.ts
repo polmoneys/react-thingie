@@ -43,6 +43,7 @@ export default interface GroupProps extends AriaAttributes {
     htmlFor?: string;
     onSubmit?: (event: unknown) => void;
     onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
+    onClick?: () => void;
     stretch?: boolean;
     alignItems?: string;
     justifyContent?: string;

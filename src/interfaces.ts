@@ -15,6 +15,9 @@ export type RequireAtLeastOne<T> = {
 export type Mood = 'neutral' | 'positive' | 'negative';
 
 export type CssVar = `var(--${string})`;
+export type CssVar2 = `${string | number} var(--${string})`;
+export type CssVar3 = `${string | number} var(--${string}) ${string | number}`;
+
 export type NumericVar = `${number} ${CssVar}`;
 export type StringVar = `${number}${UnitSuffix} ${CssVar}`;
 export type MinMax = `min(${string})` | `max(${string})`;
@@ -25,6 +28,8 @@ export type WithSuffix = `${string}${UnitSuffix}` & `${number}${UnitSuffix}`;
 export type Unit =
     | 0
     | CssVar
+    | CssVar2
+    | CssVar3
     | NumericVar
     | StringVar
     | MinMax

@@ -548,6 +548,9 @@ summary {
     font: inherit;
 }*/
 
+@media (width < 600px) {
+}
+
 @view-transition {
     navigation: auto;
 }

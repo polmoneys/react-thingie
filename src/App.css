@@ -91,6 +91,22 @@ datalist {
     }
 }
 
+.puffy-star {
+    clip-path: shape(
+        from 39% 35%,
+        line to 61% 35%,
+        smooth to 68% 57% with 98% 36%,
+        line to 50% 70%,
+        smooth to 32% 57% with 21% 91%,
+        line to 39% 39%,
+        smooth to 61% 35% with 50% 0%,
+        line to 68% 57%,
+        smooth to 50% 70% with 79% 91%,
+        line to 32% 57%,
+        smooth to 39% 35% with 2% 35%,
+        close
+    );
+}
 /*
     Mouse only
     .element:focus:not(:focus-visible) {

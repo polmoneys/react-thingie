@@ -343,5 +343,30 @@ Icon.ThreeDotsVertical = ({
     </Icon>
 );
 
+Icon.File = ({
+    lines,
+    polylines,
+    rotate,
+    fillChildren = 'currentColor',
+    ...rest
+}: IconProps) => (
+    <Icon {...rest}>
+        <Rect rx={2} x={7} y={7} width={10} height={10} />
+    </Icon>
+);
+
+Icon.Folder = ({
+    lines,
+    polylines,
+    rotate,
+    fillChildren = 'currentColor',
+    ...rest
+}: IconProps) => (
+    <Icon {...rest}>
+        <Rect rx={2} x={12} y={6} width={5} height={4} fill={fillChildren} />
+        <Rect rx={2} x={7} y={7} width={10} height={10} fill={fillChildren} />
+    </Icon>
+);
+
 Icon.Loading = Loading;
 Icon.LoadingBar = Loading;

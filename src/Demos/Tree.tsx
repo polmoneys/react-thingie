@@ -6,6 +6,8 @@ import type { FileSystem } from '../Dumb/Tree/interfaces';
 import useTree from '../Dumb/Tree/useTree';
 import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 
+import DemoRecursive from './TreeRecursive';
+
 import styles from '../Dumb/Tree/index.module.css';
 
 export const initialFileSystem: FileSystem = {
@@ -176,6 +178,9 @@ export default function FileSystemTree() {
                     </Group.Row>
                 </form>*/}
             </GridTemplateColumns>
+            <br />
+
+            <DemoRecursive />
             <br />
         </>
     );
