@@ -17,7 +17,6 @@ export default function StocksList() {
     const api = useSelection();
     const formatted = formatSelectedKeys(api.selectedKeys);
 
-    console.log({ formatted });
     const onChangeLeader = (event: ChangeEvent<HTMLInputElement>) => {
         const el = event.currentTarget;
 

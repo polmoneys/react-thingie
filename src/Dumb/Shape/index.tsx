@@ -2,7 +2,7 @@ import { type ComponentProps, memo, useMemo } from 'react';
 
 import { has, polygon } from './utils';
 
-interface Props extends ComponentProps<'div'> {
+interface ShapeProps extends ComponentProps<'div'> {
     sides?: number;
     size?: number;
     fill?: string;
@@ -12,7 +12,7 @@ interface Props extends ComponentProps<'div'> {
     strokeWidth?: number;
 }
 
-const Shape = (props: Props) => {
+const Shape = (props: ShapeProps) => {
     const {
         sides = 3,
         size = 69,
@@ -53,14 +53,20 @@ const Shape = (props: Props) => {
     );
 };
 
-Shape.Triangle = (props: Props) => <Shape {...props} sides={3} />;
-Shape.Square = (props: Props) => <Shape {...props} sides={4} />;
-Shape.Circle = (props: Props) => <Shape {...props} sides={25} />;
+Shape.Triangle = (props: ShapeProps) => <Shape {...props} sides={3} />;
+Shape.Square = (props: ShapeProps) => <Shape {...props} sides={4} />;
+Shape.Circle = (props: ShapeProps) => <Shape {...props} sides={25} />;
 
-const avoidRerenderIf = (prevProps: Props, nextProps: Props): boolean => {
+const avoidRerenderIf = (
+    prevProps: ShapeProps,
+    nextProps: ShapeProps,
+): boolean => {
     return prevProps.sides === nextProps.sides;
 };
 
-Shape.Freeze = memo((props: Props) => <Shape {...props} />, avoidRerenderIf);
+Shape.Freeze = memo(
+    (props: ShapeProps) => <Shape {...props} />,
+    avoidRerenderIf,
+);
 
 export default Shape;

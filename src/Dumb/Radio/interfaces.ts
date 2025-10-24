@@ -1,5 +1,5 @@
-// eslint-disable-next-line simple-import-sort/imports
 import type { ComponentProps, ReactElement } from 'react';
+
 import type { RenderProp } from '../../interfaces';
 
 export interface RadioProps extends Omit<ComponentProps<'input'>, 'children'> {

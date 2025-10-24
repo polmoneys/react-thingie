@@ -1,7 +1,7 @@
 import { FocusRing } from '@react-aria/focus';
 import type { ReactElement } from 'react';
 
-interface Props {
+interface RingProps {
     children: ReactElement;
     autofocus?: boolean;
     within?: boolean;
@@ -9,7 +9,7 @@ interface Props {
     disabled?: boolean;
 }
 
-export default function Ring(props: Props) {
+export default function Ring(props: RingProps) {
     const {
         children,
         autofocus = false,

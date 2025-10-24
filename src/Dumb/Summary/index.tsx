@@ -4,14 +4,14 @@ import { has } from '../../utils';
 
 import Group from './Group';
 
-interface Props {
+interface SummaryProps {
     summary: string;
     children: ReactNode;
     className?: string;
     name?: string;
 }
 
-function Disclosure({ summary, children, name, className }: Props) {
+function Disclosure({ summary, children, name, className }: SummaryProps) {
     return (
         <details
             {...(has(name) && { name })}

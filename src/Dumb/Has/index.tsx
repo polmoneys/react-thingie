@@ -2,7 +2,7 @@ import { createElement, type CSSProperties, useMemo } from 'react';
 
 import { toKebabCase } from '../../utilities/string';
 
-import type { ConditionalStyleProps, CSSValue } from './interfaces';
+import type { CSSValue, HasProps } from './interfaces';
 
 /*
 
@@ -53,7 +53,7 @@ export default function Has({
     className = '',
     component: Component = 'div',
     baseVars = {},
-}: ConditionalStyleProps) {
+}: HasProps) {
     const { styleTag, containerClass, inlineVars } = useMemo(() => {
         const uniqueId = `cs-${Math.random().toString(36).substr(2, 9)}`;
         const containerClass = `conditional-${uniqueId}`;
@@ -61,7 +61,6 @@ export default function Has({
         const cssRules: string[] = [];
         const inlineVars: Record<string, CSSValue> = {};
 
-        // Set up base CSS variables
         Object.entries(baseVars).forEach(([key, value]) => {
             const varName = key.startsWith('--')
                 ? key

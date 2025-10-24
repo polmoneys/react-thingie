@@ -51,7 +51,7 @@ export type Condition = {
     vars?: Record<string, CSSValue>;
 };
 
-export type ConditionalStyleProps = {
+export type HasProps = {
     conditions: Condition[];
     children: ReactNode;
     className?: string;

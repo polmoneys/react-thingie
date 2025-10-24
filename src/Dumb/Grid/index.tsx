@@ -5,7 +5,7 @@ import { clsx, has } from '../../utils';
 
 import styles from './index.module.css';
 
-interface Props {
+interface GridProps {
     children: ReactNode;
     className?: string;
     width?: WithSuffix | Calc | MinMax;
@@ -17,7 +17,7 @@ interface Props {
     component?: 'div' | 'ul' | 'ol' | 'section' | 'form';
 }
 
-export default function Grid(props: Props) {
+export default function Grid(props: GridProps) {
     const {
         children,
         width = '20em',

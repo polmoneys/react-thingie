@@ -4,7 +4,7 @@ import Disclosure from '.';
 
 import styles from './index.module.css';
 
-interface Props {
+interface SummaryGroupProps {
     items: Array<{
         summary: string;
         children: ReactNode;
@@ -13,7 +13,7 @@ interface Props {
     }>;
 }
 
-export default function Group(props: Props) {
+export default function Group(props: SummaryGroupProps) {
     const { items } = props;
     return (
         <div className={styles.group}>
