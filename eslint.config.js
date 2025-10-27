@@ -6,7 +6,12 @@ import tseslint from 'typescript-eslint';
 import { globalIgnores } from 'eslint/config';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
-// const localRules = require('./eslint-rules.js');
+const NOT_NICE = ['ocurred', 'hack', 'magic'];
+
+const forbiddenSyntaxRules = NOT_NICE.map((w) => ({
+    selector: `Identifier[name="${w}"]`,
+    message: `NOT NICE using "${w}", try 1' for an alternative 🙏🏽.`,
+}));
 
 export default tseslint.config([
     globalIgnores(['dist']),
@@ -26,32 +31,28 @@ export default tseslint.config([
             'simple-import-sort': simpleImportSort,
         },
         rules: {
+            'no-restricted-syntax': ['warn', ...forbiddenSyntaxRules],
             '@typescript-eslint/no-explicit-any': 'warn',
+            'react-refresh/only-export-components': 'warn',
             '@typescript-eslint/no-unused-vars': [
                 'warn',
                 { varsIgnorePattern: '^_' },
             ],
-            'react-refresh/only-export-components': 'warn',
             'simple-import-sort/imports': [
                 'error',
                 {
                     groups: [
                         // 1) react first
                         ['^react$'],
-
                         // 2) external packages (node builtins and npm packages)
                         ['^@?\\w'],
-
                         // 3) absolute imports from src/ — matches `import foo from "src/..."`.
                         //    If you don't use absolute `src/` imports, remove or adjust this.
                         ['^src(/.*|$)'],
-
                         // 4) parent imports
                         ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-
                         // 5) sibling and index imports
                         ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-
                         // 6) CSS Modules LAST: any import whose specifier ends with `.module.css`
                         //    also tolerates an optional query string like `styles.module.css?inline`
                         ['^.*\\.module\\.css(?:\\?.*)?$'],
@@ -59,19 +60,6 @@ export default tseslint.config([
                 },
             ],
             'simple-import-sort/exports': 'error',
-            // 'no-restricted-imports': [
-            //     'error',
-            //     {
-            //         paths: [
-            //             {
-            //                 name: 'react-redux',
-            //                 importNames: ['useSelector'],
-            //                 message:
-            //                     'Import useSelector from "@/config/store/useSelector" instead for proper typing.',
-            //             },
-            //         ],
-            //     },
-            // ],
         },
     },
 ]);

@@ -9,7 +9,7 @@ import {
 
 import Alert from '../Dumb/Alert';
 import Font from '../Dumb/Font';
-import Icon from '../Dumb/Icon';
+import IconLoadingBar from '../Dumb/Icon/Icons/LoadingBar';
 
 export type DemosLabels =
     | 'AutoCompLite'
@@ -133,7 +133,7 @@ export default function DemoRenderer({
                         key={name}
                         fallback={
                             <Alert isPending block>
-                                <Icon.Loading />
+                                <IconLoadingBar />
                             </Alert>
                         }
                     >

@@ -6,7 +6,7 @@ import { clsx } from '../../utils';
 import Button from '../Button';
 import Font from '../Font';
 import Group from '../Group';
-import Icon from '../Icon';
+import IconChevron, { IconChevronDown } from '../Icon/Icons/Chevron';
 import Shape from '../Shape';
 
 import { type NodeType, type TreeProps } from './interfaces';
@@ -79,9 +79,9 @@ export default function RecursiveItem(props: TreeProps) {
                         {...focusProps}
                     >
                         {expanded[node.id] ? (
-                            <Icon.ChevronDown circle={false} size={48} />
+                            <IconChevronDown circle={false} size={48} />
                         ) : (
-                            <Icon.Chevron circle={false} size={48} />
+                            <IconChevron circle={false} size={48} />
                         )}
                     </Button.Transparent>
                 ) : null}

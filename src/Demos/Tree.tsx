@@ -106,7 +106,7 @@ export default function FileSystemTree() {
                             isIcon
                             onClick={() => setNewName('')}
                         >
-                            <Icon.X size={36} />
+                            <IconX size={36} />
                         </Button.Transparent>
                     </GridTemplateColumns>
                     <br />
@@ -140,7 +140,7 @@ export default function FileSystemTree() {
 
                         <div>
                             <Button.Transparent isIcon onClick={() => onAdd()}>
-                                <Icon.Add size={36} />
+                                <IconAdd size={36} />
                             </Button.Transparent>
                             <Button.Transparent
                                 isIcon
@@ -149,7 +149,7 @@ export default function FileSystemTree() {
                                     setNewType('file');
                                 }}
                             >
-                                <Icon.X size={36} />
+                                <IconX size={36} />
                             </Button.Transparent>
                         </div>
                     </GridTemplateColumns>
@@ -173,7 +173,7 @@ export default function FileSystemTree() {
 
                         <Button onClick={() => onMove()}>Move</Button>
                         <Button.Transparent isIcon onClick={() => onRemove()}>
-                            <Icon.Remove size={36} />
+                            <IconRemove size={36} />
                         </Button.Transparent>
                     </Group.Row>
                 </form>*/}

@@ -6,7 +6,9 @@ import Alert from '../Dumb/Alert';
 import Button from '../Dumb/Button';
 import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
-import Icon from '../Dumb/Icon';
+import IconAdd from '../Dumb/Icon/Icons/Add';
+import IconLoadingBar from '../Dumb/Icon/Icons/LoadingBar';
+import IconX from '../Dumb/Icon/Icons/X';
 import Toolbar from '../Dumb/Toolbar';
 import useBasket from '../Smart-ish/useBasket';
 import useTanstackQuery from '../Smart-ish/useTanstackQuery';
@@ -140,7 +142,7 @@ export default function SwapiDemo() {
                 }}
                 className="theme-transparent"
             >
-                {isLoading && <Icon.LoadingBar />}
+                {isLoading && <IconLoadingBar />}
                 {error && (
                     <Alert mood="negative">
                         <Font> Error loading items</Font>
@@ -175,9 +177,9 @@ export default function SwapiDemo() {
                                 isActive={isInBasket as boolean}
                             >
                                 {isInBasket ? (
-                                    <Icon.X size={22} />
+                                    <IconX size={22} />
                                 ) : (
-                                    <Icon.Add size={22} />
+                                    <IconAdd size={22} />
                                 )}
                             </Button>
                         </Group.Row>
@@ -214,7 +216,7 @@ export default function SwapiDemo() {
                         >
                             <Font clamp={1}> {item.name ?? ''}</Font>
                             <Button onClick={() => api.remove([item.id])}>
-                                <Icon.X size={22} />
+                                <IconX size={22} />
                             </Button>
                         </Group.Row>
                     ))

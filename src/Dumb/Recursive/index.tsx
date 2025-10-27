@@ -1,7 +1,7 @@
 import { clsx } from '../../utils';
 import Button from '../Button';
 import Group from '../Group';
-import Icon from '../Icon';
+import IconChevron, { IconChevronDown } from '../Icon/Icons/Chevron';
 
 import type { RecursiveProps } from './interfaces';
 
@@ -54,9 +54,9 @@ export default function Recursive<T = any>({
                                     }
                                 >
                                     {isExpanded ? (
-                                        <Icon.ChevronDown size={28} />
+                                        <IconChevronDown size={28} />
                                     ) : (
-                                        <Icon.Chevron size={28} />
+                                        <IconChevron size={28} />
                                     )}
                                 </Button.Transparent>
                             ) : null,

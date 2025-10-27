@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
 import Group from '../Group';
-import Icon from '../Icon';
+import { IconChevronDown } from '../Icon/Icons/Chevron';
 import Ring from '../Ring';
 
 /*
@@ -44,7 +44,7 @@ export default function Select({
             </Ring>
 
             <div style={{ position: 'relative', zIndex: 99 }}>
-                <Icon.ChevronDown
+                <IconChevronDown
                     size={33}
                     circle={false}
                     transform="translate(-44px,3px)"

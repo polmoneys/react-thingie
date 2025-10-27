@@ -20,7 +20,7 @@ import {
     Text,
 } from 'react-aria-components';
 
-import Icon from '../../Dumb/Icon';
+import IconChevron, { IconChevronDown } from '../../Dumb/Icon/Icons/Chevron';
 
 interface MyDatePickerProps<T extends DateValue> extends DatePickerProps<T> {
     label?: string;
@@ -43,7 +43,7 @@ export default function DatePick<T extends DateValue>({
                     {(segment) => <DateSegment segment={segment} />}
                 </DateInput>
                 <Button>
-                    <Icon.ChevronDown size={20} />
+                    <IconChevronDown size={20} />
                 </Button>
             </Group>
             {description && <Text slot="description">{description}</Text>}
@@ -55,11 +55,11 @@ export default function DatePick<T extends DateValue>({
                             style={{ display: 'flex', alignItems: 'center' }}
                         >
                             <Button slot="previous" style={{ border: 'none' }}>
-                                <Icon.Chevron rotate={180} size={20} />
+                                <IconChevron rotate={180} size={20} />
                             </Button>
                             <Heading style={{ flexGrow: 1 }} />
                             <Button slot="next" style={{ border: 'none' }}>
-                                <Icon.Chevron size={20} />
+                                <IconChevron size={20} />
                             </Button>
                         </header>
                         <CalendarGrid style={{ width: '100%' }}>

@@ -1,7 +1,7 @@
 import Button from '../Dumb/Button';
 import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
-import Icon from '../Dumb/Icon';
+import IconX from '../Dumb/Icon/Icons/X';
 import Shape from '../Dumb/Shape';
 import Dialog from '../Smart-ish/Dialog';
 import Actionsheet from '../Smart-ish/Dialog/ActionSheet';
@@ -78,7 +78,7 @@ export default function DemoDialog() {
                         onClick={() => onClose()}
                         isText
                     >
-                        <Icon.X size={36} circle={false} />
+                        <IconX size={36} circle={false} />
                     </Button.Icon>
                 </Dialog.Title>
                 <Dialog.Content

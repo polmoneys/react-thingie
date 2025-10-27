@@ -3,7 +3,7 @@ import { useCallback, useRef } from 'react';
 import { useKeyboard } from 'react-aria';
 
 import Alert from '../../Dumb/Alert';
-import Icon from '../../Dumb/Icon';
+import { IconChevronDown, IconChevronUp } from '../../Dumb/Icon/Icons/Chevron';
 import TextInputLabel from '../../Dumb/InputText';
 import useClickContains from '../../utilities/useClickContains';
 import { has } from '../../utils';
@@ -85,9 +85,9 @@ export default function AutocompLite(props: AutcompLiteProps) {
                     aria-haspopup="listbox"
                     endIcon={
                         showPopover ? (
-                            <Icon.ChevronUp size={28} circle={false} />
+                            <IconChevronUp size={28} circle={false} />
                         ) : (
-                            <Icon.ChevronDown size={28} circle={false} />
+                            <IconChevronDown size={28} circle={false} />
                         )
                     }
                 />

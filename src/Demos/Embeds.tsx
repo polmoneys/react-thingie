@@ -1,13 +1,13 @@
 import { lazy, Suspense } from 'react';
 
 import Alert from '../Dumb/Alert';
-import Icon from '../Dumb/Icon';
+import IconLoadingBar from '../Dumb/Icon/Icons/LoadingBar';
 import Qr from '../Inspired/Embed/Qr';
 
 function QRCodeGeneratorFallback() {
     return (
         <Alert fitContent>
-            <Icon.LoadingBar />
+            <IconLoadingBar />
         </Alert>
     );
 }

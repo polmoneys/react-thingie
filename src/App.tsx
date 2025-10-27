@@ -3,7 +3,7 @@ import useDemos from './Demos/useURLDemos';
 import Alert from './Dumb/Alert';
 import Button from './Dumb/Button';
 import Font from './Dumb/Font';
-import Icon from './Dumb/Icon';
+import IconX from './Dumb/Icon/Icons/X';
 import StickyHeader from './Dumb/Sticky/Header';
 import AutocompLite from './Smart-ish/AutocompLite';
 import type { AutocompLiteOption } from './Smart-ish/AutocompLite/interfaces';
@@ -121,7 +121,7 @@ export default function App() {
                     }}
                     onClick={callAll(clearSelection, clearDemos)}
                 >
-                    <Icon.X circle={false} size={52} />
+                    <IconX circle={false} size={52} />
                 </Button.Negative>
             )}
         </>

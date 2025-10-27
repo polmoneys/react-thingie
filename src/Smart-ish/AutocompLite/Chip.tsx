@@ -1,6 +1,6 @@
 import Button from '../../Dumb/Button';
 import type { ButtonProps } from '../../Dumb/Button/interfaces';
-import Icon from '../../Dumb/Icon';
+import IconX from '../../Dumb/Icon/Icons/X';
 import { clsx } from '../../utils';
 
 import styles from './index.module.css';
@@ -15,7 +15,7 @@ export default function Chip(props: ButtonProps) {
                 isActive && styles.isActive,
                 className,
             )}
-            end={<Icon.X circle={false} size={28} />}
+            end={<IconX circle={false} size={28} />}
         >
             {children}
         </Button>

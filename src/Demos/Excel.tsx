@@ -4,7 +4,10 @@ import Button from '../Dumb/Button';
 import useExcelExport from '../Dumb/Excel';
 import type { ColumnDefinition } from '../Dumb/Excel/interfaces';
 import Font from '../Dumb/Font';
-import Icon from '../Dumb/Icon';
+import IconAdd from '../Dumb/Icon/Icons/Add';
+import IconExportSheet from '../Dumb/Icon/Icons/ExportSheet';
+import IconExportSheets from '../Dumb/Icon/Icons/ExportSheets';
+import IconX from '../Dumb/Icon/Icons/X';
 import ToolBar from '../Dumb/Toolbar';
 
 import { demoPlaces } from './Destinations';
@@ -92,7 +95,7 @@ export default function DemoExcel() {
                         isIcon
                         onClick={() => setOpen((prev) => !prev)}
                     >
-                        {open ? <Icon.X /> : <Icon.Add />}
+                        {open ? <IconX /> : <IconAdd />}
                     </Button.Transparent>
                 </ToolBar.Group>
 
@@ -104,7 +107,7 @@ export default function DemoExcel() {
                                 isIcon
                                 onClick={onExport}
                             >
-                                <Icon.ExportSheet />
+                                <IconExportSheet />
                             </Button.Transparent>
                         </ToolBar.Group>
                         <ToolBar.Group label="sheet 1 and 2">
@@ -113,7 +116,7 @@ export default function DemoExcel() {
                                 isIcon
                                 onClick={onExportMultipleSheets}
                             >
-                                <Icon.ExportSheets fillChildren="currentColor" />
+                                <IconExportSheets fillChildren="currentColor" />
                             </Button.Transparent>
                         </ToolBar.Group>
                     </>

@@ -1,14 +1,16 @@
 export type Point = [number, number];
 export type FlatLine = [number, number, number, number];
 export type LineInput = [Point, Point] | FlatLine;
-export type PolylineInput = Point[];
+export type LineInputs = Array<LineInput>;
+export type PolylineInput = Array<Point>;
+export type PolylineInputs = Array<PolylineInput>;
 
 export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
     size?: number;
     padding?: number;
     viewBoxSize?: number;
-    polylines?: PolylineInput[];
-    lines?: LineInput[];
+    polylines?: PolylineInputs;
+    lines?: LineInputs;
     rotate?: number;
     strokeWidth?: number;
     strokeLinecap?: React.SVGProps<SVGLineElement>['strokeLinecap'];

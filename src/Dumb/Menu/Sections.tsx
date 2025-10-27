@@ -11,7 +11,7 @@ import {
 } from 'react-aria-components';
 
 import Font from '../Font';
-import Icon from '../Icon';
+import { IconChevronDown } from '../Icon/Icons/Chevron';
 
 import type { DynamicItem } from './interfaces';
 
@@ -28,7 +28,7 @@ export default function MenuSections<T extends DynamicItem>(
             <Pressable>
                 <span role="button" className="my-menu-trigger">
                     <Font component="span"> {label}</Font>
-                    <Icon.ChevronDown size={24} circle={false} />
+                    <IconChevronDown size={24} circle={false} />
                 </span>
             </Pressable>
             <Popover>

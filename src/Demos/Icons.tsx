@@ -2,6 +2,15 @@ import { useState } from 'react';
 
 import Group from '../Dumb/Group';
 import Icon from '../Dumb/Icon';
+import IconAdd from '../Dumb/Icon/Icons/Add';
+import IconChevron, { IconChevronDown } from '../Dumb/Icon/Icons/Chevron';
+import IconExportSheet from '../Dumb/Icon/Icons/ExportSheet';
+import IconExportSheets from '../Dumb/Icon/Icons/ExportSheets';
+import IconPreview from '../Dumb/Icon/Icons/Preview';
+import IconRemove from '../Dumb/Icon/Icons/Remove';
+import IconThreeDots from '../Dumb/Icon/Icons/ThreeDots';
+import IconThreeDotsVertical from '../Dumb/Icon/Icons/ThreeDotsVertical';
+import IconX from '../Dumb/Icon/Icons/X';
 import Shape from '../Dumb/Shape';
 import ContainerSize from '../Dumb/Size';
 import StrokeDashoffset from '../Dumb/StrokeDashOffset';
@@ -22,11 +31,11 @@ export default function DemoIcons() {
                             borderRadius: 'var(--border-radius)',
                         }}
                     >
-                        <Icon.X />
-                        <Icon.Chevron />
-                        <Icon.ChevronDown />
-                        <Icon.Add fill="var(--info)" />
-                        <Icon.Remove fillChildren="var(--info)" />
+                        <IconX />
+                        <IconChevron />
+                        <IconChevronDown />
+                        <IconAdd fill="var(--info)" />
+                        <IconRemove fillChildren="var(--info)" />
                         <Icon
                             rotate={90}
                             lines={[
@@ -54,25 +63,22 @@ export default function DemoIcons() {
                                 ],
                             ]}
                         />
-                        <Icon.X stroke="var(--info)" />
-                        <Icon.X circle={false} />
-                        <Icon.ExportSheet
-                            size={48}
-                            fillChildren="var(--info)"
-                        />
-                        <Icon.ExportSheets size={72} fill="var(--info)" />
-                        <Icon.ExportSheets size={72} strokeWidth={1} />
-                        <Icon.Preview
+                        <IconX stroke="var(--info)" />
+                        <IconX circle={false} />
+                        <IconExportSheet size={48} fillChildren="var(--info)" />
+                        <IconExportSheets size={72} fill="var(--info)" />
+                        <IconExportSheets size={72} strokeWidth={1} />
+                        <IconPreview
                             stroke="var(--info)"
                             fillChildren="var(--info)"
                         />
-                        <Icon.Preview
+                        <IconPreview
                             circle={false}
                             stroke="var(--info)"
                             fillChildren="var(--info)"
                         />
-                        <Icon.ThreeDots />
-                        <Icon.ThreeDotsVertical />
+                        <IconThreeDots />
+                        <IconThreeDotsVertical />
                     </Group>
                 )}
             </ContainerSize>

@@ -3,7 +3,8 @@ import { type ReactNode, useState } from 'react';
 import Alert from '../Dumb/Alert';
 import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
-import Icon from '../Dumb/Icon';
+import IconFile from '../Dumb/Icon/Icons/File';
+import IconFolder from '../Dumb/Icon/Icons/Folder';
 import Recursive from '../Dumb/Recursive';
 import type { RecursiveItem } from '../Dumb/Recursive/interfaces';
 import { findNodeById } from '../Dumb/Recursive/utils';
@@ -81,14 +82,12 @@ export default function DemoRecursive() {
         const newSelectedIds = new Set(selectedIds);
 
         // if (multiple) {
-        // Multiple selection: toggle
         if (newSelectedIds.has(id)) {
             newSelectedIds.delete(id);
         } else {
             newSelectedIds.add(id);
         }
         // } else {
-        //     // Single selection: replace
         //     newSelectedIds.clear();
         //     newSelectedIds.add(id);
         // }
@@ -121,9 +120,9 @@ export default function DemoRecursive() {
                 className={props.className}
             >
                 {props.item.data?.type === 'folder' ? (
-                    <Icon.Folder circle={false} size={56} />
+                    <IconFolder circle={false} size={56} />
                 ) : (
-                    <Icon.File circle={false} size={56} />
+                    <IconFile circle={false} size={56} />
                 )}
                 <Font>{props.item.data?.name}</Font>
                 {has(props.children) ? props.children : null}
@@ -131,15 +130,19 @@ export default function DemoRecursive() {
         );
     };
 
+    const selectionHasFiles = selected.some((s) => s?.data?.type === 'file');
+    const selectionHasFolders = selected.some(
+        (s) => s?.data?.type === 'folder',
+    );
+
     return (
         <>
             <Alert mood="negative" fitContent>
                 <Group.Row gap="var(--gap-2)">
-                    {selected[0]?.data?.type === 'folder' ? (
-                        <Icon.Folder circle={false} size={28} />
-                    ) : (
-                        <Icon.File circle={false} size={28} />
-                    )}{' '}
+                    {selectionHasFolders && (
+                        <IconFolder circle={false} size={28} />
+                    )}
+                    {selectionHasFiles && <IconFile circle={false} size={28} />}
                     <Font.Bold> {selectionFormatted}</Font.Bold>
                 </Group.Row>
             </Alert>

@@ -6,7 +6,10 @@ import Alert from '../Dumb/Alert';
 import Button from '../Dumb/Button';
 import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
-import Icon from '../Dumb/Icon';
+import IconAdd from '../Dumb/Icon/Icons/Add';
+import IconInfo from '../Dumb/Icon/Icons/Info';
+import IconLoadingBar from '../Dumb/Icon/Icons/LoadingBar';
+import IconX from '../Dumb/Icon/Icons/X';
 import TextInputLabel from '../Dumb/InputText';
 import ToolBar from '../Dumb/Toolbar';
 import type { QrWorkerAPI } from '../utilities/qr.worker';
@@ -74,7 +77,7 @@ export default function DemoWebWorker() {
         <>
             <TextInputLabel
                 id="qr-input"
-                label={<Icon.Info size={32} />}
+                label={<IconInfo size={32} />}
                 value={text}
                 onChange={(v) => setText(v)}
                 gridTemplateColumns="44px 1fr"
@@ -84,21 +87,21 @@ export default function DemoWebWorker() {
             <ToolBar label="Actions" dangerous={{ gap: 'var(--gap-1)' }}>
                 <Button.Positive
                     isPending={loading}
-                    {...(!loading && { start: <Icon.Add size={22} /> })}
+                    {...(!loading && { start: <IconAdd size={22} /> })}
                     onClick={generateSvg}
                 >
                     {loading ? 'Generating…' : 'SVG'}
                 </Button.Positive>
                 <Button.Positive
                     isPending={loading}
-                    {...(!loading && { start: <Icon.Add size={22} /> })}
+                    {...(!loading && { start: <IconAdd size={22} /> })}
                     onClick={generateDataUrl}
                 >
                     {loading ? 'Generating…' : 'PNG DataURL'}
                 </Button.Positive>
 
                 <Button.Negative
-                    start={<Icon.X size={22} />}
+                    start={<IconX size={22} />}
                     onClick={() => {
                         worker.terminate();
                         setTerminated(true);
@@ -117,7 +120,7 @@ export default function DemoWebWorker() {
                     placeItems: 'center',
                 }}
             >
-                {loading && <Icon.LoadingBar />}
+                {loading && <IconLoadingBar />}
                 {!loading &&
                     result &&
                     (result.startsWith('data:') ? (

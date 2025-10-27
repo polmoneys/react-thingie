@@ -1,7 +1,8 @@
 import Alert from '../Dumb/Alert';
 import Button from '../Dumb/Button';
 import Font from '../Dumb/Font';
-import Icon from '../Dumb/Icon';
+import IconInfo from '../Dumb/Icon/Icons/Info';
+import IconLoadingBar from '../Dumb/Icon/Icons/LoadingBar';
 import ToolBar from '../Dumb/Toolbar';
 import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 import useLifeboats from '../Inspired/useLifeboat';
@@ -83,7 +84,7 @@ export default function DemoLifeboats() {
                     {hasCriticalValue === undefined ? (
                         'Set critical info'
                     ) : (
-                        <Icon.Info size={28} />
+                        <IconInfo size={28} />
                     )}
                 </Button.Positive>
             </ToolBar>
@@ -118,7 +119,7 @@ export default function DemoLifeboats() {
             {isCreating && (
                 <>
                     <br />
-                    <Icon.LoadingBar />
+                    <IconLoadingBar />
                 </>
             )}
             <br />

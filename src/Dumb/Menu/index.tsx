@@ -11,7 +11,7 @@ import {
 
 import { has } from '../../utils';
 import Font from '../Font';
-import Icon from '../Icon';
+import IconChevron, { IconChevronDown } from '../Icon/Icons/Chevron';
 
 import type { DynamicItem } from './interfaces';
 import MenuSections from './Sections';
@@ -27,7 +27,7 @@ export default function Menu<T extends DynamicItem>(props: MyMenuProps<T>) {
             <Pressable>
                 <span role="button" className="my-menu-trigger">
                     <Font component="span"> {label}</Font>
-                    <Icon.ChevronDown size={24} circle={false} />
+                    <IconChevronDown size={24} circle={false} />
                 </span>
             </Pressable>
             <Popover>
@@ -45,7 +45,7 @@ export default function Menu<T extends DynamicItem>(props: MyMenuProps<T>) {
                                                 {item.name}
 
                                                 {hasSubmenu && (
-                                                    <Icon.Chevron
+                                                    <IconChevron
                                                         size={24}
                                                         circle={false}
                                                     />

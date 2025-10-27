@@ -3,7 +3,8 @@ import { useState } from 'react';
 import Button from '../Dumb/Button';
 import Checkbox from '../Dumb/Checkbox';
 import Font from '../Dumb/Font';
-import Icon from '../Dumb/Icon';
+import IconAdd from '../Dumb/Icon/Icons/Add';
+import IconX from '../Dumb/Icon/Icons/X';
 import Membrane from '../Dumb/Membrane';
 import Swipeable from '../Dumb/Membrane/Swipeable';
 import Slot from '../Dumb/Slot';
@@ -42,7 +43,7 @@ export default function SwipeableDemo() {
                                             setState('default');
                                         }}
                                     >
-                                        <Icon.X size={28} />
+                                        <IconX size={28} />
                                     </Button.Negative>
                                 ),
                             })}
@@ -59,7 +60,7 @@ export default function SwipeableDemo() {
                                             setState('default');
                                         }}
                                     >
-                                        <Icon.Add size={28} />
+                                        <IconAdd size={28} />
                                     </Button.Positive>
                                 ),
                             })}

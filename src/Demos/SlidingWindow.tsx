@@ -6,7 +6,7 @@ import Alert from '../Dumb/Alert';
 import Button from '../Dumb/Button';
 import Font from '../Dumb/Font';
 import Group from '../Dumb/Group';
-import Icon from '../Dumb/Icon';
+import IconLoadingBar from '../Dumb/Icon/Icons/LoadingBar';
 import TextInputLabel from '../Dumb/InputText';
 import GridTemplateColumns from '../Inspired/GridTemplateColumns';
 import useSlidingWindow from '../utilities/useSlidingWindow';
@@ -71,7 +71,7 @@ export default function SlidingWindowDemo() {
                 <Group.Col>
                     <Font size="lg">Loading the galaxy far, far away...</Font>
                     <br />
-                    <Icon.LoadingBar />{' '}
+                    <IconLoadingBar />{' '}
                 </Group.Col>
             </Alert>
         );
