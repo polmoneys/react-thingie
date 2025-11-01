@@ -1,0 +1,25 @@
+.tooltip-container {
+    pointer-events: none;
+}
+
+.tooltip-popup {
+    position: fixed;
+    left: calc(var(--element-x) * 1px);
+    top: calc(calc(var(--element-y) * 1px) - 0.5em);
+    padding: var(--gap-1) var(--gap-2);
+    background: var(--neutral);
+    color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: var(--border-radius);
+    transition: all 400ms ease;
+    z-index: 9999;
+    transform: translate(-50%, calc(-100% - 0.5em));
+    white-space: nowrap;
+    opacity: 0;
+    font-size: 0.9rem;
+}
+
+.tooltip-container.visible .tooltip-popup {
+    transform: translate(-50%, -100%);
+    opacity: 1;
+}

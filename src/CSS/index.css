@@ -202,11 +202,11 @@ a:is(:not([class])) {
     text-decoration-thickness: 0.1em;
     text-underline-offset: 0.09em;
     outline: none;
-
+    color: currentColor;
     width: fit-content;
 
     &:is(:visited, :hover) {
-        color: var(--grey);
+        color: var(--neutral);
         text-shadow: none;
         touch-action: manipulation;
     }

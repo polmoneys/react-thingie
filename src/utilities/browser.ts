@@ -22,6 +22,27 @@ export const openUrl = (to: string): unknown => window?.open(to, '_blank');
 export const moveFocusTo = (selector: string) =>
     (document?.querySelector(selector) as HTMLElement)?.focus();
 
+export default function isFocusVisible(element: Element): boolean {
+    try {
+        return element.matches(':focus-visible');
+    } catch (error) {
+        // Do not warn on jsdom tests, otherwise all tests that rely on focus have to be skipped
+        // Tests that rely on `:focus-visible` will still have to be skipped in jsdom
+        if (
+            process.env.NODE_ENV !== 'production' &&
+            !window.navigator.userAgent.includes('jsdom')
+        ) {
+            console.warn(
+                [
+                    ' The `:focus-visible` pseudo class is not supported in this browser.',
+                ].join('\n'),
+            );
+        }
+    }
+
+    return false;
+}
+
 export const scrollToElement = (selector: string): void => {
     const el = document.querySelector(selector);
     if (el != null) {

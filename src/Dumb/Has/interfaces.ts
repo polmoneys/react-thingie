@@ -58,3 +58,11 @@ export type HasProps = {
     component?: 'div' | 'article' | 'section' | 'main' | 'aside';
     baseVars?: Record<string, CSSValue>;
 };
+
+export type StatefulHasProps = {
+    id: string;
+    defaultChecked?: boolean;
+    name: string;
+    children: ReactNode;
+    onCheck: ReactNode;
+};
